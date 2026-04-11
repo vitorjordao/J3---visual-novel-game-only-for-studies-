@@ -149,6 +149,7 @@ transform system_boot:
 screen debug_menu:
     zorder 200
     modal True
+    key "d" action HideScreen("debug_menu")
     frame:
         xalign 0.98
         yalign 0.02

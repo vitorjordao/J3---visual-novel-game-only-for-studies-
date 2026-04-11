@@ -131,7 +131,7 @@ label elias_common:
                 j3 "Perfeito. Usei os túneis para mapear rotas de fuga. Posso guiar todos."
                 elias "(Fica impressionado)"
                 call mensagem_sistema("STATUS: Estrategista preparada")
-    
+
     # Cena 5.4 - O Sacrifício de Unit-7
     show unit7 determined at center
     

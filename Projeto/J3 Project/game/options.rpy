@@ -226,5 +226,3 @@ init python:
             renpy.hide_screen("debug_menu")
         else:
             renpy.show_screen("debug_menu")
-
-key 'd' action Function(toggle_debug_menu)

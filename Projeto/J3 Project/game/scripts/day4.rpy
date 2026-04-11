@@ -114,7 +114,7 @@ label repair_circle_common:
             j3 "Ofereço análise de padrões. Seus sistemas de segurança são vulneráveis. Posso melhorá-los."
             unit7 "(Fica impressionado)"
             call mensagem_sistema("STATUS: Especialista técnica")
-    
+
     # Cena 4.4 - O Conflito de Recursos
     hide unit7
     show synth1 angry at left
