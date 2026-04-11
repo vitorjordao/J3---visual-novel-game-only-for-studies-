@@ -42,7 +42,7 @@ init python:
             return "final_0b_colapso"
         elif persistent.bateria <= 10 and persistent.integridade <= 20:
             return "final_0c_captura"
-        return None
+        return "Normal"
     
     def get_status_bateria():
         if persistent.bateria <= 10:
