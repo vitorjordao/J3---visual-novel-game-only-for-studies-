@@ -152,7 +152,7 @@ screen debug_key_handler:
 screen debug_menu:
     zorder 200
     modal True
-    key "p" action HideScreen("debug_menu")
+    key "p" action Hide("debug_menu")
     frame:
         xalign 0.98
         yalign 0.02
