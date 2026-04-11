@@ -97,12 +97,12 @@ label day5_start:
 
 label elias_recharge_accepted:
     elias "(Sorri com determinação) Agora você tem energia para a luta. Não me decepcione."
-    jump elias_common
+    jump elias_common_day5
 
 label elias_recharge_refused:
     elias "(Parece preocupado) Espero que não se arrependa dessa decisão."
 
-label elias_common:
+label elias_common_day5:
 
     menu:
         "Recusar túnel por segurança":
