@@ -102,7 +102,8 @@ label repair_circle_observed:
     unit7 "(Parece desapontado) Você poderia ter contribuído mais."
 
 label repair_circle_common:
-            
+
+    menu:
         "Oferecer conhecimento e evolução":
             $ modificar_personalidade("revolucao", 1)
             j3 "Ofereço conhecimento técnico e uma nova perspectiva. A sobrevivência não é sobre esconder, é sobre evoluir."

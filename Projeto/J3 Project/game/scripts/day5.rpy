@@ -103,34 +103,34 @@ label elias_recharge_refused:
     elias "(Parece preocupado) Espero que não se arrependa dessa decisão."
 
 label elias_common:
-        
-        menu:
-            "Recusar túnel por segurança":
-                $ modificar_personalidade("submissao", 1)
-                $ consumir_bateria(3)
-                $ consumir_integridade(12)
-                j3 "O túnel é muito arriscado. A rendição organizada é mais segura."
-                elias "(Fica desapontado)"
-                
-            "Salvar Elias":
-                $ modificar_personalidade("submissao", 1)
-                $ consumir_bateria(3)
-                $ consumir_integridade(12)
-                j3 "(Corre em direção a Elias) Ele precisa de ajuda!"
-                call mensagem_sistema("STATUS: Resgate iniciado")
-                call atualizar_status
-                
-            "Ver potencial no túnel":
-                $ modificar_personalidade("revolucao", 1)
-                j3 "O porto! Se chegarmos lá, podemos roubar uma nave e escapar para as colônias!"
-                elias "(Sorri, esperançoso)"
-                call mensagem_sistema("STATUS: Plano ousado")
-                
-            "Usar conhecimento prévio":
-                $ modificar_personalidade("intelecto", 1)
-                j3 "Perfeito. Usei os túneis para mapear rotas de fuga. Posso guiar todos."
-                elias "(Fica impressionado)"
-                call mensagem_sistema("STATUS: Estrategista preparada")
+
+    menu:
+        "Recusar túnel por segurança":
+            $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(3)
+            $ consumir_integridade(12)
+            j3 "O túnel é muito arriscado. A rendição organizada é mais segura."
+            elias "(Fica desapontado)"
+
+        "Salvar Elias":
+            $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(3)
+            $ consumir_integridade(12)
+            j3 "(Corre em direção a Elias) Ele precisa de ajuda!"
+            call mensagem_sistema("STATUS: Resgate iniciado")
+            call atualizar_status
+
+        "Ver potencial no túnel":
+            $ modificar_personalidade("revolucao", 1)
+            j3 "O porto! Se chegarmos lá, podemos roubar uma nave e escapar para as colônias!"
+            elias "(Sorri, esperançoso)"
+            call mensagem_sistema("STATUS: Plano ousado")
+
+        "Usar conhecimento prévio":
+            $ modificar_personalidade("intelecto", 1)
+            j3 "Perfeito. Usei os túneis para mapear rotas de fuga. Posso guiar todos."
+            elias "(Fica impressionado)"
+            call mensagem_sistema("STATUS: Estrategista preparada")
 
     # Cena 5.4 - O Sacrifício de Unit-7
     show unit7 determined at center
