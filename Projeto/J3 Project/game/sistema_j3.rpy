@@ -201,4 +201,5 @@ screen debug_menu:
                     text "Dias Sobrevividos: [persistent.dias_sobrevividos]" color "#666666" size 11
                     text "Final Crítico: [verificar_final_critico()]" color "#ff6b6b" size 11
             
+            textbutton "Executar Testes" action Jump("run_comprehensive_tests") xalign 0.5
             textbutton "Fechar (P)" action Hide("debug_menu") xalign 0.5
