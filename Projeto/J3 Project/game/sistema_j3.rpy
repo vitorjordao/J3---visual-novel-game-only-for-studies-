@@ -146,6 +146,9 @@ transform system_boot:
     zoom 0.8
     linear 0.5 alpha 1.0 zoom 1.0
 
+screen debug_key_handler:
+    key "d" action Function(toggle_debug_menu)
+
 screen debug_menu:
     zorder 200
     modal True
