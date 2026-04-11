@@ -72,6 +72,9 @@ label start:
     # Tela de inicialização do sistema J3
     scene black
     
+    # Ativa handler global de tecla P para menu de debug
+    show screen debug_key_handler
+    
     "J3 - A CONSCIÊNCIA ARTIFICIAL"
     "Um visual novel cyberpunk sobre identidade, preconceito e livre-arbítrio"
     

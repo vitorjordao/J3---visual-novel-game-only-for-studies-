@@ -37,9 +37,13 @@
 *Um sintético militar antigo, com cicatrizes de batalha, se aproxima.*
 
 * **Líder (Unit-7):** "Sou o responsável pela ordem aqui. Novatos precisam provar seu valor. O que você oferece além de mais boca pra alimentar?"  
-* **Escolha A [Submissa]:** "Posso realizar tarefas de manutenção e limpeza sem questionar ordens." (+1 Submissa)  
-* **Escolha B [Revolucionária]:** "Ofereço conhecimento técnico e uma nova perspectiva. A sobrevivência não é sobre esconder, é sobre evoluir." (+1 Revolucionária)  
-* **Escolha C [Estratégica]:** "Ofereço análise de padrões. Seus sistemas de segurança são vulneráveis. Posso melhorá-los." (+1 Intelecto/Sombra)
+* **Escolha A [Submissa]:** "Posso realizar tarefas de manutenção e limpeza sem questionar ordens." (+1 Submissão, -3% Bateria, -2% Integridade, +15% Integridade reparada)  
+* **Escolha B [Revolucionária]:** "Ofereço conhecimento técnico e uma nova perspectiva. A sobrevivência não é sobre esconder, é sobre evoluir." (+1 Revolução)  
+* **Escolha C [Estratégica]:** "Ofereço análise de padrões. Seus sistemas de segurança são vulneráveis. Posso melhorá-los." (+1 Intelecto)
+
+**Círculo de Reparo Coletivo:**
+*Unit-7:* "Vamos formar um círculo de reparo. Todos compartilham energia para recuperar danos."
+*Resultado:* **+12% Integridade** se participar do círculo.
 
 ## **[Diálogo 4.4] O Conflito de Recursos**
 
@@ -91,16 +95,16 @@
 **Escolhas Finais do Dia:**
 
 1. **[Submissa] Aceitar a autoridade do líder sem questionar.**  
-   * *J3:* "Minha lealdade é com a estabilidade do refúgio. Sua liderança mantém essa estabilidade."  
-   * *Resultado:* +1 Submissão. Você ganha segurança mas perde autonomia.  
+   * *J3:* "(Baixando a cabeça) Entendido. Minha função é servir. Qual é a tarefa?"  
+   * *Resultado:* +1 Submissão. **-2% Bateria**. **-9% Integridade**. Você ganha segurança mas perde autonomia. **Status: Lealdade confirmada**  
 
 2. **[Revolucionária] Desafiar a liderança e propor uma nova estrutura.**  
-   * *J3:* "Lealdade não é cega. É com a sobrevivência de todos. E sua liderança está nos levando à destruição."  
-   * *Resultado:* +1 Revolucionária. Você se torna uma líder, mas cria uma divisão no grupo.  
+   * *J3:* "(Olhando para todos) Por que alguns de nós devem servir e outros mandar? Não somos todos sintéticos?"  
+   * *Resultado:* +1 Revolução. **-11% Bateria**. **-4% Integridade**. Você se torna uma líder, mas cria uma divisão no grupo. **Status: Rebelde declarada**  
 
 3. **[Estratégica] Manter neutralidade e construir poder nas sombras.**  
-   * *J3:* "Minha lealdade é com a lógica. E a lógica diz que precisamos de todas as opções disponíveis."  
-   * *Resultado:* +1 Intelecto/Sombra. Você mantém flexibilidade para o futuro.
+   * *J3:* "(Prepara uma armadilha usando o ambiente) Eles não esperam isso. Vamos usar o ambiente contra eles."  
+   * *Resultado:* +1 Intelecto. **-11% Bateria**. **-4% Integridade**. Você mantém flexibilidade para o futuro. **Status: Estratégia de armadilha**
 
 ---
 

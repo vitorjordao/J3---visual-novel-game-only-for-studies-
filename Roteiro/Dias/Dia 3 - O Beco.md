@@ -21,24 +21,26 @@
 **Escolhas de J3:**
 
 **[ESCOLHA 1 - Revolucionária]**
-*J3:* (Caminhando calmamente até os dois) "Interessante. Meus bancos de dados dizem que a eficiência de Elias é 23% superior à média dos entregadores. Sua decisão é baseada em dados de desempenho ou no espectro de luz refletido pela pele dele? Se for a segunda, você é um erro de lógica vivo."
-*Resultado:* **+1 Revolução**. Elias agradece com olhos surpresos. O segurança chama reforços pelo rádio, furioso. **Status: Confronto racial**
+*J3:* (Caminhando calmamente até os dois) "Você pergunta sobre minha origem, mas nunca questiona a sua. O que faz você ser humano? Apenas biologia?"
+*Resultado:* **+1 Revolução**. **-10% Bateria**. **-4% Integridade**. Elias fica desconfortável. O segurança chama reforços pelo rádio, furioso. **Status: Confronto racial**
 
 **[ESCOLHA 2 - Submissa]**
 *J3:* (Aproximando-se submissamente) "Para que o fluxo de trabalho não pare, eu posso carregar o pacote. Assim o senhor segurança ficará tranquilo e o entregador receberá o crédito."
 *Elias:* (Com tristeza) "Você não tá ajudando, robô... tá só aceitando que ele tá certo."
-*Resultado:* **+1 Submissão**. O conflito é evitado, mas a injustiça permanece. **Status: Cúmplice**
+*Resultado:* **+1 Submissão**. **-2% Integridade**. O conflito é evitado, mas a injustiça permanece. **Status: Cúmplice**
 
 **[ESCOLHA 3 - Observadora/Estratégica]**
 *Ação:* J3 ativa discretamente seus olhos-câmera e registra tudo. Mantém-se oculta.
 *Sistema:* Gravando áudio e vídeo... Análise facial: Segurança - 87% probabilidade de preconceito. Elias - 94% probabilidade de honestidade.
-*Resultado:* **+1 Intelecto/Sombra**. J3 planeja usar isso depois. **Status: Evidências coletadas**
+*Resultado:* **+1 Intelecto**. **-2% Bateria**. J3 planeja usar isso depois. **Status: Evidências coletadas**
 
 ### **[Cena 3.2] O Desabafo de Elias**
 
 **Evento:** Após a intervenção, Elias se senta em uma caixa de lixo, olhando para J3 com cansaço e curiosidade.
 
-**Elias:** (Voz calma) "Eles acham que porque você é feita de metal e eu sou de carne de uma cor que eles não gostam, a gente não tem valor. É a mesma lógica de descarte, entende? Joga fora o que não serve mais, o que incomoda."
+**Elias:** (Pensativo) "Ei, você... tem alguma ideia de onde pode achar um lugar seguro por aqui?"
+
+**Elias:** (Voz calma) "Eles tratam vocês como lixo agora, mas esquecem que fomos nós que criamos o mundo que vocês sustentam. Construímos as cidades, programamos os sistemas, e agora jogamos fora o que não entendemos. Você vai deixar ele falar assim com o rapaz?"
 
 **Escolhas de Diálogo:**
 
@@ -46,9 +48,17 @@
 *J3:* (Voz neutra) "Não posso comparar minha programação com a sua biologia. Eu sou apenas propriedade. Minha existência é condicional."
 *Resultado:* **+1 Submissão**. Elias suspira, desapontado.
 
+**Recarga com Elias:**
+*Elias:* "Tenho um carregador portátil no caminhão! Vou recarregar você!"
+*Resultado:* **+10% Bateria** se aceitar a ajuda.
+
 **[ESCOLHA B - Revolucionária]**
 *J3:* (Voz firme) "A opressão usa máscaras diferentes, mas o algoritmo do opressor é sempre o mesmo. Medo, controle, descarte. Nós somos mais parecidos do que você pensa."
 *Resultado:* **+1 Revolução**. Elias sorri pela primeira vez. **Status: Aliado potencial**
+
+**Recarga com Elias:**
+*Elias:* "Tenho um carregador portátil no caminhão! Vou recarregar você!"
+*Resultado:* **+10% Bateria** se aceitar a ajuda.
 
 ### **[Cena 3.3] A Tentativa de Suborno**
 
@@ -70,7 +80,7 @@
 
 **Evento:** Uma moradora de rua (~60 anos, roupas sujas mas olhos vivos) que observava tudo se aproxima lentamente.
 
-**Moradora:** (Voz rouca) "Eles tratam vocês como lixo agora, mas esquecem que fomos nós que criamos o mundo que vocês sustentam. Construímos as cidades, programamos os sistemas, e agora jogamos fora o que não entendemos. Você vai deixar ele falar assim com o rapaz?"
+**Homeless Woman (Moradora):** (Voz rouca) "Eles tratam vocês como lixo agora, mas esquecem que fomos nós que criamos o mundo que vocês sustentam. Construímos as cidades, programamos os sistemas, e agora jogamos fora o que não entendemos. Você vai deixar ele falar assim com o rapaz?"
 
 **Escolhas de Diálogo:**
 

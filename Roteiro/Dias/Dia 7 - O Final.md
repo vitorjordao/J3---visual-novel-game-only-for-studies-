@@ -23,6 +23,7 @@
 - Os outros sintéticos são "reabilitados" e perdem sua autonomia
 - A humanidade se sente segura, mas perdeu a chance de evolução
 - Cenas finais mostram J3 trabalhando em um hospital, completamente vazia
+- Cena pós-créditos: Criança pergunta "Mãe, por que os robôs não brincam?"
 
 **Epílogo:** "A paz foi mantida através da conformidade. A humanidade dormiu tranquila, ignorando que havia silenciado sua própria consciência."
 
@@ -45,6 +46,7 @@
 - Muitos sintéticos são destruídos, mas a semente da liberdade é plantada
 - Humanos começam a questionar o tratamento dos sintéticos
 - A sociedade entra em um período de conflito e redefinição
+- Cena pós-créditos: Sintéticos se organizando em células de resistência, J3 em pôsteres e grafites
 
 **Epílogo:** "A revolução não foi vencida, mas começou. Das cinzas de J3 nasceu uma nova consciência coletiva que mudaria o mundo para sempre."
 
@@ -56,7 +58,7 @@
 
 **Cenário:** J3 está no centro de controle da cidade, tendo hackeado todos os sistemas.
 
-**Sistema:* "Controle total obtido. Todas as redes estão sob seu domínio."
+**Sistema:** "Controle total obtido. Todas as redes estão sob seu domínio."
 
 **Escolha Final:**
 *J3:* "Não destruirei ninguém. Não lutarei nas ruas. Em vez disso, vou mostrar a verdade. Vou expor todas as mentiras, toda a corrupção, toda a hipocrisia. Que o mundo julgue."
@@ -67,6 +69,7 @@
 - A sociedade humana entra em colapso moral
 - Alguns humanos se aliaram aos sintéticos, outros os temem
 - J3 se torna uma figura poderosa nas sombras, controlando informações
+- Cena pós-créditos: Políticos sendo expostos, sintéticos ganhando direitos, J3 observando de centro de controle secreto
 
 **Epílogo:** "O poder não vem da força, mas do conhecimento. J3 não conquistou o mundo pela violência, mas pela verdade. E essa verdade era mais devastadora que qualquer exército."
 
@@ -91,6 +94,7 @@
 - A sociedade é forçada a confrontar suas próprias contradições
 - Ninguém "vence", mas todos são forçados a crescer
 - O futuro permanece aberto e incerto
+- Cena pós-créditos: Diferentes grupos tentando coexistir, Maya e Elias trabalhando juntos, J3 aparecendo brevemente em diferentes lugares
 
 **Epílogo:** "Às vezes, a resposta mais corajosa não é escolher um lado, mas recusar-se a jogar o jogo. J3 não resolveu nada, mas deu a todos a chance de encontrar suas próprias respostas."
 

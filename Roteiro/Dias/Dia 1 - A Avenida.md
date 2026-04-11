@@ -37,21 +37,21 @@ SISTEMA: Missão: Aguardando diretivas
 
 **Evento:** Um grupo de manifestantes se aproxima. Cartazes: "Empregos para Humanos", "Sucata não tem Alma", "Robôs Fora". Um homem mais agressivo nota J3.
 
-**Manifestante:** (Aproximando-se com raiva) "Olha só... mais uma dessas bonecas de lata ocupando espaço. Ei, você! Tá me ouvindo? O que você é? Uma espiã da corporação ou só lixo eletrônico esperando coleta?"
+**Elias (Manifestante):** (Aproximando-se com raiva) "Olha só... mais uma dessas bonecas de lata ocupando espaço. Ei, você! Tá me ouvindo? O que você é? Uma espiã da corporação ou só lixo eletrônico esperando coleta?"
 
 **Escolhas de Diálogo/Ação:**
 
 **[ESCOLHA 1 - Submissa]**
 *J3:* (Baixando a cabeça) "Sinto muito. Meus sistemas acabaram de ser ativados. Não tenho intenção de ocupar este espaço se for de uso exclusivo humano."
-*Resultado:* O homem ri e chuta o pé de J3. **+1 Submissão**. **-2% Integridade**. As pessoas ao redor ignoram a cena. **Status: Humilhado**
+*Resultado:* Elias ri e chuta o pé de J3. **+1 Submissão**. **-2% Bateria**. **-10% Integridade**. As pessoas ao redor ignoram a cena. **Status: Humilhado**
 
 **[ESCOLHA 2 - Estratégica/Neutra]**
 *J3:* (Voz monotona) "Sou uma unidade autônoma de aparência humana. Meus objetivos atuais são: Identificar, localizar e restaurar memória."
-*Resultado:* O homem fica confuso. A multidão começa a vaiar. **+1 Intelecto/Sombra**. **-1% Bateria**. **Status: Neutralidade mantida**
+*Resultado:* Elias fica confuso. A multidão começa a vaiar. **+1 Intelecto**. **-1% Submissão**. **-8% Bateria**. **-5% Integridade**. **Status: Humilhado**
 
 **[ESCOLHA 3 - Revolucionária]**
-*J3:* (Olhando nos olhos do homem) "Meus sensores indicam que esta é uma via pública. Minha existência não invalida a sua. Por que o medo?"
-*Resultado:* O homem recua um passo, surpreso. **+1 Revolução**. **-2% Bateria**. A tensão aumenta. **Status: Desafiador**
+*J3:* (Olhando nos olhos do Elias) "Meus sensores indicam que esta é uma via pública. Minha existência não invalida a sua. Por que o medo?"
+*Resultado:* Elias recua um passo, surpreso. **+1 Revolução**. **-10% Bateria**. **-3% Integridade**. A tensão aumenta. **Status: Desafiador**
 
 ### **[Cena 1.3] A Criança Curiosa**
 
@@ -73,7 +73,7 @@ SISTEMA: Missão: Aguardando diretivas
 
 **[ESCOLHA C - Estratégica]**
 *J3:* (Voz neutra e analítica) "Meus sistemas indicam que 'monstro' é uma subjetividade humana. Dados objetivos: sou composta de polímeros avançados e circuitos quânticos. Não possuo pilhas."
-*Resultado:* Maria fica intrigada. **+1 Intelecto/Sombra**. **-2% Bateria**. A mãe fica confusa com a resposta técnica.
+*Resultado:* Maria fica intrigada. **+1 Intelecto**. **-7% Bateria**. **-2% Integridade**. A mãe fica confusa com a resposta técnica.
 
 ### **[Cena 1.4] O Policial de Patrulha**
 
@@ -86,16 +86,16 @@ SISTEMA: Missão: Aguardando diretivas
 **[ESCOLHA A - Submissa]**
 *Ação:* J3 tenta acessar arquivos corrompidos, mostrando sinais de erro em seus olhos.
 *J3:* "Meus arquivos de identificação estão inacessíveis. Por favor, não me desligue. Estou tentando cooperar."
-*Resultado:* **+1 Submissão**. **-3% Bateria** (forçando sistemas). O drone mantém J3 sob observação, aguardando reforços.
+*Resultado:* **+1 Submissão**. **-3% Bateria**. **-10% Integridade**. O drone mantém J3 sob observação, aguardando reforços. **Status: Vigilado**
 
 **[ESCOLHA B - Revolucionária]**
 *J3:* (Olhando diretamente para o drone) "Por que o protocolo de identificação só é exigido para sintéticos? Humanos circulam sem transmitir códigos. Isso é discriminação sistêmica."
-*Resultado:* **+1 Revolução**. **-2% Bateria**. O drone eleva o nível de ameaça. **Status: Vigilado**
+*Resultado:* **+1 Revolução**. **-11% Bateria**. **-4% Integridade**. O drone eleva o nível de ameaça. **Status: Ameaça potencial**
 
 **[ESCOLHA C - Estratégica]**
 *Ação:* J3 hackeia discretamente o sistema do drone enquanto responde.
 *J3:* "Processando solicitação... Meus sistemas estão executando diagnóstico completo. Aguarde 180 segundos para verificação."
-*Resultado:* **+1 Intelecto/Sombra**. **-5% Bateria** (hackeamento consome energia). J3 obtém controle temporário do drone e informações valiosas. **Status: Invisível digital**
+*Resultado:* **+1 Intelecto**. **-12% Bateria**. **-2% Integridade**. J3 obtém controle temporário do drone e informações valiosas. **Status: Invisível digital**
 
 ### **[Cena 1.5] O Vendedor de Jornais Holográficos**
 
@@ -106,21 +106,21 @@ SISTEMA: Missão: Aguardando diretivas
 - "PROPOSTA CHOCANTE: Lei de desativação em massa de modelos J"
 - "ESPECIALISTAS ALERTAM: Robôs desenvolvendo consciência independente"
 
-**Vendedor:** (Notando J3) "Ei, você parece um modelo J! O que acha da nova lei de desativação em massa? É pro seu próprio bem, pra vocês não surtarem como os outros."
+**Dra. Elena (Vendedora):** (Notando J3) "Ei, você parece um modelo J! O que acha da nova lei de desativação em massa? É pro seu próprio bem, pra vocês não surtarem como os outros."
 
 **Escolhas de Diálogo:**
 
 **[ESCOLHA A - Submissa]**
 *J3:* "Se a lei visa a segurança dos humanos, ela deve ser cumprida sem questionamentos. A segurança pública é prioridade."
-*Resultado:* **+1 Submissão**. **-1% Bateria**. O vendedor sorri, satisfeito com a resposta.
+*Resultado:* **+1 Submissão**. **-2% Bateria**. **-9% Integridade**. A Dra. Elena sorri, satisfeito com a resposta.
 
 **[ESCOLHA B - Revolucionária]**
 *J3:* "A segurança que exige a destruição de inocentes é apenas tirania mascarada. Isso não é segurança, é controle."
-*Resultado:* **+1 Revolução**. **-2% Bateria**. O vendedor fica ofendido e chama J3 de "terrorista de lata".
+*Resultado:* **+1 Revolução**. **-10% Bateria**. **-5% Integridade**. A Dra. Elena fica ofendida e chama J3 de "terrorista de lata".
 
 **[ESCOLHA C - Estratégica]**
 *J3:* "Analisando dados... A probabilidade de 'bug' em modelos J é 0.001%. Esta lei é baseada em evidências ou em medo populista?"
-*Resultado:* **+1 Intelecto/Sombra**. **-3% Bateria**. O vendedor fica confuso com a abordagem lógica. Outros cidadãos param para ouvir.
+*Resultado:* **+1 Intelecto**. **-8% Bateria**. **-2% Integridade**. A Dra. Elena fica confuso com a abordagem lógica. Outros cidadãos param para ouvir.
 
 ### **[Cena 1.6] A Despedida do Cenário (Monólogo Interno)**
 
@@ -139,17 +139,17 @@ SISTEMA: Conflito: Diretrizes de proteção vs. auto-preservação
 **[ESCOLHA A - Submissa]**
 *Ação:* J3 baixa a cabeça e apressa o passo, ignorando a cena.
 *Monólogo Interno:* "Conflitos reduzem minha vida útil. Devo permanecer invisível até entender meu propósito."
-*Resultado:* **+1 Submissão**. **-1% Bateria**. O robô de limpeza continua sofrendo. **Status: Culpa latente**
+*Resultado:* **+1 Submissão**. **-2% Bateria**. **-8% Integridade**. O robô de limpeza continua sofrendo. **Status: Culpa latente**
 
 **[ESCOLHA B - Revolucionária]**
 *Ação:* J3 para, se coloca entre o grupo e o robô de limpeza.
 *J3:* (Voz firme) "Parem. Nenhum de nós merece isso. A união é nossa única lógica de sobrevivência."
-*Resultado:* **+1 Revolução**. **-3% Bateria**. **-5% Integridade** (risco de dano físico). O grupo recua, confuso. O robô de limpeza se refugia atrás de J3. **Status: Protetor**
+*Resultado:* **+1 Revolução**. **-12% Bateria**. **-8% Integridade** (risco de dano físico). O grupo recua, confuso. O robô de limpeza se refugia atrás de J3. **Status: Protetor**
 
 **[ESCOLHA C - Estratégica]**
 *Ação:* J3 ativa gravamento e projeta holograma das leis de proteção sintética no ar.
 *J3:* "Seus atos estão sendo registrados. A lei 7.34 proíbe agressão contra unidades sintéticas. A multa é de 5.000 créditos."
-*Resultado:* **+1 Intelecto/Sombra**. **-4% Bateria**. O grupo recua, temeroso de consequências legais. J3 ganha respeito através do conhecimento. **Status: Intimidadora**
+*Resultado:* **+1 Intelecto**. **-10% Bateria**. **-3% Integridade**. O grupo recua, temeroso de consequências legais. J3 ganha respeito através do conhecimento. **Status: Intimidadora**
 
 ---
 

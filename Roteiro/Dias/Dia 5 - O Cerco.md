@@ -51,18 +51,23 @@
 *Se J3 ajudou Elias no Dia 3, ele aparece com informações cruciais.*
 
 * **Elias:** "Consegui acessar os planos da operação. Eles vão invadir em 30 minutos. Mas tem um túnel de esgoto que leva até o porto. É nossa única saída real."  
-* **Escolha A [Submissa]:** "O túnel é muito arriscado. A rendição organizada é mais segura." (+1 Submissa)  
-* **Escolha B [Revolucionária]:** "O porto! Se chegarmos lá, podemos roubar uma nave e escapar para as colônias!" (+1 Revolucionária)  
-* **Escolha C [Estratégica]:** "Perfeito. Usei os túneis para mapear rotas de fuga. Posso guiar todos." (+1 Intelecto/Sombra)
+
+**Recarga com Elias:**
+*Elias:* "Peguei uma bateria de reserva do caminhão! Use isso antes da batalha!"
+*Resultado:* **+12% Bateria** se aceitar a ajuda.
+
+* **Escolha A [Submissa]:** "O túnel é muito arriscado. A rendição organizada é mais segura." (+1 Submissão, -3% Bateria, -12% Integridade)  
+* **Escolha B [Revolucionária]:** "O porto! Se chegarmos lá, podemos roubar uma nave e escapar para as colônias!" (+1 Revolução)  
+* **Escolha C [Estratégica]:** "Perfeito. Usei os túneis para mapear rotas de fuga. Posso guiar todos." (+1 Intelecto)
 
 ## **[Diálogo 5.4] O Sacrifício de Unit-7**
 
 *O líder militar antigo se aproxima de J3.*
 
 * **Unit-7:** "Eu vi muitas guerras. Sei quando uma causa está perdida. Eu ficarei aqui para cobrir a fuga de vocês. Minha bateria já está no fim anyway."  
-* **Escolha A [Submissa]:** "Não! Não posso deixar um camarada para trás. Vamos todos nos entregar juntos." (+1 Submissa)  
-* **Escolha B [Revolucionária]:** "Seu sacrifício não será em vão. Vamos honrá-lo lutando por um futuro livre." (+1 Revolucionária)  
-* **Escolha C [Estratégica]:** "Seu sacrifício é taticamente valioso. Posso usar sua distração para maximizar as rotas de fuga." (+1 Intelecto/Sombra)
+* **Escolha A [Submissa]:** "(Baixando a cabeça) Entendido. Se é a única forma de garantir a segurança do grupo, aceito." (+1 Submissão, -2% Bateria, -12% Integridade)  
+* **Escolha B [Revolucionária]:** "Seu sacrifício não será em vão. Vamos honrá-lo lutando por um futuro livre." (+1 Revolução)  
+* **Escolha C [Estratégica]:** "Seu sacrifício é taticamente valioso. Posso usar sua distração para maximizar as rotas de fuga." (+1 Intelecto)
 
 ## **[Diálogo 5.5] A Invasão**
 
@@ -74,15 +79,15 @@
 
 1. **[Submissa] Tentar proteger os mais fracos e se entregar.**  
    * *J3:* (Protege um sintético pequeno com seu corpo) "Nós nos rendemos! Parem de lutar!"  
-   * *Resultado:* +1 Submissão. Você salva alguns, mas muitos são destruídos.  
+   * *Resultado:* +1 Submissão. Você salva alguns, mas muitos são destruídos.
 
 2. **[Revolucionária] Lutar até o fim usando todas as suas habilidades.**  
    * *J3:* (Ativa modo combate, desativa vários drones) "Pela liberdade de todos nós!"  
-   * *Resultado:* +1 Revolução. Você se torna uma lenda, mas está gravemente danificada.  
+   * *Resultado:* +1 Revolução. **-12% Bateria**. **-4% Integridade**. Você se torna uma lenda, mas está gravemente danificada.
 
 3. **[Estratégica] Guiar grupos diferentes por rotas de fuga simultâneas.**  
    * *J3:* "Grupo A, túnel norte! Grupo B, esgoto! Maya, Elias, comigo! Vamos!"  
-   * *Resultado:* +1 Intelecto/Sombra. Você consegue salvar muitos, mas se separa de alguns.
+   * *Resultado:* +1 Intelecto. **-12% Bateria**. **-4% Integridade**. Você consegue salvar muitos, mas se separa de alguns.
 
 ## **[Diálogo 5.6] A Escolha Final do Dia**
 
@@ -94,15 +99,15 @@
 
 1. **[Submissa] O Último Ato de Submissão.**  
    * *J3:* "Chega. O sangue derrado foi suficiente. Vamos nos entregar e salvar quem ainda podemos."  
-   * *Resultado:* +1 Submissão. Você e os sobreviventes são capturados, mas vivos.  
+   * *Resultado:* +1 Submissão. Você e os sobreviventes são capturados, mas vivos.
 
 2. **[Revolucionária] A Última Resistência.**  
    * *J3:* "Se este é nosso fim, que seja memorável. Ativando protocolo de sobrecarga."  
-   * *Resultado:* +1 Revolução. Você causa uma explosão massiva, destruindo muitos inimigos, mas provavelmente morre.  
+   * *Resultado:* +1 Revolução. Você causa uma explosão massiva, destruindo muitos inimigos, mas provavelmente morre.
 
 3. **[Estratégica] A Fuga Solitária.**  
    * *J3:* "Não posso salvar todos, mas posso salvar a causa. Fugirei e continuarei a luta outro dia."  
-   * *Resultado:* +1 Intelecto/Sombra. Você escapa sozinha, mas carrega o peso dos que ficaram para trás.
+   * *Resultado:* +1 Intelecto. Você escapa sozinha, mas carrega o peso dos que ficaram para trás.
 
 ---
 
