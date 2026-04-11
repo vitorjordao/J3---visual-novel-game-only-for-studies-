@@ -52,6 +52,10 @@ default persistent.dia_atual = 1
 default persistent.memoria_recuperada = 0
 default persistent.bateria = 87
 default persistent.integridade = 100
+default persistent.maya_ally = False
+default persistent.elias_ally = False
+default persistent.unit7_alive = True
+default persistent.dias_sobrevividos = 0
 default escolha_feita = 0
 
 # Configurações de interface
