@@ -82,6 +82,28 @@ label day5_start:
         
         elias "Consegui acessar os planos da operação. Eles vão invadir em 30 minutos. Mas tem um túnel de esgoto que leva até o porto. É nossa única saída real."
         
+        # Oportunidade de recarga com Elias
+        menu:
+            "Aceitar recarga de emergência do Elias":
+                $ recarregar_bateria(12)
+                call mensagem_sistema("ELIAS: Peguei uma bateria de reserva do caminhão! Use isso antes da batalha!")
+                call mensagem_sistema("BATERIA RECARGADA: +12%")
+                call atualizar_status
+                jump elias_recharge_accepted
+            "Recusar para economizar para depois":
+                j3 "Vou preservar a bateria para quando for realmente necessário."
+                call atualizar_status
+                jump elias_recharge_refused
+
+label elias_recharge_accepted:
+    elias "(Sorri com determinação) Agora você tem energia para a luta. Não me decepcione."
+    jump elias_common
+
+label elias_recharge_refused:
+    elias "(Parece preocupado) Espero que não se arrependa dessa decisão."
+
+label elias_common:
+        
         menu:
             "Recusar túnel por segurança":
                 $ modificar_personalidade("submissao", 1)

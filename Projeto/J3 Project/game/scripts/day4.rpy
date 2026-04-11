@@ -72,13 +72,36 @@ label day4_start:
     unit7 "Sou o responsável pela ordem aqui. Novatos precisam provar seu valor. O que você oferece além de mais boca pra alimentar?"
     
     menu:
-        "Evacuar com o grupo":
+        "Ajudar na reparação":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(3)
-            $ consumir_integridade(11)
-            j3 "(Apoia a evacuação) A sobrevivência é prioridade. Devemos sair imediatamente."
-            call mensagem_sistema("STATUS: Evacuação iniciada")
+            $ consumir_integridade(2)
+            $ reparar_integridade(15)
+            j3 "(Começa a ajudar na reparação do sintético ferido)"
+            j3 "Posso oferecer assistência técnica. Meus sistemas podem otimizar o processo."
+            synth_survivor "(Agradece)"
+            call mensagem_sistema("INTEGRIDADE REPARADA: +15%")
             call atualizar_status
+
+        "Participar do círculo de reparo coletivo":
+            $ reparar_integridade(12)
+            call mensagem_sistema("UNIT7: Vamos formar um círculo de reparo. Todos compartilham energia para recuperar danos.")
+            call mensagem_sistema("INTEGRIDADE REPARADA: +12%")
+            call atualizar_status
+            jump repair_circle_joined
+        "Observar de fora":
+            j3 "Vou observar o processo para aprender."
+            call atualizar_status
+            jump repair_circle_observed
+
+label repair_circle_joined:
+    unit7 "(Nod com aprovação) Bom trabalho. A união nos fortalece."
+    jump repair_circle_common
+
+label repair_circle_observed:
+    unit7 "(Parece desapontado) Você poderia ter contribuído mais."
+
+label repair_circle_common:
             
         "Oferecer conhecimento e evolução":
             $ modificar_personalidade("revolucao", 1)

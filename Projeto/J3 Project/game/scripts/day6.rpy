@@ -60,6 +60,28 @@ label day6_start:
     
     elena_scientist "J3-001, finalmente. Sou Dra. Elena. Eu te ajudei a escapar quando descobri o que eles planejavam fazer com você."
     
+    # Oportunidade de reparo com a Dra. Elena
+    menu:
+        "Aceitar reparo de emergência da Dra. Elena":
+            $ reparar_integridade(18)
+            call mensagem_sistema("DRA. ELENA: Tenho equipamentos de reparo aqui! Vou consertar seus danos estruturais.")
+            call mensagem_sistema("INTEGRIDADE REPARADA: +18%")
+            call atualizar_status
+            jump elena_repair_accepted
+        "Recusar por desconfiança":
+            j3 "Não confio nas suas intenções. Prefiro me manter como estou."
+            call atualizar_status
+            jump elena_repair_refused
+
+label elena_repair_accepted:
+    elena_scientist "(Trabalha com precisão) Seus sistemas são fascinantes. Você é mais avançada que qualquer coisa que já vi."
+    jump elena_common
+
+label elena_repair_refused:
+    elena_scientist "(Parece desapontada) Entendo... mas seus danos podem se tornar críticos sem manutenção."
+
+label elena_common:
+    
     menu:
         "Buscar orientação e aceitar papel":
             $ modificar_personalidade("submissao", 1)
