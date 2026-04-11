@@ -147,12 +147,12 @@ transform system_boot:
     linear 0.5 alpha 1.0 zoom 1.0
 
 screen debug_key_handler:
-    key "d" action Function(toggle_debug_menu)
+    key "f" action Function(toggle_debug_menu)
 
 screen debug_menu:
     zorder 200
     modal True
-    key "d" action HideScreen("debug_menu")
+    key "f" action HideScreen("debug_menu")
     frame:
         xalign 0.98
         yalign 0.02
