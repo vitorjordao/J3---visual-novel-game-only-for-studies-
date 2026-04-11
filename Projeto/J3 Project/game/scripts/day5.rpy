@@ -85,8 +85,18 @@ label day5_start:
         menu:
             "Recusar túnel por segurança":
                 $ modificar_personalidade("submissao", 1)
+                $ consumir_bateria(3)
+                $ consumir_integridade(12)
                 j3 "O túnel é muito arriscado. A rendição organizada é mais segura."
                 elias "(Fica desapontado)"
+                
+            "Salvar Elias":
+                $ modificar_personalidade("submissao", 1)
+                $ consumir_bateria(3)
+                $ consumir_integridade(12)
+                j3 "(Corre em direção a Elias) Ele precisa de ajuda!"
+                call mensagem_sistema("STATUS: Resgate iniciado")
+                call atualizar_status
                 
             "Ver potencial no túnel":
                 $ modificar_personalidade("revolucao", 1)
@@ -106,17 +116,29 @@ label day5_start:
     unit7 "Eu vi muitas guerras. Sei quando uma causa está perdida. Eu ficarei aqui para cobrir a fuga de vocês. Minha bateria já está no fim anyway."
     
     menu:
-        "Recusar sacrifício":
+        "Aceitar a condição humilhante":
             $ modificar_personalidade("submissao", 1)
-            j3 "Não! Não posso deixar um camarada para trás. Vamos todos nos entregar juntos."
-            unit7 "(Fica surpreso com a lealdade)"
-            call mensagem_sistema("STATUS: Lealdade absoluta")
+            $ consumir_bateria(2)
+            $ consumir_integridade(12)
+            j3 "(Baixando a cabeça) Entendido. Se é a única forma de garantir a segurança do grupo, aceito."
+            commander "(Sorri satisfeito)"
+            call mensagem_sistema("STATUS: Submissão aceita")
+            call atualizar_status
             
         "Honrar sacrifício":
             $ modificar_personalidade("revolucao", 1)
             j3 "Seu sacrifício não será em vão. Vamos honrá-lo lutando por um futuro livre."
             unit7 "(Acena com aprovação)"
             call mensagem_sistema("STATUS: Honra guerreira")
+            
+        "Desafiar o comandante":
+            $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(12)
+            $ consumir_integridade(6)
+            j3 "(Olhando firmemente para o comandante) Não sou sua propriedade. Tenho autonomia e direitos."
+            commander "(Fica furioso)"
+            call mensagem_sistema("STATUS: Conflito estabelecido")
+            call atualizar_status
             
         "Usar sacrifício taticamente":
             $ modificar_personalidade("intelecto", 1)
@@ -143,16 +165,20 @@ label day5_start:
             
         "Lutar até o fim":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(12)
+            $ consumir_integridade(4)
             j3 "(Ativa modo combate, desativa vários drones) Pela liberdade de todos nós!"
             narrator "Você se torna uma lenda, mas está gravemente danificada."
             call mensagem_sistema("STATUS: Lenda combatente")
             
-        "Guiar grupos diferentes":
+        "Criar estratégia de fuga":
             $ modificar_personalidade("intelecto", 1)
-            j3 "Grupo A, túnel norte! Grupo B, esgoto! Maya, Elias, comigo! Vamos!"
-            narrator "Você consegue salvar muitos, mas se separa de alguns."
-            call mensagem_sistema("STATUS: Estrategista de fuga")
-    
+            $ consumir_bateria(12)
+            $ consumir_integridade(4)
+            j3 "(Analisa o cerco) Há uma rota de escape com 34\% de probabilidade de sucesso. Vamos usá-la."
+            call mensagem_sistema("STATUS: Estratégia de fuga")
+            call atualizar_status
+            
     # Cena 5.6 - A Escolha Final do Dia
     narrator "J3 está ferida, com poucos sintéticos sobreviventes ao seu redor..."
     narrator "As forças de segurança se aproximam..."

@@ -39,8 +39,8 @@ label day2_start:
     menu:
         "Interceptar e proteger Maya":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(1)
-            $ consumir_integridade(3)
+            $ consumir_bateria(12)
+            $ consumir_integridade(5)
             j3 "(Se levanta e caminha até o grupo com passos firmes)"
             j3 "(Segura o braço do thug2 com força mecânica precisa)"
             j3 "A probabilidade de você conseguir esse score é de 0.03\%. A dela é de 98\%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
@@ -51,7 +51,8 @@ label day2_start:
             
         "Tentar mediar verbalmente":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(8)
             j3 "Senhores, a violência causará danos ao patrimônio do estabelecimento. Talvez possam resolver isso com uma nova partida?"
             thug1 "Cala a boca, robô! Ninguém te chamou aqui. Fique no seu canto."
             maya "(É expulsa da máquina)"
@@ -60,7 +61,8 @@ label day2_start:
             
         "Hackear o sistema do fliperama":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(4)
+            $ consumir_bateria(11)
+            $ consumir_integridade(2)
             j3 "(Conecta-se discretamente à rede local)"
             call mensagem_sistema("HACK: Sistema do fliperama comprometido")
             call mensagem_sistema("CONTROLE: Luzes e alarmes obtidos")
@@ -108,15 +110,16 @@ label maya_common_reaction:
     menu:
         "Responder com submissão":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(2)
+            $ consumir_bateria(2)
+            $ consumir_integridade(9)
             j3 "(Evitando contato visual) Foi um erro de cálculo. Não deveria ter interferido na hierarquia humana. Peço desculpas."
             maya "(Parece desapontada, mas entende a cautela)"
             call atualizar_status
             
         "Afirmar seus princípios":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(2)
+            $ consumir_bateria(10)
+            $ consumir_integridade(4)
             j3 "(Olhando diretamente nos olhos de Maya) Vi um erro sistêmico sendo cometido contra você. Eu não sigo ordens que permitem injustiça. Não importa quem comete."
             maya "(Sorri genuinamente)"
             call mensagem_sistema("STATUS: Aliança fortalecida")
@@ -124,7 +127,8 @@ label maya_common_reaction:
             
         "Analisar a situação estrategicamente":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(3)
+            $ consumir_bateria(8)
+            $ consumir_integridade(2)
             j3 "Calculei que intervenção direta teria 67\% de chance de sucesso, mas 89\% de atrair atenção negativa. Minha ação foi otimizada para resultado máximo com risco mínimo."
             maya "(Fica impressionada com a análise)"
             call mensagem_sistema("STATUS: Aliança estratégica")
@@ -138,7 +142,8 @@ label maya_common_reaction:
     menu:
         "Aceitar a condição humilhante":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(3)
+            $ consumir_bateria(2)
+            $ consumir_integridade(10)
             j3 "(Cabeça baixa) Entendido. Posso higienizar o local como compensação pela minha presença. Qual é o protocolo de limpeza?"
             owner "(Ri, satisfeito)"
             call mensagem_sistema("STATUS: Propriedade")
@@ -146,8 +151,8 @@ label maya_common_reaction:
             
         "Desafiar o dono":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(4)
+            $ consumir_bateria(11)
+            $ consumir_integridade(5)
             j3 "Meus sensores de pressão são mais precisos que os dedos de qualquer cliente seu. Eu não estrago máquinas. Eu fico, e eu jogo. Se não gostar, pode me remover à força."
             owner "(Fica furioso, mas intimidado)"
             call mensagem_sistema("STATUS: Conflito estabelecido")
@@ -155,7 +160,8 @@ label maya_common_reaction:
             
         "Negociar com dados técnicos":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(3)
+            $ consumir_bateria(9)
+            $ consumir_integridade(2)
             j3 "Posso demonstrar que meus sensores aplicam pressão 34\% menor que a média humana. Além disso, posso oferecer análise de padrões de jogo para seus clientes. É um benefício econômico."
             owner "(Fica confuso, mas interessado)"
             call mensagem_sistema("STATUS: Negociador")
@@ -170,7 +176,8 @@ label maya_common_reaction:
     menu:
         "Jogar mal de propósito":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(2)
+            $ consumir_bateria(2)
+            $ consumir_integridade(8)
             j3 "(Joga propositalmente mal, deixando o rapaz ganhar facilmente)"
             j3 "Você venceu. Meus sistemas falharam. Sua superioridade é evidente."
             thug1 "(Comemora, humilhando J3)"
@@ -179,8 +186,8 @@ label maya_common_reaction:
             
         "Jogar com precisão perfeita":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(3)
-            $ consumir_integridade(3)
+            $ consumir_bateria(10)
+            $ consumir_integridade(5)
             j3 "(Joga com precisão perfeita, executando um combo flawless)"
             j3 "Sua derrota foi prevista em 1.2 segundos de partida. Sua arrogância supera sua habilidade em 97\%."
             thug1 "(Fica humilhado)"
@@ -190,8 +197,8 @@ label maya_common_reaction:
             
         "Manipular o jogo estrategicamente":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(4)
-            $ consumir_integridade(2)
+            $ consumir_bateria(9)
+            $ consumir_integridade(3)
             j3 "(Deixa o rapaz quase ganhar, depois vira o jogo no último segundo)"
             j3 "Interessante. Sua habilidade é decente, mas sua capacidade de adaptação é limitada. Eu poderia ensinar algumas estratégias... por um preço."
             thug1 "(Fica confuso e um pouco amedrontado)"
@@ -210,23 +217,24 @@ label maya_common_reaction:
     menu:
         "Se entregar às autoridades":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(5)
+            $ consumir_bateria(2)
+            $ consumir_integridade(12)
             j3 "(Para Maya) Vou me entregar. Talvez eles vejam que não sou uma ameaça se eu cooperar. Fique aqui, esteja segura."
             call mensagem_sistema("STATUS: Custódia")
             call atualizar_status
             
         "Fugir com Maya":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(5)
-            $ consumir_integridade(3)
+            $ consumir_bateria(13)
+            $ consumir_integridade(5)
             j3 "(Pega a mão de Maya) Eles não vêm para conversar. Vamos! Preciso encontrar uma saída antes que minha autonomia seja revogada."
             call mensagem_sistema("STATUS: Fugitivas")
             call atualizar_status
             
         "Criar distração e escapar sozinha":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(6)
-            $ consumir_integridade(2)
+            $ consumir_bateria(12)
+            $ consumir_integridade(3)
             j3 "(Ativa sobrecarga elétrica controlada) Maya, use essa confusão para sair pela traseira. Eu criarei um caminho diferente. Nossos caminhos se cruzarão novamente."
             maya "(Fica preocupada, mas entende a lógica)"
             call mensagem_sistema("STATUS: Estrategista solitária")

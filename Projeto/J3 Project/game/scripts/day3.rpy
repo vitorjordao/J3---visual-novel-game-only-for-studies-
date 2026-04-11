@@ -33,14 +33,12 @@ label day3_start:
     elias "Eu trabalho aqui faz dois anos! É a terceira vez essa semana que você faz isso. Eu preciso entregar isso pra ganhar meu dia! Meu chefe conhece meu nome!"
     
     menu:
-        "Confrontar o segurança com dados":
+        "Questionar a humanidade dele":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(3)
+            $ consumir_bateria(10)
             $ consumir_integridade(4)
-            j3 "(Caminhando calmamente até os dois) Interessante. Meus bancos de dados dizem que a eficiência de Elias é 23% superior à média dos entregadores. Sua decisão é baseada em dados de desempenho ou no espectro de luz refletido pela pele dele? Se for a segunda, você é um erro de lógica vivo."
-            elias "(Agradece com olhos surpresos)"
-            security "(Chama reforços pelo rádio, furioso)"
-            call mensagem_sistema("STATUS: Confronto racial")
+            j3 "Você pergunta sobre minha origem, mas nunca questiona a sua. O que faz você ser humano? Apenas biologia?"
+            elias "(Fica desconfortável)"
             call atualizar_status
             
         "Tentar mediar de forma submissa":
@@ -68,7 +66,30 @@ label day3_start:
     
     show elias tired at center
     
-    elias "Eles acham que porque você é feita de metal e eu sou de carne de uma cor que eles não gostam, a gente não tem valor. É a mesma lógica de descarte, entende? Joga fora o que não serve mais, o que incomoda."
+    elias "(Pensativo) Ei, você... tem alguma ideia de onde pode achar um lugar seguro por aqui?"
+    
+    # Oportunidade de recarga com Elias
+    menu:
+        "Aceitar oferta de recarga do Elias":
+            $ recarregar_bateria(10)
+            call mensagem_sistema("ELIAS: Tenho um carregador portátil no caminhão! Vou recarregar você!")
+            call mensagem_sistema("BATERIA RECARGADA: +10%")
+            call atualizar_status
+            jump elias_recarga_accepted
+        "Recusar educadamente":
+            j3 "Agradeço, mas devo preservar minha autonomia. Sua generosidade é notável."
+            call atualizar_status
+            jump elias_recarga_refused
+
+label elias_recarga_accepted:
+    elias "(Sorri aliviado) Agora você tem mais chance! Cuide-se bem."
+    jump elias_common
+
+label elias_recarga_refused:
+    elias "(Parece preocupado) Certo... mas se precisar, sabe onde me encontrar."
+
+label elias_common:
+    elias "Eles tratam vocês como lixo agora, mas esquecem que fomos nós que criamos o mundo que vocês sustentam. Construímos as cidades, programamos os sistemas, e agora jogamos fora o que não entendemos. Você vai deixar ele falar assim com o rapaz?"
     
     menu:
         "Responder com neutralidade condicional":

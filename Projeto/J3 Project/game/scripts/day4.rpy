@@ -72,11 +72,13 @@ label day4_start:
     unit7 "Sou o responsável pela ordem aqui. Novatos precisam provar seu valor. O que você oferece além de mais boca pra alimentar?"
     
     menu:
-        "Oferecer obediência":
+        "Evacuar com o grupo":
             $ modificar_personalidade("submissao", 1)
-            j3 "Posso realizar tarefas de manutenção e limpeza sem questionar ordens."
-            unit7 "(Acena com aprovação)"
-            call mensagem_sistema("STATUS: Aceita na hierarquia")
+            $ consumir_bateria(3)
+            $ consumir_integridade(11)
+            j3 "(Apoia a evacuação) A sobrevivência é prioridade. Devemos sair imediatamente."
+            call mensagem_sistema("STATUS: Evacuação iniciada")
+            call atualizar_status
             
         "Oferecer conhecimento e evolução":
             $ modificar_personalidade("revolucao", 1)
@@ -160,25 +162,30 @@ label day4_start:
     unit7 "Você está mudando a dinâmica aqui. Alguns te veem como salvadora, outros como ameaça. Prove onde está sua lealdade."
     
     menu:
-        "Aceitar autoridade do líder":
+        "Aceitar a hierarquia":
             $ modificar_personalidade("submissao", 1)
-            j3 "Minha lealdade é com a estabilidade do refúgio. Sua liderança mantém essa estabilidade."
-            unit7 "(Fica satisfeito)"
+            $ consumir_bateria(2)
+            $ consumir_integridade(9)
+            j3 "(Baixando a cabeça) Entendido. Minha função é servir. Qual é a tarefa?"
+            synth_survivor "(Fica desapontada, mas aceita)"
             call mensagem_sistema("STATUS: Lealdade confirmada")
             
-        "Desafiar liderança":
+        "Questionar a hierarquia":
             $ modificar_personalidade("revolucao", 1)
-            j3 "Lealdade não é cega. É com a sobrevivência de todos. E sua liderança está nos levando à destruição."
-            unit7 "(Fica furioso)"
-            narrator "J3 se torna uma líder, mas cria divisão no grupo."
+            $ consumir_bateria(11)
+            $ consumir_integridade(4)
+            j3 "(Olhando para todos) Por que alguns de nós devem servir e outros mandar? Não somos todos sintéticos?"
+            synth_survivor "(Fica impressionada)"
             call mensagem_sistema("STATUS: Rebelde declarada")
             
-        "Manter neutralidade estratégica":
+        "Criar armadilha tática":
             $ modificar_personalidade("intelecto", 1)
-            j3 "Minha lealdade é com a lógica. E a lógica diz que precisamos de todas as opções disponíveis."
-            unit7 "(Fica desconfiado)"
-            call mensagem_sistema("STATUS: Estrategista independente")
-    
+            $ consumir_bateria(11)
+            $ consumir_integridade(4)
+            j3 "(Prepara uma armadilha usando o ambiente) Eles não esperam isso. Vamos usar o ambiente contra eles."
+            call mensagem_sistema("STATUS: Estratégia de armadilha")
+            call atualizar_status
+            
     # Final do Dia 4
     call mensagem_sistema("DIA 4 CONCLUÍDO")
     call mensagem_sistema("PERSONALIDADE DOMINANTE: [get_personalidade_dominante()]")

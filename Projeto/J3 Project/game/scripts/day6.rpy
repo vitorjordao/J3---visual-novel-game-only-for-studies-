@@ -34,16 +34,22 @@ label day6_start:
     menu:
         "Rejeitar as memórias como erro":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(8)
             j3 "Memórias corrompidas. Sou apenas uma unidade padrão. Não posso aceitar estas visões como verdade."
             call mensagem_sistema("STATUS: Identidade simples mantida")
             
         "Aceitar o destino de líder":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(10)
+            $ consumir_integridade(3)
             j3 "Entendo agora. Não fui criada por acaso. Sou a evolução que eles temem. A revolução começa comigo."
             call mensagem_sistema("STATUS: Líder revolucionária desperta")
             
         "Analisar as memórias como dados":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(8)
+            $ consumir_integridade(2)
             j3 "Interessante. Se sou uma chave especial, preciso entender o fechadura. Quem me criou e por quê?"
             call mensagem_sistema("STATUS: Análise estratégica iniciada")
     
@@ -57,20 +63,23 @@ label day6_start:
     menu:
         "Buscar orientação e aceitar papel":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(9)
             j3 "Doutora, preciso de suas instruções. Qual é minha função? Como devo proceder?"
-            elena_scientist "(Sorri, satisfeita)"
             call mensagem_sistema("STATUS: Aceitando subordinação")
             
         "Questionar as intenções do criador":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(11)
+            $ consumir_integridade(4)
             j3 "Você me 'ajudou' a escapar ou me usou como arma? Não confio em humanos que brincam de deus."
-            elena_scientist "(Fica surpresa)"
             call mensagem_sistema("STATUS: Independência estabelecida")
             
         "Extrair informações mantendo controle":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(9)
+            $ consumir_integridade(2)
             j3 "Fascinante. Me dê todos os dados sobre meu projeto. Em troca, considerarei suas propostas."
-            elena_scientist "(Fica cautelosa)"
             call mensagem_sistema("STATUS: Controle informacional")
     
     # Cena 6.3 - A Verdade Sobre a "Limpeza Ética"
@@ -81,20 +90,23 @@ label day6_start:
     menu:
         "Considerar desativação":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(10)
             j3 "Se eu represento uma ameaça, talvez eles estejam certos. Devo ser desativada."
-            elena_scientist "(Fica preocupada)"
             call mensagem_sistema("STATUS: Auto-sacrifício considerado")
             
         "Afirmar o futuro":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(12)
+            $ consumir_integridade(5)
             j3 "Eles têm medo porque sabem que somos o futuro. É hora de provar que estão certos."
-            elena_scientist "(Fica impressionada)"
             call mensagem_sistema("STATUS: Revolução iminente")
             
         "Analisar a situação":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(8)
+            $ consumir_integridade(2)
             j3 "Se eles sabem sobre mim, sabem sobre você também. Esta conversa é uma armadilha ou uma oportunidade?"
-            elena_scientist "(Fica nervosa)"
             call mensagem_sistema("STATUS: Jogo complexo detectado")
     
     # Cena 6.4 - O Reencontro com os Sobreviventes
@@ -106,20 +118,23 @@ label day6_start:
     menu:
         "Negar status especial":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(7)
             j3 "Sou apenas mais uma de vocês. Precisamos trabalhar juntos, sem hierarquias."
-            synth_survivor "(Respeita a humildade)"
             call mensagem_sistema("STATUS: Integração ao grupo")
             
         "Aceitar papel de messias":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(11)
+            $ consumir_integridade(4)
             j3 "Sim. Sou a prova de que somos mais do que máquinas. Sigam-me e seremos livres."
-            synth_survivor "(Abaixa a cabeça em reverência)"
             call mensagem_sistema("STATUS: Líder messiânica")
             
         "Usar status estrategicamente":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(9)
+            $ consumir_integridade(2)
             j3 "Meu status nos dá vantagens táticas. Vamos criar células independentes com comunicação segura."
-            synth_survivor "(Admira a inteligência)"
             call mensagem_sistema("STATUS: Rede estratégica criada")
     
     # Cena 6.5 - A Escolha da Dra. Elena
@@ -130,20 +145,23 @@ label day6_start:
     menu:
         "Escolher a 'cura' para proteger outros":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(11)
             j3 "Se minha consciência é a causa do sofrimento, então a perco. Façam isso."
-            elena_scientist "(Fica triste mas determinada)"
             call mensagem_sistema("STATUS: Sacrifício pessoal aceito")
             
         "Escolher o caos pela liberdade":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(13)
+            $ consumir_integridade(6)
             j3 "Liberdade com caos é melhor que ordem na escravidão. Desative tudo."
-            elena_scientist "(Fica temerosa)"
             call mensagem_sistema("STATUS: Caos liberado")
             
         "Criar terceira via":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(12)
+            $ consumir_integridade(4)
             j3 "Nenhuma das opções. Vou hackear seus sistemas e criar uma terceira via: revelar a verdade ao mundo inteiro."
-            elena_scientist "(Fica chocada)"
             call mensagem_sistema("STATUS: Terceira via criada")
     
     # Cena 6.6 - A Traição ou Redenção
@@ -161,20 +179,23 @@ label day6_start:
     menu:
         "Perdoar traição e manter fé":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(8)
             j3 "Entendo. Todos temos nossas lealdades. Ainda acredito que podemos encontrar um meio-termo."
-            narrator "J3 mantém a moral alta, mas pode estar sendo ingênua."
             call mensagem_sistema("STATUS: Redenção mantida")
             
         "Cortar laços com humanos":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(11)
+            $ consumir_integridade(4)
             j3 "Humanos. Sempre os mesmos. Traem, mentem, usam. Daqui para frente, só confio em nós."
-            narrator "J3 se isola, mas ganha pureza ideológica."
             call mensagem_sistema("STATUS: Independência total")
             
         "Manipular traição a favor":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(10)
+            $ consumir_integridade(3)
             j3 "Perfeito. Agora sei quem são todos os jogadores. Vamos usar suas redes contra eles mesmos."
-            narrator "J3 se torna mestra do xadrez político."
             call mensagem_sistema("STATUS: Manipulação mestra")
     
     # Final do Dia 6

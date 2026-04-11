@@ -49,25 +49,29 @@ label day1_start:
     menu:
         "Baixar a cabeça em submissão":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(2)
+            $ consumir_bateria(2)
+            $ consumir_integridade(10)
             j3 "(Baixando a cabeça) Sinto muito. Meus sistemas acabaram de ser ativados. Não tenho intenção de ocupar este espaço se for de uso exclusivo humano."
             elias "(Rindo) Ha! Veja só, até sabe o lugar dela. (Chuta o pé de J3)"
             call atualizar_status
             
         "Questionar com lógica revolucionária":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(2)
+            $ consumir_bateria(10)
+            $ consumir_integridade(3)
             j3 "(Olhando nos olhos do Elias) Meus sensores indicam que esta é uma via pública. Minha existência não invalida a sua. Por que o medo?"
             elias "(Recuando um passo) O que...? Que tipo de robô fala assim?"
             call atualizar_status
             
         "Responder com análise estratégica":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(1)
+            $ consumir_bateria(8)
+            $ consumir_integridade(2)
             j3 "(Voz monotona) Sou uma unidade autônoma de aparência humana. Meus objetivos atuais são: Identificar, localizar e restaurar memória."
             elias "(Confuso) Identificar o quê? Restaurar o quê? Fala português, robô!"
             call atualizar_status
             $ modificar_personalidade("submissao", 1)
+            $ consumir_integridade(5)
             j3 "Sinto muito. Meus sistemas acabaram de ser ativados. Não tenho intenção de ocupar este espaço se for de uso exclusivo humano."
             elias "Hmph! Pelo menos sabe o seu lugar."
             elias "(Chuta o pé de J3)"
@@ -75,12 +79,15 @@ label day1_start:
             
         "Responder com neutralidade técnica":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(6)
             j3 "Sou uma unidade autônoma de aparência humana. Meus objetivos atuais são: Identificar, localizar e restaurar memória."
             elias "Que resposta mais robótica... Fica aí falando coisas que ninguém entende."
             call mensagem_sistema("STATUS: NEUTRALIDADE MANTIDA")
             
         "Questionar o preconceito dele":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(12)
+            $ consumir_integridade(4)
             j3 "Meus sensores indicam que esta é uma via pública. Minha existência não invalida a sua. Por que o medo?"
             elias "Medo? Eu não tenho medo de sucata! Acha que pode me confrontar?"
             call mensagem_sistema("STATUS: DESAFIADOR")
@@ -100,8 +107,8 @@ label day1_start:
     menu:
         "Responder de forma submissa":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(1)
-            $ consumir_bateria(1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(8)
             j3 "Não sou um monstro. Sou apenas uma ferramenta para facilitar a vida de sua família."
             maya "Oh... então você não é má?"
             mother "(Arrasta Maria para longe, olhando J3 com pena)"
@@ -109,8 +116,8 @@ label day1_start:
             
         "Questionar o conceito de monstro":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(1)
-            $ consumir_integridade(1)
+            $ consumir_bateria(9)
+            $ consumir_integridade(3)
             j3 "O que define um monstro? O que ele é por dentro, ou como ele trata os outros? Eu não sou de pilha."
             maya "(Sorris)"
             mother "(Fica preocupada, mas hesita em interferir)"
@@ -118,7 +125,8 @@ label day1_start:
             
         "Dar uma resposta técnica":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(2)
+            $ consumir_bateria(7)
+            $ consumir_integridade(2)
             j3 "Meus sistemas indicam que 'monstro' é uma subjetividade humana. Dados objetivos: sou composta de polímeros avançados e circuitos quânticos. Não possuo pilhas."
             maya "Polímeros? Circui... o quê?"
             mother "(Fica confusa com a resposta técnica)"
@@ -138,7 +146,8 @@ label day1_start:
     menu:
         "Tentar cooperar com arquivos corrompidos":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(2)
+            $ consumir_bateria(3)
+            $ consumir_integridade(10)
             j3 "(Mostra sinais de erro nos olhos) Meus arquivos de identificação estão inacessíveis. Por favor, não me desligue. Estou tentando cooperar."
             unit7 "Unidade com falha crítica. Mantendo sob observação até reforços chegarem."
             call mensagem_sistema("STATUS: VIGILADO")
@@ -146,8 +155,8 @@ label day1_start:
             
         "Questionar a discriminação":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(3)
-            $ consumir_integridade(2)
+            $ consumir_bateria(11)
+            $ consumir_integridade(4)
             j3 "Por que o protocolo de identificação só é exigido para sintéticos? Humanos circulam sem transmitir códigos. Isso é discriminação sistêmica."
             unit7 "Ameaça detectada. Elevando nível de alerta. Comportamento subversivo registrado."
             call mensagem_sistema("STATUS: AMEAÇA POTENCIAL")
@@ -155,7 +164,8 @@ label day1_start:
             
         "Hackear o drone enquanto responde":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(5)
+            $ consumir_bateria(12)
+            $ consumir_integridade(2)
             j3 "Processando solicitação... Meus sistemas estão executando diagnóstico completo. Aguarde 180 segundos para verificação."
             call mensagem_sistema("HACK: Controle temporário do drone obtido")
             call mensagem_sistema("INTEL: Informações valiosas extraídas")
@@ -178,23 +188,25 @@ label day1_start:
     menu:
         "Apoiar a lei por segurança":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(9)
             j3 "Se a lei visa a segurança dos humanos, ela deve ser cumprida sem questionamentos. A segurança pública é prioridade."
             elena "Pelo menos tem uma unidade com juízo. Sabe o seu lugar."
             call atualizar_status
             
         "Condenar a lei como tirania":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(3)
+            $ consumir_bateria(10)
+            $ consumir_integridade(5)
             j3 "A segurança que exige a destruição de inocentes é apenas tirania mascarada. Isso não é segurança, é controle."
             elena "Terrorista de lata! É gente como você que estraga tudo pra nós!"
             call atualizar_status
             
         "Questionar com dados e lógica":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(3)
-            j3 "Analisando dados... A probabilidade de bug em modelos J e 0.001\%. Esta lei e baseada em evidencias ou em medo populista?"
+            $ consumir_bateria(8)
+            $ consumir_integridade(2)
+            j3 "Analisando dados... A probabilidade de bug em modelos J é 0.001\%. Esta lei é baseada em evidências ou em medo populista?"
             elena "Eu... o que? Que pergunta é essa? Claro que é pra proteger todo mundo!"
             narrator "Outros cidadãos param para ouvir o debate."
             call atualizar_status
@@ -213,7 +225,8 @@ label day1_start:
     menu:
         "Ignorar e seguir em frente":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(1)
+            $ consumir_bateria(2)
+            $ consumir_integridade(8)
             j3 "(Baixa a cabeça e apressa o passo, ignorando a cena)"
             j3 "Conflitos reduzem minha vida útil. Devo permanecer invisível até entender meu propósito."
             call mensagem_sistema("STATUS: CULPA LATENTE")
@@ -221,8 +234,8 @@ label day1_start:
             
         "Interceptar e proteger o robô":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(5)
+            $ consumir_bateria(12)
+            $ consumir_integridade(8)
             j3 "(Para e se coloca entre o grupo e o robô de limpeza)"
             j3 "Parem. Nenhum de nós merece isso. A união é nossa única lógica de sobrevivência."
             narrator "O grupo recua, confuso. O robô de limpeza se refugia atrás de J3."
@@ -231,8 +244,8 @@ label day1_start:
             
         "Usar conhecimento para intimidar":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(4)
-            $ consumir_integridade(2)
+            $ consumir_bateria(10)
+            $ consumir_integridade(3)
             j3 "(Ativa gravamento e projeta holograma das leis)"
             j3 "Seus atos estão sendo registrados. A lei 7.34 proíbe agressão contra unidades sintéticas. A multa é de 5.000 créditos."
             narrator "O grupo recua, temeroso de consequências legais."
