@@ -216,3 +216,15 @@ init python:
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+
+
+## Debug menu key binding ##########################################################
+
+init python:
+    def toggle_debug_menu():
+        if renpy.get_screen("debug_menu"):
+            renpy.hide_screen("debug_menu")
+        else:
+            renpy.show_screen("debug_menu")
+
+key 'd' action Function(toggle_debug_menu)

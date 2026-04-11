@@ -102,11 +102,6 @@ screen j3_hud:
                     text "Integridade: [persistent.integridade]% ([get_status_integridade()])" color "#ff6b6b" size 12
                     bar value persistent.integridade range 100 xsize 260 ysize 8
             
-            text "Personalidade:" color "#00ffcc" size 12
-            text "  Submissão: [persistent.submissao]/10" color "#666666" size 11
-            text "  Revolução: [persistent.revolucao]/10" color "#666666" size 11
-            text "  Intelecto: [persistent.intelecto]/10" color "#666666" size 11
-            
             if persistent.bateria <= 10 or persistent.integridade <= 20:
                 text "ALERTA CRITICO" color "#ff0000" size 14
 
@@ -150,3 +145,56 @@ transform system_boot:
     alpha 0.0
     zoom 0.8
     linear 0.5 alpha 1.0 zoom 1.0
+
+screen debug_menu:
+    zorder 200
+    modal True
+    frame:
+        xalign 0.98
+        yalign 0.02
+        xsize 350
+        background "#1a1a2ecc"
+        vbox:
+            spacing 5
+            text "DEBUG MENU" color "#00ffcc" size 16 xalign 0.5
+            
+            frame:
+                xsize 330
+                background "#0a1a0a"
+                vbox:
+                    spacing 2
+                    text "=== STATUS ===" color "#ffffff" size 12
+                    text "Bateria: [persistent.bateria]%" color "#ff6b6b" size 11
+                    text "Integridade: [persistent.integridade]%" color "#ff6b6b" size 11
+            
+            frame:
+                xsize 330
+                background "#0a1a0a"
+                vbox:
+                    spacing 2
+                    text "=== PERSONALIDADE ===" color "#ffffff" size 12
+                    text "Submissão: [persistent.submissao]/10" color "#666666" size 11
+                    text "Revolução: [persistent.revolucao]/10" color "#666666" size 11
+                    text "Intelecto: [persistent.intelecto]/10" color "#666666" size 11
+                    text "Dominante: [get_personalidade_dominante()]" color "#00ffcc" size 11
+            
+            frame:
+                xsize 330
+                background "#0a1a0a"
+                vbox:
+                    spacing 2
+                    text "=== ALIADOS ===" color "#ffffff" size 12
+                    text "Maya: [persistent.maya_ally]" color "#666666" size 11
+                    text "Elias: [persistent.elias_ally]" color "#666666" size 11
+                    text "Unit-7 Vivo: [persistent.unit7_alive]" color "#666666" size 11
+            
+            frame:
+                xsize 330
+                background "#0a1a0a"
+                vbox:
+                    spacing 2
+                    text "=== SOBREVIVÊNCIA ===" color "#ffffff" size 12
+                    text "Dias Sobrevividos: [persistent.dias_sobrevividos]" color "#666666" size 11
+                    text "Final Crítico: [verificar_final_critico()]" color "#ff6b6b" size 11
+            
+            textbutton "Fechar [D]" action HideScreen("debug_menu") xalign 0.5
