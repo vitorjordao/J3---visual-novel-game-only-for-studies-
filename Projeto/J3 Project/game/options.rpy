@@ -34,10 +34,9 @@ J3 - A Consciência Artificial
 
 Um visual novel cyberpunk sobre identidade, preconceito e livre-arbítrio.
 
-Desenvolvido por: [Seu Nome]
+Desenvolvido por: Vitor Jordão
 Motor: Ren'Py 8.x
-Duração: 2-3 horas
-Lançamento: Junho 2026
+Duração: 30 min
 
 © 2026 - Projeto Independente Brasileiro
 """)

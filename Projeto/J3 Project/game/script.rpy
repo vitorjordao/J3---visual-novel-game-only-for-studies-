@@ -73,9 +73,7 @@ label start:
     scene black
     
     "J3 - A CONSCIÊNCIA ARTIFICIAL"
-    ""
     "Um visual novel cyberpunk sobre identidade, preconceito e livre-arbítrio"
-    ""
     
     pause 2.0
     

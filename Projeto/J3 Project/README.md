@@ -157,11 +157,9 @@ J3 Project/
 
 ## 📞 Contato
 
-**Desenvolvedor:** [Seu Nome]  
+**Desenvolvedor:** Vitor Jordão 
 **Projeto:** J3 - A Consciência Artificial  
 **Motor:** Ren'Py  
-**Lançamento:** Junho 2026  
-**Licença:** Creative Commons (Atribuição-NãoComercial)
 
 ---
 
