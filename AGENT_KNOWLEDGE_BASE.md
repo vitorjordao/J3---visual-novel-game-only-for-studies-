@@ -124,6 +124,22 @@ jump label_nome  # Salta e não retorna
    - Causa: Tecla conflita com keybindings do Ren'Py
    - Solução: Usar teclas não reservadas (ex: 'F' em vez de 'D' para debug)
 
+5. **NameError: HideScreen is not defined**
+   - Causa: Usar `HideScreen()` em vez de `Hide()` em screens
+   - Solução: Usar `Hide("screen_name")` em vez de `HideScreen("screen_name")`
+   - Exemplo correto: `key "p" action Hide("debug_menu")`
+
+6. **NameError: name 'X' is not defined (substituição de variáveis)**
+   - Causa: Colchetes em texto são interpretados como substituição de variável
+   - Exemplo: "Fechar [P]" causa erro porque [P] é interpretado como variável
+   - Solução: Usar parênteses ou escapar colchetes
+   - Exemplo correto: "Fechar (P)" ou "Fechar {{[P]}}"
+
+7. **Screen key handler não funcionando**
+   - Causa: Screen com key binding não está sendo mostrado
+   - Solução: Usar `show screen nome_screen` no início do jogo
+   - Exemplo: `show screen debug_key_handler` no label start
+
 ## PROJETO J3 - ARQUITETURA
 
 ### Estrutura de Diretórios
@@ -151,11 +167,30 @@ e:\Vitor\J3 project\Projeto\J3 Project\game\
 #### Variáveis de Estado
 - `persistent.bateria`: 0-100, consumo em escolhas
 - `persistent.integridade`: 0-100, dano em conflitos
-- `persistent.submissao`: Pontuação de personalidade
-- `persistent.revolucao`: Pontuação de personalidade
-- `persistent.intelecto`: Pontuação de personalidade
+- `persistent.submissao`: Pontuação de personalidade (0-10)
+- `persistent.revolucao`: Pontuação de personalidade (0-10)
+- `persistent.intelecto`: Pontuação de personalidade (0-10)
 - `persistent.maya_ally`: Boolean, aliado humano
 - `persistent.elias_ally`: Boolean, aliado humano
+- `persistent.unit7_alive`: Boolean, status de Unit-7
+- `persistent.elena_alive`: Boolean, status de Dra. Elena
+- `persistent.dia_atual`: Inteiro, dia atual do jogo
+- `persistent.dias_sobrevividos`: Inteiro, dias sobrevividos
+- `persistent.memoria_recuperada`: Inteiro, memória recuperada
+
+#### Inicialização de Variáveis Persistentes
+- Usar `default` para inicialização em script.rpy:
+  ```renpy
+  default persistent.bateria = 87
+  default persistent.integridade = 100
+  default persistent.submissao = 0
+  ```
+- Ou usar `init python` em functions.rpy para verificação:
+  ```python
+  init python:
+      if not hasattr(persistent, 'submissao'):
+          persistent.submissao = 0
+  ```
 
 #### Funções Principais (functions.rpy)
 ```python
@@ -171,9 +206,15 @@ get_final_type()
 
 #### Sistema de HUD (sistema_j3.rpy)
 - Screen `j3_hud`: Mostra bateria, integridade, dia atual
-- Screen `debug_menu`: Menu de debug acessível via tecla F
-- Screen `debug_key_handler`: Captura tecla F globalmente
+- Screen `debug_menu`: Menu de debug acessível via tecla P
+- Screen `debug_key_handler`: Captura tecla P globalmente
 - Screen `mensagem_sistema`: Exibe mensagens do sistema
+
+#### Sistema de Debug
+- Tecla P abre/fecha menu de debug
+- Mostra todas as variáveis do sistema
+- Botão "Executar Testes" para rodar testes unitários
+- Ativar handler no início: `show screen debug_key_handler`
 
 #### Mecânica de Consumo
 - Escolhas revolucionárias: consomem mais bateria (10-13)
@@ -286,10 +327,26 @@ call atualizar_status  # Atualiza HUD após mudanças
 
 ### Testes
 
-Arquivo: `test_mecanicas.rpy`
+#### Testes de Mecânicas (test_mecanicas.rpy)
 - Testa consumo de bateria/integridade crítica
 - Valida fluxo de finais
 - Verifica mecanicas de recarga/reparo
+- Executar via label: `jump run_tests`
+
+#### Testes de Fluxos Completos (test_fluxos_completos.rpy)
+- Testa fluxo narrativo por dia (day1-7)
+- Testa formação de alianças (Maya, Elias, Unit-7)
+- Valida todos os tipos de finais (4 tipos)
+- Testa rotas puras de personalidade
+- Executar via label: `jump run_comprehensive_tests`
+- Ou via menu de debug: botão "Executar Testes"
+
+#### Testes Externos (test_externo.py)
+- Script Python puro para testes fora do jogo
+- Simula ambiente Ren'Py com mock do objeto persistent
+- Executa testes de mecânicas básicas
+- Uso: `python test_externo.py` (requer Python instalado)
+- Execução via WSL2: `wsl python3 /mnt/c/temp/test_externo.py`
 
 ### Notas Importantes
 
@@ -332,6 +389,15 @@ Arquivo: `test_mecanicas.rpy`
 git add -A
 git commit -m "mensagem"
 git push origin main
+
+# WSL2 - Executar Python (se Python não instalado no Windows)
+wsl python3 /mnt/c/temp/test_externo.py
+
+# Copiar arquivo para C:\temp para WSL2
+copy "arquivo.py" "C:\temp\arquivo.py"
+
+# Criar diretório temp
+mkdir C:\temp
 ```
 
 ### Recursos Externos
@@ -342,5 +408,5 @@ git push origin main
 ---
 
 ## ÚLTIMA ATUALIZAÇÃO
-Data: 2026-04-11
-Alterações: Documentação completa criada com aprendizados do projeto
+Data: 2026-04-12
+Alterações: Adicionados novos erros comuns Ren'Py (HideScreen, substituição de variáveis, screen key handler), variáveis persistentes adicionais, sistema de testes completo (fluxos, externos, WSL2), comandos úteis atualizados
