@@ -739,7 +739,12 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 
 ### Galeria de Evolução dos Personagens Principais
 
-Comparação lado-a-lado entre versões iniciais (Nano Banana 1) e versões atuais regeradas em Nano Banana 2 com pipeline melhorado (flood-fill + normalização):
+Desenvolvimento solo com cronograma apertado tornou inviável ilustrar todo o elenco à mão. A abordagem evoluiu em duas etapas:
+
+- **Versões iniciais (v0.5, hoje descartadas — preservadas em `_backups/`):** foram montadas a partir de imagens de referência encontradas no Google, ajustadas e editadas manualmente (recorte, paleta, pixelização) para encaixar na estética do jogo. Serviram como placeholders funcionais durante o desenvolvimento das mecânicas e dos fluxos narrativos.
+- **Versões atuais (v1.0):** regeradas do zero usando IA generativa (Gemini Nano Banana 2) com prompts autorais descrevendo em detalhe cada personagem, depois pós-processadas (remoção de fundo via flood-fill, normalização de escala, canvas padronizado). O objetivo foi garantir consistência visual entre todo o elenco e eliminar o uso de material não-autoral.
+
+Comparação lado a lado entre as duas fases:
 
 #### J3-001
 
@@ -798,22 +803,24 @@ Personagens do elenco expandido — todos gerados em Nano Banana 2, processados 
 | Patrol Drone | ![patrol_drone](../Projeto/J3%20Project/game/characters/patrol_drone/patrol_drone.png) | Drone policial (Dia 1) |
 | News Vendor | ![news_vendor](../Projeto/J3%20Project/game/characters/news_vendor/news_vendor.png) | Vendedor de jornais holográficos (Dia 1) |
 
-### Pipeline Técnico de Geração de Arte
+### Notas sobre a Produção da Arte
 
-**Backgrounds** (22 cenários):
-1. Prompt base Cartoon/anime + descrição específica + pedido de pixelização 16-bit
-2. Geração via API REST Gemini 3.1 Flash Image Preview (Nano Banana 2)
-3. Processamento em lote paralelo (4 workers simultâneos, retry automático em HTTP 503)
-4. Integração direta em `game/images.rpy` com `Transform(xysize=(1920, 1080))` para fullscreen
+O projeto foi conduzido como trabalho solo dentro de um prazo restrito. A ambição narrativa (7 dias, ~30 personagens com sprite, 22 cenários distintos, múltiplos finais) tornou impossível produzir toda a arte à mão dentro do tempo disponível. A estratégia foi pragmática e evoluiu em duas etapas documentadas:
 
-**Sprites de personagens** (25 PNGs):
-1. Prompt detalhado com descrição visual + regras críticas (anatomia, sem UI/balões, fundo branco puro)
-2. Geração via interface web do Gemini (Nano Banana 2), automação via Playwright MCP
-3. Extração via canvas de mesma origem (blob ou navegação em tab separada para URLs lh3.googleusercontent)
-4. Remoção de fundo via **flood-fill da borda** com scipy.ndimage (preserva branco interno como camisas e olhos claros)
-5. Crop na bbox do canal alpha + resize para altura-padrão (950 adultos, 700 crianças, 380 drones)
-6. Canvas transparente 800×1080 ancorado no bottom, conteúdo centralizado horizontalmente
-7. Backup timestamped da versão anterior em `_backups/` de cada personagem
+**Etapa 1 — Placeholders funcionais (v0.5)**
+
+As primeiras ilustrações dos 5 personagens principais e 1 cenário inicial foram construídas a partir de imagens de referência obtidas via busca no Google, editadas em software de imagem (recorte, ajuste de paleta para a identidade cyberpunk/noir, aplicação manual de filtro de pixelização para aproximar o estilo 16-bit). O propósito dessas versões era **destravar o desenvolvimento técnico**: ter sprites jogáveis para testar o HUD, mecânicas de bateria/integridade, fluxos de escolha e sistema de finais. Essas versões foram conscientemente tratadas como temporárias e arquivadas em `_backups/` quando substituídas.
+
+**Etapa 2 — Arte autoral via IA (v1.0)**
+
+Na aproximação do fim do cronograma ficou claro que ilustrar à mão os 20+ personagens secundários restantes e os 21 cenários adicionais não caberia no prazo solo. A decisão foi regerar todo o elenco — inclusive os 5 principais — usando IA generativa (Gemini Nano Banana 2), com prompts autorais detalhados escritos pelo desenvolvedor descrevendo personalidade visual, vestuário, postura, expressão e elementos de cena. Essa abordagem permitiu (a) manter consistência estilística entre todos os sprites e cenários, (b) eliminar qualquer material derivado de imagens de terceiros nas versões finais, (c) entregar um elenco visualmente coeso dentro do prazo.
+
+O pós-processamento, esse sim 100% escrito pelo desenvolvedor, garante que cada imagem tenha identidade coerente com o jogo:
+
+- **Sprites de personagem:** remoção de fundo via *flood-fill* da borda (scripts em Python com `scipy.ndimage` — preserva branco interno como camisas e olhos claros, algo que remoção por IA tende a comer), recorte pela bounding box do canal alpha, resize para altura-padrão (adultos 950px, crianças 700px, drones 380px) e composição em canvas transparente 800×1080 ancorado no bottom.
+- **Cenários:** envolvidos em `Transform(xysize=(1920, 1080))` via Ren'Py para cobrir a tela inteira independente do aspect ratio do PNG de origem.
+
+Todas as decisões de escala, composição, posicionamento de sprites (`transform left/center/right` com `zoom 0.85` e `xcenter 0.15/0.5/0.85`), escolhas de prompt e ajustes de pós-processamento são autorais e documentadas no commit history do projeto.
 
 ### Correções Críticas de Balanceamento (v1.0)
 
