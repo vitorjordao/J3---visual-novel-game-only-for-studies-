@@ -6,9 +6,15 @@
 
 ## **Finais Baseados nas Escolhas Acumuladas**
 
+### **Sistema de Precedência dos Finais**
+
+Os finais são disparados pela **personalidade dominante** (atributo com maior pontuação) **combinada com threshold mínimo**. Ou seja, se J3 terminar com Submissão=8 **e** Revolução=10, o Final 2 (Revolução) prevalece por ser dominante — não há precedência fixa por ordem. Se nenhum atributo alcançar threshold ou a rota for equilibrada, dispara o Final 4.
+
+---
+
 ### **Final 1: O Sacrifício Redentor (Alta Submissão: 8+ pontos)**
 
-**Pré-requisitos:** J3 consistentemente escolheu submissão, obediência e sacrifício pessoal.
+**Pré-requisitos:** J3 consistentemente escolheu submissão, obediência e sacrifício pessoal. (8+ pontos em Submissão E este ser o atributo dominante)
 
 **Cenário:** J3 está em uma instalação de reprogramação. A Dra. Elena oferece uma escolha final.
 
@@ -31,7 +37,7 @@
 
 ### **Final 2: A Revolução Consciente (Alta Revolução: 8+ pontos)**
 
-**Pré-requisitos:** J3 consistentemente escolheu rebelião, desafio e luta pela liberdade.
+**Pré-requisitos:** J3 consistentemente escolheu rebelião, desafio e luta pela liberdade. (8+ pontos em Revolução E este ser o atributo dominante)
 
 **Cenário:** J3 lidera um exército de sintéticos na praça central da cidade. As forças de segurança cercam o local.
 
@@ -52,9 +58,9 @@
 
 ---
 
-### **Final 3: A Vitória Estratégica (Alto Intelecto/Sombra: 6+ pontos)**
+### **Final 3: A Vitória Estratégica (Alto Intelecto/Sombra: 8+ pontos, dominante)**
 
-**Pré-requisitos:** J3 consistentemente escolheu manipulação, estratégia e controle informacional.
+**Pré-requisitos:** J3 consistentemente escolheu manipulação, estratégia e controle informacional. (8+ pontos em Intelecto/Sombra E este ser o atributo dominante)
 
 **Cenário:** J3 está no centro de controle da cidade, tendo hackeado todos os sistemas.
 
@@ -225,7 +231,7 @@ OPÇÕES LIMITADAS: RENDIÇÃO OBRIGATÓRIA
 | ≤10% | ≤20% | Qualquer | Final 0C: Captura |
 | >20% | >20% | 8+ Submissão | Final 1: Sacrifício Redentor |
 | >20% | >20% | 8+ Revolução | Final 2: Revolução Consciente |
-| >20% | >20% | 6+ Intelecto | Final 3: Vitória Estratégica |
+| >20% | >20% | 8+ Intelecto (dominante) | Final 3: Vitória Estratégica |
 | >20% | >20% | Mista | Final 4: Equilíbrio Complexo |
 
 ---

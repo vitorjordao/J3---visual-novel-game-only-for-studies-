@@ -23,12 +23,14 @@ label day7_start:
     call mensagem_sistema("SISTEMA: Momento final alcançado")
     call mensagem_sistema("ESCOLHAS ACUMULADAS: [get_personalidade_dominante()]")
     
-    # Verificar qual final baseado nas estatísticas
-    if persistent.submissao >= 8:
+    # Verificar qual final baseado na personalidade DOMINANTE + threshold mínimo
+    # Respeita atributo dominante em caso de empate/múltiplos acima do threshold
+    $ _dominant = get_personalidade_dominante()
+    if _dominant == "Submissao" and persistent.submissao >= 8:
         jump final_sacrifice
-    elif persistent.revolucao >= 8:
+    elif _dominant == "Revoluçao" and persistent.revolucao >= 8:
         jump final_revolution
-    elif persistent.intelecto >= 6:
+    elif _dominant == "Intelecto" and persistent.intelecto >= 8:
         jump final_strategic
     else:
         jump final_balanced

@@ -41,6 +41,7 @@ label day2_start:
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(12)
             $ consumir_integridade(5)
+            $ persistent.maya_ally = True
             j3 "(Se levanta e caminha até o grupo com passos firmes)"
             j3 "(Segura o braço do thug2 com força mecânica precisa)"
             j3 "A probabilidade de você conseguir esse score é de 0.03\%. A dela é de 98\%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
@@ -86,6 +87,7 @@ label day2_start:
     menu:
         "Aceitar ajuda de Maya":
             $ recarregar_bateria(15)
+            $ persistent.maya_ally = True
             call mensagem_sistema("MAYA: Tenho uma estação portátil! Vou recarregar você!")
             call mensagem_sistema("BATERIA RECARGADA: +15%")
             call atualizar_status
@@ -169,7 +171,7 @@ label maya_common_reaction:
     
     # Cena 2.4 - O Desafio do "Boss"
     hide owner
-    show thug1 angry at center
+    show thug1 angry at right
     
     thug1 "Se você é tão esperta, vamos ver se tem reflexo. Se eu ganhar, você me dá seu braço pra eu vender as peças. Se você ganhar... bem, você não vai ganhar."
     

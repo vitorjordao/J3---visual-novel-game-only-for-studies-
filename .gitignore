@@ -1,0 +1,24 @@
+# Ren'Py artifacts
+*.rpyc
+*.rpyb
+*.rpymc
+
+# Runtime data
+**/saves/
+**/cache/
+**/log.txt
+**/traceback.txt
+**/errors.txt
+
+# Python venv
+venv/
+__pycache__/
+*.pyc
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temp
+*.tmp
+*.swp

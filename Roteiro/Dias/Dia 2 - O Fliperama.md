@@ -30,7 +30,7 @@
 **[ESCOLHA 1 - Revolucionária/Protetora]**
 *Ação:* J3 se levanta e caminha até o grupo com passos firmes. Segura o braço do Thug 2 com força mecânica precisa.
 *J3:* (Voz gelada) "A probabilidade de você conseguir esse score é de 0.03%. A dela é de 98%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
-*Resultado:* **+1 Revolução**. **-12% Bateria**. **-5% Integridade** (risco de confronto). Maya sorri, grata. Os rapazes ficam humilhados e agora querem vingança contra J3. **Status: Aliado formado**
+*Resultado:* **+1 Revolução**. **-12% Bateria**. **-5% Integridade** (risco de confronto). Maya sorri, grata. Os rapazes ficam humilhados e agora querem vingança contra J3. **Status: Aliado formado** — marca `persistent.maya_ally = True` (desbloqueia cenas de reencontro nos Dias 4 e 6).
 
 **[ESCOLHA 2 - Submissa/Passiva]**
 *Ação:* J3 permanece escondida, mas tenta intervir verbalmente.
@@ -115,7 +115,7 @@ BENEFÍCIO: +15% Bateria ou +10% Integridade
 
 **[OPÇÃO 1 - Aceitar Ajuda]**
 *J3:* (Voz sincera) "Minha bateria está em [persistent.bateria]%. Agradeço qualquer ajuda."
-*Resultado:* **+15% Bateria**. **+1 Aliança com Maya**. Maya se torna aliada confiável. **Status: Recarregado**
+*Resultado:* **+15% Bateria**. **+1 Aliança com Maya**. Maya se torna aliada confiável (`persistent.maya_ally = True`). **Status: Recarregado**
 
 *Maya:* "Tenho uma estação portátil! Vou recarregar você!"
 

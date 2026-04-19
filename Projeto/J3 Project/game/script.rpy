@@ -41,6 +41,12 @@ define homeless_woman = Character("Mulher Sem-Teto", color="#cd853f")  # Marrom 
 define synth1 = Character("Sintético 1", color="#ff66cc")  # Rosa sintético individual
 define synth2 = Character("Sintético 2", color="#66ccff")  # Azul sintético individual
 
+# Personagens adicionados - Dia 1 (separados dos personagens principais)
+define protester = Character("Manifestante", color="#ff4444")  # Vermelho raiva
+define maria = Character("Maria", color="#ffcc88")  # Bege crianca
+define patrol_drone = Character("Drone de Patrulha", color="#ff6666")  # Vermelho claro drone
+define news_vendor = Character("Vendedor", color="#cccc99")  # Bege esverdeado idoso
+
 # Sistema de personagem
 define narrator = Character(None, kind=nvl, color="#cccccc")  # Narrador em cinza
 

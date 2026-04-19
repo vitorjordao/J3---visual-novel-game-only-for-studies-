@@ -122,3 +122,15 @@ label day1_com_sobrevivencia:
     call verificar_final_critico
     
     return
+
+# ============================================================
+# Label de fim de jogo (chamado pelos finais criticos 0A/0B/0C)
+# ============================================================
+label end_game:
+    scene black with fade
+    hide screen j3_hud
+    centered "FIM DE JOGO"
+    pause 2.0
+    $ renpy.full_restart()
+    return
+
