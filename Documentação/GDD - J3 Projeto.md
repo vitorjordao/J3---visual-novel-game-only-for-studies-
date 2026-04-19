@@ -766,9 +766,11 @@ Comparação lado a lado entre as duas fases:
 
 #### Unit-7
 
-| v0.5 (anterior) | v1.0 (atual) |
-|:-:|:-:|
-| ![Unit-7 antigo](../Projeto/J3%20Project/game/characters/unit7/_backups/unity%207_20260418_175651.png) | ![Unit-7 atual](../Projeto/J3%20Project/game/characters/unit7/unity%207.png) |
+| v0.5 (placeholder) | v1.0 (descartado — triplicado) | v1.1 (atual) |
+|:-:|:-:|:-:|
+| ![Unit-7 v0.5](../Projeto/J3%20Project/game/characters/unit7/_backups/unity%207_20260418_175651.png) | ![Unit-7 v1.0](../Projeto/J3%20Project/game/characters/unit7/_backups/unity%207_20260419_091513.png) | ![Unit-7 v1.1](../Projeto/J3%20Project/game/characters/unit7/unity%207.png) |
+
+> **Nota:** a primeira regeração via IA (v1.0) saiu com 3 cópias idênticas do robô lado a lado no mesmo PNG — a IA interpretou a descrição de "imponente" como múltiplas instâncias. Essa versão foi arquivada em `_backups/` e a v1.1 foi obtida cropando a instância central do mesmo raw e aplicando o pipeline de pós-processamento novamente.
 
 #### Dra. Elena
 
