@@ -726,6 +726,9 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 
 ## 9. Histórico de Desenvolvimento
 
+> **Sobre o "desenvolvedor" mencionado nesta seção:** todas as referências ao "desenvolvedor" neste GDD se referem a **Vitor Jordão**, autor solo e detentor único dos direitos sobre o projeto J3. Todas as decisões criativas (roteiro, narrativa, escolhas de design, prompts autorais, pipeline de pós-processamento) são de sua autoria.
+
+
 ### Linha do Tempo
 
 | Marco | Data | Descrição |
@@ -809,11 +812,14 @@ O projeto foi conduzido como trabalho solo dentro de um prazo restrito. A ambiç
 
 **Etapa 1 — Placeholders funcionais (v0.5)**
 
-As primeiras ilustrações dos 5 personagens principais e 1 cenário inicial foram construídas a partir de imagens de referência obtidas via busca no Google, editadas em software de imagem (recorte, ajuste de paleta para a identidade cyberpunk/noir, aplicação manual de filtro de pixelização para aproximar o estilo 16-bit). O propósito dessas versões era **destravar o desenvolvimento técnico**: ter sprites jogáveis para testar o HUD, mecânicas de bateria/integridade, fluxos de escolha e sistema de finais. Essas versões foram conscientemente tratadas como temporárias e arquivadas em `_backups/` quando substituídas.
+As primeiras ilustrações dos 5 personagens principais e 1 cenário inicial foram construídas a partir de imagens de referência obtidas via busca no Google, editadas em software de imagem Gimp (recorte, ajuste de paleta para a identidade cyberpunk/noir, aplicação manual de filtro de pixelização para aproximar o estilo 16/32-bit). O propósito dessas versões era **destravar o desenvolvimento técnico**: ter sprites jogáveis para testar o HUD, mecânicas de bateria/integridade, fluxos de escolha e sistema de finais. Essas versões foram tratadas como temporárias e arquivadas em `_backups/` quando substituídas  pelas novas versões por conta de euqalisação de estilo.
 
 **Etapa 2 — Arte autoral via IA (v1.0)**
 
-Na aproximação do fim do cronograma ficou claro que ilustrar à mão os 20+ personagens secundários restantes e os 21 cenários adicionais não caberia no prazo solo. A decisão foi regerar todo o elenco — inclusive os 5 principais — usando IA generativa (Gemini Nano Banana 2), com prompts autorais detalhados escritos pelo desenvolvedor descrevendo personalidade visual, vestuário, postura, expressão e elementos de cena. Essa abordagem permitiu (a) manter consistência estilística entre todos os sprites e cenários, (b) eliminar qualquer material derivado de imagens de terceiros nas versões finais, (c) entregar um elenco visualmente coeso dentro do prazo.
+Na aproximação do fim do cronograma ficou claro que ilustrar à mão os 20+ personagens secundários restantes e os 21 cenários adicionais não caberia no prazo de um desenvolvedor solo. A decisão foi regerar todo o elenco — inclusive os 5 principais — usando IA generativa (Gemini Nano Banana 2), com prompts autorais detalhados escritos pelo desenvolvedor descrevendo personalidade visual, vestuário, postura, expressão e elementos de cena. Essa abordagem permitiu 
+- (a) manter consistência estilística entre todos os sprites e cenários,
+- (b) eliminar qualquer material derivado de imagens de terceiros nas versões finais,
+- (c) entregar um elenco visualmente coeso dentro do prazo.
 
 O pós-processamento, esse sim 100% escrito pelo desenvolvedor, garante que cada imagem tenha identidade coerente com o jogo:
 
@@ -859,12 +865,11 @@ Correções aplicadas após auditoria completa do código Ren'Py:
 - **Status:** Pronto para Submissão
 
 ### Equipe de Desenvolvimento
-- **Desenvolvedor Principal:** Solo (1 pessoa)
-- **Funções:** Design, escrita, arte básica, programação
-- **Contato:** [Informações de contato do desenvolvedor]
+- **Desenvolvedor Principal:** **Vitor Jordão** (solo, autor e proprietário do projeto)
+- **Funções:** Design, escrita, roteiro, programação Ren'Py, arte (pós-processamento autoral), prompts de IA generativa, QA e balanceamento
 
 ### Licença e Direitos
-- **Propriedade Intelectual:** Desenvolvedor independente
+- **Propriedade Intelectual:** Vitor Jordão (autor solo)
 - **Engine:** Ren'Py (código aberto)
 - **Assets:** Originais ou licenciados gratuitamente
 - **Distribuição:** Direitos reservados ao desenvolvedor
@@ -882,4 +887,6 @@ Este GDD atende a 100% dos requisitos estabelecidos pelo Manual MINC para Games,
 
 **RESPONSÁVEL**
 
-[Assinatura digital disponível através de GOV.BR]
+**Vitor Jordão** — autor solo e proprietário do projeto
+
+*[Assinatura digital via GOV.BR]*
