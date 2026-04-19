@@ -355,6 +355,9 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 ### e) Personagens
 
 #### J3-001 (Protagonista)
+
+![J3-001](../Projeto/J3%20Project/game/characters/j3/J3.png)
+
 - **Personalidade:** Desenvolvida pelo jogador
 - **Aparência:** Andrógina, pele sintética, olhos processadores
 - **Backstory:** Unidade experimental com memória apagada
@@ -363,6 +366,9 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 - **Relações:** Evolui com todos os outros personagens
 
 #### Maya (Aliada Humana)
+
+![Maya](../Projeto/J3%20Project/game/characters/maya/maya.png)
+
 - **Personalidade:** Corajosa, curiosa, rebelde
 - **Aparência:** Jovem, roupas alternativas, cabelo colorido
 - **Backstory:** Trabalha no fliperama, sonha com liberdade
@@ -371,6 +377,9 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 - **Relações:** Protetora com J3, conflito com sociedade
 
 #### Elias (Vítima de Preconceito)
+
+![Elias](../Projeto/J3%20Project/game/characters/elias/Elias.png)
+
 - **Personalidade:** Cansado, resiliente, moralista
 - **Aparência:** Entregador, roupas gastas, expressão pesada
 - **Backstory:** Sofre discriminação racial constante
@@ -379,6 +388,9 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 - **Relações:** Cauteloso mas solidário com J3
 
 #### Unit-7 (Líder Sintético)
+
+![Unit-7](../Projeto/J3%20Project/game/characters/unit7/unity%207.png)
+
 - **Personalidade:** Estratégica, protetora, pragmática
 - **Aparência:** Robô militar, imponente, danos de batalha
 - **Backstory:** Veterano de conflitos humano-sintéticos
@@ -387,6 +399,9 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 - **Relações:** Mentora de J3, desconfiada de humanos
 
 #### Dra. Elena (Criadora)
+
+![Dra. Elena](../Projeto/J3%20Project/game/characters/elena/elena.png)
+
 - **Personalidade:** Gênio, arrependida, moralmente ambígua
 - **Aparência:** Cientista, 45 anos, olhos cansados
 - **Backstory:** Criou J3 com boas intenções, consequências inesperadas
@@ -397,36 +412,57 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 ### f) Fases (Levels)
 
 #### Dia 1 - Avenida: O Despertar
+
+![Avenida Paulista Futurista](../Projeto/J3%20Project/game/backgrounds/day1/avenue_night.png)
+
 - **Sinopse:** J3 desperta sem memória em meio ao caos urbano
 - **Objetivos:** Entender situação básica, sobreviver ao primeiro dia
 - **Acontecimentos:** Confronto com manifestantes, encontro com criança, intervenção policial
 
 #### Dia 2 - Fliperama: O Conflito
+
+![Fliperama Cyberpunk](../Projeto/J3%20Project/game/backgrounds/day2/arcade_night.png)
+
 - **Sinopse:** J3 busca abrigo e testemunha assédio contra Maya
 - **Objetivos:** Formar primeira aliança, entender dinâmicas sociais
 - **Acontecimentos:** Defesa de Maya, desafio no fliperama, fuga das autoridades
 
 #### Dia 3 - Beco: A Injustiça
+
+![Beco Industrial](../Projeto/J3%20Project/game/backgrounds/day3/alley_night.png)
+
 - **Sinopse:** J3 presencia discriminação racial contra Elias
 - **Objetivos:** Enfrentar preconceito sistêmico, fazer escolhas morais
 - **Acontecimentos:** Confronto racial, decisão de intervenção, consequências
 
 #### Dia 4 - Refúgio: As Consequências
+
+![Refúgio Subterrâneo](../Projeto/J3%20Project/game/backgrounds/day4/refuge_underground.png)
+
 - **Sinopse:** J3 encontra comunidade de sintéticos escondida
 - **Objetivos:** Entender resistência, assumir liderança ou seguir
 - **Acontecimentos:** Reunião com Unit-7, planejamento estratégico, ataque inimigo
 
 #### Dia 5 - Cerco: O Ponto Sem Retorno
+
+![Cerco ao Refúgio](../Projeto/J3%20Project/game/backgrounds/day5/refuge_siege.png)
+
 - **Sinopse:** Refúgio é atacado, J3 deve proteger comunidade
 - **Objetivos:** Sobreviver ao ataque, fazer sacrifícios necessários
 - **Acontecimentos:** Batalha estratégica, perdas, revelações sobre origem
 
 #### Dia 6 - Revelação: A Verdade
+
+![Laboratório Abandonado](../Projeto/J3%20Project/game/backgrounds/day6/abandoned_lab.png)
+
 - **Sinopse:** J3 descobre a verdade sobre sua criação
 - **Objetivos:** Confrontar passado, aceitar identidade
 - **Acontecimentos:** Encontro com Dra. Elena, memórias recuperadas, decisão final
 
 #### Dia 7 - Final: O Destino
+
+![Encruzilhada Final](../Projeto/J3%20Project/game/backgrounds/day7/neutral_crossroads.png)
+
 - **Sinopse:** Conclusão baseada na jornada de J3
 - **Objetivos:** Escolher destino final, enfrentar consequências
 - **Acontecimentos:** Varia conforme personalidade desenvolvida
@@ -688,9 +724,129 @@ A narrativa segue 7 dias na vida de J3, começando com seu despertar em uma cida
 
 ---
 
+## 9. Histórico de Desenvolvimento
+
+### Linha do Tempo
+
+| Marco | Data | Descrição |
+|---|---|---|
+| **v0.1 — Estrutura inicial** | Mar/2026 | Setup Ren'Py, definição de personagens (Character objects), primeiros diálogos dos Dias 1–3. Sistema J3 (bateria/integridade/personalidade) rascunhado. |
+| **v0.2 — Mecânicas de sobrevivência** | Mar/2026 | Implementado `consumir_bateria`/`consumir_integridade`/`recarregar_bateria`/`reparar_integridade`. HUD do sistema J3 com barras visuais. Finais alternativos 0A/0B/0C por esgotamento de recursos. |
+| **v0.3 — Narrativa completa** | Mar/2026 | Roteiros dos 7 dias em markdown. Scripts `.rpy` gerados a partir dos roteiros. Finais 1–4 por personalidade dominante. |
+| **v0.4 — Debug e QA** | Abr/2026 | Menu de debug (tecla P), testes de mecânicas e fluxos completos. Correção de bugs de HideScreen, config.keymap, labels duplicados. |
+| **v0.5 — Arte inicial** | Abr/2026 | Primeiros 5 sprites de personagens principais (J3, Maya, Elias, Unit-7, Elena) e 1 background (avenue_night), gerados via Nano Banana no AI Studio. |
+| **v1.0 — Arte completa + balanceamento** | Abr/2026 | 22 backgrounds (Dias 1–7 + finais) via Nano Banana 2 API. 21 sprites adicionais de personagens secundários. Flood-fill de remoção de fundo. Normalização de escalas (adultos 950px, crianças 700px, drones 380px). Canvas padrão 800×1080 ancorado no bottom. Correções críticas de balanceamento: finais por dominância + threshold, alianças persistentes setadas, bug de dupla atribuição removido. Transforms customizados resolvendo sobreposição de sprites. |
+
+### Galeria de Evolução dos Personagens Principais
+
+Comparação lado-a-lado entre versões iniciais (Nano Banana 1) e versões atuais regeradas em Nano Banana 2 com pipeline melhorado (flood-fill + normalização):
+
+#### J3-001
+
+| v0.5 (anterior) | v1.0 (atual) |
+|:-:|:-:|
+| ![J3 antiga](../Projeto/J3%20Project/game/characters/j3/_backups/J3_20260418_175201.png) | ![J3 atual](../Projeto/J3%20Project/game/characters/j3/J3.png) |
+
+#### Maya
+
+| v0.5 (anterior) | v1.0 (atual) |
+|:-:|:-:|
+| ![Maya antiga](../Projeto/J3%20Project/game/characters/maya/_backups/maya_20260418_174552.png) | ![Maya atual](../Projeto/J3%20Project/game/characters/maya/maya.png) |
+
+#### Elias
+
+| v0.5 (anterior) | v1.0 (atual) |
+|:-:|:-:|
+| ![Elias antigo](../Projeto/J3%20Project/game/characters/elias/_backups/Elias_20260418_173410.png) | ![Elias atual](../Projeto/J3%20Project/game/characters/elias/Elias.png) |
+
+#### Unit-7
+
+| v0.5 (anterior) | v1.0 (atual) |
+|:-:|:-:|
+| ![Unit-7 antigo](../Projeto/J3%20Project/game/characters/unit7/_backups/unity%207_20260418_175651.png) | ![Unit-7 atual](../Projeto/J3%20Project/game/characters/unit7/unity%207.png) |
+
+#### Dra. Elena
+
+| v0.5 (anterior) | v1.0 (atual) |
+|:-:|:-:|
+| ![Elena antiga](../Projeto/J3%20Project/game/characters/elena/_backups/elena_20260418_181425.png) | ![Elena atual](../Projeto/J3%20Project/game/characters/elena/elena.png) |
+
+### Galeria de Personagens Secundários (v1.0)
+
+Personagens do elenco expandido — todos gerados em Nano Banana 2, processados com flood-fill de fundo e normalizados para o canvas 800×1080.
+
+| Personagem | Sprite | Papel |
+|---|:-:|---|
+| Security | ![security](../Projeto/J3%20Project/game/characters/security/security.png) | Segurança corporativo racista (Dia 3) |
+| Mother | ![mother](../Projeto/J3%20Project/game/characters/mother/mother.png) | Mãe humana que chama Maria (Dia 1) |
+| Thug 1 | ![thug1](../Projeto/J3%20Project/game/characters/thug1/thug1.png) | Jovem agressor no fliperama (Dia 2) |
+| Thug 2 | ![thug2](../Projeto/J3%20Project/game/characters/thug2/thug2.png) | Jovem agressor no fliperama (Dia 2) |
+| Owner | ![owner](../Projeto/J3%20Project/game/characters/owner/owner.png) | Dono do fliperama (Dia 2) |
+| Homeless Woman | ![homeless](../Projeto/J3%20Project/game/characters/homeless_woman/homeless_woman.png) | Mulher sábia do beco (Dia 3) |
+| Damaged Bot | ![damaged_bot](../Projeto/J3%20Project/game/characters/damaged_bot/damaged_bot.png) | Sintético faxineiro do refúgio (Dia 4) |
+| Synth 1 | ![synth1](../Projeto/J3%20Project/game/characters/synth1/synth1.png) | Sintético do refúgio (Dia 4) |
+| Synth 2 | ![synth2](../Projeto/J3%20Project/game/characters/synth2/synth2.png) | Sintético do refúgio (Dia 4) |
+| Synth Fearful | ![synth_fearful](../Projeto/J3%20Project/game/characters/synth_fearful/synth_fearful.png) | Sintético medroso (Dia 5) |
+| Synth Angry | ![synth_angry](../Projeto/J3%20Project/game/characters/synth_angry/synth_angry.png) | Sintético combatente (Dia 5) |
+| Commander | ![commander](../Projeto/J3%20Project/game/characters/commander/commander.png) | Antagonista militar (Dias 5 e 7) |
+| Synth Survivor | ![synth_survivor](../Projeto/J3%20Project/game/characters/synth_survivor/synth_survivor.png) | Sintético sobrevivente (Dia 6) |
+| Child Curious | ![child](../Projeto/J3%20Project/game/characters/child_curious/child_curious.png) | Criança do Final Sacrifício (Dia 7) |
+| Synth Army | ![synth_army](../Projeto/J3%20Project/game/characters/synth_army/synth_army.png) | Exército sintético do Final Revolução (Dia 7) |
+| Drone Captor | ![drone_captor](../Projeto/J3%20Project/game/characters/drone_captor/drone_captor.png) | Drone de captura (Finais Alternativos) |
+| Protester | ![protester](../Projeto/J3%20Project/game/characters/protester/protester.png) | Manifestante anti-robô (Dia 1) |
+| Maria | ![maria](../Projeto/J3%20Project/game/characters/maria/maria.png) | Criança curiosa (Dia 1) |
+| Patrol Drone | ![patrol_drone](../Projeto/J3%20Project/game/characters/patrol_drone/patrol_drone.png) | Drone policial (Dia 1) |
+| News Vendor | ![news_vendor](../Projeto/J3%20Project/game/characters/news_vendor/news_vendor.png) | Vendedor de jornais holográficos (Dia 1) |
+
+### Pipeline Técnico de Geração de Arte
+
+**Backgrounds** (22 cenários):
+1. Prompt base Cartoon/anime + descrição específica + pedido de pixelização 16-bit
+2. Geração via API REST Gemini 3.1 Flash Image Preview (Nano Banana 2)
+3. Processamento em lote paralelo (4 workers simultâneos, retry automático em HTTP 503)
+4. Integração direta em `game/images.rpy` com `Transform(xysize=(1920, 1080))` para fullscreen
+
+**Sprites de personagens** (25 PNGs):
+1. Prompt detalhado com descrição visual + regras críticas (anatomia, sem UI/balões, fundo branco puro)
+2. Geração via interface web do Gemini (Nano Banana 2), automação via Playwright MCP
+3. Extração via canvas de mesma origem (blob ou navegação em tab separada para URLs lh3.googleusercontent)
+4. Remoção de fundo via **flood-fill da borda** com scipy.ndimage (preserva branco interno como camisas e olhos claros)
+5. Crop na bbox do canal alpha + resize para altura-padrão (950 adultos, 700 crianças, 380 drones)
+6. Canvas transparente 800×1080 ancorado no bottom, conteúdo centralizado horizontalmente
+7. Backup timestamped da versão anterior em `_backups/` de cada personagem
+
+### Correções Críticas de Balanceamento (v1.0)
+
+Correções aplicadas após auditoria completa do código Ren'Py:
+
+- **Precedência de finais agora usa personalidade dominante** (`get_personalidade_dominante()`) em vez de if/elif linear. Antes, jogador com `sub=8` e `rev=10` caía no Final de Sacrifício; agora cai corretamente no Final de Revolução.
+- **Threshold de Intelecto** aumentado de 6 para 8 para equiparar Sub/Rev (os três pilares agora exigem mesmo esforço).
+- **Flags de aliança** (`persistent.maya_ally`, `persistent.elias_ally`) agora são corretamente setadas como `True` em pontos específicos de Dia 2 e Dia 3, desbloqueando cenas condicionais dos Dias 4, 5 e 6 que antes nunca disparavam.
+- **`modificar_personalidade`** tinha duas definições conflitantes (uma com clamp 0-10 em `sistema_j3.rpy`, outra sem clamp em `functions.rpy`). A duplicata foi removida.
+- **Bug Cena 1.2**: opção "análise estratégica" concedia `intelecto+1` E `submissao+1` simultaneamente. Corrigido.
+- **Label `end_game`** faltante foi criado em `finais_alternativos.rpy`, corrigindo `LabelNotFound` quando bateria/integridade chegavam a zero.
+- **Sobreposição de sprites**: 6 cenas com personagens sobrepondo-se (Dias 1, 3, 4, 5 e 6) corrigidas com `hide` explícito ou reposicionamento. Transforms customizados (`left`/`center`/`right` com zoom 0.85 e xcenter 0.15/0.5/0.85) garantem zero sobreposição entre canvases.
+
+### Estatísticas do Projeto
+
+| Métrica | Valor |
+|---|---|
+| Linhas de código Ren'Py | ~5.000 |
+| Arquivos `.rpy` | 12 |
+| Sprites de personagem | 25 (5 principais + 20 secundários) |
+| Backgrounds | 22 (7 dias + 2 finais alternativos + variantes) |
+| Personagens com diálogo (`define Character`) | 30+ |
+| Variáveis persistentes | 12 |
+| Finais distintos | 7 (4 principais + 3 alternativos críticos) |
+| Escolhas ao longo do jogo | ~40 menus com 2-5 opções cada |
+| Pontos de recarga/reparo | 5 (Maya D2, Elias D3, Círculo D4, Elias D5, Elena D6) |
+
+---
+
 ## Informações de Controle e Versão
 
 ### Versão do Documento
+**v1.0 — Abril 2026** (release com arte completa, balanceamento corrigido e histórico integrado)
 - **Versão:** 2.0 (Completo MINC)
 - **Data:** 03/04/2026
 - **Status:** Pronto para Submissão
