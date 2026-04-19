@@ -160,6 +160,7 @@ label elena_common:
             call mensagem_sistema("STATUS: Rede estratégica criada")
     
     # Cena 6.5 - A Escolha da Dra. Elena
+    hide synth_survivor
     show elena_scientist urgent at center
     
     elena_scientist "Tenho duas opções para você. Primeiro: posso te dar um código que desativa todos os sistemas de segurança da cidade, mas vai causar caos total. Segundo: posso te dar um código que 'cura' sua consciência, tornando você uma máquina obediente novamente, mas salvando todos os outros sintéticos da perseguição."

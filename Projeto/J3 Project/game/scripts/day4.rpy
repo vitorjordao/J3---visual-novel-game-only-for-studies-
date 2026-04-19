@@ -67,6 +67,7 @@ label day4_start:
                 call mensagem_sistema("STATUS: Aliança humana fortalecida")
     
     # Cena 4.3 - O Líder do Refúgio
+    hide maya
     show unit7 leader at center
     
     unit7 "Sou o responsável pela ordem aqui. Novatos precisam provar seu valor. O que você oferece além de mais boca pra alimentar?"
@@ -181,6 +182,10 @@ label repair_circle_common:
             call mensagem_sistema("STATUS: Estrategista sombria")
     
     # Cena 4.6 - O Teste de Lealdade
+    hide synth1
+    hide synth2
+    hide damaged_bot
+    hide maya
     show unit7 suspicious at center
     
     unit7 "Você está mudando a dinâmica aqui. Alguns te veem como salvadora, outros como ameaça. Prove onde está sua lealdade."

@@ -19,23 +19,6 @@ init python:
     if not hasattr(persistent, 'elena_alive'):
         persistent.elena_alive = True
 
-# Função para modificar personalidade
-init python:
-    def modificar_personalidade(tipo, quantidade):
-        """Modifica os atributos de personalidade de J3"""
-        global persistent
-        
-        if tipo == "submissao":
-            persistent.submissao += quantidade
-        elif tipo == "revolucao":
-            persistent.revolucao += quantidade
-        elif tipo == "intelecto":
-            persistent.intelecto += quantidade
-        
-        # Debug
-        print(f"Personalidade atualizada: {tipo} +{quantidade}")
-        print(f"Status: Sub={persistent.submissao}, Rev={persistent.revolucao}, Int={persistent.intelecto}")
-
 # Função para obter personalidade dominante
 init python:
     def get_personalidade_dominante():

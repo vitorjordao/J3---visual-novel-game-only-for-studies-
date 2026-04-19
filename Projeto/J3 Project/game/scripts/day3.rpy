@@ -72,6 +72,7 @@ label day3_start:
     menu:
         "Aceitar oferta de recarga do Elias":
             $ recarregar_bateria(10)
+            $ persistent.elias_ally = True
             call mensagem_sistema("ELIAS: Tenho um carregador portátil no caminhão! Vou recarregar você!")
             call mensagem_sistema("BATERIA RECARGADA: +10%")
             call atualizar_status
@@ -137,6 +138,7 @@ label elias_common:
     
     # Cena 3.4 - O Apoio Moral
     hide security
+    hide elias
     show homeless_woman wise at center
     
     homeless_woman "Eles tratam vocês como lixo agora, mas esquecem que fomos nós que criamos o mundo que vocês sustentam. Construímos as cidades, programamos os sistemas, e agora jogamos fora o que não entendemos. Você vai deixar ele falar assim com o rapaz?"
@@ -181,6 +183,7 @@ label elias_common:
             
         "Interceptar fisicamente":
             $ modificar_personalidade("revolucao", 1)
+            $ persistent.elias_ally = True
             j3 "(Se move instantaneamente, colocando-se fisicamente entre Elias e o segurança)"
             j3 "Esta ação termina agora. Recue. Ou sofrerá as consequências."
             security "(Recua, surpreso)"

@@ -50,15 +50,15 @@
 
 **Recarga com Elias:**
 *Elias:* "Tenho um carregador portátil no caminhão! Vou recarregar você!"
-*Resultado:* **+10% Bateria** se aceitar a ajuda.
+*Resultado:* **+10% Bateria** e **`persistent.elias_ally = True`** se aceitar a ajuda.
 
 **[ESCOLHA B - Revolucionária]**
 *J3:* (Voz firme) "A opressão usa máscaras diferentes, mas o algoritmo do opressor é sempre o mesmo. Medo, controle, descarte. Nós somos mais parecidos do que você pensa."
-*Resultado:* **+1 Revolução**. Elias sorri pela primeira vez. **Status: Aliado potencial**
+*Resultado:* **+1 Revolução**. Elias sorri pela primeira vez. **Status: Aliado potencial** — marca `persistent.elias_ally = True` (desbloqueia cenas de recarga e informação do túnel nos Dias 5 e 6).
 
 **Recarga com Elias:**
 *Elias:* "Tenho um carregador portátil no caminhão! Vou recarregar você!"
-*Resultado:* **+10% Bateria** se aceitar a ajuda.
+*Resultado:* **+10% Bateria** e **`persistent.elias_ally = True`** se aceitar a ajuda.
 
 ### **[Cena 3.3] A Tentativa de Suborno**
 

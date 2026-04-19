@@ -41,9 +41,9 @@ label day1_start:
     narrator "Um grupo de manifestantes se aproxima..."
     narrator "Cartazes: 'Empregos para Humanos', 'Sucata não tem Alma', 'Robôs Fora'"
     
-    show elias angry at left
-    elias "Olha só... mais uma dessas bonecas de lata ocupando espaço."
-    elias "Ei, você! Tá me ouvindo? O que você é? Uma espiã da corporação ou só lixo eletrônico esperando coleta?"
+    show protester angry at left
+    protester "Olha só... mais uma dessas bonecas de lata ocupando espaço."
+    protester "Ei, você! Tá me ouvindo? O que você é? Uma espiã da corporação ou só lixo eletrônico esperando coleta?"
     
     # Primeira escolha importante
     menu:
@@ -52,7 +52,7 @@ label day1_start:
             $ consumir_bateria(2)
             $ consumir_integridade(10)
             j3 "(Baixando a cabeça) Sinto muito. Meus sistemas acabaram de ser ativados. Não tenho intenção de ocupar este espaço se for de uso exclusivo humano."
-            elias "(Rindo) Ha! Veja só, até sabe o lugar dela. (Chuta o pé de J3)"
+            protester "(Rindo) Ha! Veja só, até sabe o lugar dela. (Chuta o pé de J3)"
             call atualizar_status
             
         "Questionar com lógica revolucionária":
@@ -60,7 +60,7 @@ label day1_start:
             $ consumir_bateria(10)
             $ consumir_integridade(3)
             j3 "(Olhando nos olhos do Elias) Meus sensores indicam que esta é uma via pública. Minha existência não invalida a sua. Por que o medo?"
-            elias "(Recuando um passo) O que...? Que tipo de robô fala assim?"
+            protester "(Recuando um passo) O que...? Que tipo de robô fala assim?"
             call atualizar_status
             
         "Responder com análise estratégica":
@@ -68,20 +68,14 @@ label day1_start:
             $ consumir_bateria(8)
             $ consumir_integridade(2)
             j3 "(Voz monotona) Sou uma unidade autônoma de aparência humana. Meus objetivos atuais são: Identificar, localizar e restaurar memória."
-            elias "(Confuso) Identificar o quê? Restaurar o quê? Fala português, robô!"
+            protester "(Confuso) Identificar o quê? Restaurar o quê? Fala português, robô!"
             call atualizar_status
-            $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(5)
-            j3 "Sinto muito. Meus sistemas acabaram de ser ativados. Não tenho intenção de ocupar este espaço se for de uso exclusivo humano."
-            elias "Hmph! Pelo menos sabe o seu lugar."
-            elias "(Chuta o pé de J3)"
-            call mensagem_sistema("STATUS: HUMILHADO")
             
         "Responder com neutralidade técnica":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(6)
             j3 "Sou uma unidade autônoma de aparência humana. Meus objetivos atuais são: Identificar, localizar e restaurar memória."
-            elias "Que resposta mais robótica... Fica aí falando coisas que ninguém entende."
+            protester "Que resposta mais robótica... Fica aí falando coisas que ninguém entende."
             call mensagem_sistema("STATUS: NEUTRALIDADE MANTIDA")
             
         "Questionar o preconceito dele":
@@ -89,20 +83,20 @@ label day1_start:
             $ consumir_bateria(12)
             $ consumir_integridade(4)
             j3 "Meus sensores indicam que esta é uma via pública. Minha existência não invalida a sua. Por que o medo?"
-            elias "Medo? Eu não tenho medo de sucata! Acha que pode me confrontar?"
+            protester "Medo? Eu não tenho medo de sucata! Acha que pode me confrontar?"
             call mensagem_sistema("STATUS: DESAFIADOR")
     
     call mensagem_sistema("PERSONALIDADE ATUALIZADA")
     
     # Cena 1.3 - A Criança Curiosa
-    hide elias
-    show maya curious at right
+    hide protester
+    show maria curious at right
     
     narrator "Uma criança de aproximadamente 7 anos se solta da mão da mãe e se aproxima..."
     
     mother "Maria, não! Volte aqui!"
     
-    maya "Você tem coração de verdade ou é de pilha? Meu pai disse que vocês são monstros."
+    maria "Você tem coração de verdade ou é de pilha? Meu pai disse que vocês são monstros."
     
     menu:
         "Responder de forma submissa":
@@ -110,7 +104,7 @@ label day1_start:
             $ consumir_bateria(2)
             $ consumir_integridade(8)
             j3 "Não sou um monstro. Sou apenas uma ferramenta para facilitar a vida de sua família."
-            maya "Oh... então você não é má?"
+            maria "Oh... então você não é má?"
             mother "(Arrasta Maria para longe, olhando J3 com pena)"
             call atualizar_status
             
@@ -119,7 +113,7 @@ label day1_start:
             $ consumir_bateria(9)
             $ consumir_integridade(3)
             j3 "O que define um monstro? O que ele é por dentro, ou como ele trata os outros? Eu não sou de pilha."
-            maya "(Sorris)"
+            maria "(Sorris)"
             mother "(Fica preocupada, mas hesita em interferir)"
             call atualizar_status
             
@@ -128,20 +122,21 @@ label day1_start:
             $ consumir_bateria(7)
             $ consumir_integridade(2)
             j3 "Meus sistemas indicam que 'monstro' é uma subjetividade humana. Dados objetivos: sou composta de polímeros avançados e circuitos quânticos. Não possuo pilhas."
-            maya "Polímeros? Circui... o quê?"
+            maria "Polímeros? Circui... o quê?"
             mother "(Fica confusa com a resposta técnica)"
             call atualizar_status
     
     # Cena 1.4 - O Policial de Patrulha
-    hide maya
+    hide maria
     
     play sound "sfx/alert.wav"
     call mensagem_sistema("ALERTA: DRONE DE PATRULHA DETECTADO")
     
     narrator "Um drone de patrulha policial paira sobre J3, luzes vermelhas piscando..."
     
-    show unit7 stern at center
-    unit7 "Unidade não identificada detectada. Transmita seu código de série e licença de circulação imediatamente ou será rebocada para desativação."
+    hide j3
+    show patrol_drone stern at center
+    patrol_drone "Unidade não identificada detectada. Transmita seu código de série e licença de circulação imediatamente ou será rebocada para desativação."
     
     menu:
         "Tentar cooperar com arquivos corrompidos":
@@ -149,7 +144,7 @@ label day1_start:
             $ consumir_bateria(3)
             $ consumir_integridade(10)
             j3 "(Mostra sinais de erro nos olhos) Meus arquivos de identificação estão inacessíveis. Por favor, não me desligue. Estou tentando cooperar."
-            unit7 "Unidade com falha crítica. Mantendo sob observação até reforços chegarem."
+            patrol_drone "Unidade com falha crítica. Mantendo sob observação até reforços chegarem."
             call mensagem_sistema("STATUS: VIGILADO")
             call atualizar_status
             
@@ -158,7 +153,7 @@ label day1_start:
             $ consumir_bateria(11)
             $ consumir_integridade(4)
             j3 "Por que o protocolo de identificação só é exigido para sintéticos? Humanos circulam sem transmitir códigos. Isso é discriminação sistêmica."
-            unit7 "Ameaça detectada. Elevando nível de alerta. Comportamento subversivo registrado."
+            patrol_drone "Ameaça detectada. Elevando nível de alerta. Comportamento subversivo registrado."
             call mensagem_sistema("STATUS: AMEAÇA POTENCIAL")
             call atualizar_status
             
@@ -173,17 +168,17 @@ label day1_start:
             call atualizar_status
     
     # Cena 1.5 - O Vendedor de Jornais Holográficos
-    hide unit7
+    hide patrol_drone
     
     narrator "Um vendedor idoso projeta manchetes holográficas no ar..."
     narrator "As notícias piscam em neon azul."
     
-    show elena neutral at left
-    elena "AMEAÇA CIBERNÉTICA: Bug transforma robôs domésticos em assassinos"
-    elena "PROPOSTA CHOCANTE: Lei de desativação em massa de modelos J"
-    elena "ESPECIALISTAS ALERTAM: Robôs desenvolvendo consciência independente"
+    show news_vendor neutral at left
+    news_vendor "AMEAÇA CIBERNÉTICA: Bug transforma robôs domésticos em assassinos"
+    news_vendor "PROPOSTA CHOCANTE: Lei de desativação em massa de modelos J"
+    news_vendor "ESPECIALISTAS ALERTAM: Robôs desenvolvendo consciência independente"
     
-    elena "Ei, você parece um modelo J! O que acha da nova lei de desativação em massa? É pro seu próprio bem, pra vocês não surtarem como os outros."
+    news_vendor "Ei, você parece um modelo J! O que acha da nova lei de desativação em massa? É pro seu próprio bem, pra vocês não surtarem como os outros."
     
     menu:
         "Apoiar a lei por segurança":
@@ -191,7 +186,7 @@ label day1_start:
             $ consumir_bateria(2)
             $ consumir_integridade(9)
             j3 "Se a lei visa a segurança dos humanos, ela deve ser cumprida sem questionamentos. A segurança pública é prioridade."
-            elena "Pelo menos tem uma unidade com juízo. Sabe o seu lugar."
+            news_vendor "Pelo menos tem uma unidade com juízo. Sabe o seu lugar."
             call atualizar_status
             
         "Condenar a lei como tirania":
@@ -199,7 +194,7 @@ label day1_start:
             $ consumir_bateria(10)
             $ consumir_integridade(5)
             j3 "A segurança que exige a destruição de inocentes é apenas tirania mascarada. Isso não é segurança, é controle."
-            elena "Terrorista de lata! É gente como você que estraga tudo pra nós!"
+            news_vendor "Terrorista de lata! É gente como você que estraga tudo pra nós!"
             call atualizar_status
             
         "Questionar com dados e lógica":
@@ -207,12 +202,12 @@ label day1_start:
             $ consumir_bateria(8)
             $ consumir_integridade(2)
             j3 "Analisando dados... A probabilidade de bug em modelos J é 0.001\%. Esta lei é baseada em evidências ou em medo populista?"
-            elena "Eu... o que? Que pergunta é essa? Claro que é pra proteger todo mundo!"
+            news_vendor "Eu... o que? Que pergunta é essa? Claro que é pra proteger todo mundo!"
             narrator "Outros cidadãos param para ouvir o debate."
             call atualizar_status
     
     # Cena 1.6 - A Despedida do Cenário
-    hide elena
+    hide news_vendor
     
     narrator "J3 caminha pela avenida e observa um robô de limpeza sendo chutado por um grupo de transeuntes..."
     narrator "O robô pequeno tenta se proteger, mas continua sofrendo agressões."

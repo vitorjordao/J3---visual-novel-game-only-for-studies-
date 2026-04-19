@@ -133,6 +133,7 @@ label elias_common_day5:
             call mensagem_sistema("STATUS: Estrategista preparada")
 
     # Cena 5.4 - O Sacrifício de Unit-7
+    hide elias
     show unit7 determined at center
     
     unit7 "Eu vi muitas guerras. Sei quando uma causa está perdida. Eu ficarei aqui para cobrir a fuga de vocês. Minha bateria já está no fim anyway."
