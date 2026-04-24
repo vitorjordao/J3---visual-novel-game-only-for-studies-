@@ -204,13 +204,67 @@ style input:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
+# Mantém caption (string sem ':' no menu) dentro da lista de items em vez de
+# mandar para o narrator. Evita que o texto caia no NVL e sobreponha as escolhas.
+define config.narrator_menu = False
+
+init -1 python:
+    def _menu_clear_background():
+        # Zera a fila NVL e esconde a janela de diálogo padrão para a caption do menu
+        # ser lida sem o fundo escuro do narrador competindo.
+        try:
+            renpy.store.nvl_list = []
+        except Exception:
+            pass
+        renpy.hide_screen("nvl")
+        renpy.hide_screen("say")
+
 screen choice(items):
     style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action
+    on "show" action Function(_menu_clear_background)
 
+    # Separa a caption (item sem action) das escolhas clicáveis.
+    $ caption_items = [i for i in items if i.action is None]
+    $ choice_items = [i for i in items if i.action is not None]
+
+    vbox:
+        xalign 0.5
+        yalign 0.5
+        spacing 22
+
+        # Caixa do enunciado/pergunta — fundo translúcido claro + borda neon.
+        if caption_items:
+            frame:
+                style "choice_caption_frame"
+                xsize 1100
+                xalign 0.5
+                padding (24, 16)
+                vbox:
+                    spacing 4
+                    for c in caption_items:
+                        text c.caption style "choice_caption_text"
+
+        vbox:
+            style "choice_vbox"
+            for i in choice_items:
+                textbutton i.caption action i.action
+
+style choice_caption_frame is default
+style choice_caption_text is default
+
+style choice_caption_frame:
+    xalign 0.5
+    background Solid("#020510f0")
+
+style choice_caption_text:
+    color "#ffffff"
+    size 26
+    xalign 0.5
+    textalign 0.5
+    font "gui/fonts/Rajdhani-Medium.ttf"
+    italic True
+    outlines [(2, "#000000", 0, 0)]
 
 style choice_vbox is vbox
 style choice_button is button
@@ -218,9 +272,6 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
-    yanchor 0.5
-
     spacing gui.choice_spacing
 
 style choice_button is default:
@@ -228,6 +279,7 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
+    font "gui/fonts/Rajdhani-Bold.ttf"
 
 
 ## Quick Menu screen ###########################################################
@@ -350,12 +402,42 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
+init python:
+    import random as _rnd
+    _main_menu_bg_pool = [
+        "backgrounds/day1/avenue_night.png",
+        "backgrounds/day2/arcade_night.png",
+        "backgrounds/day3/alley_night.png",
+        "backgrounds/day4/refuge_underground.png",
+        "backgrounds/day5/refuge_siege.png",
+        "backgrounds/day6/abandoned_lab.png",
+        "backgrounds/day6/neutral_location.png",
+        "backgrounds/day6/reprogramming_cell.png",
+        "backgrounds/day6/underground_hideout.png",
+        "backgrounds/day7/city_plaza.png",
+        "backgrounds/day7/coexistence_scene.png",
+        "backgrounds/day7/control_center.png",
+        "backgrounds/day7/hospital_service.png",
+        "backgrounds/day7/neutral_crossroads.png",
+        "backgrounds/day7/political_exposure.png",
+        "backgrounds/day7/reprogramming_facility.png",
+        "backgrounds/day7/resistance_cells.png",
+        "backgrounds/day7/resistance_poster.png",
+        "backgrounds/day7/shadow_control.png",
+        "backgrounds/day7/synth_obedient.png",
+        "backgrounds/finais/dark_street.png",
+        "backgrounds/finais/laboratory.png",
+    ]
+
+    def random_main_menu_bg():
+        return Transform(_rnd.choice(_main_menu_bg_pool), xysize=(1920, 1080))
+
 screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    add random_main_menu_bg()
 
     ## This empty frame darkens the main menu.
     frame:

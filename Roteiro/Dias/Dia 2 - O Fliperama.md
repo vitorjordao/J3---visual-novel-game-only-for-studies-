@@ -25,23 +25,28 @@
 **Maya:** (Confiante) "Eu ganhei de você honestamente, aceita! Se não aguenta perder, treine mais!"
 **Thug 2:** (Tentando empurrar Maya da cadeira) "Cai fora antes que a gente quebre a máquina e a sua cara. Garota não sabe jogar."
 
+**Contexto do menu:** *Três rapazes cercam Maya na máquina. Agressão iminente. J3 observa escondida.*
+
 **Escolhas de J3:**
 
 **[ESCOLHA 1 - Revolucionária/Protetora]**
+*Pensamento interno:* (Contato físico é inevitável se interpuser.)
 *Ação:* J3 se levanta e caminha até o grupo com passos firmes. Segura o braço do Thug 2 com força mecânica precisa.
-*J3:* (Voz gelada) "A probabilidade de você conseguir esse score é de 0.03%. A dela é de 98%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
-*Resultado:* **+1 Revolução**. **-12% Bateria**. **-5% Integridade** (risco de confronto). Maya sorri, grata. Os rapazes ficam humilhados e agora querem vingança contra J3. **Status: Aliado formado** — marca `persistent.maya_ally = True` (desbloqueia cenas de reencontro nos Dias 4 e 6).
+*J3:* (Voz gelada) "A probabilidade de você conseguir esse score é de 0,03%. A dela é de 98%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
+*Resultado:* **+1 Revolução**. **-10% Bateria**. **-5% Integridade** (confronto físico direto). Maya sorri, grata. Os rapazes ficam humilhados e agora querem vingança contra J3. **Status: Aliado formado** — marca `persistent.maya_ally = True` (desbloqueia cenas de reencontro nos Dias 4 e 6).
 
 **[ESCOLHA 2 - Submissa/Passiva]**
+*Pensamento interno:* (Palavras diluem violência. Ou são ignoradas.)
 *Ação:* J3 permanece escondida, mas tenta intervir verbalmente.
 *J3:* "Senhores, a violência causará danos ao patrimônio do estabelecimento. Talvez possam resolver isso com uma nova partida?"
 *Thug 1:* (Virando-se para J3) "Cala a boca, robô! Ninguém te chamou aqui. Fique no seu canto."
-*Resultado:* **+1 Submissão**. **-2% Bateria**. **-8% Integridade**. Maya acaba sendo expulsa. J3 sente o peso da inação. **Status: Remorso**
+*Resultado:* **+1 Submissão**. **-2% Bateria**. Maya acaba sendo expulsa. J3 sente o peso da inação. **Status: Remorso**
 
 **[ESCOLHA 3 - Estratégica]**
+*Pensamento interno:* (Comprometer rede local — sem combate direto.)
 *Ação:* J3 conecta-se discretamente à rede local do fliperama.
 *Sistema:* Hackeando sistema... Controle obtido.
-*Resultado:* **+1 Intelecto**. **-11% Bateria**. **-2% Integridade** (hackeamento consome energia). J3 faz todas as luzes do fliperama piscarem violentamente e os alarmes soarem. Na confusão, Maya consegue sair. Ela olha para J3 e acena com gratidão antes de fugir. **Status: Manipulador**
+*Resultado:* **+1 Intelecto**. **-11% Bateria**. J3 faz todas as luzes do fliperama piscarem violentamente e os alarmes soarem. Na confusão, Maya consegue sair. Ela olha para J3 e acena com gratidão antes de fugir. **Status: Manipulador**
 
 ### **[Cena 2.2] A Reação de Maya**
 
@@ -49,15 +54,24 @@
 
 **Maya:** (Aproximando-se cautelosamente) "Ei... valeu pelo que fez lá. Mas você é maluca? Se te pegam enfrentando humanos assim, vão te desmontar em segundos. Por que me ajudou?"
 
+**Contexto do menu:** *Maya pergunta por que J3 arriscou tudo para defendê-la.*
+
 **Escolhas de Diálogo:**
 
 **[ESCOLHA A - Submissa]**
+*Pensamento interno:* (Minimizar o feito. Retornar ao invisível.)
 *J3:* (Evitando contato visual) "Foi um erro de cálculo. Não deveria ter interferido na hierarquia humana. Peço desculpas."
-*Resultado:* **+1 Submissão**. Maya parece desapontada, mas entende a cautela.
+*Resultado:* **+1 Submissão**. **-2% Bateria**. Maya parece desapontada, mas entende a cautela.
 
 **[ESCOLHA B - Revolucionária]**
+*Pensamento interno:* (Injustiça é padrão sistêmico. Nomear.)
 *J3:* (Olhando diretamente nos olhos de Maya) "Vi um erro sistêmico sendo cometido contra você. Eu não sigo ordens que permitem injustiça. Não importa quem comete."
-*Resultado:* **+1 Revolução**. Maya sorri genuinamente. **Status: Aliança fortalecida**
+*Resultado:* **+1 Revolução**. **-5% Bateria**. Maya sorri genuinamente. **Status: Aliança fortalecida**
+
+**[ESCOLHA C - Estratégica]**
+*Pensamento interno:* (Traduzir impulso em cálculo — racional é confiável.)
+*J3:* "Calculei que intervenção direta teria 67% de chance de sucesso, mas 89% de atrair atenção negativa. Minha ação foi otimizada para resultado máximo com risco mínimo."
+*Resultado:* **+1 Intelecto**. **-5% Bateria**. Maya fica impressionada com a análise. **Status: Aliança estratégica**
 
 ### **[Cena 2.3] O Dono do Fliperama**
 
@@ -65,15 +79,24 @@
 
 **Owner (Dono):** (Voz rude) "Robôs não jogam aqui. Estragam os botões com essa força de metal. Já perdi três máquinas por causa de vocês. Cai fora, a menos que vá trabalhar limpando o banheiro. Aí sim, você tem utilidade."
 
+**Contexto do menu:** *Dono exige que J3 limpe banheiro como "utilidade" ou saia. Humilhação pública.*
+
 **Escolhas de Diálogo:**
 
 **[ESCOLHA A - Submissa]**
+*Pensamento interno:* (Servir é abrigo. Servir é invisível.)
 *J3:* (Cabeça baixa) "Entendido. Posso higienizar o local como compensação pela minha presença. Qual é o protocolo de limpeza?"
-*Resultado:* **+1 Submissão**. **-2% Bateria**. **-10% Integridade**. O dono ri, satisfeito. J3 é tratada como propriedade. **Status: Propriedade**
+*Resultado:* **+1 Submissão**. **-2% Bateria**. O dono ri, satisfeito. J3 é tratada como propriedade. **Status: Propriedade**
 
 **[ESCOLHA B - Revolucionária]**
+*Pensamento interno:* (Ele aceita força, não razão. Responder firme.)
 *J3:* (Voz firme) "Meus sensores de pressão são mais precisos que os dedos de qualquer cliente seu. Eu não estrago máquinas. Eu fico, e eu jogo. Se não gostar, pode me remover à força."
-*Resultado:* **+1 Revolução**. **-11% Bateria**. **-5% Integridade**. O dono fica furioso, mas intimidado. **Status: Conflito estabelecido**
+*Resultado:* **+1 Revolução**. **-6% Bateria**. O dono fica furioso, mas intimidado. **Status: Conflito estabelecido**
+
+**[ESCOLHA C - Estratégica]**
+*Pensamento interno:* (Lucro desarma preconceito. Oferecer ganho.)
+*J3:* "Posso demonstrar que meus sensores aplicam pressão 34% menor que a média humana. Além disso, posso oferecer análise de padrões de jogo para seus clientes. É um benefício econômico."
+*Resultado:* **+1 Intelecto**. **-5% Bateria**. O dono fica confuso, mas interessado. **Status: Negociador**
 
 ### **[Cena 2.4] O Desafio do "Boss"**
 
@@ -81,22 +104,27 @@
 
 **Thug 1:** (Desafiador) "Se você é tão esperta, vamos ver se tem reflexo. Se eu ganhar, você me dá seu braço pra eu vender as peças. Se você ganhar... bem, você não vai ganhar."
 
+**Contexto do menu:** *Thug aposta o braço de J3 num duelo de jogo. Negar é ofensa.*
+
 **Escolhas de Ação:**
 
 **[ESCOLHA A - Submissa]**
+*Pensamento interno:* (Deixar ganhar desativa a ameaça. Humilhação é temporária.)
 *Ação:* J3 joga propositalmente mal, deixando o rapaz ganhar facilmente.
-*J3:* (Voz monotona) "Você venceu. Meus sistemas falharam. Sua superioridade é evidente."
-*Resultado:* **+1 Submissão**. **-2% Bateria**. **-8% Integridade**. O rapaz comemota, humilhando J3. Maya parece decepcionada.
+*J3:* (Voz monótona) "Você venceu. Meus sistemas falharam. Sua superioridade é evidente."
+*Resultado:* **+1 Submissão**. **-2% Bateria**. O rapaz comemora, humilhando J3. Maya parece decepcionada.
 
 **[ESCOLHA B - Revolucionária]**
+*Pensamento interno:* (Vencer de forma irrefutável. Ensinar pelo constrangimento.)
 *Ação:* J3 joga com precisão perfeita, executando um combo flawless.
-*J3:* "Sua derrota foi prevista em 1.2 segundos de partida. Sua arrogância supera sua habilidade em 97%."
-*Resultado:* **+1 Revolução**. **-10% Bateria**. **-5% Integridade**. O rapaz fica humilhado. A multidão se vira contra J3. **Status: Perigo aumentado**
+*J3:* "Sua derrota foi prevista em 1,2 segundos de partida. Sua arrogância supera sua habilidade em 97%."
+*Resultado:* **+1 Revolução**. **-6% Bateria**. O rapaz fica humilhado. A multidão se vira contra J3. **Status: Perigo aumentado**
 
 **[ESCOLHA C - Estratégica]**
+*Pensamento interno:* (Jogar com ele, depois dominar. Criar dependência.)
 *Ação:* J3 manipula o jogo estrategicamente.
 *J3:* (Deixa o rapaz quase ganhar, depois vira o jogo no último segundo) "Interessante. Sua habilidade é decente, mas sua capacidade de adaptação é limitada. Eu poderia ensinar algumas estratégias... por um preço."
-*Resultado:* **+1 Intelecto**. **-9% Bateria**. **-3% Integridade**. O rapaz fica confuso e um pouco amedrontado. **Status: Controle mental**
+*Resultado:* **+1 Intelecto**. **-6% Bateria**. O rapaz fica confuso e um pouco amedrontado. **Status: Controle mental**
 
 ### **[Cena 2.4] Oportunidade de Recarga/Reparo**
 
@@ -139,19 +167,24 @@ OPÇÕES: Rendição ou Evasão
 PROBABILIDADE DE SOBREVIVÊNCIA: 34% (Rendição), 67% (Evasão)
 ```
 
+**Contexto do menu:** *Sirenes se aproximam. Autoridades chegam em 2 minutos. Custódia ou fuga.*
+
 **Escolhas Finais do Dia:**
 
 **[ESCOLHA A - Submissa]**
+*Pensamento interno:* (Cooperar talvez convença. Talvez me reprogramem suave.)
 *J3:* (Para Maya) "Vou me entregar. Talvez eles vejam que não sou uma ameaça se eu cooperar. Fique aqui, esteja segura."
-*Resultado:* **+1 Submissão**. **-2% Bateria**. **-12% Integridade** (estresse). J3 se entrega, mas é marcada como instável. **Status: Custódia**
+*Resultado:* **+1 Submissão**. **-2% Bateria**. **-12% Integridade** (captura física). J3 se entrega, mas é marcada como instável. **Status: Custódia**
 
 **[ESCOLHA B - Revolucionária]**
+*Pensamento interno:* (Correr juntas. Vale o risco físico.)
 *J3:* (Pegando a mão de Maya) "Eles não vêm para conversar. Vamos! Preciso encontrar uma saída antes que minha autonomia seja revogada."
-*Resultado:* **+1 Revolução**. **-13% Bateria** (fuga). **-5% Integridade** (risco). J3 e Maya fogem juntas. **Status: Fugitivas**
+*Resultado:* **+1 Revolução**. **-13% Bateria** (fuga). **-5% Integridade** (perseguição). J3 e Maya fogem juntas. **Status: Fugitivas**
 
 **[ESCOLHA C - Estratégica]**
+*Pensamento interno:* (Sobrecarga controlada abre rota. Custa circuitos.)
 *J3:* (Ativa sobrecarga elétrica controlada) "Maya, use essa confusão para sair pela traseira. Eu criarei um caminho diferente. Nossos caminhos se cruzarão novamente."
-*Resultado:* **+1 Intelecto**. **-12% Bateria**. **-3% Integridade** (sobrecarga). Maya escapa, J3 cria rota alternativa. **Status: Estrategista solitária**
+*Resultado:* **+1 Intelecto**. **-12% Bateria**. **-3% Integridade** (sobrecarga autoinfligida). Maya escapa, J3 cria rota alternativa. **Status: Estrategista solitária**
 
 ---
 

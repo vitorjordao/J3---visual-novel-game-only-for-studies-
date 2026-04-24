@@ -82,16 +82,16 @@ label final_0c_captura:
     
     call mensagem_sistema("RECURSOS INSUFICIENTES PARA AÇÃO")
     pause 1.0
-    call mensagem_sistema("BATERIA: [persistent.bateria]%")
+    call mensagem_sistema("BATERIA: [persistent.bateria]\%")
     pause 1.0
-    call mensagem_sistema("INTEGRIDADE: [persistent.integridade]%")
+    call mensagem_sistema("INTEGRIDADE: [persistent.integridade]\%")
     pause 1.0
     call mensagem_sistema("OPÇÕES LIMITADAS: RENDIÇÃO OBRIGATÓRIA")
     
     j3 "Muito... fraca... para lutar..."
     j3 "Não consigo... mais..."
     
-    show drone_captor at center
+    show drone_captor at drone_hover
     drone_captor "Unidade sintética identificada. Iniciando protocolo de captura."
     
     # J3 é capturada sem resistência

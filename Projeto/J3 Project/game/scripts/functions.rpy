@@ -45,6 +45,25 @@ init python:
         else:
             return "Equilíbrio Complexo"
 
+# Helpers para marcar custo/ganho de recursos em escolhas do menu.
+# Uso nos labels: "[custo(bat=2, integ=10)] Texto da escolha"
+init python:
+    def custo(bat=0, integ=0):
+        parts = []
+        if bat:
+            parts.append("{color=#ff5566}-%d BAT{/color}" % bat)
+        if integ:
+            parts.append("{color=#ff5566}-%d INT{/color}" % integ)
+        return ("[" + " / ".join(parts) + "]  ") if parts else ""
+
+    def ganho(bat=0, integ=0):
+        parts = []
+        if bat:
+            parts.append("{color=#55ff99}+%d BAT{/color}" % bat)
+        if integ:
+            parts.append("{color=#55ff99}+%d INT{/color}" % integ)
+        return ("[" + " / ".join(parts) + "]  ") if parts else ""
+
 # Função de sistema para mensagens
 init python:
     def mensagem_sistema(mensagem):

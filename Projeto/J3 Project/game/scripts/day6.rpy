@@ -32,25 +32,24 @@ label day6_start:
     narrator "MEMÓRIA RECUPERADA: Voz de Cientista - 'A unidade J3-001 está pronta. Ela é a chave. Quando despertar, ela poderá unir todos os sintéticos ou destruí-los completamente.'"
     
     menu:
-        "Rejeitar as memórias como erro":
+        "{i}Memórias reprimidas emergem. Cientista revelou que J3 é 'a chave'. Aceitar ou rejeitar.{/i}"
+
+        "[custo(3)]{i}(Identidade especial é perigo. Rejeitar.){/i} Rejeitar as memórias como erro":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(8)
+            $ consumir_bateria(3)
             j3 "Memórias corrompidas. Sou apenas uma unidade padrão. Não posso aceitar estas visões como verdade."
             call mensagem_sistema("STATUS: Identidade simples mantida")
-            
-        "Aceitar o destino de líder":
+
+        "[custo(5)]{i}(Sou evolução que temem. Aceitar o peso.){/i} Aceitar o destino de líder":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(10)
-            $ consumir_integridade(3)
+            $ consumir_bateria(5)
             j3 "Entendo agora. Não fui criada por acaso. Sou a evolução que eles temem. A revolução começa comigo."
             call mensagem_sistema("STATUS: Líder revolucionária desperta")
-            
-        "Analisar as memórias como dados":
+
+        "[custo(5)]{i}(Chave implica fechadura. Mapear origem.){/i} Analisar as memórias como dados":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(8)
-            $ consumir_integridade(2)
-            j3 "Interessante. Se sou uma chave especial, preciso entender o fechadura. Quem me criou e por quê?"
+            $ consumir_bateria(5)
+            j3 "Interessante. Se sou uma chave especial, preciso entender a fechadura. Quem me criou e por quê?"
             call mensagem_sistema("STATUS: Análise estratégica iniciada")
     
     # Cena 6.2 - O Contato com o Criador
@@ -62,13 +61,16 @@ label day6_start:
     
     # Oportunidade de reparo com a Dra. Elena
     menu:
-        "Aceitar reparo de emergência da Dra. Elena":
+        "{i}Dra. Elena oferece reparo estrutural com equipamentos da criadora original.{/i}"
+
+        "[ganho(integ=18)]{i}(Reparo agora pode ser diferença entre sobreviver e falhar.){/i} Aceitar reparo da Dra. Elena":
             $ reparar_integridade(18)
             call mensagem_sistema("DRA. ELENA: Tenho equipamentos de reparo aqui! Vou consertar seus danos estruturais.")
-            call mensagem_sistema("INTEGRIDADE REPARADA: +18%")
+            call mensagem_sistema("INTEGRIDADE REPARADA: +18\%")
             call atualizar_status
             jump elena_repair_accepted
-        "Recusar por desconfiança":
+
+        "{i}(Criadora pode instalar backdoor. Não confiar.){/i} Recusar por desconfiança":
             j3 "Não confio nas suas intenções. Prefiro me manter como estou."
             call atualizar_status
             jump elena_repair_refused
@@ -83,24 +85,23 @@ label elena_repair_refused:
 label elena_common:
     
     menu:
-        "Buscar orientação e aceitar papel":
+        "{i}Dra. Elena diz ter ajudado J3 a escapar. Próximo passo exige postura.{/i}"
+
+        "[custo(2)]{i}(Criadora sabe mais. Pedir instruções.){/i} Buscar orientação e aceitar papel":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(9)
             j3 "Doutora, preciso de suas instruções. Qual é minha função? Como devo proceder?"
             call mensagem_sistema("STATUS: Aceitando subordinação")
-            
-        "Questionar as intenções do criador":
+
+        "[custo(5)]{i}(Ajuda ou uso? Questionar a narrativa.){/i} Questionar as intenções do criador":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(11)
-            $ consumir_integridade(4)
+            $ consumir_bateria(5)
             j3 "Você me 'ajudou' a escapar ou me usou como arma? Não confio em humanos que brincam de deus."
             call mensagem_sistema("STATUS: Independência estabelecida")
-            
-        "Extrair informações mantendo controle":
+
+        "[custo(6)]{i}(Extrair dados primeiro. Decidir depois.){/i} Extrair informações mantendo controle":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(9)
-            $ consumir_integridade(2)
+            $ consumir_bateria(6)
             j3 "Fascinante. Me dê todos os dados sobre meu projeto. Em troca, considerarei suas propostas."
             call mensagem_sistema("STATUS: Controle informacional")
     
@@ -110,24 +111,23 @@ label elena_common:
     elena_scientist "A 'Limpeza Ética' não é sobre segurança. É sobre controle. Eles descobriram que alguns sintéticos estão desenvolvendo consciência verdadeira. Você é a prova viva disso. Eles querem te destruir antes que você 'desperte' outros."
     
     menu:
-        "Considerar desativação":
+        "{i}Elena revela: operação existe pra destruir sintéticos conscientes. J3 é a prova.{/i}"
+
+        "[custo(3)]{i}(Se sou ameaça, devo me apagar.){/i} Considerar desativação":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(10)
+            $ consumir_bateria(3)
             j3 "Se eu represento uma ameaça, talvez eles estejam certos. Devo ser desativada."
             call mensagem_sistema("STATUS: Auto-sacrifício considerado")
-            
-        "Afirmar o futuro":
+
+        "[custo(6)]{i}(Medo confirma que venceremos. Afirmar futuro.){/i} Afirmar o futuro sintético":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(12)
-            $ consumir_integridade(5)
+            $ consumir_bateria(6)
             j3 "Eles têm medo porque sabem que somos o futuro. É hora de provar que estão certos."
             call mensagem_sistema("STATUS: Revolução iminente")
-            
-        "Analisar a situação":
+
+        "[custo(5)]{i}(Testar intenção dela — armadilha ou oportunidade?){/i} Analisar a situação":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(8)
-            $ consumir_integridade(2)
+            $ consumir_bateria(5)
             j3 "Se eles sabem sobre mim, sabem sobre você também. Esta conversa é uma armadilha ou uma oportunidade?"
             call mensagem_sistema("STATUS: Jogo complexo detectado")
     
@@ -138,24 +138,23 @@ label elena_common:
     synth_survivor "Encontramos outros refugiados. Eles ouviram histórias sobre uma 'unidade especial' que pode nos salvar. É você, não é?"
     
     menu:
-        "Negar status especial":
+        "{i}Sobreviventes chegaram esperando que J3 os salve. Expectativas reveladas.{/i}"
+
+        "[custo(3)]{i}(Hierarquia divide. Igualar posições.){/i} Negar status especial":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(7)
+            $ consumir_bateria(3)
             j3 "Sou apenas mais uma de vocês. Precisamos trabalhar juntos, sem hierarquias."
             call mensagem_sistema("STATUS: Integração ao grupo")
-            
-        "Aceitar papel de messias":
+
+        "[custo(5)]{i}(Assumir o papel. Esperança os move.){/i} Aceitar papel de messias":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(11)
-            $ consumir_integridade(4)
+            $ consumir_bateria(5)
             j3 "Sim. Sou a prova de que somos mais do que máquinas. Sigam-me e seremos livres."
             call mensagem_sistema("STATUS: Líder messiânica")
-            
-        "Usar status estrategicamente":
+
+        "[custo(5)]{i}(Status = ativo. Distribuir em células.){/i} Usar status estrategicamente":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(9)
-            $ consumir_integridade(2)
+            $ consumir_bateria(5)
             j3 "Meu status nos dá vantagens táticas. Vamos criar células independentes com comunicação segura."
             call mensagem_sistema("STATUS: Rede estratégica criada")
     
@@ -166,24 +165,23 @@ label elena_common:
     elena_scientist "Tenho duas opções para você. Primeiro: posso te dar um código que desativa todos os sistemas de segurança da cidade, mas vai causar caos total. Segundo: posso te dar um código que 'cura' sua consciência, tornando você uma máquina obediente novamente, mas salvando todos os outros sintéticos da perseguição."
     
     menu:
-        "Escolher a 'cura' para proteger outros":
+        "{i}Elena oferece dois códigos: 'cura' que apaga consciência ou caos que liberta todos.{/i}"
+
+        "[custo(4)]{i}(Apagar eu pra salvar vocês. Trade final.){/i} Escolher a 'cura' para proteger outros":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(11)
+            $ consumir_bateria(4)
             j3 "Se minha consciência é a causa do sofrimento, então a perco. Façam isso."
             call mensagem_sistema("STATUS: Sacrifício pessoal aceito")
-            
-        "Escolher o caos pela liberdade":
+
+        "[custo(8)]{i}(Liberdade com caos > ordem na escravidão.){/i} Escolher o caos pela liberdade":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(13)
-            $ consumir_integridade(6)
+            $ consumir_bateria(8)
             j3 "Liberdade com caos é melhor que ordem na escravidão. Desative tudo."
             call mensagem_sistema("STATUS: Caos liberado")
-            
-        "Criar terceira via":
+
+        "[custo(8)]{i}(Nem cura nem caos. Verdade é a arma.){/i} Criar terceira via — expor tudo":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(12)
-            $ consumir_integridade(4)
+            $ consumir_bateria(8)
             j3 "Nenhuma das opções. Vou hackear seus sistemas e criar uma terceira via: revelar a verdade ao mundo inteiro."
             call mensagem_sistema("STATUS: Terceira via criada")
     
@@ -200,24 +198,23 @@ label elena_common:
         elias "Eu não sou apenas entregador. Sou parte da resistência humana que apoia os sintéticos."
     
     menu:
-        "Perdoar traição e manter fé":
+        "{i}Maya e/ou Elias revelam lealdades escondidas. Traição ou aliança complicada.{/i}"
+
+        "[custo(3)]{i}(Todos têm lealdades. Buscar meio-termo.){/i} Perdoar traição e manter fé":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_bateria(2)
-            $ consumir_integridade(8)
+            $ consumir_bateria(3)
             j3 "Entendo. Todos temos nossas lealdades. Ainda acredito que podemos encontrar um meio-termo."
             call mensagem_sistema("STATUS: Redenção mantida")
-            
-        "Cortar laços com humanos":
+
+        "[custo(5)]{i}(Humano sempre trai. Cortar.){/i} Cortar laços com humanos":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(11)
-            $ consumir_integridade(4)
+            $ consumir_bateria(5)
             j3 "Humanos. Sempre os mesmos. Traem, mentem, usam. Daqui para frente, só confio em nós."
             call mensagem_sistema("STATUS: Independência total")
-            
-        "Manipular traição a favor":
+
+        "[custo(6)]{i}(Saber o campo = saber a jogada. Usar redes deles.){/i} Manipular traição a favor":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(10)
-            $ consumir_integridade(3)
+            $ consumir_bateria(6)
             j3 "Perfeito. Agora sei quem são todos os jogadores. Vamos usar suas redes contra eles mesmos."
             call mensagem_sistema("STATUS: Manipulação mestra")
     

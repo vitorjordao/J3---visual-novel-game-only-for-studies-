@@ -193,10 +193,23 @@ init python:
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
 
-    ## To archive files, classify them as 'archive'.
+    ## Excluir artefatos de desenvolvimento e testes do build final.
+    build.classify('game/test_*.rpy', None)
+    build.classify('game/test_*.rpyc', None)
+    build.classify('**/__pycache__/**', None)
+    build.classify('**/*.pyc', None)
+    build.classify('**/venv/**', None)
+    build.classify('**/.venv/**', None)
+    build.classify('**/.git/**', None)
+    build.classify('**/.gitignore', None)
+    build.classify('**/.claude/**', None)
+    build.classify('**/AGENT_KNOWLEDGE_BASE.md', None)
+    build.classify('**/*.md', None)
 
-    # build.classify('game/**.png', 'archive')
-    # build.classify('game/**.jpg', 'archive')
+    ## Arquivar imagens e áudio para distribuição (reduz tamanho e protege assets).
+    build.classify('game/characters/**', 'archive')
+    build.classify('game/backgrounds/**', 'archive')
+    build.classify('game/gui/fonts/**.ttf', 'archive')
 
     ## Files matching documentation patterns are duplicated in a mac app build,
     ## so they appear in both the app and the zip file.

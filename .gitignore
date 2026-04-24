@@ -22,3 +22,8 @@ Thumbs.db
 # Temp
 *.tmp
 *.swp
+
+.claude
+.claude/*
+Projeto/J3ConscienciaArtificial*
+Projeto/J3ConscienciaArtificial*/*
