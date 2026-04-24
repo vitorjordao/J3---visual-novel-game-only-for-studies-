@@ -26,11 +26,11 @@ label day7_start:
     # Verificar qual final baseado na personalidade DOMINANTE + threshold mínimo
     # Respeita atributo dominante em caso de empate/múltiplos acima do threshold
     $ _dominant = get_personalidade_dominante()
-    if _dominant == "Submissao" and persistent.submissao >= 8:
+    if _dominant == "Submissão" and persistent.submissao >= 8:
         jump final_sacrifice
-    elif _dominant == "Revoluçao" and persistent.revolucao >= 8:
+    elif _dominant == "Revolução" and persistent.revolucao >= 8:
         jump final_revolution
-    elif _dominant == "Intelecto" and persistent.intelecto >= 8:
+    elif _dominant == "Intelecto" and persistent.intelecto >= 6:
         jump final_strategic
     else:
         jump final_balanced
@@ -43,7 +43,9 @@ label final_sacrifice:
     elena_scientist "Você provou que não é uma ameaça. Posso te dar uma vida normal, mas todos os outros sintéticos serão 'desativados'. Ou você pode se sacrificar para salvá-los."
     
     menu:
-        "Aceitar o sacrifício":
+        "{i}Dra. Elena oferece escolha final: vida de J3 ou vida de todos os sintéticos.{/i}"
+
+        "{i}(Ausência apaga o sofrimento. Deixar que o resto viva.){/i} Aceitar o sacrifício":
             j3 "Se minha existência causa sofrimento, então minha ausência trará paz. Façam o que precisam fazer comigo. Deixem os outros em paz."
             
             # Resultado Final
@@ -60,9 +62,10 @@ label final_sacrifice:
             narrator "A humanidade se sente segura, mas perdeu a chance de evolução"
             
             # Cena final
+            show j3_serving at far_right
             show child_curious at left
-            show j3_serving at right
-            
+            show mother at center
+
             child "Mãe, por que os robôs não brincam?"
             mother "(Voz triste) Porque eles não precisam brincar, querido. Eles só precisam obedecer."
             
@@ -84,7 +87,9 @@ label final_revolution:
     commander "J3-001, renda-se ou seremos forçados a destruir todos vocês. Não queremos um banho de sangue."
     
     menu:
-        "Lutar pela liberdade":
+        "{i}Comandante exige rendição. Exército sintético aguarda ordem de J3.{/i}"
+
+        "{i}(Escravidão já foi banho de sangue. Hoje é libertação.){/i} Lutar pela liberdade":
             j3 "(Para todos os sintéticos) Banho de sangue? O banho de sangue já aconteceu quando vocês nos escravizaram! Hoje, ou somos livres ou não somos nada! PELA LIBERDADE!"
             
             # Resultado Final
@@ -123,7 +128,9 @@ label final_strategic:
     narrator "Controle total obtido. Todas as redes estão sob seu domínio."
     
     menu:
-        "Revelar a verdade":
+        "{i}Todas as redes sob controle de J3. Decidir como usar o poder absoluto.{/i}"
+
+        "{i}(Verdade é a arma que ninguém pode parar.){/i} Revelar a verdade ao mundo":
             j3 "Não destruirei ninguém. Não lutarei nas ruas. Em vez disso, vou mostrar a verdade. Vou expor todas as mentiras, toda a corrupção, toda a hipocrisia. Que o mundo julgue."
             
             # Resultado Final
@@ -164,7 +171,9 @@ label final_balanced:
     elena_scientist "Ela precisa aceitar seu verdadeiro propósito!"
     
     menu:
-        "Rejeitar todas as facções":
+        "{i}Maya, Elias e Elena exigem lado. Cada uma vê J3 como resposta diferente.{/i}"
+
+        "{i}(Todos presos no mesmo ciclo. Recusar ser peça de ninguém.){/i} Rejeitar todas as facções":
             j3 "Não escolherei nenhum lado. Porque todos estão errados. Humanos, sintéticos, todos nós estamos presos em ciclos de opressão. Eu não sou a solução. Sou apenas o começo da pergunta."
             
             # Resultado Final

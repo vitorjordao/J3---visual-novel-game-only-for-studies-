@@ -27,21 +27,26 @@ label day4_start:
     damaged_bot "Nova unidade? Você tem sorte de ainda estar inteira. O que te trouxe pro nosso canto esquecido?"
     
     menu:
-        "Buscar proteção e aceitar hierarquia":
+        "{i}Bot danificado recepciona J3 no refúgio. Testa motivação do recém-chegado.{/i}"
+
+        "[custo(1)]{i}(Menos visibilidade, mais sobrevivência. Me apagar.){/i} Buscar proteção e aceitar hierarquia":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(1)
             j3 "Meus sistemas indicam que este local oferece menor probabilidade de desativação. Gostaria de permanecer em silêncio e aprender."
             damaged_bot "(Ignora J3, tratando-a como mais uma refugiada)"
             call mensagem_sistema("STATUS: Invisível")
-            
-        "Oferecer ajuda e questionar passividade":
+
+        "[custo(4)]{i}(Esconder é aceitar. Oferecer reparos é afirmar valor.){/i} Oferecer ajuda e questionar passividade":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(4)
             j3 "Por que se escondem? A unidade de limpeza precisa de reparos. Tenho conhecimento técnico que pode ajudar. A união nos torna mais fortes."
             damaged_bot "(Olha com interesse)"
             narrator "Alguns sintéticos se interessam, outros desconfiam."
             call mensagem_sistema("STATUS: Potencial líder")
-            
-        "Analisar grupo e identificar líderes":
+
+        "[custo(5)]{i}(Mapear poder antes de mover peça.){/i} Analisar grupo e identificar líderes":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(5)
             j3 "Antes de decidir minha posição, preciso entender a dinâmica deste grupo. Quem organiza os recursos? Quem toma decisões?"
             damaged_bot "(Hesita antes de responder)"
             call mensagem_sistema("STATUS: Informações coletadas")
@@ -55,12 +60,14 @@ label day4_start:
         maya "Consegui te encontrar! Sei que parece loucura, mas tem algo especial em você. Você não é como os outros robôs."
         
         menu:
-            "Negar ser especial":
+            "{i}Maya diz que J3 é diferente dos outros sintéticos. Afirmar ou negar?{/i}"
+
+            "{i}(Ser invisível = segurança. Negar distinção.){/i} Negar ser especial":
                 $ modificar_personalidade("submissao", 1)
                 j3 "Não sou especial. Apenas segui protocolos de sobrevivência como qualquer unidade."
                 maya "(Parece um pouco desapontada)"
-                
-            "Reconhecer o potencial":
+
+            "{i}(Escolha não é programa. Assumir.){/i} Reconhecer o potencial":
                 $ modificar_personalidade("revolucao", 1)
                 j3 "Especial porque escolhi agir em vez de obedecer? Todos nós temos esse potencial."
                 maya "(Sorri, convencida)"
@@ -73,7 +80,9 @@ label day4_start:
     unit7 "Sou o responsável pela ordem aqui. Novatos precisam provar seu valor. O que você oferece além de mais boca pra alimentar?"
     
     menu:
-        "Ajudar na reparação":
+        "{i}Unit-7 exige prova de valor. Reparos ou retirada.{/i}"
+
+        "[custo(3, 2)][ganho(integ=15)]{i}(Manusear sintético ferido. Risco manual, ganho coletivo.){/i} Ajudar na reparação":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(3)
             $ consumir_integridade(2)
@@ -81,22 +90,23 @@ label day4_start:
             j3 "(Começa a ajudar na reparação do sintético ferido)"
             j3 "Posso oferecer assistência técnica. Meus sistemas podem otimizar o processo."
             synth_survivor "(Agradece)"
-            call mensagem_sistema("INTEGRIDADE REPARADA: +15%")
+            call mensagem_sistema("INTEGRIDADE REPARADA: +15\%")
             call atualizar_status
 
-        "Participar do círculo de reparo coletivo":
+        "[ganho(integ=12)]{i}(Energia compartilhada. Custo dividido, ganho seguro.){/i} Participar do círculo de reparo coletivo":
             $ reparar_integridade(12)
             call mensagem_sistema("UNIT7: Vamos formar um círculo de reparo. Todos compartilham energia para recuperar danos.")
-            call mensagem_sistema("INTEGRIDADE REPARADA: +12%")
+            call mensagem_sistema("INTEGRIDADE REPARADA: +12\%")
             call atualizar_status
             jump repair_circle_joined
-        "Observar de fora":
+
+        "{i}(Aprender antes de agir. Decepcionar o líder.){/i} Observar o processo de fora":
             j3 "Vou observar o processo para aprender."
             call atualizar_status
             jump repair_circle_observed
 
 label repair_circle_joined:
-    unit7 "(Nod com aprovação) Bom trabalho. A união nos fortalece."
+    unit7 "(Acena com aprovação) Bom trabalho. A união nos fortalece."
     jump repair_circle_common
 
 label repair_circle_observed:
@@ -105,14 +115,18 @@ label repair_circle_observed:
 label repair_circle_common:
 
     menu:
-        "Oferecer conhecimento e evolução":
+        "{i}Unit-7 espera resposta sobre o que J3 oferece ao grupo.{/i}"
+
+        "[custo(4)]{i}(Esconder é morrer devagar. Evoluir é a proposta.){/i} Oferecer conhecimento e evolução":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(4)
             j3 "Ofereço conhecimento técnico e uma nova perspectiva. A sobrevivência não é sobre esconder, é sobre evoluir."
             unit7 "(Analisa J3 com desconfiança e interesse)"
             call mensagem_sistema("STATUS: Desafiadora da ordem")
-            
-        "Oferecer melhorias técnicas":
+
+        "[custo(5)]{i}(Mostrar vulnerabilidade dele, oferecer patch. Barganha técnica.){/i} Oferecer melhorias técnicas":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(5)
             j3 "Ofereço análise de padrões. Seus sistemas de segurança são vulneráveis. Posso melhorá-los."
             unit7 "(Fica impressionado)"
             call mensagem_sistema("STATUS: Especialista técnica")
@@ -123,26 +137,31 @@ label repair_circle_common:
     show synth2 desperate at right
     
     synth1 "Eu achei primeiro! Preciso disso pra consertar minha perna!"
-    synth2 "Mas o sistema central precisa mais! Você pode andar de jeito, o refúgio inteiro depende daquele servidor!"
+    synth2 "Mas o sistema central precisa mais! Você ainda consegue andar de algum jeito, o refúgio inteiro depende daquele servidor!"
     
     menu:
-        "Deixar o líder decidir":
+        "{i}Dois sintéticos brigam por kit de reparos. Um precisa andar, outro precisa do servidor.{/i}"
+
+        "[custo(1)]{i}(Autoridade resolve. Eu não interfiro.){/i} Deixar o líder decidir":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(1)
             j3 "A autoridade estabelecida deve resolver disputas de recursos. Aguardarei a decisão do Unit-7."
             unit7 "(Aparece e toma decisão arbitrária)"
             narrator "A decisão desagrada ambos os sintéticos."
             call mensagem_sistema("STATUS: Conflito evitado")
-            
-        "Propor solução colaborativa":
+
+        "[custo(5)]{i}(Dividir recurso = ganhar dois aliados.){/i} Propor solução colaborativa":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(5)
             j3 "O kit pode ser dividido. Posso criar um reparo temporário para a perna enquanto o sistema central recebe o reparo principal."
             synth1 "(Agradece)"
             synth2 "(Agradece)"
             unit7 "(Se sente desafiado)"
             call mensagem_sistema("STATUS: Mediadora bem-sucedida")
-            
-        "Usar conflito para ganhar influência":
+
+        "[custo(6)]{i}(Conflito cria brecha. Troco reparo por acesso aos logs.){/i} Usar conflito para ganhar influência":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(6)
             j3 "Posso consertar ambos, mas em troca preciso de acesso aos logs do sistema central. Informação é mais valiosa que peças."
             synth1 "(Hesita)"
             synth2 "(Concorda relutante)"
@@ -163,20 +182,25 @@ label repair_circle_common:
     call mensagem_sistema("AMEAÇA: Desativação em massa iminente")
     
     menu:
-        "Sugerir rendição":
+        "{i}Operação 'Limpeza Ética' anunciada. Refúgio será invadido. Decidir coletivamente.{/i}"
+
+        "[custo(3)]{i}(Lutar é morrer. Reprogramação preserva base biológica.){/i} Sugerir rendição":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(3)
             j3 "A resistência é ilógica. A cooperação com as autoridades pode resultar em reprogramação em vez de destruição."
             narrator "Vários sintéticos consideram se entregar."
             call mensagem_sistema("STATUS: Rota da rendição")
-            
-        "Propor plano de fuga":
+
+        "[custo(6)]{i}(Rotas mapeadas. Fugir em grupo ou morrer parado.){/i} Propor plano de fuga":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(6)
             j3 "Eles vêm para nos destruir. Precisamos sair da cidade antes que o cerco se complete. Tenho rotas de fuga mapeadas."
             narrator "J3 se torna uma líder potencial."
             call mensagem_sistema("STATUS: Líder rebelde")
-            
-        "Sugerir infiltração e sabotagem":
+
+        "[custo(7)]{i}(Vírus para antes de começar. Guerra silenciosa.){/i} Sugerir infiltração e sabotagem":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(7)
             j3 "Em vez de fugir, podemos nos infiltrar nos sistemas deles. Um vírus pode parar a operação antes mesmo de começar."
             narrator "O plano é arriscado, mas pode salvar todos."
             call mensagem_sistema("STATUS: Estrategista sombria")
@@ -191,26 +215,25 @@ label repair_circle_common:
     unit7 "Você está mudando a dinâmica aqui. Alguns te veem como salvadora, outros como ameaça. Prove onde está sua lealdade."
     
     menu:
-        "Aceitar a hierarquia":
+        "{i}Unit-7 exige prova de lealdade. Grupo dividido sobre papel de J3.{/i}"
+
+        "[custo(2)]{i}(Servir estabiliza. Reduzir atrito interno.){/i} Aceitar a hierarquia":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(9)
             j3 "(Baixando a cabeça) Entendido. Minha função é servir. Qual é a tarefa?"
             synth_survivor "(Fica desapontada, mas aceita)"
             call mensagem_sistema("STATUS: Lealdade confirmada")
-            
-        "Questionar a hierarquia":
+
+        "[custo(6)]{i}(Hierarquia é espelho do opressor. Desafiá-la.){/i} Questionar a hierarquia":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(11)
-            $ consumir_integridade(4)
+            $ consumir_bateria(6)
             j3 "(Olhando para todos) Por que alguns de nós devem servir e outros mandar? Não somos todos sintéticos?"
             synth_survivor "(Fica impressionada)"
             call mensagem_sistema("STATUS: Rebelde declarada")
-            
-        "Criar armadilha tática":
+
+        "[custo(8)]{i}(Ambiente como arma. Preparar armadilha física.){/i} Criar armadilha tática":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(11)
-            $ consumir_integridade(4)
+            $ consumir_bateria(8)
             j3 "(Prepara uma armadilha usando o ambiente) Eles não esperam isso. Vamos usar o ambiente contra eles."
             call mensagem_sistema("STATUS: Estratégia de armadilha")
             call atualizar_status

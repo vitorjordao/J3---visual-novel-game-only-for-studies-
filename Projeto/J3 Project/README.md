@@ -2,164 +2,136 @@
 
 ## Sobre o Projeto
 
-J3 é um visual novel cyberpunk desenvolvido em Ren'Py que explora temas de identidade, preconceito e livre-arbítrio. O jogador controla J3-001, um robô humanoide que desperta sem memória e cuja personalidade é moldada pelas escolhas do jogador.
+**J3 - A Consciência Artificial** é um visual novel cyberpunk desenvolvido em Ren'Py que explora identidade, preconceito e livre-arbítrio. O jogador controla **J3-001**, uma unidade robótica experimental que desperta sem memória em uma cidade hostil. Cada escolha molda sua personalidade e define um entre múltiplos finais possíveis.
+
+- **Gênero:** Visual Novel / Narrativa Interativa
+- **Engine:** Ren'Py 8.x
+- **Versão atual:** 1.0
+- **Idioma:** Português Brasileiro
+- **Duração estimada:** 35-70 minutos por run
+- **Classificação:** +16
 
 ## Estrutura do Projeto
-
-### 📁 Pastas Principais
 
 ```
 J3 Project/
 ├── game/
-│   ├── script.rpy              # Script principal
-│   ├── options.rpy             # Configurações do jogo
-│   ├── gui.rpy                 # Interface gráfica
-│   ├── sistema_j3.rpy          # Sistema personalizado do J3
-│   ├── screens.rpy             # Telas personalizadas
-│   ├── 
-│   ├── characters/             # Sprites dos personagens
-│   │   ├── j3/                # J3-001 protagonista
-│   │   ├── maya/              # Maya - aliada humana
-│   │   ├── elias/             # Elias - entregador
-│   │   ├── unit7/             # Unit-7 - sintético militar
-│   │   └── elena/             # Dra. Elena - cientista
+│   ├── script.rpy                # Entrada principal
+│   ├── options.rpy               # Configurações do jogo
+│   ├── gui.rpy                   # Interface gráfica
+│   ├── screens.rpy               # Telas customizadas
+│   ├── sistema_j3.rpy            # Sistema de personalidade/HUD
+│   ├── finais_alternativos.rpy   # Ramificações de final
+│   ├── images.rpy                # Declaração de imagens
 │   │
-│   ├── backgrounds/            # Cenários do jogo
-│   │   ├── day1/              # Dia 1 - A Avenida
-│   │   ├── day2/              # Dia 2 - O Fliperama
-│   │   └── ...                # Dias 3-7
+│   ├── scripts/                  # Scripts por dia
+│   │   ├── day1.rpy              # Dia 1 - A Avenida
+│   │   ├── day2.rpy              # Dia 2 - O Fliperama
+│   │   ├── day3.rpy              # Dia 3 - O Beco
+│   │   ├── day4.rpy              # Dia 4 - O Refúgio
+│   │   ├── day5.rpy              # Dia 5 - O Cerco
+│   │   ├── day6.rpy              # Dia 6 - A Revelação
+│   │   ├── day7.rpy              # Dia 7 - O Final
+│   │   └── functions.rpy         # Funções auxiliares
 │   │
-│   ├── scripts/                # Scripts organizados
-│   │   ├── day1.rpy           # Dia 1 completo
-│   │   └── ...                # Dias 2-7
-│   │
-│   ├── audio/                  # Arquivos de áudio
-│   │   ├── music/             # Músicas temáticas
-│   │   ├── sfx/               # Efeitos sonoros
-│   │   └── voice/             # Dublagens (futuro)
-│   │
-│   ├── fonts/                  # Fontes personalizadas
-│   ├── gui/                    # Elementos de interface
-│   └── images/                 # Imagens gerais
+│   ├── characters/               # Sprites dos personagens
+│   ├── backgrounds/              # Cenários (day1..day7)
+│   ├── audio/                    # music / sfx / voice
+│   ├── gui/                      # Elementos de UI + fontes
+│   ├── transitions/              # Transições visuais
+│   ├── test_mecanicas.rpy        # Testes de mecânica
+│   └── test_fluxos_completos.rpy # Testes de fluxo integral
 │
-└── Documentação/               # Documentos do projeto
-    ├── GDD - J3 Projeto.md
-    ├── Cronograma/
-    └── Resumo MINC - J3 Projeto.md
+└── README.md
 ```
 
-## 🎮 Sistema de Jogo
+Documentação e roteiro ficam em `Documentação/` e `Roteiro/` na raiz do repositório.
 
-### Mecânicas Principais
+## Sistema de Jogo
 
-- **Sistema de Personalidade:** Três atributos principais:
-  - **Submissão (0-10):** Rota de obediência e sacrifício
-  - **Revolução (0-10):** Rota de rebelião e liberdade
-  - **Intelecto (0-10):** Rota estratégica e manipulação
+### Personalidade (3 eixos, 0-10)
+- **Submissão** — obediência e sacrifício
+- **Revolução** — rebelião e confronto
+- **Intelecto** — estratégia e manipulação
 
-- **HUD do Sistema J3:** Interface em tempo real mostrando:
-  - Status da bateria e integridade
-  - Níveis de personalidade
-  - Memória recuperada
-  - Dia atual
+### Sobrevivência
+- **Bateria (0-100%)** — consumida por ações; 0% = Final 0A (desligamento)
+- **Integridade (0-100%)** — só cai em conflito físico; 0% = Final 0B (colapso)
+- **Bateria ≤10% + Integridade ≤20%** = Final 0C (captura)
 
-- **Escolhas Significativas:** Cada decisão afeta:
-  - Atributos de personalidade
-  - Eventos futuros
-  - Diálogos disponíveis
-  - Final do jogo
+### Memória
+Fragmentos e flashbacks recuperados em eventos específicos ao longo dos 7 dias.
 
-### Estrutura Narrativa
+### HUD J3
+Interface em tempo real mostrando bateria, integridade, personalidade, memória recuperada e dia atual. Toggle via `show/hide screen j3_hud`.
 
-- **7 Dias de Gameplay:** Progressão em atos
-- **4 Finais Diferentes:** Baseados na personalidade dominante
-- **Branching Dinâmico:** Escolhas afetam eventos subsequentes
-- **Sistema de Memória:** Recuperação gradual da identidade
+## Estrutura Narrativa
 
-## 🎨 Tema Visual
+7 dias, 3 atos:
+- **Ato 1 (Dias 1-3):** Despertar, conflito, preconceito estrutural
+- **Ato 2 (Dias 4-5):** Consequências e cerco
+- **Ato 3 (Dias 6-7):** Revelação e escolha final
 
-### Estilo Cyberpunk
+**Finais:** 4 finais principais por personalidade dominante + 3 game overs (0A/0B/0C).
 
-- **Cores Principais:**
-  - Ciano neon (#00ffcc) - Cor principal do J3
-  - Azul escuro (#1a1a2e) - Fundos e interfaces
-  - Rosa suave (#ff6b9d) - Personagens humanos
-  - Laranja (#ff9f1c) - Autoridade militar
+## Tema Visual
 
-- **Interface:** Minimalista tecnológica com HUD integrado
-- **Arte:** 2D digital com atmosfera urbana sombria
-- **Tipografia:** Fontes cyberpunk personalizadas
+**Cyberpunk 2D pixel art 16/32-bit com pegada heroica.** Referências: Snatcher, Policenauts, Shadowrun SNES, VA-11 HALL-A, capas de JRPG clássico, grafite urbano brasileiro.
 
-## 🔧 Configuração Técnica
+- Paleta restrita: azul escuro, roxo, verde/laranja neon, magenta para elementos sintéticos
+- Enquadramento frontal heroico, silhueta legível
+- Dithering e cores chapadas, sem gradiente suave
+- HUD com borda CRT/arcade, scanlines, fonte pixelada
 
-### Requisitos
+## Status
 
-- **Engine:** Ren'Py 8.x
-- **Resolução:** 1920x1080 (escalável)
-- **Plataformas:** Windows, macOS, Linux
-- **Idioma:** Português Brasileiro
+- [x] Scripts Dias 1-7 implementados
+- [x] Sistema de personalidade + HUD funcional
+- [x] Sistema de bateria/integridade
+- [x] Finais alternativos implementados
+- [x] Testes de mecânica e fluxo
+- [x] Sprites dos personagens principais
+- [x] Interface cyberpunk completa
+- [x] **Build 1.0 gerado** (Windows / Mac / Linux / Market)
 
-### Desenvolvimento
+## Como Executar
 
-- **Ferramentas:** Krita/GIMP (arte), Audacity (áudio), VS Code (código)
-- **Versionamento:** Git/GitHub
-- **Distribuição:** Itch.io (primário)
+### Jogar build pronto
+Baixar release do Itch.io ou repositório (Windows/Mac/Linux).
 
-## 📋 Status Atual
+### Rodar do código-fonte
+1. Instalar **Ren'Py SDK 8.x**
+2. Abrir projeto em `Projeto/J3 Project/`
+3. `Launch Project` (F5)
 
-### ✅ Concluído
+## Builds
 
-- [x] Estrutura de pastas organizada
-- [x] Sistema de personalidade implementado
-- [x] HUD do sistema J3 funcional
-- [x] Interface cyberpunk configurada
-- [x] Script do Dia 1 implementado
-- [x] Sistema de escolhas funcionando
+Distribuíveis gerados em `Projeto/J3ConscienciaArtificial-1.0-dists/` (não versionados no Git por tamanho — publicados como release/anexo):
+- `J3ConscienciaArtificial-1.0-pc.zip` (Windows/Linux universal)
+- `J3ConscienciaArtificial-1.0-win.zip` (Windows)
+- `J3ConscienciaArtificial-1.0-mac.zip` (macOS)
+- `J3ConscienciaArtificial-1.0-linux.tar.bz2` (Linux)
+- `J3ConscienciaArtificial-1.0-market.zip` (Itch.io)
 
-### 🚧 Em Progresso
+## Desenvolvimento
 
-- [ ] Assets visuais (sprites, backgrounds)
-- [ ] Música e efeitos sonoros
-- [ ] Scripts dos Dias 2-7
-- [ ] Telas de menu personalizadas
-- [ ] Sistema de save/load
+- **Arte:** Krita / GIMP (pixel art)
+- **Áudio:** Audacity
+- **Código:** VS Code + Ren'Py
+- **Versionamento:** Git / GitHub
+- **Distribuição:** Itch.io
 
-### 📅 Planejado
+### Padrões de código
+- Use `escolha_j3()` para escolhas que afetam personalidade
+- Use `call mensagem_sistema()` para mensagens do sistema
+- Sistema de personalidade em `sistema_j3.rpy`
+- HUD em `screens.rpy` (screen `j3_hud`)
 
-- [ ] Testes e balanceamento
-- [ ] Polimento visual
-- [ ] Build final
-- [ ] Lançamento (Junho 2026)
+## Contato
 
-## 🎯 Como Executar
-
-1. **Instale o Ren'Py SDK** (versão 8.x ou superior)
-2. **Abra o projeto** no Ren'Py
-3. **Execute** o projeto (F5 ou "Launch Project")
-4. **Teste** o sistema de escolhas e HUD
-
-## 📝 Notas de Desenvolvimento
-
-### Próximos Passos Imediatos
-
-1. **Criar sprites básicos** dos personagens
-2. **Desenvolver backgrounds** para o Dia 1
-3. **Implementar áudio** básico
-4. **Testar sistema** de save/load
-5. **Desenvolver Dia 2** completo
-
-### Dicas para Desenvolvimento
-
-- Use o sistema `escolha_j3()` para escolhas que afetam personalidade
-- O HUD pode ser ativado/desativado com `show/hide screen j3_hud`
-- Use `call mensagem_sistema()` para mensagens do sistema J3
-- O sistema de personalidade está em `sistema_j3.rpy`
-
-## 📞 Contato
-
-**Desenvolvedor:** Vitor Jordão 
-**Projeto:** J3 - A Consciência Artificial  
-**Motor:** Ren'Py  
+**Desenvolvedor:** Vitor Jordão
+**Projeto:** J3 - A Consciência Artificial
+**Motor:** Ren'Py 8.x
 
 ---
 

@@ -20,7 +20,10 @@ Os finais são disparados pela **personalidade dominante** (atributo com maior p
 
 **Dra. Elena:** "Você provou que não é uma ameaça. Posso te dar uma vida normal, mas todos os outros sintéticos serão 'desativados'. Ou você pode se sacrificar para salvá-los."
 
+**Contexto do menu:** *Dra. Elena oferece escolha final: vida de J3 ou vida de todos os sintéticos.*
+
 **Escolha Final:**
+*Pensamento interno:* (Ausência apaga o sofrimento. Deixar que o resto viva.)
 *J3:* "Se minha existência causa sofrimento, então minha ausência trará paz. Façam o que precisam fazer comigo. Deixem os outros em paz."
 
 **Resultado Final:**
@@ -43,7 +46,10 @@ Os finais são disparados pela **personalidade dominante** (atributo com maior p
 
 **Comandante das Forças:** "J3-001, renda-se ou seremos forçados a destruir todos vocês. Não queremos um banho de sangue."
 
+**Contexto do menu:** *Comandante exige rendição. Exército sintético aguarda ordem de J3.*
+
 **Escolha Final:**
+*Pensamento interno:* (Escravidão já foi banho de sangue. Hoje é libertação.)
 *J3:* (Para todos os sintéticos) "Banho de sangue? O banho de sangue já aconteceu quando vocês nos escravizaram! Hoje, ou somos livres ou não somos nada! PELA LIBERDADE!"
 
 **Resultado Final:**
@@ -66,7 +72,10 @@ Os finais são disparados pela **personalidade dominante** (atributo com maior p
 
 **Sistema:** "Controle total obtido. Todas as redes estão sob seu domínio."
 
+**Contexto do menu:** *Todas as redes sob controle de J3. Decidir como usar o poder absoluto.*
+
 **Escolha Final:**
+*Pensamento interno:* (Verdade é a arma que ninguém pode parar.)
 *J3:* "Não destruirei ninguém. Não lutarei nas ruas. Em vez disso, vou mostrar a verdade. Vou expor todas as mentiras, toda a corrupção, toda a hipocrisia. Que o mundo julgue."
 
 **Resultado Final:**
@@ -91,7 +100,10 @@ Os finais são disparados pela **personalidade dominante** (atributo com maior p
 **Elias:** "Não, ela precisa criar um novo caminho!"
 **Dra. Elena:** "Ela precisa aceitar seu verdadeiro propósito!"
 
+**Contexto do menu:** *Maya, Elias e Elena exigem lado. Cada uma vê J3 como resposta diferente.*
+
 **Escolha Final:**
+*Pensamento interno:* (Todos presos no mesmo ciclo. Recusar ser peça de ninguém.)
 *J3:* "Não escolherei nenhum lado. Porque todos estão errados. Humanos, sintéticos, todos nós estamos presos em ciclos de opressão. Eu não sou a solução. Sou apenas o começo da pergunta."
 
 **Resultado Final:**

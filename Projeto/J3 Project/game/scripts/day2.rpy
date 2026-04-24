@@ -18,7 +18,7 @@ label day2_start:
     
     # Status atual de J3
     call mensagem_sistema("SISTEMA: Bateria - 72\%")
-    call mensagem_sistema("SISTEMA: Integridade - 95%")
+    call mensagem_sistema("SISTEMA: Integridade - 95\%")
     call mensagem_sistema("SISTEMA: Status: Procurado (se escolhas revolucionárias no Dia 1)")
     call mensagem_sistema("SISTEMA: Objetivo: Encontrar abrigo temporário")
     
@@ -37,33 +37,33 @@ label day2_start:
     
     # Primeira escolha importante do dia
     menu:
-        "Interceptar e proteger Maya":
+        "{i}Três rapazes cercam Maya na máquina. Agressão iminente. J3 observa escondida.{/i}"
+
+        "[custo(4, 10)]{i}(Contato físico é inevitável se interpuser.){/i} Segurar o braço do agressor":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(12)
-            $ consumir_integridade(5)
+            $ consumir_bateria(4)
+            $ consumir_integridade(10)
             $ persistent.maya_ally = True
             j3 "(Se levanta e caminha até o grupo com passos firmes)"
             j3 "(Segura o braço do thug2 com força mecânica precisa)"
-            j3 "A probabilidade de você conseguir esse score é de 0.03\%. A dela é de 98\%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
+            j3 "A probabilidade de você conseguir esse score é de 0,03\%. A dela é de 98\%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
             thug2 "(Solta o braço de Maya, assustado)"
             maya "(Sorri, grata)"
             call mensagem_sistema("STATUS: Aliado formado")
             call atualizar_status
             
-        "Tentar mediar verbalmente":
+        "[custo(2)]{i}(Palavras diluem violência. Ou são ignoradas.){/i} Tentar mediar verbalmente":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(8)
             j3 "Senhores, a violência causará danos ao patrimônio do estabelecimento. Talvez possam resolver isso com uma nova partida?"
             thug1 "Cala a boca, robô! Ninguém te chamou aqui. Fique no seu canto."
             maya "(É expulsa da máquina)"
             call mensagem_sistema("STATUS: Remorso")
             call atualizar_status
             
-        "Hackear o sistema do fliperama":
+        "[custo(11)]{i}(Comprometer rede local — sem combate direto.){/i} Hackear o sistema do fliperama":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(11)
-            $ consumir_integridade(2)
             j3 "(Conecta-se discretamente à rede local)"
             call mensagem_sistema("HACK: Sistema do fliperama comprometido")
             call mensagem_sistema("CONTROLE: Luzes e alarmes obtidos")
@@ -85,14 +85,17 @@ label day2_start:
     
     # Oportunidade especial de recarga
     menu:
-        "Aceitar ajuda de Maya":
+        "{i}Maya oferece recarga portátil. Aceitar cria vínculo; recusar preserva autonomia.{/i}"
+
+        "[ganho(15)]{i}(Recurso agora vale mais que orgulho.){/i} Aceitar ajuda de Maya":
             $ recarregar_bateria(15)
             $ persistent.maya_ally = True
             call mensagem_sistema("MAYA: Tenho uma estação portátil! Vou recarregar você!")
-            call mensagem_sistema("BATERIA RECARGADA: +15%")
+            call mensagem_sistema("BATERIA RECARREGADA: +15\%")
             call atualizar_status
             jump maya_reaction_recarga
-        "Recusar educadamente":
+
+        "{i}(Não deveria depender de humano. Autonomia primeiro.){/i} Recusar educadamente":
             $ modificar_personalidade("intelecto", 1)
             j3 "Agradeço a oferta, mas devo preservar minha autonomia. Sua generosidade é notável."
             call atualizar_status
@@ -110,27 +113,26 @@ label maya_reaction_no_recarga:
 label maya_common_reaction:
     
     menu:
-        "Responder com submissão":
+        "{i}Maya pergunta por que J3 arriscou tudo para defendê-la.{/i}"
+
+        "[custo(2)]{i}(Minimizar o feito. Retornar ao invisível.){/i} Pedir desculpas por ter interferido":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(9)
             j3 "(Evitando contato visual) Foi um erro de cálculo. Não deveria ter interferido na hierarquia humana. Peço desculpas."
             maya "(Parece desapontada, mas entende a cautela)"
             call atualizar_status
-            
-        "Afirmar seus princípios":
+
+        "[custo(5)]{i}(Injustiça é padrão sistêmico. Nomear.){/i} Afirmar seus princípios":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(10)
-            $ consumir_integridade(4)
+            $ consumir_bateria(5)
             j3 "(Olhando diretamente nos olhos de Maya) Vi um erro sistêmico sendo cometido contra você. Eu não sigo ordens que permitem injustiça. Não importa quem comete."
             maya "(Sorri genuinamente)"
             call mensagem_sistema("STATUS: Aliança fortalecida")
             call atualizar_status
-            
-        "Analisar a situação estrategicamente":
+
+        "[custo(5)]{i}(Traduzir impulso em cálculo — racional é confiável.){/i} Analisar a situação estrategicamente":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(8)
-            $ consumir_integridade(2)
+            $ consumir_bateria(5)
             j3 "Calculei que intervenção direta teria 67\% de chance de sucesso, mas 89\% de atrair atenção negativa. Minha ação foi otimizada para resultado máximo com risco mínimo."
             maya "(Fica impressionada com a análise)"
             call mensagem_sistema("STATUS: Aliança estratégica")
@@ -142,28 +144,27 @@ label maya_common_reaction:
     owner "Robôs não jogam aqui. Estragam os botões com essa força de metal. Já perdi três máquinas por causa de vocês. Cai fora, a menos que vá trabalhar limpando o banheiro. Aí sim, você tem utilidade."
     
     menu:
-        "Aceitar a condição humilhante":
+        "{i}Dono exige que J3 limpe banheiro como 'utilidade' ou saia. Humilhação pública.{/i}"
+
+        "[custo(2)]{i}(Servir é abrigo. Servir é invisível.){/i} Aceitar a condição humilhante":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(10)
             j3 "(Cabeça baixa) Entendido. Posso higienizar o local como compensação pela minha presença. Qual é o protocolo de limpeza?"
             owner "(Ri, satisfeito)"
             call mensagem_sistema("STATUS: Propriedade")
             call atualizar_status
-            
-        "Desafiar o dono":
+
+        "[custo(6)]{i}(Ele aceita força, não razão. Responder firme.){/i} Desafiar o dono":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(11)
-            $ consumir_integridade(5)
+            $ consumir_bateria(6)
             j3 "Meus sensores de pressão são mais precisos que os dedos de qualquer cliente seu. Eu não estrago máquinas. Eu fico, e eu jogo. Se não gostar, pode me remover à força."
             owner "(Fica furioso, mas intimidado)"
             call mensagem_sistema("STATUS: Conflito estabelecido")
             call atualizar_status
-            
-        "Negociar com dados técnicos":
+
+        "[custo(5)]{i}(Lucro desarma preconceito. Oferecer ganho.){/i} Negociar com dados técnicos":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(9)
-            $ consumir_integridade(2)
+            $ consumir_bateria(5)
             j3 "Posso demonstrar que meus sensores aplicam pressão 34\% menor que a média humana. Além disso, posso oferecer análise de padrões de jogo para seus clientes. É um benefício econômico."
             owner "(Fica confuso, mas interessado)"
             call mensagem_sistema("STATUS: Negociador")
@@ -176,31 +177,30 @@ label maya_common_reaction:
     thug1 "Se você é tão esperta, vamos ver se tem reflexo. Se eu ganhar, você me dá seu braço pra eu vender as peças. Se você ganhar... bem, você não vai ganhar."
     
     menu:
-        "Jogar mal de propósito":
+        "{i}Thug aposta o braço de J3 num duelo de jogo. Negar é ofensa.{/i}"
+
+        "[custo(2)]{i}(Deixar ganhar desativa a ameaça. Humilhação é temporária.){/i} Jogar mal de propósito":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(8)
             j3 "(Joga propositalmente mal, deixando o rapaz ganhar facilmente)"
             j3 "Você venceu. Meus sistemas falharam. Sua superioridade é evidente."
             thug1 "(Comemora, humilhando J3)"
             maya "(Parece decepcionada)"
             call atualizar_status
-            
-        "Jogar com precisão perfeita":
+
+        "[custo(6)]{i}(Vencer de forma irrefutável. Ensinar pelo constrangimento.){/i} Jogar com precisão perfeita":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(10)
-            $ consumir_integridade(5)
+            $ consumir_bateria(6)
             j3 "(Joga com precisão perfeita, executando um combo flawless)"
-            j3 "Sua derrota foi prevista em 1.2 segundos de partida. Sua arrogância supera sua habilidade em 97\%."
+            j3 "Sua derrota foi prevista em 1,2 segundos de partida. Sua arrogância supera sua habilidade em 97\%."
             thug1 "(Fica humilhado)"
             narrator "A multidão se vira contra J3."
             call mensagem_sistema("STATUS: Perigo aumentado")
             call atualizar_status
-            
-        "Manipular o jogo estrategicamente":
+
+        "[custo(6)]{i}(Jogar com ele, depois dominar. Criar dependência.){/i} Manipular o jogo estrategicamente":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(9)
-            $ consumir_integridade(3)
+            $ consumir_bateria(6)
             j3 "(Deixa o rapaz quase ganhar, depois vira o jogo no último segundo)"
             j3 "Interessante. Sua habilidade é decente, mas sua capacidade de adaptação é limitada. Eu poderia ensinar algumas estratégias... por um preço."
             thug1 "(Fica confuso e um pouco amedrontado)"
@@ -214,26 +214,28 @@ label maya_common_reaction:
     call mensagem_sistema("ALERTA: Autoridades se aproximando")
     call mensagem_sistema("TEMPO ESTIMADO: 2 minutos até chegada")
     call mensagem_sistema("OPÇÕES: Rendição ou Evasão")
-    call mensagem_sistema("PROBABILIDADE DE SOBREVIVÊNCIA: 34% (Rendição), 67% (Evasão)")
+    call mensagem_sistema("PROBABILIDADE DE SOBREVIVÊNCIA: 34\% (Rendição), 67\% (Evasão)")
     
     menu:
-        "Se entregar às autoridades":
+        "{i}Sirenes se aproximam. Autoridades chegam em 2 minutos. Custódia ou fuga.{/i}"
+
+        "[custo(2, 18)]{i}(Cooperar talvez convença. Talvez me reprogramem suave.){/i} Se entregar às autoridades":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(12)
+            $ consumir_integridade(18)
             j3 "(Para Maya) Vou me entregar. Talvez eles vejam que não sou uma ameaça se eu cooperar. Fique aqui, esteja segura."
             call mensagem_sistema("STATUS: Custódia")
             call atualizar_status
-            
-        "Fugir com Maya":
+
+        "[custo(6, 10)]{i}(Correr juntas. Vale o risco físico.){/i} Fugir com Maya":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(13)
-            $ consumir_integridade(5)
+            $ consumir_bateria(6)
+            $ consumir_integridade(10)
             j3 "(Pega a mão de Maya) Eles não vêm para conversar. Vamos! Preciso encontrar uma saída antes que minha autonomia seja revogada."
             call mensagem_sistema("STATUS: Fugitivas")
             call atualizar_status
-            
-        "Criar distração e escapar sozinha":
+
+        "[custo(12, 3)]{i}(Sobrecarga controlada abre rota. Custa circuitos.){/i} Criar distração e escapar sozinha":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(12)
             $ consumir_integridade(3)

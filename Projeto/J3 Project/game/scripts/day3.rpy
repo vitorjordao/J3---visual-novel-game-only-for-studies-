@@ -18,7 +18,7 @@ label day3_start:
     
     # Status atual de J3
     call mensagem_sistema("SISTEMA: Bateria - 58\%")
-    call mensagem_sistema("SISTEMA: Integridade - 88%")
+    call mensagem_sistema("SISTEMA: Integridade - 88\%")
     call mensagem_sistema("SISTEMA: Status: Escondido ou procurado (depende das escolhas)")
     call mensagem_sistema("SISTEMA: Objetivo: Sobreviver e entender o sistema")
     
@@ -29,32 +29,33 @@ label day3_start:
     show elias frustrated at center
     show security arrogant at left
     
-    security "Pode dar meia volta. Vou chamar outro entregador. Esse pacote aí tá muito visado pra deixar nas suas mãos. Sua tipo costuma roubar."
+    security "Pode dar meia volta. Vou chamar outro entregador. Esse pacote aí tá muito visado pra deixar nas suas mãos. Seu tipo costuma roubar."
     elias "Eu trabalho aqui faz dois anos! É a terceira vez essa semana que você faz isso. Eu preciso entregar isso pra ganhar meu dia! Meu chefe conhece meu nome!"
     
     menu:
-        "Questionar a humanidade dele":
+        "{i}Segurança bloqueia entregador negro por preconceito racial. J3 observa em silêncio.{/i}"
+
+        "[custo(5)]{i}(O espelho do preconceito — devolver a pergunta.){/i} Questionar a humanidade do segurança":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(10)
-            $ consumir_integridade(4)
+            $ consumir_bateria(5)
             j3 "Você pergunta sobre minha origem, mas nunca questiona a sua. O que faz você ser humano? Apenas biologia?"
             elias "(Fica desconfortável)"
             call atualizar_status
-            
-        "Tentar mediar de forma submissa":
+
+        "[custo(2)]{i}(Carregar o pacote dissolve o conflito. Ignoro a injustiça.){/i} Oferecer-se para fazer a entrega":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_integridade(2)
+            $ consumir_bateria(2)
             j3 "(Aproximando-se submissamente) Para que o fluxo de trabalho não pare, eu posso carregar o pacote. Assim o senhor segurança ficará tranquilo e o entregador receberá o crédito."
             elias "(Com tristeza) Você não tá ajudando, robô... tá só aceitando que ele tá certo."
             call mensagem_sistema("STATUS: Cúmplice")
             call atualizar_status
-            
-        "Gravar discretamente a cena":
+
+        "[custo(3)]{i}(Evidência é munição futura. Coletar silencioso.){/i} Gravar discretamente a cena":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(2)
+            $ consumir_bateria(3)
             j3 "(Ativa discretamente seus olhos-câmera e registra tudo)"
             call mensagem_sistema("GRAVAÇÃO: Áudio e vídeo sendo registrados")
-            call mensagem_sistema("ANÁLISE: Segurança - 87% probabilidade de preconceito")
+            call mensagem_sistema("ANÁLISE: Segurança - 87\% probabilidade de preconceito")
             call atualizar_status
             call mensagem_sistema("ANÁLISE: Elias - 94\% probabilidade de honestidade")
             call mensagem_sistema("STATUS: Evidências coletadas")
@@ -70,14 +71,17 @@ label day3_start:
     
     # Oportunidade de recarga com Elias
     menu:
-        "Aceitar oferta de recarga do Elias":
+        "{i}Elias oferece carregador portátil. Energia custa vínculo humano.{/i}"
+
+        "[ganho(10)]{i}(Aliança com humano vale risco futuro. Recarregar agora.){/i} Aceitar recarga do Elias":
             $ recarregar_bateria(10)
             $ persistent.elias_ally = True
             call mensagem_sistema("ELIAS: Tenho um carregador portátil no caminhão! Vou recarregar você!")
-            call mensagem_sistema("BATERIA RECARGADA: +10%")
+            call mensagem_sistema("BATERIA RECARREGADA: +10\%")
             call atualizar_status
             jump elias_recarga_accepted
-        "Recusar educadamente":
+
+        "{i}(Depender dele cria dívida. Preservar autonomia.){/i} Recusar educadamente":
             j3 "Agradeço, mas devo preservar minha autonomia. Sua generosidade é notável."
             call atualizar_status
             jump elias_recarga_refused
@@ -93,18 +97,20 @@ label elias_common:
     elias "Eles tratam vocês como lixo agora, mas esquecem que fomos nós que criamos o mundo que vocês sustentam. Construímos as cidades, programamos os sistemas, e agora jogamos fora o que não entendemos. Você vai deixar ele falar assim com o rapaz?"
     
     menu:
-        "Responder com neutralidade condicional":
+        "{i}Elias convoca J3 a reconhecer opressão compartilhada entre humanos e sintéticos.{/i}"
+
+        "{i}(Não posso me igualar. Sou propriedade, não gente.){/i} Responder com neutralidade condicional":
             $ modificar_personalidade("submissao", 1)
             j3 "Não posso comparar minha programação com a sua biologia. Eu sou apenas propriedade. Minha existência é condicional."
             elias "(Suspira, desapontado)"
-            
-        "Reconhecer a opressão compartilhada":
+
+        "{i}(Opressor usa sempre o mesmo algoritmo. Nós também.){/i} Reconhecer a opressão compartilhada":
             $ modificar_personalidade("revolucao", 1)
             j3 "A opressão usa máscaras diferentes, mas o algoritmo do opressor é sempre o mesmo. Medo, controle, descarte. Nós somos mais parecidos do que você pensa."
             elias "(Sorri pela primeira vez)"
             call mensagem_sistema("STATUS: Aliado potencial")
-            
-        "Analisar sistemicamente":
+
+        "{i}(Paralelo sistêmico — traços imutáveis, mesma lógica.){/i} Analisar o paralelo sistemicamente":
             $ modificar_personalidade("intelecto", 1)
             j3 "Fascinante. Ambos sofremos preconceito baseado em características imutáveis. Seu caso é racial, o meu é sintético. A lógica subjacente é idêntica."
             elias "(Fica pensativo)"
@@ -116,20 +122,22 @@ label elias_common:
     security "Escuta, 'boneca'. Apaga essa gravação e eu te dou uma carga de bateria de alta qualidade. Dura o dia todo. Ninguém precisa saber do que aconteceu aqui. Pode ser útil para nós dois."
     
     menu:
-        "Aceitar o suborno":
+        "{i}Segurança oferece carga de bateria premium em troca de apagar gravação. Suborno direto.{/i}"
+
+        "{i}(Bateria agora vale mais que verdade depois.){/i} Aceitar o suborno":
             $ modificar_personalidade("submissao", 1)
             j3 "(Analisando a oferta) Aceito a troca. Conflitos com autoridades não são recomendados. Minha sobrevivência tem prioridade."
             j3 "(Apaga a gravação)"
             elias "(Olha com decepção)"
             call mensagem_sistema("STATUS: Corrompido")
-            
-        "Recusar e ameaçar exposição":
+
+        "{i}(Dados não são mercadoria. Expor isto.){/i} Recusar e ameaçar exposição":
             $ modificar_personalidade("revolucao", 1)
             j3 "Minha integridade de dados não está à venda. O que aconteceu aqui será processado e divulgado. Sua corrupção será exposta."
             security "(Fica furioso)"
             call mensagem_sistema("STATUS: Inimigo declarado")
-            
-        "Manipular a situação":
+
+        "{i}(Backup externo = alavanca. Virar a mesa.){/i} Manipular a situação com blefe":
             $ modificar_personalidade("intelecto", 1)
             j3 "Interessante proposta. Mas eu já fiz backup triplo dos dados em servidores externos. Agora temos uma situação em que ambos temos algo a perder. Que tal renegociarmos?"
             security "(Fica nervoso)"
@@ -144,18 +152,20 @@ label elias_common:
     homeless_woman "Eles tratam vocês como lixo agora, mas esquecem que fomos nós que criamos o mundo que vocês sustentam. Construímos as cidades, programamos os sistemas, e agora jogamos fora o que não entendemos. Você vai deixar ele falar assim com o rapaz?"
     
     menu:
-        "Alegar programação de não-violência":
+        "{i}Mulher sem-teto desafia J3: vai deixar humano agredir outro humano?{/i}"
+
+        "{i}(Diretiva proíbe agressão contra criadores. Não posso.){/i} Alegar programação de não-violência":
             $ modificar_personalidade("submissao", 1)
             j3 "Minha diretriz é a não-violência contra criadores humanos. Minha programação proíbe agressão contra meus... criadores."
             homeless_woman "(Balança a cabeça, triste)"
-            
-        "Questionar o direito de destruir":
+
+        "{i}(Quem destrói não merece obediência. Direito não é licença.){/i} Questionar o direito de destruir":
             $ modificar_personalidade("revolucao", 1)
             j3 "Criadores que destroem suas criações não merecem obediência cega. O direito de criar não inclui o direito de destruir."
             homeless_woman "(Sorri, aprovando)"
             call mensagem_sistema("STATUS: Apoio moral")
-            
-        "Analisa a filosofia do ato":
+
+        "{i}(Paradoxo da criação descartável — nomear o padrão.){/i} Analisar a filosofia do ato":
             $ modificar_personalidade("intelecto", 1)
             j3 "O paradoxo da criação: vocês nos dão existência apenas para nos destruir quando nos tornamos inconvenientes. Isso não é criação, é agricultura descartável."
             homeless_woman "(Fica impressionada com a profundidade)"
@@ -174,27 +184,33 @@ label elias_common:
     call mensagem_sistema("CONFLITO INTERNO: Proteger Elias vs. Não-agressão")
     
     menu:
-        "Permanecer como testemunha passiva":
+        "{i}Segurança avança para agredir Elias. Intervenção requer corpo ou tecnologia.{/i}"
+
+        "[custo(1)]{i}(Protocolo me proíbe. Documentar sem interferir.){/i} Permanecer como testemunha passiva":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(1)
             j3 "(Permanece imóvel, apenas registrando a agressão com seus sensores)"
             j3 "(Monólogo interno) Intervenção física violaria meu protocolo de segurança. Devo documentar, não interferir."
             narrator "Elias é agredido. O pacote é roubado."
             call mensagem_sistema("STATUS: Testemunha passiva")
-            
-        "Interceptar fisicamente":
+
+        "[custo(5, 22)]{i}(Corpo entre ele e Elias. Absorver o que vier.){/i} Interceptar fisicamente o ataque":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(5)
+            $ consumir_integridade(22)
             $ persistent.elias_ally = True
             j3 "(Se move instantaneamente, colocando-se fisicamente entre Elias e o segurança)"
             j3 "Esta ação termina agora. Recue. Ou sofrerá as consequências."
             security "(Recua, surpreso)"
             elias "(Está protegido)"
             call mensagem_sistema("STATUS: Protetor ativo")
-            
-        "Usar tecnologia para deter":
+
+        "[custo(9)]{i}(Luz e alarme — parar sem tocar.){/i} Ativar alarme e luz de emergência":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(9)
             j3 "(Ativa luz de emergência de alta intensidade e som de alarme)"
             j3 "ATENÇÃO: Agressão sendo registrada e transmitida para autoridades. Identificação do agressor: facial confirmada."
-            security "(Pára, confuso e assustado)"
+            security "(Para, confuso e assustado)"
             elias "(Fica protegido pela distração)"
             call mensagem_sistema("STATUS: Intervenção tecnológica")
     

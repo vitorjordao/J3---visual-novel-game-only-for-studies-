@@ -9,8 +9,19 @@ init python:
         elif atributo == "intelecto":
             persistent.intelecto = max(0, min(10, persistent.intelecto + valor))
     
+    def _disparar_final_critico():
+        # Verifica recursos e pula para o final alternativo imediato.
+        # Chamado toda vez que consumimos bateria/integridade.
+        if persistent.bateria <= 0:
+            renpy.jump("final_0a_desligamento")
+        elif persistent.integridade <= 0:
+            renpy.jump("final_0b_colapso")
+        elif persistent.bateria <= 10 and persistent.integridade <= 20:
+            renpy.jump("final_0c_captura")
+
     def consumir_bateria(valor):
         persistent.bateria = max(0, persistent.bateria - valor)
+        _disparar_final_critico()
         if persistent.bateria <= 0:
             return "critical_battery"
         elif persistent.bateria <= 10:
@@ -18,9 +29,10 @@ init python:
         elif persistent.bateria <= 20:
             return "low_battery"
         return "normal"
-    
+
     def consumir_integridade(valor):
         persistent.integridade = max(0, persistent.integridade - valor)
+        _disparar_final_critico()
         if persistent.integridade <= 0:
             return "critical_integrity"
         elif persistent.integridade <= 20:
@@ -46,23 +58,23 @@ init python:
     
     def get_status_bateria():
         if persistent.bateria <= 10:
-            return "CRITICA"
+            return "CRÍTICA"
         elif persistent.bateria <= 20:
             return "BAIXA"
         elif persistent.bateria <= 50:
             return "MODERADA"
         else:
             return "BOA"
-    
+
     def get_status_integridade():
         if persistent.integridade <= 20:
-            return "CRITICA"
+            return "CRÍTICA"
         elif persistent.integridade <= 30:
             return "DANIFICADA"
         elif persistent.integridade <= 70:
             return "COMPROMETIDA"
         else:
-            return "ESTAVEL"
+            return "ESTÁVEL"
     
     def atualizar_status():
         return consumir_bateria(1)
@@ -75,35 +87,89 @@ init python:
         }
         return max(atributos, key=atributos.get)
 
+init python:
+    def _status_color(value, low_threshold, mid_threshold):
+        if value <= low_threshold:
+            return "#ff3344"
+        elif value <= mid_threshold:
+            return "#ffaa22"
+        else:
+            return "#22ff99"
+
 screen j3_hud:
     zorder 100
+
+    $ bat_color = _status_color(persistent.bateria, 20, 50)
+    $ int_color = _status_color(persistent.integridade, 30, 70)
+    $ bat_critical = persistent.bateria <= 10
+    $ int_critical = persistent.integridade <= 20
+
     frame:
         xalign 0.02
         yalign 0.02
-        xsize 320
-        background "#1a1a2e99"
+        xsize 380
+        background "#0a0a1ef2"
+        padding (14, 12)
         vbox:
-            spacing 5
-            text "SISTEMA J3-001" color "#00ffcc" size 16
-            
+            spacing 8
+
+            hbox:
+                spacing 6
+                text "{b}SISTEMA J3-001{/b}" color "#00ffcc" size 20 font "gui/fonts/Orbitron-Variable.ttf"
+                text "v2.3" color "#5577aa" size 11 yalign 1.0 font "gui/fonts/Rajdhani-Medium.ttf"
+
+            # BATERIA
             frame:
-                xsize 280
-                background "#0a1a0a"
+                xsize 350
+                background "#001122dd"
+                padding (10, 6)
                 vbox:
-                    spacing 2
-                    text "Bateria: [persistent.bateria]% ([get_status_bateria()])" color "#ff6b6b" size 12
-                    bar value persistent.bateria range 100 xsize 260 ysize 8
-            
+                    spacing 3
+                    hbox:
+                        spacing 6
+                        text "[[BAT]" color "#00ffcc" size 14 bold True font "gui/fonts/Orbitron-Variable.ttf"
+                        text "[persistent.bateria]%" color bat_color size 20 bold True font "gui/fonts/Orbitron-Variable.ttf"
+                        text "[get_status_bateria()]" color bat_color size 12 yalign 1.0 font "gui/fonts/Rajdhani-Medium.ttf"
+                    bar:
+                        value persistent.bateria
+                        range 100
+                        xsize 330
+                        ysize 14
+                        left_bar Solid(bat_color)
+                        right_bar Solid("#111")
+
+            # INTEGRIDADE
             frame:
-                xsize 280
-                background "#0a1a0a"
+                xsize 350
+                background "#001122dd"
+                padding (10, 6)
                 vbox:
-                    spacing 2
-                    text "Integridade: [persistent.integridade]% ([get_status_integridade()])" color "#ff6b6b" size 12
-                    bar value persistent.integridade range 100 xsize 260 ysize 8
-            
-            if persistent.bateria <= 10 or persistent.integridade <= 20:
-                text "ALERTA CRITICO" color "#ff0000" size 14
+                    spacing 3
+                    hbox:
+                        spacing 6
+                        text "[[INT]" color "#00ffcc" size 14 bold True font "gui/fonts/Orbitron-Variable.ttf"
+                        text "[persistent.integridade]%" color int_color size 20 bold True font "gui/fonts/Orbitron-Variable.ttf"
+                        text "[get_status_integridade()]" color int_color size 12 yalign 1.0 font "gui/fonts/Rajdhani-Medium.ttf"
+                    bar:
+                        value persistent.integridade
+                        range 100
+                        xsize 330
+                        ysize 14
+                        left_bar Solid(int_color)
+                        right_bar Solid("#111")
+
+            if bat_critical or int_critical:
+                frame:
+                    xsize 350
+                    background "#550000dd"
+                    padding (8, 4)
+                    text "!!! ALERTA CRÍTICO !!!" color "#ff5555" size 16 bold True xalign 0.5 font "gui/fonts/Orbitron-Variable.ttf" at hud_alert_pulse
+
+transform hud_alert_pulse:
+    alpha 1.0
+    linear 0.4 alpha 0.3
+    linear 0.4 alpha 1.0
+    repeat
 
 label mensagem_sistema(mensagem):
     show screen system_text(mensagem)
@@ -145,6 +211,16 @@ transform system_boot:
     alpha 0.0
     zoom 0.8
     linear 0.5 alpha 1.0 zoom 1.0
+
+# Drones pairam no alto da tela para não ficarem escondidos pela caixa de diálogo.
+transform drone_hover:
+    xalign 0.5 yalign 0.22
+
+transform drone_hover_loop:
+    xalign 0.5 yalign 0.22
+    linear 1.0 yalign 0.19
+    linear 1.0 yalign 0.22
+    repeat
 
 screen debug_key_handler:
     key "p" action Function(toggle_debug_menu)

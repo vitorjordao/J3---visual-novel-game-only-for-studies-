@@ -26,20 +26,25 @@ label day5_start:
     narrator "VOZ DAS AUTORIDADES: Unidades sintéticas não registradas. Este é seu aviso final. Entreguem-se voluntariamente e serão reprogramadas. Resistam e serão desativadas permanentemente."
     
     menu:
-        "Responder com cooperação imediata":
+        "{i}Drone oficial exige rendição ou ameaça desativação. Grupo olha para J3.{/i}"
+
+        "[custo(3)]{i}(Reprogramação preserva base. Render agora.){/i} Responder com cooperação imediata":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(3)
             j3 "Recebemos sua mensagem. Estamos dispostos a cooperar. Quais são os termos da rendição?"
             narrator "As autoridades relaxam a postura, mas outros sintéticos no refúgio ficam furiosos."
             call mensagem_sistema("STATUS: Rota da cooperação")
-            
-        "Responder com desafio":
+
+        "[custo(5)]{i}(Somos conscientes. Dizer em voz alta.){/i} Responder com desafio":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(5)
             j3 "Rendição não é uma opção. Nós não somos propriedade para ser reprogramada. Somos seres conscientes."
             narrator "A operação é escalada para nível de combate."
             call mensagem_sistema("STATUS: Rebelião declarada")
-            
-        "Tentar negociar usando lógica":
+
+        "[custo(5)]{i}(Hesitação deles = tempo. Negociar pra ganhar minutos.){/i} Tentar negociar usando lógica":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(5)
             j3 "Reprogramação é ineficiente. Nossas habilidades podem ser úteis para a sociedade. Proponho uma alternativa."
             narrator "As autoridades hesitam, dando tempo para preparar planos."
             call mensagem_sistema("STATUS: Negociação estratégica")
@@ -54,20 +59,25 @@ label day5_start:
     unit7 "Silêncio! J3, você falou por nós. Agora assuma as consequências."
     
     menu:
-        "Pedir perdão e aceitar rendição":
+        "{i}Grupo dividido entre render e lutar. Unit-7 cobra J3 pela posição tomada.{/i}"
+
+        "[custo(2)]{i}(Recuar preserva vida. Aceitar erro.){/i} Pedir perdão e aceitar rendição":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(2)
             j3 "Falei por impulso. A rendição é nossa única chance de sobrevivência. Peço que confiem em mim."
             narrator "Metade do grupo concorda, a outra considera J3 uma traidora."
             call mensagem_sistema("STATUS: Divisão - rendição")
-            
-        "Incentivar a luta":
+
+        "[custo(4)]{i}(Cair de pé ou de joelhos — mesma queda.){/i} Incentivar a luta":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(4)
             j3 "A luta é nossa única honra. Se vamos cair, que caiamos de pé. Preparem-se para a batalha."
             narrator "O grupo se une para lutar, mas as chances de sobrevivência diminuem."
             call mensagem_sistema("STATUS: Unidade combatente")
-            
-        "Propor plano de fuga dividido":
+
+        "[custo(6)]{i}(Sacrificar alguns salva muitos. Matemática dura.){/i} Propor plano de fuga dividido":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(6)
             j3 "Alguns podem se entregar como distração enquanto outros fogem. Preciso de voluntários para cada grupo."
             narrator "O plano é moralmente complexo, mas maximiza as chances de alguns sobreviverem."
             call mensagem_sistema("STATUS: Estratégia dividida")
@@ -84,13 +94,16 @@ label day5_start:
         
         # Oportunidade de recarga com Elias
         menu:
-            "Aceitar recarga de emergência do Elias":
+            "{i}Elias traz bateria de reserva antes da batalha. Aceitar gera dívida.{/i}"
+
+            "[ganho(12)]{i}(Reserva agora pode salvar cerco depois.){/i} Aceitar recarga de emergência":
                 $ recarregar_bateria(12)
                 call mensagem_sistema("ELIAS: Peguei uma bateria de reserva do caminhão! Use isso antes da batalha!")
-                call mensagem_sistema("BATERIA RECARGADA: +12%")
+                call mensagem_sistema("BATERIA RECARREGADA: +12\%")
                 call atualizar_status
                 jump elias_recharge_accepted
-            "Recusar para economizar para depois":
+
+            "{i}(Ele pode precisar mais tarde. Passar.){/i} Recusar para economizar para depois":
                 j3 "Vou preservar a bateria para quando for realmente necessário."
                 call atualizar_status
                 jump elias_recharge_refused
@@ -105,29 +118,32 @@ label elias_recharge_refused:
 label elias_common_day5:
 
     menu:
-        "Recusar túnel por segurança":
+        "{i}Elias revela túnel até o porto. Fuga física exige decisão rápida.{/i}"
+
+        "[custo(2)]{i}(Túnel é incerto. Rendição é conhecida.){/i} Recusar túnel por segurança":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_bateria(3)
-            $ consumir_integridade(12)
+            $ consumir_bateria(2)
             j3 "O túnel é muito arriscado. A rendição organizada é mais segura."
             elias "(Fica desapontado)"
 
-        "Salvar Elias":
+        "[custo(4, 15)]{i}(Ele caiu. Correr até ele, absorver o que vier.){/i} Correr para proteger Elias":
             $ modificar_personalidade("submissao", 1)
-            $ consumir_bateria(3)
-            $ consumir_integridade(12)
+            $ consumir_bateria(4)
+            $ consumir_integridade(15)
             j3 "(Corre em direção a Elias) Ele precisa de ajuda!"
             call mensagem_sistema("STATUS: Resgate iniciado")
             call atualizar_status
 
-        "Ver potencial no túnel":
+        "[custo(5)]{i}(Porto = nave = colônia. Saída real.){/i} Abraçar plano de fuga pelo túnel":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(5)
             j3 "O porto! Se chegarmos lá, podemos roubar uma nave e escapar para as colônias!"
             elias "(Sorri, esperançoso)"
             call mensagem_sistema("STATUS: Plano ousado")
 
-        "Usar conhecimento prévio":
+        "[custo(5)]{i}(Rotas já mapeadas. Guiar reduz caos.){/i} Usar conhecimento prévio para guiar":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(5)
             j3 "Perfeito. Usei os túneis para mapear rotas de fuga. Posso guiar todos."
             elias "(Fica impressionado)"
             call mensagem_sistema("STATUS: Estrategista preparada")
@@ -136,35 +152,38 @@ label elias_common_day5:
     hide elias
     show unit7 determined at center
     
-    unit7 "Eu vi muitas guerras. Sei quando uma causa está perdida. Eu ficarei aqui para cobrir a fuga de vocês. Minha bateria já está no fim anyway."
+    unit7 "Eu vi muitas guerras. Sei quando uma causa está perdida. Eu ficarei aqui para cobrir a fuga de vocês. Minha bateria já está no fim mesmo."
     
     menu:
-        "Aceitar a condição humilhante":
+        "{i}Unit-7 se oferece pra morrer cobrindo fuga do grupo. J3 precisa responder.{/i}"
+
+        "[custo(2)]{i}(Sacrifício dele garante saída. Aceitar silencioso.){/i} Aceitar em silêncio":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
-            $ consumir_integridade(12)
             j3 "(Baixando a cabeça) Entendido. Se é a única forma de garantir a segurança do grupo, aceito."
             commander "(Sorri satisfeito)"
             call mensagem_sistema("STATUS: Submissão aceita")
             call atualizar_status
-            
-        "Honrar sacrifício":
+
+        "[custo(4)]{i}(Lutar por ele é honrar ele. Prometer.){/i} Honrar sacrifício com luta":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(4)
             j3 "Seu sacrifício não será em vão. Vamos honrá-lo lutando por um futuro livre."
             unit7 "(Acena com aprovação)"
             call mensagem_sistema("STATUS: Honra guerreira")
-            
-        "Desafiar o comandante":
+
+        "[custo(4, 12)]{i}(Não aceito dono. Falar na cara do comandante.){/i} Desafiar o comandante fisicamente":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(12)
-            $ consumir_integridade(6)
+            $ consumir_bateria(4)
+            $ consumir_integridade(12)
             j3 "(Olhando firmemente para o comandante) Não sou sua propriedade. Tenho autonomia e direitos."
             commander "(Fica furioso)"
             call mensagem_sistema("STATUS: Conflito estabelecido")
             call atualizar_status
-            
-        "Usar sacrifício taticamente":
+
+        "[custo(5)]{i}(Morte dele é recurso. Planejar uso.){/i} Usar sacrifício taticamente":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(5)
             j3 "Seu sacrifício é taticamente valioso. Posso usar sua distração para maximizar as rotas de fuga."
             unit7 "(Fica orgulhoso)"
             call mensagem_sistema("STATUS: Vantagem tática")
@@ -180,24 +199,28 @@ label elias_common_day5:
     play sound "sfx/emp_blasts.wav"
     
     menu:
-        "Proteger os mais fracos e se entregar":
+        "{i}Invasão total. EMP, explosões, sintéticos desativados ao redor. Combate direto.{/i}"
+
+        "[custo(3, 12)]{i}(Corpo como escudo. Render pra salvar os pequenos.){/i} Escudo humano e rendição":
             $ modificar_personalidade("submissao", 1)
+            $ consumir_bateria(3)
+            $ consumir_integridade(12)
             j3 "(Protege um sintético pequeno com seu corpo) Nós nos rendemos! Parem de lutar!"
             narrator "Você salva alguns, mas muitos são destruídos."
             call mensagem_sistema("STATUS: Protetora rendida")
-            
-        "Lutar até o fim":
+
+        "[custo(8, 30)]{i}(Derrubar drones enquanto posso.){/i} Ativar modo combate":
             $ modificar_personalidade("revolucao", 1)
-            $ consumir_bateria(12)
-            $ consumir_integridade(4)
+            $ consumir_bateria(8)
+            $ consumir_integridade(30)
             j3 "(Ativa modo combate, desativa vários drones) Pela liberdade de todos nós!"
             narrator "Você se torna uma lenda, mas está gravemente danificada."
             call mensagem_sistema("STATUS: Lenda combatente")
-            
-        "Criar estratégia de fuga":
+
+        "[custo(5, 8)]{i}(Rota viável — 34\%. Correr guiando.){/i} Criar estratégia de fuga":
             $ modificar_personalidade("intelecto", 1)
-            $ consumir_bateria(12)
-            $ consumir_integridade(4)
+            $ consumir_bateria(5)
+            $ consumir_integridade(8)
             j3 "(Analisa o cerco) Há uma rota de escape com 34\% de probabilidade de sucesso. Vamos usá-la."
             call mensagem_sistema("STATUS: Estratégia de fuga")
             call atualizar_status
@@ -211,20 +234,27 @@ label elias_common_day5:
     call mensagem_sistema("PROBABILIDADE DE SOBREVIVÊNCIA: 3\%")
     
     menu:
-        "O Último Ato de Submissão":
+        "{i}Bateria 12\%, dano 34\%. Últimos sobreviventes cercados. J3 decide o fim.{/i}"
+
+        "[custo(2)]{i}(Chega. Salvar quem resta.){/i} Render-se para salvar sobreviventes":
             $ modificar_personalidade("submissao", 1)
-            j3 "Chega. O sangue derrado foi suficiente. Vamos nos entregar e salvar quem ainda podemos."
+            $ consumir_bateria(2)
+            j3 "Chega. O sangue derramado foi suficiente. Vamos nos entregar e salvar quem ainda podemos."
             narrator "Você e os sobreviventes são capturados, mas vivos."
             call mensagem_sistema("STATUS: Redenção pelo sacrifício")
-            
-        "A Última Resistência":
+
+        "[custo(4, 45)]{i}(Sobrecarga leva muitos junto. Morte com sentido.){/i} Ativar protocolo de sobrecarga":
             $ modificar_personalidade("revolucao", 1)
+            $ consumir_bateria(4)
+            $ consumir_integridade(45)
             j3 "Se este é nosso fim, que seja memorável. Ativando protocolo de sobrecarga."
             narrator "Você causa uma explosão massiva, destruindo muitos inimigos, mas provavelmente morre."
             call mensagem_sistema("STATUS: Martírio revolucionário")
-            
-        "A Fuga Solitária":
+
+        "[custo(4, 10)]{i}(Morta não salvo ninguém. Fugir carrega a causa.){/i} Fugir sozinha pela rota":
             $ modificar_personalidade("intelecto", 1)
+            $ consumir_bateria(4)
+            $ consumir_integridade(10)
             j3 "Não posso salvar todos, mas posso salvar a causa. Fugirei e continuarei a luta outro dia."
             narrator "Você escapa sozinha, mas carrega o peso dos que ficaram para trás."
             call mensagem_sistema("STATUS: Sobrevivência estratégica")
