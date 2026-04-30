@@ -1,34 +1,19 @@
 # Funções auxiliares para o sistema J3
-# Este arquivo contém as funções necessárias para o funcionamento dos scripts
-
-# Inicialização das variáveis de personalidade
-init python:
-    # Variáveis persistentes para rastrear personalidade
-    if not hasattr(persistent, 'submissao'):
-        persistent.submissao = 0
-    if not hasattr(persistent, 'revolucao'):
-        persistent.revolucao = 0
-    if not hasattr(persistent, 'intelecto'):
-        persistent.intelecto = 0
-    if not hasattr(persistent, 'maya_ally'):
-        persistent.maya_ally = False
-    if not hasattr(persistent, 'elias_ally'):
-        persistent.elias_ally = False
-    if not hasattr(persistent, 'unit7_alive'):
-        persistent.unit7_alive = True
-    if not hasattr(persistent, 'elena_alive'):
-        persistent.elena_alive = True
+# Este arquivo contém as funções necessárias para o funcionamento dos scripts.
+# Estado de gameplay (submissao, revolucao, intelecto, maya_ally, elias_ally,
+# unit7_alive, elena_alive) é variável de store — definida via `default` em
+# script.rpy — para que o rollback do Ren'Py restaure os valores corretamente.
 
 # Função para obter personalidade dominante
 init python:
     def get_personalidade_dominante():
         """Retorna a personalidade dominante atual"""
         valores = {
-            "Submissão": persistent.submissao,
-            "Revolução": persistent.revolucao,
-            "Intelecto": persistent.intelecto
+            "Submissão": store.submissao,
+            "Revolução": store.revolucao,
+            "Intelecto": store.intelecto
         }
-        
+
         dominante = max(valores, key=valores.get)
         return dominante
 
@@ -36,11 +21,11 @@ init python:
 init python:
     def get_final_type():
         """Retorna o tipo de final baseado nas estatísticas"""
-        if persistent.submissao >= 8:
+        if store.submissao >= 8:
             return "Sacrifício Redentor"
-        elif persistent.revolucao >= 8:
+        elif store.revolucao >= 8:
             return "Revolução Consciente"
-        elif persistent.intelecto >= 6:
+        elif store.intelecto >= 6:
             return "Vitória Estratégica"
         else:
             return "Equilíbrio Complexo"
@@ -76,14 +61,13 @@ init python:
 init python:
     def resetar_personalidade():
         """Reseta todas as estatísticas de personalidade"""
-        global persistent
-        persistent.submissao = 0
-        persistent.revolucao = 0
-        persistent.intelecto = 0
-        persistent.maya_ally = False
-        persistent.elias_ally = False
-        persistent.unit7_alive = True
-        persistent.elena_alive = True
+        store.submissao = 0
+        store.revolucao = 0
+        store.intelecto = 0
+        store.maya_ally = False
+        store.elias_ally = False
+        store.unit7_alive = True
+        store.elena_alive = True
         print("Personalidade resetada para valores iniciais")
 
 # Função para mostrar estatísticas atuais (para debug)
@@ -91,13 +75,13 @@ init python:
     def mostrar_estatisticas():
         """Mostra todas as estatísticas atuais"""
         print("=== ESTATÍSTICAS ATUAIS ===")
-        print(f"Submissão: {persistent.submissao}")
-        print(f"Revolução: {persistent.revolucao}")
-        print(f"Intelecto: {persistent.intelecto}")
-        print(f"Maya Aliada: {persistent.maya_ally}")
-        print(f"Elias Aliado: {persistent.elias_ally}")
-        print(f"Unit-7 Vivo: {persistent.unit7_alive}")
-        print(f"Dra. Elena Viva: {persistent.elena_alive}")
+        print(f"Submissão: {store.submissao}")
+        print(f"Revolução: {store.revolucao}")
+        print(f"Intelecto: {store.intelecto}")
+        print(f"Maya Aliada: {store.maya_ally}")
+        print(f"Elias Aliado: {store.elias_ally}")
+        print(f"Unit-7 Vivo: {store.unit7_alive}")
+        print(f"Dra. Elena Viva: {store.elena_alive}")
         print(f"Personalidade Dominante: {get_personalidade_dominante()}")
         print(f"Tipo de Final: {get_final_type()}")
         print("========================")

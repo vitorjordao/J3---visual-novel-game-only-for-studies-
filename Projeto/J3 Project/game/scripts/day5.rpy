@@ -23,7 +23,9 @@ label day5_start:
     
     play sound "sfx/sirens_close.wav"
     
-    narrator "VOZ DAS AUTORIDADES: Unidades sintéticas não registradas. Este é seu aviso final. Entreguem-se voluntariamente e serão reprogramadas. Resistam e serão desativadas permanentemente."
+    narrator "VOZ DAS AUTORIDADES (do drone, calma e ensaiada como um locutor de aeroporto): \"Unidades sintéticas não-registradas. Este é o aviso final.\""
+    narrator "\"Entreguem-se voluntariamente e receberão reprogramação humanitária. Resistam, e serão desativadas em definitivo, sob a Lei 7.34, parágrafo 4.\""
+    narrator "\"O Estado lamenta a necessidade. O Estado agradece sua cooperação.\""
     
     menu:
         "{i}Drone oficial exige rendição ou ameaça desativação. Grupo olha para J3.{/i}"
@@ -84,13 +86,15 @@ label day5_start:
     
     # Cena 5.3 - A Aparição de Elias
     # Se J3 ajudou Elias no Dia 3, ele aparece com informações cruciais
-    if persistent.elias_ally:
+    if elias_ally:
         hide synth_fearful
         hide synth_angry
         hide unit7
         show elias urgent at center
         
-        elias "Consegui acessar os planos da operação. Eles vão invadir em 30 minutos. Mas tem um túnel de esgoto que leva até o porto. É nossa única saída real."
+        elias "(Entra ofegante, encharcado, com um tablet rachado nas mãos.) Consegui. Acessei os planos da operação."
+        elias "(Voz baixa e rápida, sem espaço pra teatro.) Eles invadem em trinta minutos. Tropa pesada. EMP. Vão por cima do hangar primeiro."
+        elias "(Encara J3) Mas tem um túnel de esgoto que sai no porto. Velho, mas inteiro. É a única saída real que nós temos."
         
         # Oportunidade de recarga com Elias
         menu:
@@ -151,8 +155,11 @@ label elias_common_day5:
     # Cena 5.4 - O Sacrifício de Unit-7
     hide elias
     show unit7 determined at center
-    
-    unit7 "Eu vi muitas guerras. Sei quando uma causa está perdida. Eu ficarei aqui para cobrir a fuga de vocês. Minha bateria já está no fim mesmo."
+    show commander at right with dissolve
+
+    unit7 "(Verifica o carregador da arma como se fosse a milésima vez. Voz quase normal — a calma de quem já esteve neste exato lugar antes.) Eu já vi muita guerra perdida pra reconhecer essa aqui."
+    unit7 "Eu fico. Cubro a saída de vocês."
+    unit7 "(Quase sorri.) Minha bateria tá no talo de qualquer jeito. Pelo menos agora ela faz alguma coisa útil."
     
     menu:
         "{i}Unit-7 se oferece pra morrer cobrindo fuga do grupo. J3 precisa responder.{/i}"
@@ -190,6 +197,7 @@ label elias_common_day5:
     
     # Cena 5.5 - A Invasão
     hide unit7
+    hide commander
     
     narrator "As forças de segurança invadem o refúgio..."
     narrator "Caos total..."
@@ -264,11 +272,11 @@ label elias_common_day5:
     call mensagem_sistema("PERSONALIDADE DOMINANTE: [get_personalidade_dominante()]")
     
     # Estatísticas finais
-    if persistent.submissao >= 6:
+    if submissao >= 6:
         call mensagem_sistema("ROTA: SUBMISSÃO - Redenção pelo sacrifício")
-    elif persistent.revolucao >= 6:
+    elif revolucao >= 6:
         call mensagem_sistema("ROTA: REVOLUÇÃO - Martírio revolucionário")
-    elif persistent.intelecto >= 4:
+    elif intelecto >= 4:
         call mensagem_sistema("ROTA: INTELECTO/SOMBRA - Sobrevivência estratégica")
     else:
         call mensagem_sistema("ROTA: EQUILIBRADA - Decisão final complexa")

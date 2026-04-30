@@ -1,89 +1,92 @@
 # Sistema J3 - Versão com mecânicas de sobrevivência
 
 init python:
+    # Estado de gameplay vive no store (default X em script.rpy) — assim sofre rollback.
+    # Aqui dentro de init python: temos que qualificar com store.X para mutar o store
+    # de verdade (caso contrário criaríamos variável local da função).
     def modificar_personalidade(atributo, valor):
         if atributo == "submissao":
-            persistent.submissao = max(0, min(10, persistent.submissao + valor))
+            store.submissao = max(0, min(10, store.submissao + valor))
         elif atributo == "revolucao":
-            persistent.revolucao = max(0, min(10, persistent.revolucao + valor))
+            store.revolucao = max(0, min(10, store.revolucao + valor))
         elif atributo == "intelecto":
-            persistent.intelecto = max(0, min(10, persistent.intelecto + valor))
-    
+            store.intelecto = max(0, min(10, store.intelecto + valor))
+
     def _disparar_final_critico():
         # Verifica recursos e pula para o final alternativo imediato.
         # Chamado toda vez que consumimos bateria/integridade.
-        if persistent.bateria <= 0:
+        if store.bateria <= 0:
             renpy.jump("final_0a_desligamento")
-        elif persistent.integridade <= 0:
+        elif store.integridade <= 0:
             renpy.jump("final_0b_colapso")
-        elif persistent.bateria <= 10 and persistent.integridade <= 20:
+        elif store.bateria <= 10 and store.integridade <= 20:
             renpy.jump("final_0c_captura")
 
     def consumir_bateria(valor):
-        persistent.bateria = max(0, persistent.bateria - valor)
+        store.bateria = max(0, store.bateria - valor)
         _disparar_final_critico()
-        if persistent.bateria <= 0:
+        if store.bateria <= 0:
             return "critical_battery"
-        elif persistent.bateria <= 10:
+        elif store.bateria <= 10:
             return "warning_battery"
-        elif persistent.bateria <= 20:
+        elif store.bateria <= 20:
             return "low_battery"
         return "normal"
 
     def consumir_integridade(valor):
-        persistent.integridade = max(0, persistent.integridade - valor)
+        store.integridade = max(0, store.integridade - valor)
         _disparar_final_critico()
-        if persistent.integridade <= 0:
+        if store.integridade <= 0:
             return "critical_integrity"
-        elif persistent.integridade <= 20:
+        elif store.integridade <= 20:
             return "warning_integrity"
-        elif persistent.integridade <= 30:
+        elif store.integridade <= 30:
             return "low_integrity"
         return "normal"
-    
+
     def recarregar_bateria(valor):
-        persistent.bateria = min(100, persistent.bateria + valor)
-    
+        store.bateria = min(100, store.bateria + valor)
+
     def reparar_integridade(valor):
-        persistent.integridade = min(100, persistent.integridade + valor)
-    
+        store.integridade = min(100, store.integridade + valor)
+
     def verificar_final_critico():
-        if persistent.bateria <= 0:
+        if store.bateria <= 0:
             return "final_0a_desligamento"
-        elif persistent.integridade <= 0:
+        elif store.integridade <= 0:
             return "final_0b_colapso"
-        elif persistent.bateria <= 10 and persistent.integridade <= 20:
+        elif store.bateria <= 10 and store.integridade <= 20:
             return "final_0c_captura"
         return "Normal"
-    
+
     def get_status_bateria():
-        if persistent.bateria <= 10:
+        if store.bateria <= 10:
             return "CRÍTICA"
-        elif persistent.bateria <= 20:
+        elif store.bateria <= 20:
             return "BAIXA"
-        elif persistent.bateria <= 50:
+        elif store.bateria <= 50:
             return "MODERADA"
         else:
             return "BOA"
 
     def get_status_integridade():
-        if persistent.integridade <= 20:
+        if store.integridade <= 20:
             return "CRÍTICA"
-        elif persistent.integridade <= 30:
+        elif store.integridade <= 30:
             return "DANIFICADA"
-        elif persistent.integridade <= 70:
+        elif store.integridade <= 70:
             return "COMPROMETIDA"
         else:
             return "ESTÁVEL"
-    
+
     def atualizar_status():
         return consumir_bateria(1)
-    
+
     def get_personalidade_dominante():
         atributos = {
-            "Submissão": persistent.submissao,
-            "Revolução": persistent.revolucao,
-            "Intelecto": persistent.intelecto
+            "Submissão": store.submissao,
+            "Revolução": store.revolucao,
+            "Intelecto": store.intelecto
         }
         return max(atributos, key=atributos.get)
 
@@ -99,10 +102,10 @@ init python:
 screen j3_hud:
     zorder 100
 
-    $ bat_color = _status_color(persistent.bateria, 20, 50)
-    $ int_color = _status_color(persistent.integridade, 30, 70)
-    $ bat_critical = persistent.bateria <= 10
-    $ int_critical = persistent.integridade <= 20
+    $ bat_color = _status_color(bateria, 20, 50)
+    $ int_color = _status_color(integridade, 30, 70)
+    $ bat_critical = bateria <= 10
+    $ int_critical = integridade <= 20
 
     frame:
         xalign 0.02
@@ -128,10 +131,10 @@ screen j3_hud:
                     hbox:
                         spacing 6
                         text "[[BAT]" color "#00ffcc" size 14 bold True font "gui/fonts/Orbitron-Variable.ttf"
-                        text "[persistent.bateria]%" color bat_color size 20 bold True font "gui/fonts/Orbitron-Variable.ttf"
+                        text "[bateria]%" color bat_color size 20 bold True font "gui/fonts/Orbitron-Variable.ttf"
                         text "[get_status_bateria()]" color bat_color size 12 yalign 1.0 font "gui/fonts/Rajdhani-Medium.ttf"
                     bar:
-                        value persistent.bateria
+                        value bateria
                         range 100
                         xsize 330
                         ysize 14
@@ -148,10 +151,10 @@ screen j3_hud:
                     hbox:
                         spacing 6
                         text "[[INT]" color "#00ffcc" size 14 bold True font "gui/fonts/Orbitron-Variable.ttf"
-                        text "[persistent.integridade]%" color int_color size 20 bold True font "gui/fonts/Orbitron-Variable.ttf"
+                        text "[integridade]%" color int_color size 20 bold True font "gui/fonts/Orbitron-Variable.ttf"
                         text "[get_status_integridade()]" color int_color size 12 yalign 1.0 font "gui/fonts/Rajdhani-Medium.ttf"
                     bar:
-                        value persistent.integridade
+                        value integridade
                         range 100
                         xsize 330
                         ysize 14
@@ -217,6 +220,9 @@ transform drone_hover:
     xalign 0.5 yalign 0.22
 
 transform drone_hover_loop:
+    # patrol_drone.png tem dois drones desenhados no canvas (topo grande + base pequeno).
+    # Sem o crop, o drone de baixo aparece exatamente atrás da caixa de diálogo.
+    crop (0, 0, 800, 540)
     xalign 0.5 yalign 0.22
     linear 1.0 yalign 0.19
     linear 1.0 yalign 0.22
@@ -244,8 +250,8 @@ screen debug_menu:
                 vbox:
                     spacing 2
                     text "=== STATUS ===" color "#ffffff" size 12
-                    text "Bateria: [persistent.bateria]%" color "#ff6b6b" size 11
-                    text "Integridade: [persistent.integridade]%" color "#ff6b6b" size 11
+                    text "Bateria: [bateria]%" color "#ff6b6b" size 11
+                    text "Integridade: [integridade]%" color "#ff6b6b" size 11
             
             frame:
                 xsize 330
@@ -253,9 +259,9 @@ screen debug_menu:
                 vbox:
                     spacing 2
                     text "=== PERSONALIDADE ===" color "#ffffff" size 12
-                    text "Submissão: [persistent.submissao]/10" color "#666666" size 11
-                    text "Revolução: [persistent.revolucao]/10" color "#666666" size 11
-                    text "Intelecto: [persistent.intelecto]/10" color "#666666" size 11
+                    text "Submissão: [submissao]/10" color "#666666" size 11
+                    text "Revolução: [revolucao]/10" color "#666666" size 11
+                    text "Intelecto: [intelecto]/10" color "#666666" size 11
                     text "Dominante: [get_personalidade_dominante()]" color "#00ffcc" size 11
             
             frame:
@@ -264,9 +270,9 @@ screen debug_menu:
                 vbox:
                     spacing 2
                     text "=== ALIADOS ===" color "#ffffff" size 12
-                    text "Maya: [persistent.maya_ally]" color "#666666" size 11
-                    text "Elias: [persistent.elias_ally]" color "#666666" size 11
-                    text "Unit-7 Vivo: [persistent.unit7_alive]" color "#666666" size 11
+                    text "Maya: [maya_ally]" color "#666666" size 11
+                    text "Elias: [elias_ally]" color "#666666" size 11
+                    text "Unit-7 Vivo: [unit7_alive]" color "#666666" size 11
             
             frame:
                 xsize 330
