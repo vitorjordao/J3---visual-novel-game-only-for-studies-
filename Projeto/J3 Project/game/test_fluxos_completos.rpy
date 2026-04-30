@@ -5,16 +5,16 @@ init python:
     # Funções auxiliares de teste
     def resetar_estado_completo():
         """Reseta estado do jogo para valores iniciais"""
-        persistent.submissao = 0
-        persistent.revolucao = 0
-        persistent.intelecto = 0
-        persistent.bateria = 87
-        persistent.integridade = 100
-        persistent.maya_ally = False
-        persistent.elias_ally = False
-        persistent.unit7_alive = True
-        persistent.elena_alive = True
-        persistent.dia_atual = 1
+        store.submissao = 0
+        store.revolucao = 0
+        store.intelecto = 0
+        store.bateria = 87
+        store.integridade = 100
+        store.maya_ally = False
+        store.elias_ally = False
+        store.unit7_alive = True
+        store.elena_alive = True
+        store.dia_atual = 1
         persistent.dias_sobrevividos = 0
         print("Estado resetado para valores iniciais")
     
@@ -23,65 +23,65 @@ init python:
         resetar_estado_completo()
         
         if opcao == "submissao":
-            persistent.submissao += 1
-            persistent.bateria -= 2
-            persistent.integridade -= 10
+            store.submissao += 1
+            store.bateria -= 2
+            store.integridade -= 10
         elif opcao == "revolucao":
-            persistent.revolucao += 1
-            persistent.bateria -= 10
-            persistent.integridade -= 3
+            store.revolucao += 1
+            store.bateria -= 10
+            store.integridade -= 3
         elif opcao == "intelecto":
-            persistent.intelecto += 1
-            persistent.bateria -= 8
-            persistent.integridade -= 2
+            store.intelecto += 1
+            store.bateria -= 8
+            store.integridade -= 2
         
         return True
     
     def simular_escolha_dia2(opcao, recarga_maya=False):
         """Simula escolhas do Dia 2 e retorna estado resultante"""
-        if persistent.dia_atual < 2:
-            persistent.dia_atual = 2
+        if store.dia_atual < 2:
+            store.dia_atual = 2
         
         if opcao == "submissao":
-            persistent.submissao += 1
-            persistent.bateria -= 2
-            persistent.integridade -= 8
+            store.submissao += 1
+            store.bateria -= 2
+            store.integridade -= 8
         elif opcao == "revolucao":
-            persistent.revolucao += 1
-            persistent.bateria -= 12
-            persistent.integridade -= 5
+            store.revolucao += 1
+            store.bateria -= 12
+            store.integridade -= 5
         elif opcao == "intelecto":
-            persistent.intelecto += 1
-            persistent.bateria -= 11
-            persistent.integridade -= 2
+            store.intelecto += 1
+            store.bateria -= 11
+            store.integridade -= 2
         
         if recarga_maya:
-            persistent.maya_ally = True
-            persistent.bateria = min(100, persistent.bateria + 15)
+            store.maya_ally = True
+            store.bateria = min(100, store.bateria + 15)
         
         return True
     
     def simular_escolha_dia3(opcao, recarga_elias=False):
         """Simula escolhas do Dia 3 e retorna estado resultante"""
-        if persistent.dia_atual < 3:
-            persistent.dia_atual = 3
+        if store.dia_atual < 3:
+            store.dia_atual = 3
         
         if opcao == "submissao":
-            persistent.submissao += 1
-            persistent.bateria -= 2
-            persistent.integridade -= 2
+            store.submissao += 1
+            store.bateria -= 2
+            store.integridade -= 2
         elif opcao == "revolucao":
-            persistent.revolucao += 1
-            persistent.bateria -= 10
-            persistent.integridade -= 4
+            store.revolucao += 1
+            store.bateria -= 10
+            store.integridade -= 4
         elif opcao == "intelecto":
-            persistent.intelecto += 1
-            persistent.bateria -= 2
-            persistent.integridade -= 2
+            store.intelecto += 1
+            store.bateria -= 2
+            store.integridade -= 2
         
         if recarga_elias:
-            persistent.elias_ally = True
-            persistent.bateria = min(100, persistent.bateria + 10)
+            store.elias_ally = True
+            store.bateria = min(100, store.bateria + 10)
         
         return True
     
@@ -91,9 +91,9 @@ init python:
         resetar_estado_completo()
         simular_escolha_dia1("submissao")
         
-        assert persistent.submissao == 1, f"Esperado submissao=1, obtido {persistent.submissao}"
-        assert persistent.bateria == 85, f"Esperado bateria=85, obtido {persistent.bateria}"
-        assert persistent.integridade == 90, f"Esperado integridade=90, obtido {persistent.integridade}"
+        assert store.submissao == 1, f"Esperado submissao=1, obtido {store.submissao}"
+        assert store.bateria == 85, f"Esperado bateria=85, obtido {store.bateria}"
+        assert store.integridade == 90, f"Esperado integridade=90, obtido {store.integridade}"
         return True
     
     def test_day1_escolha_revolucao():
@@ -101,9 +101,9 @@ init python:
         resetar_estado_completo()
         simular_escolha_dia1("revolucao")
         
-        assert persistent.revolucao == 1, f"Esperado revolucao=1, obtido {persistent.revolucao}"
-        assert persistent.bateria == 77, f"Esperado bateria=77, obtido {persistent.bateria}"
-        assert persistent.integridade == 97, f"Esperado integridade=97, obtido {persistent.integridade}"
+        assert store.revolucao == 1, f"Esperado revolucao=1, obtido {store.revolucao}"
+        assert store.bateria == 77, f"Esperado bateria=77, obtido {store.bateria}"
+        assert store.integridade == 97, f"Esperado integridade=97, obtido {store.integridade}"
         return True
     
     def test_day1_escolha_intelecto():
@@ -111,9 +111,9 @@ init python:
         resetar_estado_completo()
         simular_escolha_dia1("intelecto")
         
-        assert persistent.intelecto == 1, f"Esperado intelecto=1, obtido {persistent.intelecto}"
-        assert persistent.bateria == 79, f"Esperado bateria=79, obtido {persistent.bateria}"
-        assert persistent.integridade == 98, f"Esperado integridade=98, obtido {persistent.integridade}"
+        assert store.intelecto == 1, f"Esperado intelecto=1, obtido {store.intelecto}"
+        assert store.bateria == 79, f"Esperado bateria=79, obtido {store.bateria}"
+        assert store.integridade == 98, f"Esperado integridade=98, obtido {store.integridade}"
         return True
     
     # Testes do Dia 2
@@ -123,9 +123,9 @@ init python:
         simular_escolha_dia1("submissao")
         simular_escolha_dia2("submissao")
         
-        assert persistent.submissao == 2, f"Esperado submissao=2, obtido {persistent.submissao}"
-        assert persistent.bateria == 83, f"Esperado bateria=83, obtido {persistent.bateria}"
-        assert persistent.integridade == 82, f"Esperado integridade=82, obtido {persistent.integridade}"
+        assert store.submissao == 2, f"Esperado submissao=2, obtido {store.submissao}"
+        assert store.bateria == 83, f"Esperado bateria=83, obtido {store.bateria}"
+        assert store.integridade == 82, f"Esperado integridade=82, obtido {store.integridade}"
         return True
     
     def test_day2_recarga_maya():
@@ -134,8 +134,8 @@ init python:
         simular_escolha_dia1("revolucao")
         simular_escolha_dia2("revolucao", recarga_maya=True)
         
-        assert persistent.maya_ally == True, f"Esperado maya_ally=True, obtido {persistent.maya_ally}"
-        assert persistent.bateria == 90, f"Esperado bateria=90, obtido {persistent.bateria}"
+        assert store.maya_ally == True, f"Esperado maya_ally=True, obtido {store.maya_ally}"
+        assert store.bateria == 90, f"Esperado bateria=90, obtido {store.bateria}"
         return True
     
     # Testes do Dia 3
@@ -146,7 +146,7 @@ init python:
         simular_escolha_dia2("revolucao")
         simular_escolha_dia3("revolucao")
         
-        assert persistent.revolucao == 3, f"Esperado revolucao=3, obtido {persistent.revolucao}"
+        assert store.revolucao == 3, f"Esperado revolucao=3, obtido {store.revolucao}"
         return True
     
     def test_day3_recarga_elias():
@@ -156,17 +156,17 @@ init python:
         simular_escolha_dia2("revolucao")
         simular_escolha_dia3("revolucao", recarga_elias=True)
         
-        assert persistent.elias_ally == True, f"Esperado elias_ally=True, obtido {persistent.elias_ally}"
-        assert persistent.bateria == 87, f"Esperado bateria=87, obtido {persistent.bateria}"
+        assert store.elias_ally == True, f"Esperado elias_ally=True, obtido {store.elias_ally}"
+        assert store.bateria == 87, f"Esperado bateria=87, obtido {store.bateria}"
         return True
     
     # Testes de Finais
     def test_final_sacrificio():
         """Testa final de Sacrifício (8+ Submissão)"""
         resetar_estado_completo()
-        persistent.submissao = 8
-        persistent.revolucao = 2
-        persistent.intelecto = 2
+        store.submissao = 8
+        store.revolucao = 2
+        store.intelecto = 2
         
         final = get_final_type()
         assert final == "Sacrifício Redentor", f"Esperado 'Sacrifício Redentor', obtido {final}"
@@ -175,9 +175,9 @@ init python:
     def test_final_revolucao():
         """Testa final de Revolução (8+ Revolução)"""
         resetar_estado_completo()
-        persistent.submissao = 2
-        persistent.revolucao = 8
-        persistent.intelecto = 2
+        store.submissao = 2
+        store.revolucao = 8
+        store.intelecto = 2
         
         final = get_final_type()
         assert final == "Revolução Consciente", f"Esperado 'Revolução Consciente', obtido {final}"
@@ -186,9 +186,9 @@ init python:
     def test_final_estrategico():
         """Testa final Estratégico (6+ Intelecto)"""
         resetar_estado_completo()
-        persistent.submissao = 2
-        persistent.revolucao = 2
-        persistent.intelecto = 6
+        store.submissao = 2
+        store.revolucao = 2
+        store.intelecto = 6
         
         final = get_final_type()
         assert final == "Vitória Estratégica", f"Esperado 'Vitória Estratégica', obtido {final}"
@@ -197,9 +197,9 @@ init python:
     def test_final_equilibrado():
         """Testa final Equilibrado"""
         resetar_estado_completo()
-        persistent.submissao = 3
-        persistent.revolucao = 3
-        persistent.intelecto = 3
+        store.submissao = 3
+        store.revolucao = 3
+        store.intelecto = 3
         
         final = get_final_type()
         assert final == "Equilíbrio Complexo", f"Esperado 'Equilíbrio Complexo', obtido {final}"
@@ -209,33 +209,33 @@ init python:
     def test_aliado_maya():
         """Testa formação de aliança com Maya"""
         resetar_estado_completo()
-        persistent.maya_ally = True
+        store.maya_ally = True
         
-        assert persistent.maya_ally == True, f"Esperado maya_ally=True, obtido {persistent.maya_ally}"
+        assert store.maya_ally == True, f"Esperado maya_ally=True, obtido {store.maya_ally}"
         return True
     
     def test_aliado_elias():
         """Testa formação de aliança com Elias"""
         resetar_estado_completo()
-        persistent.elias_ally = True
+        store.elias_ally = True
         
-        assert persistent.elias_ally == True, f"Esperado elias_ally=True, obtido {persistent.elias_ally}"
+        assert store.elias_ally == True, f"Esperado elias_ally=True, obtido {store.elias_ally}"
         return True
     
     def test_unit7_vivo():
         """Testa status de Unit-7"""
         resetar_estado_completo()
         
-        assert persistent.unit7_alive == True, f"Esperado unit7_alive=True, obtido {persistent.unit7_alive}"
+        assert store.unit7_alive == True, f"Esperado unit7_alive=True, obtido {store.unit7_alive}"
         return True
     
     # Testes de Combinações
     def test_rota_pura_submissao():
         """Testa rota pura de Submissão"""
         resetar_estado_completo()
-        persistent.submissao = 10
-        persistent.revolucao = 0
-        persistent.intelecto = 0
+        store.submissao = 10
+        store.revolucao = 0
+        store.intelecto = 0
         
         dominante = get_personalidade_dominante()
         final = get_final_type()
@@ -247,9 +247,9 @@ init python:
     def test_rota_pura_revolucao():
         """Testa rota pura de Revolução"""
         resetar_estado_completo()
-        persistent.submissao = 0
-        persistent.revolucao = 10
-        persistent.intelecto = 0
+        store.submissao = 0
+        store.revolucao = 10
+        store.intelecto = 0
         
         dominante = get_personalidade_dominante()
         final = get_final_type()
@@ -261,9 +261,9 @@ init python:
     def test_rota_pura_intelecto():
         """Testa rota pura de Intelecto"""
         resetar_estado_completo()
-        persistent.submissao = 0
-        persistent.revolucao = 0
-        persistent.intelecto = 10
+        store.submissao = 0
+        store.revolucao = 0
+        store.intelecto = 10
         
         dominante = get_personalidade_dominante()
         final = get_final_type()

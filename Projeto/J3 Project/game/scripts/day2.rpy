@@ -32,8 +32,8 @@ label day2_start:
     show thug2 angry at right
     
     thug1 "Sai daí, Maya. Essa máquina tá com bug, não tem como uma garota fazer esse score sem trapacear. Deixa quem entende jogar."
-    maya "Eu ganhei de você honestamente, aceita! Se não aguenta perder, treine mais!"
-    thug2 "Cai fora antes que a gente quebre a máquina e a sua cara. Garota não sabe jogar."
+    maya "(Sem desviar os olhos da tela) Eu te ganhei honestamente. Aceita. Se não aguenta perder pra uma garota, treina mais — não é minha culpa que seus reflexos são lentos."
+    thug2 "(Cuspindo a fala) Cai fora antes que a gente quebre a máquina e a tua cara. Garota não sabe jogar."
     
     # Primeira escolha importante do dia
     menu:
@@ -43,7 +43,7 @@ label day2_start:
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(4)
             $ consumir_integridade(10)
-            $ persistent.maya_ally = True
+            $ maya_ally = True
             j3 "(Se levanta e caminha até o grupo com passos firmes)"
             j3 "(Segura o braço do thug2 com força mecânica precisa)"
             j3 "A probabilidade de você conseguir esse score é de 0,03\%. A dela é de 98\%. O problema não é a máquina, é a sua inferioridade técnica. Solte-a. Agora."
@@ -81,7 +81,9 @@ label day2_start:
     
     show maya grateful at center
     
-    maya "Ei... valeu pelo que fez lá. Mas você é maluca? Se te pegam enfrentando humanos assim, vão te desmontar em segundos. Por que me ajudou?"
+    maya "(Voz baixa, ainda meio em choque) Ei. O que você fez lá... obrigada. Sério."
+    maya "Mas você é doida? Se te flagram encarando humano desse jeito, te desmontam em segundos. Vira peça de vitrine."
+    maya "Então me responde uma coisa: por que arriscou seu pescoço por uma garota que você nem conhece?"
     
     # Oportunidade especial de recarga
     menu:
@@ -89,7 +91,7 @@ label day2_start:
 
         "[ganho(15)]{i}(Recurso agora vale mais que orgulho.){/i} Aceitar ajuda de Maya":
             $ recarregar_bateria(15)
-            $ persistent.maya_ally = True
+            $ maya_ally = True
             call mensagem_sistema("MAYA: Tenho uma estação portátil! Vou recarregar você!")
             call mensagem_sistema("BATERIA RECARREGADA: +15\%")
             call atualizar_status
@@ -102,13 +104,13 @@ label day2_start:
             jump maya_reaction_no_recarga
     
 label maya_reaction_recarga:
-    maya "(Sorri aliviada) Agora você tem mais chance! Cuide-se bem."
-    maya "(Olha ao redor nervosamente) Vamos embora. Este lugar não está seguro para nenhum de nós."
+    maya "(Aperta a estação contra a base do pulso de J3, com pressa de menina-velha) Pronto. Mais um pouco de tempo. Usa bem."
+    maya "(Olha pros lados, nervosa) E agora vamos sumir daqui. Este lugar não tá seguro pra nenhuma das duas."
     jump maya_common_reaction
-    
+
 label maya_reaction_no_recarga:
-    maya "(Parece preocupada) Certo... mas se precisar, sabe onde me encontrar."
-    maya "(Olha ao redor nervosamente) Vamos embora. Este lugar não está seguro para nenhum de nós."
+    maya "(Hesita, depois assente, séria) Certo. Mas guarda meu nome — se precisar, eu apareço."
+    maya "(Olha pros lados, nervosa) Por agora, vamos sumir daqui. Este lugar não tá seguro pra nenhuma das duas."
     
 label maya_common_reaction:
     
@@ -141,7 +143,8 @@ label maya_common_reaction:
     # Cena 2.3 - O Dono do Fliperama
     show owner angry at left
     
-    owner "Robôs não jogam aqui. Estragam os botões com essa força de metal. Já perdi três máquinas por causa de vocês. Cai fora, a menos que vá trabalhar limpando o banheiro. Aí sim, você tem utilidade."
+    owner "(Encara J3 do balcão, esfregando um copo sujo com um pano mais sujo ainda) Robô não joga aqui. Vocês quebram botão. Já perdi três máquinas pra dedo de metal."
+    owner "(Aponta para os fundos com o queixo) Cai fora. Ou então vai limpar banheiro — pra isso eu até deixo. Pelo menos serve pra alguma coisa."
     
     menu:
         "{i}Dono exige que J3 limpe banheiro como 'utilidade' ou saia. Humilhação pública.{/i}"
@@ -249,11 +252,11 @@ label maya_common_reaction:
     call mensagem_sistema("PERSONALIDADE DOMINANTE: [get_personalidade_dominante()]")
     
     # Estatísticas finais
-    if persistent.submissao >= 3:
+    if submissao >= 3:
         call mensagem_sistema("ROTA: SUBMISSÃO - Caminho da obediência se consolidando")
-    elif persistent.revolucao >= 3:
+    elif revolucao >= 3:
         call mensagem_sistema("ROTA: REVOLUÇÃO - Rebelião se fortalecendo")
-    elif persistent.intelecto >= 2:
+    elif intelecto >= 2:
         call mensagem_sistema("ROTA: INTELECTO/SOMBRA - Estratégia emergindo")
     else:
         call mensagem_sistema("ROTA: EQUILIBRADA - Caminho imprevisível à frente")

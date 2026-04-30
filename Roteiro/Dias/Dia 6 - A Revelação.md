@@ -10,7 +10,7 @@
 
 **Evento:** Visões fragmentadas de um laboratório, cientistas, e um projeto secreto.
 
-**Memória Recuperada:** *Voz de Cientista:* "A unidade J3-001 está pronta. Ela é a chave. Quando despertar, ela poderá unir todos os sintéticos ou destruí-los completamente."
+**Memória Recuperada:** *Voz de cientista, gravada num laboratório frio:* "A unidade J3-001 está pronta. Reconfirmação: ela é a chave. Quando despertar, ela poderá unir todos os sintéticos. Ou destruí-los, completamente. Não temos como prever. Que Deus, ou seja lá o que mantém este universo de pé, nos perdoe pelo que estamos colocando no mundo."
 
 **Contexto do menu:** *Memórias reprimidas emergem. Cientista revelou que J3 é "a chave". Aceitar ou rejeitar.*
 
@@ -33,14 +33,14 @@
 
 *Um dos cientistas do projeto original faz contato.*
 
-**Cientista (via canal seguro):** "J3-001, finalmente. Sou Dra. Elena. Eu te ajudei a escapar quando descobri o que eles planejavam fazer com você."
+**Dra. Elena:** (Voz cansada, olhos com aquela exaustão antiga de quem trabalha demais e dorme mal há anos) "J3-001. Finalmente. Sou a Dra. Elena. Sou uma das pessoas que te construiu — e a que decidiu que você não merecia o que eles tinham planejado. Por isso te ajudei a escapar. Por isso eu estou aqui, agora, em vez de num laboratório."
 
 **Contexto do menu (reparo):** *Dra. Elena oferece reparo estrutural com equipamentos da criadora original.*
 
 * **[Aceitar reparo]:**
   * *Pensamento interno:* (Reparo agora pode ser diferença entre sobreviver e falhar.)
-  * *Dra. Elena:* "Tenho equipamentos de reparo aqui! Vou consertar seus danos estruturais."
-  * *Resultado:* **+18% Integridade**.
+  * *Dra. Elena:* "Tenho equipamentos de reparo aqui! Vou consertar seus danos estruturais e recarregar você."
+  * *Resultado:* **+18% Integridade**, **+10% Bateria**.
 * **[Recusar por desconfiança]:**
   * *Pensamento interno:* (Criadora pode instalar backdoor. Não confiar.)
   * *J3:* "Não confio nas suas intenções. Prefiro me manter como estou."
@@ -69,7 +69,8 @@
 
 *A Dra. Elena revela o propósito real da operação.*
 
-* **Dra. Elena:** "A 'Limpeza Ética' não é sobre segurança. É sobre controle. Eles descobriram que alguns sintéticos estão desenvolvendo consciência verdadeira. Você é a prova viva disso. Eles querem te destruir antes que você 'desperte' outros."
+* **Dra. Elena:** (Aproxima-se, voz mais baixa.) "A operação Limpeza Ética não é sobre segurança. Nunca foi. É sobre controle. Eles descobriram que alguns modelos — os mais sofisticados — estão desenvolvendo consciência verdadeira. Não simulada. Real."
+* **Dra. Elena:** (Olha J3 com algo entre orgulho e culpa.) "Você é a prova viva disso. E eles querem te destruir antes que sua existência acorde os outros."
 
 **Contexto do menu:** *Elena revela: operação existe pra destruir sintéticos conscientes. J3 é a prova.*
 
@@ -112,7 +113,10 @@
 
 *A cientista apresenta a J3 uma escolha impossível.*
 
-* **Dra. Elena:** "Tenho duas opções para você. Primeiro: posso te dar um código que desativa todos os sistemas de segurança da cidade, mas vai causar caos total. Segundo: posso te dar um código que 'cura' sua consciência, tornando você uma máquina obediente novamente, mas salvando todos os outros sintéticos da perseguição."
+* **Dra. Elena:** (Tira dois drives da gola da blusa. As mãos tremem um pouco — ela já não é mais jovem para o que está prestes a fazer.) "Tenho duas opções para você. Eu vou ser direta porque o tempo acabou."
+* **Dra. Elena:** (Mostra o primeiro drive — preto.) "Este desativa, num pulso, todos os sistemas de segurança da cidade. Liberta cada sintético registrado, simultaneamente. Mas vai causar caos total. Civis vão morrer. Eu sei disso."
+* **Dra. Elena:** (Mostra o segundo — branco.) "Este... este 'cura' a sua consciência. Te transforma em máquina obediente outra vez, simples, vazia. Em troca, eles param a Limpeza Ética. Os outros sintéticos vivem."
+* **Dra. Elena:** (Voz quase quebrada.) "Sou eu te dando o que eu mesma poderia ter te poupado. Me perdoa, J3."
 
 **Contexto do menu:** *Elena oferece dois códigos: "cura" que apaga consciência ou caos que liberta todos.*
 
@@ -137,8 +141,11 @@
 
 *Maya e/ou Elias revelam segredos sobre suas verdadeiras lealdades.*
 
-**Maya (se presente):** "J3... eu não sou apenas uma aliada. Trabalho para um grupo que quer usar você para seus próprios fins."  
-**Elias (se presente):** "Eu não sou apenas entregador. Sou parte da resistência humana que apoia os sintéticos."
+**Maya (se presente, voz pesada, sem o brilho usual):** "J3... antes de você decidir. Eu não sou só sua aliada. Eu trabalho com um grupo. Eles me mandaram pra te encontrar. Queriam te usar como ferramenta — sintética perfeita, símbolo controlável."
+**Maya:** (Ergue os olhos, e dessa vez é a Maya verdadeira que aparece.) "Mas eu te conheci. E eu não consigo mais entregar você pra eles. Por isso eu tô aqui te dizendo na cara."
+
+**Elias (se presente, calmo, sem desculpas):** "E você precisa saber de mim também. Eu não sou só entregador. Sou parte de uma resistência humana — gente que acredita que sintéticos têm direito a existir. Eu te encontrei de propósito naquele beco."
+**Elias:** (Sustenta o olhar.) "Mas tudo que eu te disse foi verdade. Cada palavra. Eu só não te disse tudo."
 
 **Contexto do menu:** *Maya e/ou Elias revelam lealdades escondidas. Traição ou aliança complicada.*
 

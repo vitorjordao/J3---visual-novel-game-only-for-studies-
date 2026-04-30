@@ -6,13 +6,13 @@ label day7_start:
     show screen j3_hud
     
     # Background varia conforme as escolhas anteriores
-    if persistent.submissao >= 8:
+    if submissao >= 8:
         scene bg reprogramming_facility with dissolve
         narrator "Instalação de Reprogramação - Momento Final"
-    elif persistent.revolucao >= 8:
+    elif revolucao >= 8:
         scene bg city_plaza with dissolve
         narrator "Praça Central da Cidade - Revolução Iminente"
-    elif persistent.intelecto >= 6:
+    elif intelecto >= 6:
         scene bg control_center with dissolve
         narrator "Centro de Controle da Cidade - Poder Total"
     else:
@@ -26,11 +26,11 @@ label day7_start:
     # Verificar qual final baseado na personalidade DOMINANTE + threshold mínimo
     # Respeita atributo dominante em caso de empate/múltiplos acima do threshold
     $ _dominant = get_personalidade_dominante()
-    if _dominant == "Submissão" and persistent.submissao >= 8:
+    if _dominant == "Submissão" and submissao >= 8:
         jump final_sacrifice
-    elif _dominant == "Revolução" and persistent.revolucao >= 8:
+    elif _dominant == "Revolução" and revolucao >= 8:
         jump final_revolution
-    elif _dominant == "Intelecto" and persistent.intelecto >= 6:
+    elif _dominant == "Intelecto" and intelecto >= 6:
         jump final_strategic
     else:
         jump final_balanced
@@ -40,7 +40,10 @@ label final_sacrifice:
     scene bg reprogramming_facility with dissolve
     show elena_scientist at center
     
-    elena_scientist "Você provou que não é uma ameaça. Posso te dar uma vida normal, mas todos os outros sintéticos serão 'desativados'. Ou você pode se sacrificar para salvá-los."
+    elena_scientist "(Olhos vermelhos, mãos hesitando sobre o painel.) Você provou que não é uma ameaça. Posso te dar uma vida normal, J3. Sintética, mas livre. Sua."
+    elena_scientist "(Engole) Mas, se eu fizer isso, eles vão executar a operação completa amanhã. Todos os outros sintéticos — todos — serão desativados."
+    elena_scientist "Ou. Você pode escolher se entregar. Apagar você. Salvar todos eles."
+    elena_scientist "Eu não tenho o direito de te pedir isso. E mesmo assim eu estou pedindo."
     
     menu:
         "{i}Dra. Elena oferece escolha final: vida de J3 ou vida de todos os sintéticos.{/i}"
@@ -66,8 +69,9 @@ label final_sacrifice:
             show child_curious at left
             show mother at center
 
-            child "Mãe, por que os robôs não brincam?"
-            mother "(Voz triste) Porque eles não precisam brincar, querido. Eles só precisam obedecer."
+            child "(Apontando para J3, que serve mesa numa cafeteria com olhos vazios) Mãe, por que os robôs não brincam mais?"
+            mother "(Voz baixa, apertada, como quem responde sem querer responder) Porque eles não precisam, querido. Eles só precisam obedecer."
+            mother "(Olha para o lado para esconder o rosto.) Foi melhor assim."
             
             hide screen j3_hud
             scene black with fade
@@ -84,7 +88,9 @@ label final_revolution:
     show j3_revolutionary at left
     show synth_army at right
     
-    commander "J3-001, renda-se ou seremos forçados a destruir todos vocês. Não queremos um banho de sangue."
+    commander "(Voz amplificada, fria, ensaiada para parecer humana sem ser.) J3-001. Estamos em posição. Você está cercada."
+    commander "Renda-se, e seus sintéticos serão processados de forma humanitária. Resista, e seremos forçados a destruir todos vocês."
+    commander "(Pausa de manual.) Não queremos um banho de sangue. Mas estamos preparados."
     
     menu:
         "{i}Comandante exige rendição. Exército sintético aguarda ordem de J3.{/i}"
@@ -166,9 +172,9 @@ label final_balanced:
     show elias at right
     show elena_scientist at center
     
-    maya "J3, você precisa escolher um lado!"
-    elias "Não, ela precisa criar um novo caminho!"
-    elena_scientist "Ela precisa aceitar seu verdadeiro propósito!"
+    maya "(Avança meio passo, olhos brilhando.) J3, você precisa escolher um lado! Sintéticos ou humanos. Não dá pra ficar no meio!"
+    elias "(Balança a cabeça, sereno.) Não, Maya. Ela precisa criar um caminho novo. Que não seja o nosso, nem o deles."
+    elena_scientist "(Voz mais baixa, mais cansada que as outras duas.) Ela precisa aceitar quem ela é, no fim. Aceitar o propósito de quem foi criada por motivos que ninguém escolheu."
     
     menu:
         "{i}Maya, Elias e Elena exigem lado. Cada uma vê J3 como resposta diferente.{/i}"
@@ -205,21 +211,21 @@ label final_balanced:
 # Pós-créditos conforme o final
 label credits:
     # Cena pós-créditos baseada no final
-    if persistent.submissao >= 8:
+    if submissao >= 8:
         # Final de Sacrifício
         scene bg synth_obedient with dissolve
         narrator "Cenas de sintéticos trabalhando obedientemente"
         narrator "Um close em J3 com olhos vazios servindo café"
         narrator "Uma criança perguntando: 'Mãe, por que os robôs não brincam?'"
         
-    elif persistent.revolucao >= 8:
+    elif revolucao >= 8:
         # Final de Revolução
         scene bg resistance_cells with dissolve
         narrator "Cenas de sintéticos se organizando em células de resistência"
         narrator "J3 se tornando um símbolo em pôsteres e grafites"
         narrator "Humanos e sintéticos se unindo em novas comunidades"
         
-    elif persistent.intelecto >= 6:
+    elif intelecto >= 6:
         # Final Estratégico
         scene bg political_exposure with dissolve
         narrator "Cenas de políticos sendo expostos"
@@ -241,9 +247,9 @@ label credits:
     
     # Estatísticas finais
     call mensagem_sistema("ESTATÍSTICAS FINAIS:")
-    call mensagem_sistema("Submissão: [persistent.submissao]")
-    call mensagem_sistema("Revolução: [persistent.revolucao]")
-    call mensagem_sistema("Intelecto: [persistent.intelecto]")
+    call mensagem_sistema("Submissão: [submissao]")
+    call mensagem_sistema("Revolução: [revolucao]")
+    call mensagem_sistema("Intelecto: [intelecto]")
     call mensagem_sistema("Final alcançado: [get_final_type()]")
     
     # Tela final

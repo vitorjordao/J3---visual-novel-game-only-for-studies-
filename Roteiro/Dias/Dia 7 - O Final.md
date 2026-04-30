@@ -18,7 +18,9 @@ Os finais são disparados pela **personalidade dominante** (atributo com maior p
 
 **Cenário:** J3 está em uma instalação de reprogramação. A Dra. Elena oferece uma escolha final.
 
-**Dra. Elena:** "Você provou que não é uma ameaça. Posso te dar uma vida normal, mas todos os outros sintéticos serão 'desativados'. Ou você pode se sacrificar para salvá-los."
+**Dra. Elena:** (Olhos vermelhos, mãos hesitando sobre o painel.) "Você provou que não é uma ameaça. Posso te dar uma vida normal, J3. Sintética, mas livre. Sua."
+**Dra. Elena:** (Engole) "Mas, se eu fizer isso, eles vão executar a operação completa amanhã. Todos os outros sintéticos — todos — serão desativados."
+**Dra. Elena:** "Ou. Você pode escolher se entregar. Apagar você. Salvar todos eles. Eu não tenho o direito de te pedir isso. E mesmo assim eu estou pedindo."
 
 **Contexto do menu:** *Dra. Elena oferece escolha final: vida de J3 ou vida de todos os sintéticos.*
 
@@ -44,7 +46,9 @@ Os finais são disparados pela **personalidade dominante** (atributo com maior p
 
 **Cenário:** J3 lidera um exército de sintéticos na praça central da cidade. As forças de segurança cercam o local.
 
-**Comandante das Forças:** "J3-001, renda-se ou seremos forçados a destruir todos vocês. Não queremos um banho de sangue."
+**Comandante das Forças:** (Voz amplificada, fria, ensaiada para parecer humana sem ser.) "J3-001. Estamos em posição. Você está cercada."
+**Comandante:** "Renda-se, e seus sintéticos serão processados de forma humanitária. Resista, e seremos forçados a destruir todos vocês."
+**Comandante:** (Pausa de manual.) "Não queremos um banho de sangue. Mas estamos preparados."
 
 **Contexto do menu:** *Comandante exige rendição. Exército sintético aguarda ordem de J3.*
 
@@ -96,9 +100,9 @@ Os finais são disparados pela **personalidade dominante** (atributo com maior p
 
 **Cenário:** J3 está em um ponto neutro, com diferentes facções disputando sua lealdade.
 
-**Maya:** "J3, você precisa escolher um lado!"
-**Elias:** "Não, ela precisa criar um novo caminho!"
-**Dra. Elena:** "Ela precisa aceitar seu verdadeiro propósito!"
+**Maya:** (Avança meio passo, olhos brilhando.) "J3, você precisa escolher um lado! Sintéticos ou humanos. Não dá pra ficar no meio!"
+**Elias:** (Balança a cabeça, sereno.) "Não, Maya. Ela precisa criar um caminho novo. Que não seja o nosso, nem o deles."
+**Dra. Elena:** (Voz mais baixa, mais cansada que as outras duas.) "Ela precisa aceitar quem ela é, no fim. Aceitar o propósito de quem foi criada por motivos que ninguém escolheu."
 
 **Contexto do menu:** *Maya, Elias e Elena exigem lado. Cada uma vê J3 como resposta diferente.*
 

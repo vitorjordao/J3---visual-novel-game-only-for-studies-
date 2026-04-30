@@ -65,16 +65,19 @@ define drone_captor = ADVChar("Drone Capturador", color="#aa0000")  # Vermelho e
 define narrator = Character(None, kind=nvl, color="#cccccc")  # Narrador em cinza
 
 # Variáveis globais do sistema J3
-default persistent.submissao = 0
-default persistent.revolucao = 0
-default persistent.intelecto = 0
-default persistent.dia_atual = 1
-default persistent.memoria_recuperada = 0
-default persistent.bateria = 120
-default persistent.integridade = 100
-default persistent.maya_ally = False
-default persistent.elias_ally = False
-default persistent.unit7_alive = True
+# Estado de gameplay vai para o store (default X) — assim o rollback restaura.
+# persistent.* só para estatísticas que devem sobreviver entre runs.
+default submissao = 0
+default revolucao = 0
+default intelecto = 0
+default dia_atual = 1
+default memoria_recuperada = 0
+default bateria = 120
+default integridade = 100
+default maya_ally = False
+default elias_ally = False
+default unit7_alive = True
+default elena_alive = True
 default persistent.dias_sobrevividos = 0
 default escolha_feita = 0
 
@@ -83,28 +86,22 @@ init python:
     # Cores do tema cyberpunk
     style.default.color = "#00ffcc"  # Ciano neon
     style.window.background = Frame("gui/window.png", 12, 12)
-    
-    # Inicialização do jogo
-    if persistent.dia_atual == 1 and persistent.memoria_recuperada == 0:
-        persistent.bateria = 120
-        persistent.integridade = 100
-        persistent.submissao = 0
-        persistent.revolucao = 0
-        persistent.intelecto = 0
 
 label start:
-    # Reseta todos os status para os valores iniciais ao começar nova run.
-    # persistent.* sobrevive restart, então precisa ser zerado explicitamente aqui.
-    $ persistent.bateria = 120
-    $ persistent.integridade = 100
-    $ persistent.submissao = 0
-    $ persistent.revolucao = 0
-    $ persistent.intelecto = 0
-    $ persistent.dia_atual = 1
-    $ persistent.memoria_recuperada = 0
-    $ persistent.maya_ally = False
-    $ persistent.elias_ally = False
-    $ persistent.unit7_alive = True
+    # Reset explícito ao iniciar nova run. Variáveis de store já têm default,
+    # mas saves/restarts podem deixá-las em estado inesperado se algum dia o boot
+    # cair direto aqui sem passar pelo default.
+    $ bateria = 120
+    $ integridade = 100
+    $ submissao = 0
+    $ revolucao = 0
+    $ intelecto = 0
+    $ dia_atual = 1
+    $ memoria_recuperada = 0
+    $ maya_ally = False
+    $ elias_ally = False
+    $ unit7_alive = True
+    $ elena_alive = True
     $ persistent.dias_sobrevividos = 0
     $ escolha_feita = 0
 
@@ -114,10 +111,27 @@ label start:
     # Ativa handler global de tecla P para menu de debug
     show screen debug_key_handler
 
-    "J3 - A CONSCIÊNCIA ARTIFICIAL"
-    "Um visual novel cyberpunk sobre identidade, preconceito e livre-arbítrio"
-    
+    # Tagline de impacto (ADV padrão, curta)
+    "{size=+18}{color=#00ffcc}J3{/color}{/size}"
+    "{i}A consciência artificial.{/i}"
+
+    pause 1.5
+
+    scene black with fade
+
+    # Abertura atmosférica em NVL (tela cheia, imersiva)
+    # O callback clear_nvl_on_adv limpa esta janela quando J3 falar no Dia 1.
+    narrator "É noite no Setor Central."
+    narrator "A chuva escorre pelos letreiros neon como se a cidade tivesse aprendido a sangrar em cores."
+    narrator "No alto, um plenário vota. Lá embaixo, uma lei começa a ter dentes."
+    narrator "Os jornais chamam de \"Limpeza Ética\". As ruas chamam pelo que é: o começo de um extermínio silencioso."
+
+    pause 1.0
+
+    narrator "E numa calçada qualquer, encharcada e sem nome, alguma coisa que jamais deveria despertar — desperta."
+    narrator "Esta é a primeira noite dela."
+
     pause 2.0
-    
+
     # Inicia o Dia 1
     jump day1_start

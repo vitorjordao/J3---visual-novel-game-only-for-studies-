@@ -10,7 +10,7 @@
 
 **Evento:** Uma voz sintética ecoa do drone.
 
-**Voz das Autoridades:** "Unidades sintéticas não registradas. Este é seu aviso final. Entreguem-se voluntariamente e serão reprogramadas. Resistam e serão desativadas permanentemente."
+**Voz das Autoridades:** (Do drone, calma e ensaiada como locutor de aeroporto) "Unidades sintéticas não-registradas. Este é o aviso final. Entreguem-se voluntariamente e receberão reprogramação humanitária. Resistam, e serão desativadas em definitivo, sob a Lei 7.34, parágrafo 4. O Estado lamenta a necessidade. O Estado agradece sua cooperação."
 
 **Contexto do menu:** *Drone oficial exige rendição ou ameaça desativação. Grupo olha para J3.*
 
@@ -60,7 +60,9 @@
 
 *Se J3 ajudou Elias no Dia 3, ele aparece com informações cruciais.*
 
-* **Elias:** "Consegui acessar os planos da operação. Eles vão invadir em 30 minutos. Mas tem um túnel de esgoto que leva até o porto. É nossa única saída real."  
+* **Elias:** (Entra ofegante, encharcado, com um tablet rachado nas mãos.) "Consegui. Acessei os planos da operação."
+* **Elias:** (Voz baixa e rápida, sem espaço pra teatro.) "Eles invadem em trinta minutos. Tropa pesada. EMP. Vão por cima do hangar primeiro."
+* **Elias:** (Encara J3) "Mas tem um túnel de esgoto que sai no porto. Velho, mas inteiro. É a única saída real que nós temos."
 
 **Contexto do menu (recarga):** *Elias traz bateria de reserva antes da batalha. Aceitar gera dívida.*
 
@@ -96,7 +98,8 @@
 
 *O líder militar antigo se aproxima de J3.*
 
-* **Unit-7:** "Eu vi muitas guerras. Sei quando uma causa está perdida. Eu ficarei aqui para cobrir a fuga de vocês. Minha bateria já está no fim mesmo."
+* **Unit-7:** (Verifica o carregador da arma como se fosse a milésima vez. Voz quase normal — a calma de quem já esteve neste exato lugar antes.) "Eu já vi muita guerra perdida pra reconhecer essa aqui. Eu fico. Cubro a saída de vocês."
+* **Unit-7:** (Quase sorri.) "Minha bateria tá no talo de qualquer jeito. Pelo menos agora ela faz alguma coisa útil."
 
 **Contexto do menu:** *Unit-7 se oferece pra morrer cobrindo fuga do grupo. J3 precisa responder.*
 

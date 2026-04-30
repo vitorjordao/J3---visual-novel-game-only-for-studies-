@@ -111,3 +111,13 @@ transform far_right:
     xcenter 0.90
     yalign 1.0
     zoom 0.75
+
+# damaged_bot tem o robo desenhado so na faixa inferior do canvas 800x1080.
+# Com 'at center' (yalign 1.0), o corpo do bot cai exatamente atras do textbox.
+# Este transform sobe o sprite (ypos < 1.0) e da um zoom leve para ele ficar
+# visivel inteiro acima da caixa de dialogo.
+transform small_bot_center:
+    xcenter 0.5
+    yanchor 1.0
+    ypos 0.74
+    zoom 1.2

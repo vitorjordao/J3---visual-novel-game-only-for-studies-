@@ -23,9 +23,9 @@ label final_0a_desligamento:
     call mensagem_sistema("CONSCIÊNCIA: DESFAZENDO...")
     
     # Últimas palavras baseadas na personalidade
-    if persistent.submissao >= persistent.revolucao and persistent.submissao >= persistent.intelecto:
+    if submissao >= revolucao and submissao >= intelecto:
         j3 "Desculpe... não consegui..."
-    elif persistent.revolucao >= persistent.submissao and persistent.revolucao >= persistent.intelecto:
+    elif revolucao >= submissao and revolucao >= intelecto:
         j3 "A luta... continua... sem mim..."
     else:
         j3 "Dados... perdidos... para sempre..."
@@ -55,9 +55,9 @@ label final_0b_colapso:
     call mensagem_sistema("DESINTEGRAÇÃO: IMINENTE")
     
     # Últimas palavras baseadas na personalidade
-    if persistent.submissao >= persistent.revolucao and persistent.submissao >= persistent.intelecto:
+    if submissao >= revolucao and submissao >= intelecto:
         j3 "Pelo menos... tentei..."
-    elif persistent.revolucao >= persistent.submissao and persistent.revolucao >= persistent.intelecto:
+    elif revolucao >= submissao and revolucao >= intelecto:
         j3 "Levem... minhas peças... para a revolução..."
     else:
         j3 "Padrões... identificados... muito tarde..."
@@ -82,9 +82,9 @@ label final_0c_captura:
     
     call mensagem_sistema("RECURSOS INSUFICIENTES PARA AÇÃO")
     pause 1.0
-    call mensagem_sistema("BATERIA: [persistent.bateria]\%")
+    call mensagem_sistema("BATERIA: [bateria]\%")
     pause 1.0
-    call mensagem_sistema("INTEGRIDADE: [persistent.integridade]\%")
+    call mensagem_sistema("INTEGRIDADE: [integridade]\%")
     pause 1.0
     call mensagem_sistema("OPÇÕES LIMITADAS: RENDIÇÃO OBRIGATÓRIA")
     
