@@ -108,6 +108,9 @@ label start:
     # Tela de inicialização do sistema J3
     scene black
 
+    # Inicia trilha sonora aleatoria de fundo (continua durante todo o jogo)
+    call iniciar_musica_aleatoria
+
     # Ativa handler global de tecla P para menu de debug
     show screen debug_key_handler
 
