@@ -122,6 +122,21 @@ def sistema_j3_ns():
 
 
 @pytest.fixture
+def functions_ns():
+    """
+    Carrega `scripts/functions.rpy` (get_personalidade_dominante,
+    get_final_type, custo/ganho, mensagem_sistema, etc.).
+    """
+    rpy_text = (GAME_DIR / "scripts" / "functions.rpy").read_text(encoding="utf-8")
+    py_source = extract_init_python(rpy_text)
+    store = make_store()
+    jumps: list[str] = []
+    ns = build_namespace(store, jumps)
+    exec(compile(py_source, "functions.rpy[init python]", "exec"), ns)
+    return ns, store, jumps
+
+
+@pytest.fixture
 def musica_ns():
     """
     Carrega `musica.rpy` se existir (feature pode estar em branch separado).
