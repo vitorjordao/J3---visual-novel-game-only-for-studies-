@@ -22,8 +22,8 @@
 
 **Diálogo dos Rapazes:**
 **Thug 1:** (Impaciente) "Sai daí, Maya. Essa máquina tá com bug, não tem como uma garota fazer esse score sem trapacear. Deixa quem entende jogar."
-**Maya:** (Confiante) "Eu ganhei de você honestamente, aceita! Se não aguenta perder, treine mais!"
-**Thug 2:** (Tentando empurrar Maya da cadeira) "Cai fora antes que a gente quebre a máquina e a sua cara. Garota não sabe jogar."
+**Maya:** (Sem desviar os olhos da tela) "Eu te ganhei honestamente. Aceita. Se não aguenta perder pra uma garota, treina mais — não é minha culpa que seus reflexos são lentos."
+**Thug 2:** (Cuspindo a fala, tentando empurrar Maya da cadeira) "Cai fora antes que a gente quebre a máquina e a tua cara. Garota não sabe jogar."
 
 **Contexto do menu:** *Três rapazes cercam Maya na máquina. Agressão iminente. J3 observa escondida.*
 
@@ -52,7 +52,9 @@
 
 **Evento:** Após o conflito, Maya encontra J3 escondida no fundo do fliperama. Ela está ofegante, mas com olhos brilhantes.
 
-**Maya:** (Aproximando-se cautelosamente) "Ei... valeu pelo que fez lá. Mas você é maluca? Se te pegam enfrentando humanos assim, vão te desmontar em segundos. Por que me ajudou?"
+**Maya:** (Voz baixa, ainda meio em choque) "Ei. O que você fez lá... obrigada. Sério."
+**Maya:** "Mas você é doida? Se te flagram encarando humano desse jeito, te desmontam em segundos. Vira peça de vitrine."
+**Maya:** "Então me responde uma coisa: por que arriscou seu pescoço por uma garota que você nem conhece?"
 
 **Contexto do menu:** *Maya pergunta por que J3 arriscou tudo para defendê-la.*
 
@@ -77,7 +79,8 @@
 
 **Evento:** Um homem corpulento (~50 anos, camiseta suja de óleo) aparece do escritório, olhando torto para J3.
 
-**Owner (Dono):** (Voz rude) "Robôs não jogam aqui. Estragam os botões com essa força de metal. Já perdi três máquinas por causa de vocês. Cai fora, a menos que vá trabalhar limpando o banheiro. Aí sim, você tem utilidade."
+**Owner (Dono):** (Encara J3 do balcão, esfregando um copo sujo com um pano mais sujo ainda) "Robô não joga aqui. Vocês quebram botão. Já perdi três máquinas pra dedo de metal."
+**Owner:** (Aponta para os fundos com o queixo) "Cai fora. Ou então vai limpar banheiro — pra isso eu até deixo. Pelo menos serve pra alguma coisa."
 
 **Contexto do menu:** *Dono exige que J3 limpe banheiro como "utilidade" ou saia. Humilhação pública.*
 
