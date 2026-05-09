@@ -12,7 +12,7 @@ label verificar_final_critico:
 
 label final_0a_desligamento:
     scene bg dark_street with dissolve
-    stop music
+    call parar_musica_aleatoria
     
     call mensagem_sistema("ALERTA CRÍTICO: BATERIA ESGOTADA")
     pause 1.0
@@ -44,7 +44,7 @@ label final_0a_desligamento:
 
 label final_0b_colapso:
     scene bg dark_street with dissolve
-    stop music
+    call parar_musica_aleatoria
     
     call mensagem_sistema("ALERTA CRÍTICO: COLAPSO ESTRUTURAL")
     pause 1.0
@@ -78,7 +78,7 @@ label final_0b_colapso:
 
 label final_0c_captura:
     scene bg laboratory with dissolve
-    stop music
+    call parar_musica_aleatoria
     
     call mensagem_sistema("RECURSOS INSUFICIENTES PARA AÇÃO")
     pause 1.0
