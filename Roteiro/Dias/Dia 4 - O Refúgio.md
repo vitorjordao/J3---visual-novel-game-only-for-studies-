@@ -33,7 +33,7 @@
 
 *Se J3 ajudou Maya no fliperama, ela aparece no refúgio.*
 
-* **Maya:** "Consegui te encontrar! Sei que parece loucura, mas tem algo especial em você. Você não é como os outros robôs."
+* **Maya:** (Aparece da escuridão úmida do refúgio, ofegante mas sorrindo) "Achei. Você não faz ideia do quanto eu rodei pra te achar. Sei que parece loucura, tá? Mas tem alguma coisa em você. Você não é como os outros sintéticos. Não é mesmo."
 
 **Contexto do menu:** *Maya diz que J3 é diferente dos outros sintéticos. Afirmar ou negar?*
 
@@ -48,7 +48,7 @@
 
 *Um sintético militar antigo, com cicatrizes de batalha, se aproxima.*
 
-* **Líder (Unit-7):** "Sou o responsável pela ordem aqui. Novatos precisam provar seu valor. O que você oferece além de mais boca pra alimentar?"
+* **Líder (Unit-7):** (Voz baixa e seca, sem cerimônia. Marca de queimadura cobre meio rosto, blindagem militar arranhada por outras guerras.) "Eu sou o responsável pela ordem aqui dentro. Aqui não é asilo. É posição mantida no fio. Novato prova valor antes de comer. Então diz logo: o que você oferece, além de mais uma boca pra esconder?"
 
 **Contexto do menu:** *Unit-7 exige prova de valor. Reparos ou retirada.*
 
@@ -106,7 +106,8 @@
 
 *Um pequeno drone de notícias entra no refúgio e projeta uma reportagem.*
 
-* **Reportagem:** "Autoridades anunciam operação 'Limpeza Ética': todos os sintéticos não registrados serão desativados até o final da semana. Cidadãos são incentivados a denunciar atividades suspeitas."
+* **Reportagem (voz feminina, calma, ensaiada):** "Em comunicado oficial, as autoridades anunciam a operação Limpeza Ética. Todos os modelos sintéticos não-registrados serão desativados de forma humanitária até o fim desta semana."
+* **Reportagem:** "O Ministério da Ordem reforça: a medida visa preservar a segurança das famílias. Cidadãos são encorajados a denunciar atividades suspeitas pelo aplicativo OlhoCívico. Lembre-se: denunciar é amar."
 
 **Contexto do menu:** *Operação "Limpeza Ética" anunciada. Refúgio será invadido. Decidir coletivamente.*
 
@@ -131,7 +132,7 @@
 
 *O líder Unit-7 confronta J3 sobre suas crescente influência.*
 
-* **Unit-7:** "Você está mudando a dinâmica aqui. Alguns te veem como salvadora, outros como ameaça. Prove onde está sua lealdade."
+* **Unit-7:** (Apoia o peso numa coluna rachada, observando J3 sem piscar.) "Você tá mudando a dinâmica daqui. Alguns te veem como salvação. Outros, como ameaça. As duas coisas matam, no fim. Então decide rápido: onde tá tua lealdade?"
 
 **Contexto do menu:** *Unit-7 exige prova de lealdade. Grupo dividido sobre papel de J3.*
 

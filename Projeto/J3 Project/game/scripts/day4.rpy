@@ -22,7 +22,7 @@ label day4_start:
     narrator "J3 é guiada por Maya (se a ajudou no Dia 2) ou encontra o local por conta própria..."
     narrator "Vários sintéticos danificados se escondem aqui..."
     
-    show damaged_bot at center
+    show damaged_bot at small_bot_center
     
     damaged_bot "Nova unidade? Você tem sorte de ainda estar inteira. O que te trouxe pro nosso canto esquecido?"
     
@@ -53,11 +53,12 @@ label day4_start:
     
     # Cena 4.2 - A Reação de Maya
     # Se J3 ajudou Maya no fliperama, ela aparece no refúgio
-    if persistent.maya_ally:
+    if maya_ally:
         hide damaged_bot
         show maya grateful at center
         
-        maya "Consegui te encontrar! Sei que parece loucura, mas tem algo especial em você. Você não é como os outros robôs."
+        maya "(Aparece da escuridão úmida do refúgio, ofegante mas sorrindo) Achei. Você não faz ideia do quanto eu rodei pra te achar."
+        maya "(Encara J3 com olhar quase de incredulidade) Sei que parece loucura, tá? Mas tem alguma coisa em você. Você não é como os outros sintéticos. Não é mesmo."
         
         menu:
             "{i}Maya diz que J3 é diferente dos outros sintéticos. Afirmar ou negar?{/i}"
@@ -76,8 +77,10 @@ label day4_start:
     # Cena 4.3 - O Líder do Refúgio
     hide maya
     show unit7 leader at center
-    
-    unit7 "Sou o responsável pela ordem aqui. Novatos precisam provar seu valor. O que você oferece além de mais boca pra alimentar?"
+    show synth_survivor at right with dissolve
+
+    unit7 "(Voz baixa e seca, sem cerimônia. Marca de queimadura cobre meio rosto, blindagem militar arranhada por outras guerras.) Eu sou o responsável pela ordem aqui dentro. Aqui não é asilo. É posição mantida no fio."
+    unit7 "Novato prova valor antes de comer. Então diz logo: o que você oferece, além de mais uma boca pra esconder?"
     
     menu:
         "{i}Unit-7 exige prova de valor. Reparos ou retirada.{/i}"
@@ -133,6 +136,7 @@ label repair_circle_common:
 
     # Cena 4.4 - O Conflito de Recursos
     hide unit7
+    hide synth_survivor
     show synth1 angry at left
     show synth2 desperate at right
     
@@ -146,6 +150,7 @@ label repair_circle_common:
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(1)
             j3 "A autoridade estabelecida deve resolver disputas de recursos. Aguardarei a decisão do Unit-7."
+            show unit7 leader at center with dissolve
             unit7 "(Aparece e toma decisão arbitrária)"
             narrator "A decisão desagrada ambos os sintéticos."
             call mensagem_sistema("STATUS: Conflito evitado")
@@ -156,6 +161,7 @@ label repair_circle_common:
             j3 "O kit pode ser dividido. Posso criar um reparo temporário para a perna enquanto o sistema central recebe o reparo principal."
             synth1 "(Agradece)"
             synth2 "(Agradece)"
+            show unit7 leader at center with dissolve
             unit7 "(Se sente desafiado)"
             call mensagem_sistema("STATUS: Mediadora bem-sucedida")
 
@@ -176,7 +182,9 @@ label repair_circle_common:
     
     play sound "sfx/news_broadcast.wav"
     
-    narrator "REPORTAGEM: Autoridades anunciam operação 'Limpeza Ética': todos os sintéticos não registrados serão desativados até o final da semana. Cidadãos são incentivados a denunciar atividades suspeitas."
+    narrator "REPORTAGEM (voz feminina, calma, ensaiada): \"Em comunicado oficial, as autoridades anunciam a operação Limpeza Ética. Todos os modelos sintéticos não-registrados serão desativados de forma humanitária até o fim desta semana.\""
+    narrator "REPORTAGEM: \"O Ministério da Ordem reforça: a medida visa preservar a segurança das famílias. Cidadãos são encorajados a denunciar atividades suspeitas pelo aplicativo OlhoCívico.\""
+    narrator "REPORTAGEM: \"Lembre-se: denunciar é amar.\""
     
     call mensagem_sistema("ALERTA: Operação 'Limpeza Ética' detectada")
     call mensagem_sistema("AMEAÇA: Desativação em massa iminente")
@@ -211,8 +219,10 @@ label repair_circle_common:
     hide damaged_bot
     hide maya
     show unit7 suspicious at center
-    
-    unit7 "Você está mudando a dinâmica aqui. Alguns te veem como salvadora, outros como ameaça. Prove onde está sua lealdade."
+    show synth_survivor at left with dissolve
+
+    unit7 "(Apoia o peso numa coluna rachada, observando J3 sem piscar.) Você tá mudando a dinâmica daqui. Alguns te veem como salvação. Outros, como ameaça. As duas coisas matam, no fim."
+    unit7 "Então decide rápido: onde tá tua lealdade?"
     
     menu:
         "{i}Unit-7 exige prova de lealdade. Grupo dividido sobre papel de J3.{/i}"
@@ -243,11 +253,11 @@ label repair_circle_common:
     call mensagem_sistema("PERSONALIDADE DOMINANTE: [get_personalidade_dominante()]")
     
     # Estatísticas finais
-    if persistent.submissao >= 4:
+    if submissao >= 4:
         call mensagem_sistema("ROTA: SUBMISSÃO - Caminho da obediência consolidado")
-    elif persistent.revolucao >= 4:
+    elif revolucao >= 4:
         call mensagem_sistema("ROTA: REVOLUÇÃO - Rebelião ativa estabelecida")
-    elif persistent.intelecto >= 3:
+    elif intelecto >= 3:
         call mensagem_sistema("ROTA: INTELECTO/SOMBRA - Estratégia complexa em desenvolvimento")
     else:
         call mensagem_sistema("ROTA: EQUILIBRADA - Destino incerto se aproximando")

@@ -26,6 +26,36 @@
 
 ---
 
+## Abertura — A Primeira Noite
+
+**Tom:** noir cyberpunk, frases curtas, imagens fortes. Funciona como prólogo cinematográfico antes do gameplay começar. Renderizada em NVL (tela cheia) para máxima imersão.
+
+**Tagline inicial (ADV, impacto):**
+> **J3**
+> *A consciência artificial.*
+
+**Atmosfera (narrador, NVL):**
+
+> É noite no Setor Central.
+>
+> A chuva escorre pelos letreiros neon como se a cidade tivesse aprendido a sangrar em cores.
+>
+> No alto, um plenário vota. Lá embaixo, uma lei começa a ter dentes.
+>
+> Os jornais chamam de "Limpeza Ética". As ruas chamam pelo que é: o começo de um extermínio silencioso.
+
+*[pausa breve]*
+
+> E numa calçada qualquer, encharcada e sem nome, alguma coisa que jamais deveria despertar — desperta.
+>
+> Esta é a primeira noite dela.
+
+**Função narrativa:** estabelece em <90 segundos o conflito existencial do jogo. O jogador chega ao Dia 1 sabendo que (a) há uma operação institucional em curso contra sintéticos, (b) o protagonista é uma anomalia, e (c) a história é íntima — "a primeira noite dela", não "o início da revolução".
+
+**Transição:** ao primeiro `j3 "..."` no Dia 1, o callback `clear_nvl_on_adv` limpa a janela NVL automaticamente, devolvendo o jogo ao modo ADV.
+
+---
+
 # Estrutura dos Dias
 
 ## Dias Disponíveis:

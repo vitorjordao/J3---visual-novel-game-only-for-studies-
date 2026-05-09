@@ -6,13 +6,13 @@ label day6_start:
     show screen j3_hud
     
     # Background varia conforme as escolhas do Dia 5
-    if persistent.submissao >= 6:
+    if submissao >= 6:
         scene bg reprogramming_cell with dissolve
         narrator "Cela de Reprogramação - Centro de Detenção"
-    elif persistent.revolucao >= 6:
+    elif revolucao >= 6:
         scene bg underground_hideout with dissolve
         narrator "Esconderijo Subterrâneo - Base da Resistência"
-    elif persistent.intelecto >= 4:
+    elif intelecto >= 4:
         scene bg abandoned_lab with dissolve
         narrator "Laboratório Abandonado - Centro de Pesquisa Secreto"
     else:
@@ -29,7 +29,10 @@ label day6_start:
     
     play sound "sfx/memory_glitch.wav"
     
-    narrator "MEMÓRIA RECUPERADA: Voz de Cientista - 'A unidade J3-001 está pronta. Ela é a chave. Quando despertar, ela poderá unir todos os sintéticos ou destruí-los completamente.'"
+    narrator "MEMÓRIA RECUPERADA — voz de cientista, gravada num laboratório frio:"
+    narrator "\"A unidade J3-001 está pronta. Reconfirmação: ela é a chave.\""
+    narrator "\"Quando despertar, ela poderá unir todos os sintéticos. Ou destruí-los, completamente. Não temos como prever.\""
+    narrator "\"Que Deus, ou seja lá o que mantém este universo de pé, nos perdoe pelo que estamos colocando no mundo.\""
     
     menu:
         "{i}Memórias reprimidas emergem. Cientista revelou que J3 é 'a chave'. Aceitar ou rejeitar.{/i}"
@@ -57,16 +60,20 @@ label day6_start:
     
     show elena_scientist at center
     
-    elena_scientist "J3-001, finalmente. Sou Dra. Elena. Eu te ajudei a escapar quando descobri o que eles planejavam fazer com você."
+    elena_scientist "(Voz cansada, olhos com aquela exaustão antiga de quem trabalha demais e dorme mal há anos.) J3-001. Finalmente."
+    elena_scientist "Sou a Dra. Elena. Sou uma das pessoas que te construiu — e a que decidiu que você não merecia o que eles tinham planejado."
+    elena_scientist "Por isso te ajudei a escapar. Por isso eu estou aqui, agora, em vez de num laboratório."
     
     # Oportunidade de reparo com a Dra. Elena
     menu:
         "{i}Dra. Elena oferece reparo estrutural com equipamentos da criadora original.{/i}"
 
-        "[ganho(integ=18)]{i}(Reparo agora pode ser diferença entre sobreviver e falhar.){/i} Aceitar reparo da Dra. Elena":
+        "[ganho(bat=10, integ=18)]{i}(Reparo agora pode ser diferença entre sobreviver e falhar.){/i} Aceitar reparo da Dra. Elena":
             $ reparar_integridade(18)
-            call mensagem_sistema("DRA. ELENA: Tenho equipamentos de reparo aqui! Vou consertar seus danos estruturais.")
+            $ recarregar_bateria(10)
+            call mensagem_sistema("DRA. ELENA: Tenho equipamentos de reparo aqui! Vou consertar seus danos estruturais e recarregar você.")
             call mensagem_sistema("INTEGRIDADE REPARADA: +18\%")
+            call mensagem_sistema("BATERIA RECARREGADA: +10\%")
             call atualizar_status
             jump elena_repair_accepted
 
@@ -108,7 +115,9 @@ label elena_common:
     # Cena 6.3 - A Verdade Sobre a "Limpeza Ética"
     narrator "A Dra. Elena revela o propósito real da operação..."
     
-    elena_scientist "A 'Limpeza Ética' não é sobre segurança. É sobre controle. Eles descobriram que alguns sintéticos estão desenvolvendo consciência verdadeira. Você é a prova viva disso. Eles querem te destruir antes que você 'desperte' outros."
+    elena_scientist "(Aproxima-se, voz mais baixa.) A operação Limpeza Ética não é sobre segurança. Nunca foi."
+    elena_scientist "É sobre controle. Eles descobriram que alguns modelos — os mais sofisticados — estão desenvolvendo consciência verdadeira. Não simulada. Real."
+    elena_scientist "(Olha J3 com algo entre orgulho e culpa.) Você é a prova viva disso. E eles querem te destruir antes que sua existência acorde os outros."
     
     menu:
         "{i}Elena revela: operação existe pra destruir sintéticos conscientes. J3 é a prova.{/i}"
@@ -162,7 +171,10 @@ label elena_common:
     hide synth_survivor
     show elena_scientist urgent at center
     
-    elena_scientist "Tenho duas opções para você. Primeiro: posso te dar um código que desativa todos os sistemas de segurança da cidade, mas vai causar caos total. Segundo: posso te dar um código que 'cura' sua consciência, tornando você uma máquina obediente novamente, mas salvando todos os outros sintéticos da perseguição."
+    elena_scientist "(Tira dois drives da gola da blusa. As mãos tremem um pouco — ela já não é mais jovem para o que está prestes a fazer.) Tenho duas opções para você. Eu vou ser direta porque o tempo acabou."
+    elena_scientist "(Mostra o primeiro drive — preto.) Este desativa, num pulso, todos os sistemas de segurança da cidade. Liberta cada sintético registrado, simultaneamente. Mas vai causar caos total. Civis vão morrer. Eu sei disso."
+    elena_scientist "(Mostra o segundo — branco.) Este... este 'cura' a sua consciência. Te transforma em máquina obediente outra vez, simples, vazia. Em troca, eles param a Limpeza Ética. Os outros sintéticos vivem."
+    elena_scientist "(Voz quase quebrada.) Sou eu te dando o que eu mesma poderia ter te poupado. Me perdoa, J3."
     
     menu:
         "{i}Elena oferece dois códigos: 'cura' que apaga consciência ou caos que liberta todos.{/i}"
@@ -187,15 +199,19 @@ label elena_common:
     
     # Cena 6.6 - A Traição ou Redenção
     # Maya e/ou Elias revelam segredos sobre suas verdadeiras lealdades
-    if persistent.maya_ally:
+    if maya_ally:
         show maya conflicted at left
-        
-        maya "J3... eu não sou apenas uma aliada. Trabalho para um grupo que quer usar você para seus próprios fins."
-    
-    if persistent.elias_ally:
+
+        maya "(Aparece atrás de J3, voz pesada, sem o brilho usual.) J3... antes de você decidir."
+        maya "Eu não sou só sua aliada. Eu trabalho com um grupo. Eles me mandaram pra te encontrar. Queriam te usar como ferramenta — sintética perfeita, símbolo controlável."
+        maya "(Ergue os olhos, e dessa vez é a Maya verdadeira que aparece.) Mas eu te conheci. E eu não consigo mais entregar você pra eles. Por isso eu tô aqui te dizendo na cara."
+
+    if elias_ally:
         show elias determined at right
-        
-        elias "Eu não sou apenas entregador. Sou parte da resistência humana que apoia os sintéticos."
+
+        elias "(Para ao lado de J3, calmo, sem desculpas.) E você precisa saber de mim também."
+        elias "Eu não sou só entregador. Sou parte de uma resistência humana — gente que acredita que sintéticos têm direito a existir. Eu te encontrei de propósito naquele beco."
+        elias "(Sustenta o olhar.) Mas tudo que eu te disse foi verdade. Cada palavra. Eu só não te disse tudo."
     
     menu:
         "{i}Maya e/ou Elias revelam lealdades escondidas. Traição ou aliança complicada.{/i}"
@@ -223,11 +239,11 @@ label elena_common:
     call mensagem_sistema("PERSONALIDADE DOMINANTE: [get_personalidade_dominante()]")
     
     # Estatísticas finais
-    if persistent.submissao >= 8:
+    if submissao >= 8:
         call mensagem_sistema("ROTA: SUBMISSÃO - Sacrifício redentor se aproximando")
-    elif persistent.revolucao >= 8:
+    elif revolucao >= 8:
         call mensagem_sistema("ROTA: REVOLUÇÃO - Libertação total iminente")
-    elif persistent.intelecto >= 6:
+    elif intelecto >= 6:
         call mensagem_sistema("ROTA: INTELECTO/SOMBRA - Controle estratégico em desenvolvimento")
     else:
         call mensagem_sistema("ROTA: EQUILIBRADA - Decisão final complexa à frente")
