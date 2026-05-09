@@ -259,7 +259,7 @@ style choice_caption_frame:
 
 style choice_caption_text:
     color "#ffffff"
-    size 26
+    size gui.choice_button_text_size
     xalign 0.5
     textalign 0.5
     font "gui/fonts/Rajdhani-Medium.ttf"

@@ -64,9 +64,10 @@ label final_sacrifice:
             narrator "Os outros sintéticos são 'reabilitados' e perdem sua autonomia"
             narrator "A humanidade se sente segura, mas perdeu a chance de evolução"
             
-            # Cena final
+            # Cena final - troca cafeteria, esconde j3_empty para nao sobrepor mae
+            scene bg hospital_service with dissolve
             show j3_serving at far_right
-            show child_curious at left
+            show child_curious at far_left
             show mother at center
 
             child "(Apontando para J3, que serve mesa numa cafeteria com olhos vazios) Mãe, por que os robôs não brincam mais?"
