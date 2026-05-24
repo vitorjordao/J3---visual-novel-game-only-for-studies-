@@ -265,6 +265,29 @@ A ideia é juntar duas coisas: o peso do cyberpunk (cidade escura, neon, opress�
 - **Games:** Deus Ex, System Shock, Observer
 - **Cultura:** Música eletrônica brasileira contemporânea
 
+#### Notas sobre a Produção do Áudio (v1.1.0)
+
+A trilha sonora seguiu o mesmo dilema da arte: produzir 7 faixas distintas (uma por dia) à mão dentro do prazo de desenvolvedor solo não cabia. A música é parte central da atmosfera cyberpunk do J3 — silêncio não era opção. A solução foi gerar a trilha com IA musical (Suno) usando prompts dirigidos por dia (atmosfera, BPM, instrumentação, tensão narrativa pretendida) e fazer curadoria/edição manual antes de entrar no jogo.
+
+Posição que assumi (mesma do uso de IA na arte):
+- transparência total no GDD;
+- prompts detalhados funcionando como briefing para um compositor terceirizado;
+- direção artística (escolha de atmosfera por dia, momento de corte, decisão de silenciar nos finais críticos) continua sendo minha;
+- zero uso comercial — o projeto é não-comercial, com intuito de aprendizagem.
+
+**Faixas no build atual (5):**
+- `After_the_Rainfall.mp3` — pós-conflito, melancolia urbana (Dia 1, Dia 4)
+- `Asphalt_Downpour.mp3` — chuva neon, abertura cyberpunk (Dia 1)
+- `Late_Shift_at_Terminal_.mp3` — tensão noturna, espaço público (Dia 2, Dia 3)
+- `Piston_Alignment.mp3` — industrial mecânico (Dia 3, Dia 5)
+- `Sub_Level_View.mp3` — ambient subterrâneo (Dia 4, Dia 6)
+
+**Sistema de aleatorização (`musica.rpy`):** o canal `music` toca uma faixa aleatória, e quando ela termina o callback `_music_queue_next` enfileira outra sem repetir a anterior. Persiste através de saves (Ren'Py salva o estado do canal). Nos finais críticos (0A desligamento, 0B colapso, 0C captura) a flag `_music_random_enabled` é setada como `False` antes do `stop music` para impedir que o callback re-enfileire — silêncio absoluto é parte da carga emocional desses finais.
+
+**Pós-processamento manual:** cada faixa gerada pela Suno passou por edição no Audacity — corte de seções fracas, normalização de loudness para evitar variação brusca entre faixas, fade-in/fade-out para encaixar no callback de fila. A IA gera a base; a finalização garante que duas faixas seguidas não soem como playlist aleatória, mas como continuidade de trilha.
+
+**Efeitos sonoros (sfx):** declarados no roteiro (`crowd_noise.wav`, `alert.wav`, `alarm.wav`, `sirens.wav`, etc. — referenciados em `day1.rpy:47`, `day1.rpy:157`, `day2.rpy:71`, etc.) mas ainda não produzidos. O lint do Ren'Py reporta como "not loadable" — fica como TODO para v1.2.0. No build atual o jogo roda sem erros porque chamadas `play sound` falhas são não-fatais no Ren'Py.
+
 ---
 
 ## 5. Narrativa, Ambientação e Personagens
@@ -921,6 +944,28 @@ Correções aplicadas após auditoria completa do código Ren'Py:
 - **Label `end_game`** faltante foi criado em `finais_alternativos.rpy`, corrigindo `LabelNotFound` quando bateria/integridade chegavam a zero.
 - **Sobreposição de sprites**: 6 cenas com personagens sobrepondo-se (Dias 1, 3, 4, 5 e 6) corrigidas com `hide` explícito ou reposicionamento. Transforms customizados (`left`/`center`/`right` com zoom 0.85 e xcenter 0.15/0.5/0.85) garantem zero sobreposição entre canvases.
 
+### Ciclo de Playtest e Correções Pós-Lançamento (v1.1.0)
+
+Depois de fechar a v1.0 a versão foi distribuída para um grupo restrito de playtesters. O retorno trouxe quatro categorias de problema, todas corrigidas na v1.1.0. Documento aqui no mesmo espírito do resto do GDD: o que quebrou, por que quebrou, como foi resolvido.
+
+**Bug Dia 3 — suborno do segurança sem entrega do prêmio.** Na cena 3.4 o segurança oferece "carga de bateria premium" em troca de apagar a gravação. O jogador que aceitava o suborno consumia 2 pontos de bateria (o custo da escolha) mas nunca recebia a recarga prometida. O código pulava o `recarregar_bateria()` correspondente. Net: o jogador era roubado duas vezes — pelo segurança no fluxo narrativo, pelo bug no fluxo mecânico. Corrigido em `day3.rpy:140–149` adicionando `$ recarregar_bateria(15)` e a mensagem de sistema "BATERIA RECARREGADA: +15%" depois do consumo. Net agora: +13 bateria, consistente com o framing "premium" (maior que os 10 do Elias normal). A informação foi adicionada também à tabela de **Fontes de Recuperação** do balanceamento.
+
+**Bug Dia 4 — narração com placeholder literal.** Linha 22 do `day4.rpy` continha texto cru: `"J3 é guiada por Maya (se a ajudou no Dia 2) ou encontra o local por conta própria..."`. O parêntese era anotação de design que escapou para o build final. Quebrava imersão e mostrava ao jogador uma ramificação narrativa que o engine deveria resolver internamente. Corrigido com bloco `if maya_ally`/`else` que escolhe a frase apropriada — Maya guia explicitamente se aliada, ou J3 chega sozinha caso contrário. Mesmo padrão usado em outras checagens condicionais do roteiro.
+
+**Bug Dia 7 — auto-save ausente impedia replay de finais.** Dias 1–6 chamam `renpy.save("auto_save_dayX", "Fim do Dia X")` no fim, criando entrada na página "Automatic saves" do menu Load. Dia 7 não tinha esse save. Playtesters relataram que, para experimentar finais diferentes, precisavam refazer os 6 dias inteiros — o que ninguém faz. Adicionei `$ renpy.save("auto_save_day7", "Fim do Dia 7 - Escolha Final")` em `day7.rpy:25`, antes do dispatcher de finais. Save persiste o estado completo (bateria, integridade, eixos de personalidade, flags de aliança, posição narrativa). Recarregar permite repetir a escolha final com todos os atributos acumulados — o jogo encoraja explorar os 4 finais sem grind.
+
+**Bug normalização de sprites — regeneração quebrou layout.** Na segunda passada da arte (v1.0 → v1.0.x), 8 personagens foram regenerados em canvas paisagem `2400x1309` (Gemini Nano Banana 2 mudou de aspect ratio entre sessões); o `synth_angry` saiu em `1408x768`. Os sprites antigos eram `800x1080` retrato. Os transforms `left/center/right` em `images.rpy` assumiam canvas retrato com `zoom 0.85`. Resultado: J3 e demais personagens regenerados apareciam gigantes na tela, cobrindo o textbox; o `synth_angry` aparecia esticado verticalmente (efeito "espremido dos lados") porque uma primeira tentativa de correção usando `ysize=1080` sozinho não preservou aspecto.
+
+A correção final está em `images.rpy:6–31`. Adicionei `sprite_norm(path, tag)`, que envolve toda sprite num `Transform(path, xysize=(2000, 1080), fit="contain")`. Bbox 2000×1080 com `fit=contain` preserva aspecto e centraliza a imagem — funciona uniformemente para retrato `800x1080` (encaixa height-bound, fica 800×1080 dentro do bbox) e paisagem `2400x1309` ou `1408x768` (encaixa height-bound, fica `~1980x1080` dentro do bbox). Como o corpo do personagem está sempre no centro horizontal do canvas, o `xcenter` dos transforms continua alinhando o corpo (não a borda da imagem) — margens transparentes ficam invisíveis e não colidem visualmente.
+
+Dois ajustes complementares na mesma correção:
+- **Escala por tag:** `_sprite_scale = {"maria": 0.65, "child_curious": 0.65}` reduz o bbox para crianças (~70% da altura de adulto). Sem isso a Maria do Dia 1 aparecia com a mesma altura da mãe e da J3 — quebra de proporção que um playtester pegou na cena da pergunta "você tem coração de verdade ou é de pilha?".
+- **Bypass de normalização:** `_sprite_no_norm = {"patrol_drone"}` porque o `drone_hover_loop` em `sistema_j3.rpy:225` usa `crop (0, 0, 800, 540)` com coordenadas pixel-absolutas do canvas original. Aplicar bbox 2000×1080 antes do crop teria devolvido região vazia. Bypass mantém o crop intacto.
+
+Auditoria de PNGs (script `tools/audit_png_depth.ps1`) confirmou que todos os 113 PNGs do build são 8-bit RGBA — não havia mistura de bit-depth como inicialmente suspeito. Script `tools/audit_png_size.ps1` lista dimensões via IHDR e foi o que identificou o conjunto de sprites paisagem.
+
+**Validação:** suite de testes (`pytest tests/` com 77 casos cobrindo finais, recursos, personalidade e música; `test_externo.py` com 10 casos de mecânica básica) passa verde após todas as correções. `renpy lint` reporta apenas avisos não-bloqueantes (sfx ausentes, screens sem param list cosmético). Build distribuído em 5 variantes (`win`, `mac`, `linux`, `pc`, `market`).
+
 ### Balanceamento de Rotas e Pontuação
 
 Um dos desafios mais difíceis do projeto foi acertar o balanceamento do sistema de personalidade. Não é um problema de matemática bonitinha - é garantir que **cada escolha pese e que nenhum final dispare por acidente**.
@@ -951,9 +996,10 @@ Um dos desafios mais difíceis do projeto foi acertar o balanceamento do sistema
 - Captura hostil (fuga sub para autoridades): 18 pontos.
 - Sobrecarga autoinfligida (morte heroica): até 45 pontos.
 
-**Fontes de recuperação (total máximo: +82 pontos):**
+**Fontes de recuperação (total máximo: +97 pontos):**
 - Dia 2 — aceitar ajuda de Maya: +15 bateria.
 - Dia 3 — aceitar carregador de Elias: +10 bateria.
+- Dia 3 — aceitar suborno do segurança: +15 bateria (net +13 após custo da escolha; adicionado na v1.1.0 como recarga "premium" — eticamente corrupta, mecanicamente atrativa).
 - Dia 4 — ajudar na reparação: +15 integridade.
 - Dia 4 — círculo de reparo coletivo: +12 integridade.
 - Dia 5 — bateria reserva de Elias: +12 bateria.
@@ -1010,17 +1056,24 @@ Cada uma dessas falas só aparece pra quem construiu a pontuação certa. O bala
 | Variáveis persistentes | 12 |
 | Finais distintos | 7 (4 principais + 3 alternativos críticos) |
 | Escolhas ao longo do jogo | ~40 menus com 2-5 opções cada |
-| Pontos de recarga/reparo | 5 (Maya D2, Elias D3, Círculo D4, Elias D5, Elena D6) |
+| Pontos de recarga/reparo | 7 (Maya D2, Elias D3, Suborno D3, Reparação D4, Círculo D4, Elias D5, Elena D6) |
+| Faixas de música (IA generativa, Suno) | 5 (aleatorização persistente via `musica.rpy`) |
+| Distribuições do build v1.1.0 | 5 (`win`, `mac`, `linux`, `pc`, `market`) |
 
 ---
 
 ## Informações de Controle e Versão
 
 ### Versão do Documento
-**v1.0 - Abril 2026** (release com arte completa, balanceamento corrigido e histórico integrado)
-- **Versão:** 2.0 (Completo MINC)
-- **Data:** 03/04/2026
-- **Status:** Pronto para Submissão
+**v1.1 - Maio 2026** (release pós-playtest com correções, trilha sonora via IA e normalização de sprites)
+- **Versão do GDD:** 2.1 (Completo MINC + ciclo de playtest documentado)
+- **Versão do build:** 1.1.0
+- **Data:** 24/05/2026
+- **Status:** Distribuído para playtest
+
+**Histórico:**
+- **v1.0 — 03/04/2026** — release inicial com arte completa, balanceamento corrigido e histórico integrado. Versão MINC.
+- **v1.1 — 24/05/2026** — ciclo de playtest: bugs do Dia 3 (suborno sem recarga), Dia 4 (narração com placeholder), Dia 7 (auto-save ausente) e normalização de sprites pós-regeneração. Trilha sonora (5 faixas geradas via Suno) integrada com sistema de aleatorização persistente.
 
 ### Equipe de Desenvolvimento
 - **Desenvolvedor Principal:** **Vitor Jordão** (solo, autor e proprietário do projeto)
