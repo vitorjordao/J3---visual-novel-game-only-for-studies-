@@ -7,6 +7,33 @@ init python:
     def bg_fs(path):
         return Transform(path, xysize=(1920, 1080))
 
+    # Normaliza todo sprite de personagem para uma bounding box 2000x1080
+    # com fit="contain" — preserva aspecto, encaixa dentro do bbox sem
+    # distorcao. Resolve a inconsistencia entre sprites antigos 800x1080
+    # (retrato) e sprites regenerados ~2400x1309 / 1408x768 (paisagem com
+    # personagem ao centro do canvas).
+    # Como fit=contain centraliza a imagem no bbox e o corpo do personagem
+    # fica no centro horizontal do canvas, o xcenter dos transforms
+    # left/center/right alinha o corpo (nao a borda da imagem).
+    # _sprite_scale: override por tag para personagens menores
+    # (criancas, drones pequenos, etc.) — escala o bbox inteiro.
+    _sprite_scale = {
+        "maria":         0.65,  # menina ~7 anos
+        "child_curious": 0.65,  # crianca
+    }
+    # _sprite_no_norm: sprites que NAO devem ser normalizados (tem
+    # transforms especiais que usam coordenadas-pixel do canvas original).
+    _sprite_no_norm = {
+        "patrol_drone",  # drone_hover_loop usa crop (0,0,800,540) absoluto
+    }
+    def sprite_norm(path, tag=None):
+        if tag in _sprite_no_norm:
+            return path
+        scale = _sprite_scale.get(tag, 1.0)
+        bw = int(2000 * scale)
+        bh = int(1080 * scale)
+        return Transform(path, xysize=(bw, bh), fit="contain")
+
     # Enumera todas as variantes de atributo usadas no script mapeando para o PNG do personagem.
     # Assim 'show j3 neutral', 'show j3 damaged', etc. funcionam sem alterar os scripts.
     _char_map = {
@@ -47,9 +74,9 @@ init python:
         "news_vendor":      ("characters/news_vendor/news_vendor.png", ["neutral"]),
     }
     for _tag, (_path, _attrs) in _char_map.items():
-        renpy.image(_tag, _path)
+        renpy.image(_tag, sprite_norm(_path, _tag))
         for _attr in _attrs:
-            renpy.image(_tag + " " + _attr, _path)
+            renpy.image(_tag + " " + _attr, sprite_norm(_path, _tag))
 
 # --- Backgrounds (fullscreen 1920x1080) ---
 image bg avenue_night        = bg_fs("backgrounds/day1/avenue_night.png")
@@ -78,13 +105,14 @@ image bg laboratory          = bg_fs("backgrounds/finais/laboratory.png")
 
 # =============================================================
 # Posicionamento de personagens — resolve sobreposicao
-# Os sprites estao em canvas 800x1080 ancorado no bottom.
-# Sem esses transforms, "at left" e "at center" sobrepoem
-# ~240px. Aqui redefinimos com zoom 0.85 + xcenter afastado:
-#   left:   xcenter 15%  (canvas em x=288)
-#   center: xcenter 50%  (canvas em x=960)
-#   right:  xcenter 85%  (canvas em x=1632)
-# Distancia suficiente para 2-3 personagens sem overlap.
+# Sprites normalizados via sprite_norm para altura 1080
+# (largura varia conforme aspecto: 800 retrato, ~1980 paisagem).
+# Como o corpo do personagem fica no centro horizontal do canvas,
+# o xcenter abaixo alinha o corpo (nao a borda da imagem).
+#   left:   xcenter 15%
+#   center: xcenter 50%
+#   right:  xcenter 85%
+# Margens transparentes nao colidem visualmente entre personagens.
 # =============================================================
 transform left:
     xcenter 0.15

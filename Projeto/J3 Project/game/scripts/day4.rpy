@@ -19,7 +19,10 @@ label day4_start:
     call mensagem_sistema("SISTEMA: Ameaça: Moderada")
     
     # Cena 4.1 - A Chegada ao Refúgio
-    narrator "J3 é guiada por Maya (se a ajudou no Dia 2) ou encontra o local por conta própria..."
+    if maya_ally:
+        narrator "J3 é guiada por Maya até o refúgio..."
+    else:
+        narrator "J3 encontra o local por conta própria..."
     narrator "Vários sintéticos danificados se escondem aqui..."
     
     show damaged_bot at small_bot_center

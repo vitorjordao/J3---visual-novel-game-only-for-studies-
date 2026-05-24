@@ -140,10 +140,12 @@ label elias_common:
         "[custo(2)]{i}(Bateria agora vale mais que verdade depois.){/i} Aceitar o suborno":
             $ modificar_personalidade("submissao", 1)
             $ consumir_bateria(2)
+            $ recarregar_bateria(15)
             j3 "(Analisando a oferta) Aceito a troca. Conflitos com autoridades não são recomendados. Minha sobrevivência tem prioridade."
             j3 "(Apaga a gravação)"
             elias "(Olha com decepção)"
             call mensagem_sistema("STATUS: Corrompido")
+            call mensagem_sistema("BATERIA RECARREGADA: +15%")
             call atualizar_status
 
         "[custo(2)]{i}(Dados não são mercadoria. Expor isto.){/i} Recusar e ameaçar exposição":

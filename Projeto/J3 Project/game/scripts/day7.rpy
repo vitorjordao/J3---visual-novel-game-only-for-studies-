@@ -22,7 +22,10 @@ label day7_start:
     # Status final de J3
     call mensagem_sistema("SISTEMA: Momento final alcançado")
     call mensagem_sistema("ESCOLHAS ACUMULADAS: [get_personalidade_dominante()]")
-    
+
+    # Auto-save antes da escolha final (permite replay de finais)
+    $ renpy.save("auto_save_day7", "Fim do Dia 7 - Escolha Final")
+
     # Verificar qual final baseado na personalidade DOMINANTE + threshold mínimo
     # Respeita atributo dominante em caso de empate/múltiplos acima do threshold
     $ _dominant = get_personalidade_dominante()
