@@ -286,49 +286,43 @@ Posição que assumi (mesma do uso de IA na arte):
 
 **Pós-processamento manual:** cada faixa gerada pela Suno passou por edição no Audacity — corte de seções fracas, normalização de loudness para evitar variação brusca entre faixas, fade-in/fade-out para encaixar no callback de fila. A IA gera a base; a finalização garante que duas faixas seguidas não soem como playlist aleatória, mas como continuidade de trilha.
 
-**Efeitos sonoros (sfx) — sintetizados localmente (v1.1.1):**
+**Efeitos sonoros (sfx) — gerados localmente em Python:**
 
-A primeira passada da v1.1.0 deixou os sfx (`crowd_noise.wav`, `alert.wav`, `alarm.wav`, `sirens.wav`, `sirens_close.wav`, `news_broadcast.wav`, `explosions.wav`, `emp_blasts.wav`, `memory_glitch.wav`, `battle.wav`) como TODO — referenciados nos roteiros mas ausentes do build. O lint do Ren'Py reportava como "not loadable" e o jogo rodava em silêncio nesses momentos.
+A primeira versão do jogo tinha vários momentos com som no roteiro (gritos de multidão, alarme, sirene, explosão, etc.) que ficavam mudos porque os arquivos `.wav` não existiam. Os 10 sons necessários eram: `crowd_noise`, `alert`, `alarm`, `sirens`, `sirens_close`, `news_broadcast`, `explosions`, `emp_blasts`, `memory_glitch` e `battle`.
 
-Na v1.1.1 produzi todos os 10 sfx **sintetizados localmente via Python** (numpy + scipy.signal). Considerei três rotas e escolhi a terceira pelos motivos abaixo:
+Para resolver isso, escrevi um pequeno script em Python (numpy + scipy) que **gera os sons matematicamente** — combinando ondas senoidais, ruído filtrado e envelopes de volume. Pensei em três caminhos antes: baixar de banco gratuito online, usar IA de áudio, ou gerar localmente. Escolhi gerar localmente porque é o caminho mais seguro do ponto de vista de licença: como é matemática pura feita no meu computador, não tem dono nem precisa de atribuição. Também encaixa no clima cyberpunk do jogo — alarmes e sirenes já soam naturalmente eletrônicos.
 
-| Rota | Vantagem | Desvantagem |
+**Os 10 sons gerados:**
+
+| Arquivo | Duração | O que é |
 |---|---|---|
-| Banco gratuito online (Freesound, Pixabay, Mixkit) | Resultado mais realista | Cada arquivo exige conferência manual de licença (CC0 vs CC-BY vs uso restrito); risco de baixar algo com licença ambígua; sem ferramenta de download autenticada disponível no ambiente |
-| IA generativa de áudio (Suno SFX, ElevenLabs SFX) | Estilo coeso com a trilha | Custo adicional, mesmo dilema autoral do resto do projeto |
-| **Síntese local via numpy/scipy** | Royalty-free **por construção** (matemática gerada localmente não tem detentor de copyright); estilo eletrônico encaixa no cyberpunk do jogo; reprodutível e versionado em `tools/qa/synth_sfx.py` | Não é foley realista — é "sfx sintético" no estilo do System Shock / Deus Ex 1 |
+| `crowd_noise.wav` | 8.0s | barulho de multidão urbana com gritos esparsos |
+| `alert.wav` | 0.6s | dois bipes curtos sci-fi |
+| `alarm.wav` | 2.5s | alarme industrial pulsando |
+| `sirens.wav` | 3.0s | sirene de polícia clássica |
+| `sirens_close.wav` | 3.5s | sirene mais aguda e próxima |
+| `news_broadcast.wav` | 4.0s | rádio velho com estática e bipes |
+| `explosions.wav` | 1.8s | explosão grave com decaimento |
+| `emp_blasts.wav` | 1.5s | pulso eletromagnético descendente |
+| `memory_glitch.wav` | 1.2s | glitch digital tipo bit-crush |
+| `battle.wav` | 6.0s | batalha com rumble grave e impactos |
 
-**Como cada sfx foi construído (`tools/qa/synth_sfx.py`):**
+**Equalização e normalização:**
 
-| Arquivo | Duração | Receita |
-|---|---|---|
-| `crowd_noise.wav` | 8.0s | pink noise bandpass 200-3000Hz + murmúrio AM 0.5Hz + 4 bursts curtos pitched 600-2200Hz |
-| `alert.wav` | 0.6s | dois beeps sine 880Hz → 1320Hz com fade |
-| `alarm.wav` | 2.5s | square wave 1kHz gated por sine 3Hz on/off + warble 5Hz |
-| `sirens.wav` | 3.0s | sine com freq sweepada 700-1300Hz, período 1.2s + AM volume 0.4Hz |
-| `sirens_close.wav` | 3.5s | mesmo perfil mais agudo: sweep 900-1600Hz, período 0.8s |
-| `news_broadcast.wav` | 4.0s | bandpass noise 300-4000Hz + hum 120Hz + bleeps esparsos 800/1200/1500Hz |
-| `explosions.wav` | 1.8s | low pulse 60Hz com decay rápido + filtered noise multi-banda com envelope exponencial |
-| `emp_blasts.wav` | 1.5s | freq sweep descendente 3kHz→80Hz + crackle bandpass 2-5kHz com decay |
-| `memory_glitch.wav` | 1.2s | 8 bursts sine bit-crushed (hold cada 8 samples, quantização 4 níveis) + noise modulado |
-| `battle.wav` | 6.0s | rumble lowpass 200Hz modulado 0.7Hz + impactos bandpass 100-2000Hz com envelope de decay |
+Depois de gerar, passei todos os 10 sons por um ajuste de volume para deixar todos no mesmo nível (RMS -18 dBFS, que é o padrão para áudio de jogo). Isso evita que o jogador escute alguns sons muito altos e outros muito baixos. Também coloquei um limitador para não estourar (clipping zero em todos os 10).
 
-**QA de áudio aplicado a todos eles (`tools/qa/audio_qa.py`):**
-- Normalização RMS para alvo -18 dBFS (padrão para áudio de jogo); equaliza loudness percebida entre faixas.
-- Peak limiter para evitar clipping (`np.clip(±0.95)` antes da conversão para int16).
-- Validação pós-normalização: 10/10 ficaram em RMS -18 ±0.1 dBFS, peak entre -3.2 e -14.4 dBFS, 0% de samples clipados.
+**Sobre licença:**
 
-**Sobre a licença:**
-- Síntese matemática gerada localmente não cria obra protegida por direito autoral derivado — o output é resultado direto de algoritmos públicos (filtros Butterworth, geração de noise, AM/FM clássicos).
-- Script `synth_sfx.py` versionado no repo; qualquer playtester pode reproduzir bit-a-bit.
-- Posição mantida: zero uso comercial.
+- Os sons são resultado direto de algoritmos públicos (filtros, ondas senoidais, ruído). Não tem detentor de copyright.
+- O script que gera está versionado no repositório, então qualquer pessoa pode reproduzir os mesmos arquivos rodando ele.
+- Sem uso comercial, como o resto do projeto.
 
-**Trade-off assumido:** estilo sintético em vez de foley realista. Para um jogo cyberpunk sobre IA isso encaixa narrativamente — alarmes, sirenes e EMP são intrinsecamente eletrônicos. Sons que exigem foley real (multidão humana, voz no broadcast) ficam mais distantes do natural, mas o resultado não é silêncio. Para v1.2.0+ posso considerar substituir 1-2 dos sfx mais críticos (provavelmente `crowd_noise.wav` e `news_broadcast.wav`) por gravações reais licenciadas CC0, mantendo os outros 8 sintetizados.
+**Limitação assumida:** o resultado é "som sintético", não foley real. Multidão humana e voz no rádio ficam mais artificiais — mas funcionam dentro da estética cyberpunk. Se em versões futuras eu quiser substituir esses dois específicos por gravações reais com licença CC0, mantenho o resto.
 
-**Auditoria QA da trilha sonora completa (`qa-report-v1.1.0.md`):**
-- 0 critical, 0 major findings em audio após v1.1.1.
-- 5 MP3s da música registrados com duração 30-116s e sample rate; análise de amplitude pendente (depende de `ffmpeg` local — TODO v1.2.0).
-- Late_Shift_at_Terminal_.mp3 e Sub_Level_View.mp3 ambas com 30.77s — vale conferir se foram truncadas pelo Suno na exportação.
+**Validação do áudio completo:**
+
+- Os 10 sfx passaram na verificação automática (volume equalizado, sem clipping).
+- Das 5 faixas de música (mp3 gerados pela Suno), duas estão com 30 segundos enquanto as outras passam de 100s — possivelmente foram cortadas na exportação. Vale revisar e regerar essas duas em versão futura.
 
 ---
 
@@ -856,7 +850,7 @@ Agradecimentos aos colegas de sala pelas críticas honestos (que me fizeram enxe
 | **v0.1 - Estrutura inicial** | Mar/2026 | Setup Ren'Py, definição de personagens (Character objects), primeiros diálogos dos Dias 1–3. Sistema J3 (bateria/integridade/personalidade) rascunhado. |
 | **v0.2 - Mecânicas de sobrevivência** | Mar/2026 | Implementado `consumir_bateria`/`consumir_integridade`/`recarregar_bateria`/`reparar_integridade`. HUD do sistema J3 com barras visuais. Finais alternativos 0A/0B/0C por esgotamento de recursos. |
 | **v0.3 - Narrativa completa** | Mar/2026 | Roteiros dos 7 dias em markdown. Scripts `.rpy` gerados a partir dos roteiros. Finais 1–4 por personalidade dominante. |
-| **v0.4 - Debug e QA** | Abr/2026 | Menu de debug (tecla P), testes de mecânicas e fluxos completos. Correção de bugs de HideScreen, config.keymap, labels duplicados. |
+| **v0.4 - Debug e validações** | Abr/2026 | Menu de debug (tecla P), testes de mecânicas e fluxos completos. Correção de bugs de HideScreen, config.keymap, labels duplicados. |
 | **v0.5 - Arte inicial** | Abr/2026 | Primeiros 5 sprites de personagens principais (J3, Maya, Elias, Unit-7, Elena) e 1 background (avenue_night), gerados via Nano Banana no AI Studio. |
 | **v1.0 - Arte completa + balanceamento** | Abr/2026 | 22 backgrounds (Dias 1–7 + finais) via Nano Banana 2 API. 21 sprites adicionais de personagens secundários. Flood-fill de remoção de fundo. Normalização de escalas (adultos 950px, crianças 700px, drones 380px). Canvas padrão 800×1080 ancorado no bottom. Correções críticas de balanceamento: finais por dominância + threshold, alianças persistentes setadas, bug de dupla atribuição removido. Transforms customizados resolvendo sobreposição de sprites. |
 
@@ -1008,6 +1002,27 @@ Auditoria de PNGs (script `tools/audit_png_depth.ps1`) confirmou que todos os 11
 
 **Validação:** suite de testes (`pytest tests/` com 77 casos cobrindo finais, recursos, personalidade e música; `test_externo.py` com 10 casos de mecânica básica) passa verde após todas as correções. `renpy lint` reporta apenas avisos não-bloqueantes (sfx ausentes, screens sem param list cosmético). Build distribuído em 5 variantes (`win`, `mac`, `linux`, `pc`, `market`).
 
+### Segunda passada de validações (v1.1.1)
+
+Depois da v1.1.0, voltei pra revisar o jogo inteiro com calma — sprite por sprite, menu por menu, som por som. Encontrei alguns problemas que tinham passado despercebidos no playtest. Como sou o único desenvolvedor, escrevi pequenos scripts em Python pra me ajudar a varrer tudo de uma vez sem ter que conferir manualmente cada arquivo. Resultado:
+
+**Sprite do `synth_army` aparecia encolhido.** O sprite mostra um soldado sintético, mas no PNG o corpo ocupa só a metade de baixo do canvas (o resto é espaço vazio). Na cena de final revolucionário ele aparecia bem menor que o Comandante e a J3. Solução: aumentei a escala do sprite (`_sprite_scale = 2.2` em `images.rpy`) pra ele virar um "exército de fundo" e coloquei ele atrás dos personagens principais com `zorder -10`. Agora dá pra ver várias cópias dele formando a tropa atrás da J3 — efeito narrativo melhor que o original.
+
+**Sprite do `protester` estava torto.** O personagem do manifestante no Dia 1 tinha o corpo desviado pra direita do canvas. Quando aparecia em `at left`, ele ficava em ~22% da tela em vez de 15%. Script de re-centralização (`recenter_sprite.py`) detectou o desvio (+143px) e moveu a imagem 174 pixels pra esquerda. Backup do original guardado em `_backups/`.
+
+**Texto "(depende das escolhas)" no Dia 3.** Mesmo padrão do bug do Dia 4 corrigido na v1.1.0: o texto `"SISTEMA: Status: Escondido ou procurado (depende das escolhas)"` era anotação de design que escapou pro build. Substituí por um `if revolucao >= 3: ... elif submissao >= 3: ... else: ...` que mostra o status real baseado nas escolhas.
+
+**HUD desatualizado em 54 escolhas.** Conferindo as 42 menus do jogo, percebi que 54 opções gastavam bateria/integridade/personalidade mas não chamavam `call atualizar_status` no final. Isso significa que o jogador via os números antigos na HUD até o próximo evento atualizar a tela. Script `fix_menu_atualizar.py` adicionou a chamada que faltava em todas as 54 (distribuído pelos Dias 1, 3, 4, 5 e 6).
+
+**Sons que faltavam.** O jogo referenciava 10 efeitos sonoros (alarme, sirene, multidão, explosão, EMP, etc.) que não existiam — momentos importantes rodavam em silêncio. Resolvido na seção de Elementos Sonoros: gerei os 10 sons localmente em Python, normalizei tudo no mesmo volume, e atualizei os caminhos no roteiro de `sfx/X.wav` pra `audio/sfx/X.wav` (era também por isso que o Ren'Py não achava — pasta errada).
+
+**Validação final:**
+- 77 de 77 testes do `pytest tests/` passam.
+- 10 de 10 testes do `test_externo.py` passam.
+- Verificação dos `.rpy`: 0 problemas críticos, 0 importantes (eram 12 na v1.1.0).
+- Verificação visual dos sprites em escala efetiva: 0 desvios fora do esperado.
+- Build refeito nas 5 variantes (`win`, `mac`, `linux`, `pc`, `market`).
+
 ### Balanceamento de Rotas e Pontuação
 
 Um dos desafios mais difíceis do projeto foi acertar o balanceamento do sistema de personalidade. Não é um problema de matemática bonitinha - é garantir que **cada escolha pese e que nenhum final dispare por acidente**.
@@ -1107,8 +1122,8 @@ Cada uma dessas falas só aparece pra quem construiu a pontuação certa. O bala
 ## Informações de Controle e Versão
 
 ### Versão do Documento
-**v1.2 - Maio 2026** (release pós-QA automatizado com SFX sintetizados localmente, sprite synth_army upscaled, protester recentralizado, placeholder dia 2 ramificado)
-- **Versão do GDD:** 2.2 (Completo MINC + ciclo de playtest + QA automatizado documentado)
+**v1.2 - Maio 2026** (release pós-validações com SFX gerados localmente, ajustes de sprite e correção de placeholders no roteiro)
+- **Versão do GDD:** 2.2 (Completo MINC + ciclo de playtest + segunda passada de validações documentada)
 - **Versão do build:** 1.1.1
 - **Data:** 30/05/2026
 - **Status:** Distribuído para playtest
@@ -1116,11 +1131,11 @@ Cada uma dessas falas só aparece pra quem construiu a pontuação certa. O bala
 **Histórico:**
 - **v1.0 — 03/04/2026** — release inicial com arte completa, balanceamento corrigido e histórico integrado. Versão MINC.
 - **v1.1 — 24/05/2026** — ciclo de playtest: bugs do Dia 3 (suborno sem recarga), Dia 4 (narração com placeholder), Dia 7 (auto-save ausente) e normalização de sprites pós-regeneração. Trilha sonora (5 faixas geradas via Suno) integrada com sistema de aleatorização persistente.
-- **v1.1.1 — 30/05/2026** — QA automatizado (tools/qa/: static lint, sprite composite, audio QA). Fixes derivados: synth_army upscale 2.2 + zorder behind (exército de fundo em day 7 final revolução), protester re-centralizado (-174px), day 2 placeholder ramificado por `revolucao >= 2`, 10 SFX sintetizados localmente via numpy/scipy (royalty-free por construção), todos normalizados RMS -18 dBFS.
+- **v1.1.1 — 30/05/2026** — segunda passada de validações: sprite do `synth_army` virou exército de fundo (escala 2.2 + atrás dos demais), `protester` re-centralizado, placeholder do Dia 3 ramificado, HUD atualizada em 54 escolhas que tinham esquecido o `atualizar_status`, 10 efeitos sonoros gerados localmente em Python e equalizados no mesmo volume.
 
 ### Equipe de Desenvolvimento
 - **Desenvolvedor Principal:** **Vitor Jordão** (solo, autor e proprietário do projeto)
-- **Funções:** Design, escrita, roteiro, programação Ren'Py, arte (pós-processamento autoral), prompts de IA generativa, QA e balanceamento
+- **Funções:** Design, escrita, roteiro, programação Ren'Py, arte (pós-processamento autoral), prompts de IA generativa, validações e balanceamento
 
 ### Licença e Direitos
 - **Propriedade Intelectual:** Vitor Jordão (autor solo)
