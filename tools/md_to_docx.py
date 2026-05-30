@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 """
-Convert GDD markdown to a clean .docx with consistent formatting.
+Convert markdown to .docx optimized for Google Docs upload compatibility.
 
-Uses python-docx + markdown + BeautifulSoup. Handles headings, paragraphs
-with inline bold/italic/code, bullet/numbered lists, tables, images, code
-blocks, blockquotes.
+Strategy: minimize fancy features that Google Docs rejects.
+  - Only use built-in core styles: Normal + Heading 1-4
+  - Lists rendered as paragraphs with "•" prefix (no list-numbering XML)
+  - Tables with plain Table Grid style only
+  - Images resized to max 1200px wide, converted to JPEG, stripped EXIF
+  - Code blocks as monospace paragraphs (no shading XML)
+  - Blockquotes as italic paragraphs with indent
 """
 from __future__ import annotations
 
 import argparse
+import io
 import sys
 from pathlib import Path
 from urllib.parse import unquote
@@ -17,17 +22,20 @@ import markdown as md
 from bs4 import BeautifulSoup, NavigableString
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
+from PIL import Image
 
-DOCX_HEADING_STYLES = {
-    "h1": "Title",
-    "h2": "Heading 1",
-    "h3": "Heading 2",
-    "h4": "Heading 3",
-    "h5": "Heading 4",
+DOCX_HEADING_LEVELS = {
+    "h1": 0,
+    "h2": 1,
+    "h3": 2,
+    "h4": 3,
+    "h5": 4,
+    "h6": 5,
 }
+
+MAX_IMG_WIDTH = 1200
+MAX_IMG_INCHES = 5.5
 
 
 def add_inline_runs(paragraph, element):
@@ -58,8 +66,8 @@ def add_inline_runs(paragraph, element):
             add_inline_runs(paragraph, node)
 
 
-def add_paragraph(doc, element, style="Normal"):
-    p = doc.add_paragraph(style=style)
+def add_paragraph(doc, element):
+    p = doc.add_paragraph()
     add_inline_runs(p, element)
     return p
 
@@ -69,17 +77,16 @@ def add_code_block(doc, text):
     run = p.add_run(text.rstrip("\n"))
     run.font.name = "Consolas"
     run.font.size = Pt(9)
-    p_pr = p._p.get_or_add_pPr()
-    shd = OxmlElement("w:shd")
-    shd.set(qn("w:val"), "clear")
-    shd.set(qn("w:fill"), "F2F2F2")
-    p_pr.append(shd)
+    return p
 
 
-def add_list_item(doc, element, ordered=False):
-    style = "List Number" if ordered else "List Bullet"
-    p = doc.add_paragraph(style=style)
+def add_list_item(doc, element, ordered=False, index=1):
+    """Render as plain paragraph with bullet/number prefix. No list-style XML."""
+    p = doc.add_paragraph()
+    prefix = f"{index}. " if ordered else "•  "
+    p.add_run(prefix)
     add_inline_runs(p, element)
+    p.paragraph_format.left_indent = Inches(0.25)
     return p
 
 
@@ -87,15 +94,11 @@ def add_table(doc, table_el):
     rows = table_el.find_all("tr")
     if not rows:
         return
-    headers = rows[0].find_all(["th", "td"])
-    cols = len(headers)
+    cols = max(len(tr.find_all(["th", "td"])) for tr in rows)
     if cols == 0:
         return
     docx_table = doc.add_table(rows=len(rows), cols=cols)
-    try:
-        docx_table.style = "Light Grid Accent 1"
-    except KeyError:
-        docx_table.style = "Table Grid"
+    docx_table.style = "Table Grid"
     for r_idx, tr in enumerate(rows):
         cells = tr.find_all(["th", "td"])
         for c_idx, td in enumerate(cells):
@@ -117,10 +120,32 @@ def add_image(doc, img_el, base_dir):
     img_path = (base_dir / src).resolve()
     if img_path.exists() and img_path.is_file():
         try:
-            doc.add_picture(str(img_path), width=Inches(5.0))
+            img = Image.open(img_path)
+            # Convert RGBA → RGB on white background (JPEG doesn't support alpha)
+            if img.mode in ("RGBA", "LA", "P"):
+                bg = Image.new("RGB", img.size, (255, 255, 255))
+                if img.mode == "P":
+                    img = img.convert("RGBA")
+                bg.paste(img, mask=img.split()[-1] if img.mode in ("RGBA", "LA") else None)
+                img = bg
+            elif img.mode != "RGB":
+                img = img.convert("RGB")
+            # Resize if too large
+            if img.size[0] > MAX_IMG_WIDTH:
+                ratio = MAX_IMG_WIDTH / img.size[0]
+                new_size = (MAX_IMG_WIDTH, int(img.size[1] * ratio))
+                img = img.resize(new_size, Image.LANCZOS)
+            # Save as JPEG in memory
+            buf = io.BytesIO()
+            img.save(buf, format="JPEG", quality=85, optimize=True)
+            buf.seek(0)
+            doc.add_picture(buf, width=Inches(MAX_IMG_INCHES))
             if alt:
-                caption = doc.add_paragraph(alt, style="Caption")
-                caption.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                caption_p = doc.add_paragraph()
+                caption_run = caption_p.add_run(alt)
+                caption_run.italic = True
+                caption_run.font.size = Pt(9)
+                caption_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             return
         except Exception as e:
             print(f"  WARN: nao consegui inserir imagem {img_path}: {e}", file=sys.stderr)
@@ -131,18 +156,71 @@ def add_image(doc, img_el, base_dir):
 
 
 def add_blockquote(doc, element):
-    try:
-        p = doc.add_paragraph(style="Intense Quote")
-    except KeyError:
-        p = doc.add_paragraph()
-    add_inline_runs(p, element)
+    """Render as italic paragraph with left indent."""
+    p = doc.add_paragraph()
+    for child in element.children:
+        if child.name == "p":
+            for sub in child.children:
+                if isinstance(sub, NavigableString):
+                    run = p.add_run(str(sub))
+                    run.italic = True
+                else:
+                    run = p.add_run(sub.get_text())
+                    run.italic = True
+        else:
+            if isinstance(child, NavigableString):
+                run = p.add_run(str(child))
+                run.italic = True
+    p.paragraph_format.left_indent = Inches(0.4)
+
+
+def process_element(doc, element, base_dir):
+    """Walk a single top-level element and write to doc."""
+    if isinstance(element, NavigableString):
+        return
+    name = element.name
+    if name in DOCX_HEADING_LEVELS:
+        level = DOCX_HEADING_LEVELS[name]
+        doc.add_heading(element.get_text(), level=level)
+    elif name == "p":
+        imgs = element.find_all("img", recursive=False)
+        if len(imgs) == 1 and element.get_text().strip() == "":
+            add_image(doc, imgs[0], base_dir)
+            return
+        for img in element.find_all("img"):
+            add_image(doc, img, base_dir)
+            img.decompose()
+        if element.get_text().strip():
+            add_paragraph(doc, element)
+    elif name == "ul":
+        for li in element.find_all("li", recursive=False):
+            add_list_item(doc, li, ordered=False)
+    elif name == "ol":
+        for i, li in enumerate(element.find_all("li", recursive=False), 1):
+            add_list_item(doc, li, ordered=True, index=i)
+    elif name == "table":
+        add_table(doc, element)
+    elif name == "pre":
+        code = element.find("code")
+        text_content = code.get_text() if code else element.get_text()
+        add_code_block(doc, text_content)
+    elif name == "blockquote":
+        add_blockquote(doc, element)
+    elif name == "hr":
+        doc.add_paragraph()
+    elif name in ("div", "section"):
+        for child in element.children:
+            process_element(doc, child, base_dir)
+    else:
+        if element.get_text().strip():
+            add_paragraph(doc, element)
 
 
 def convert(md_path, docx_path, base_dir=None):
     if base_dir is None:
         base_dir = md_path.parent
     text = md_path.read_text(encoding="utf-8")
-    html = md.markdown(text, extensions=["tables", "fenced_code", "sane_lists", "attr_list"])
+    html = md.markdown(text, extensions=["tables", "fenced_code", "sane_lists"])
     soup = BeautifulSoup(html, "html.parser")
 
     doc = Document()
@@ -153,51 +231,12 @@ def convert(md_path, docx_path, base_dir=None):
         section.right_margin = Inches(0.9)
         section.top_margin = Inches(0.9)
         section.bottom_margin = Inches(0.9)
-    style = doc.styles["Normal"]
-    style.font.name = "Calibri"
-    style.font.size = Pt(11)
+    base_style = doc.styles["Normal"]
+    base_style.font.name = "Calibri"
+    base_style.font.size = Pt(11)
 
     for child in soup.children:
-        if isinstance(child, NavigableString):
-            continue
-        name = child.name
-        if name in DOCX_HEADING_STYLES:
-            heading_style = DOCX_HEADING_STYLES[name]
-            if heading_style == "Title":
-                doc.add_heading(child.get_text(), level=0)
-            else:
-                level = int(name[1:]) - 1
-                doc.add_heading(child.get_text(), level=level)
-        elif name == "p":
-            imgs = child.find_all("img", recursive=False)
-            if len(imgs) == 1 and child.get_text().strip() == "":
-                add_image(doc, imgs[0], base_dir)
-            else:
-                for img in child.find_all("img"):
-                    add_image(doc, img, base_dir)
-                    img.decompose()
-                if child.get_text().strip():
-                    add_paragraph(doc, child)
-        elif name == "ul":
-            for li in child.find_all("li", recursive=False):
-                add_list_item(doc, li, ordered=False)
-        elif name == "ol":
-            for li in child.find_all("li", recursive=False):
-                add_list_item(doc, li, ordered=True)
-        elif name == "table":
-            add_table(doc, child)
-        elif name == "pre":
-            code = child.find("code")
-            text_content = code.get_text() if code else child.get_text()
-            add_code_block(doc, text_content)
-        elif name == "blockquote":
-            for sub in child.find_all("p"):
-                add_blockquote(doc, sub)
-        elif name == "hr":
-            doc.add_paragraph()
-        else:
-            if child.get_text().strip():
-                add_paragraph(doc, child)
+        process_element(doc, child, base_dir)
 
     doc.save(str(docx_path))
     print(f"Saved: {docx_path}")
@@ -207,8 +246,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("md", type=Path)
     parser.add_argument("docx", type=Path)
-    parser.add_argument("--base-dir", type=Path, default=None,
-                        help="Diretorio para resolver caminhos de imagem")
+    parser.add_argument("--base-dir", type=Path, default=None)
     args = parser.parse_args()
     convert(args.md.resolve(), args.docx.resolve(),
             args.base_dir.resolve() if args.base_dir else None)
