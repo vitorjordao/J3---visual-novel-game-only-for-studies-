@@ -1061,16 +1061,17 @@ Cada uma dessas falas só aparece pra quem construiu a pontuação certa. O bala
 ## Informações de Controle e Versão
 
 ### Versão do Documento
-**v1.2 - Maio 2026** (release pós-validações com SFX gerados localmente, ajustes de sprite e correção de placeholders no roteiro)
-- **Versão do GDD:** 2.2 (Completo MINC + ciclo de playtest + segunda passada de validações documentada)
-- **Versão do build:** 1.1.1
+**v1.3 - Maio 2026** (release final com fix do drone de patrulha no Dia 1, roteiro consolidado em docx unico para entrega)
+- **Versão do GDD:** 2.3
+- **Versão do build:** 1.2.0
 - **Data:** 30/05/2026
-- **Status:** Distribuído para playtest
+- **Status:** Build final para distribuicao
 
 **Histórico:**
 - **v1.0 — 03/04/2026** — release inicial com arte completa, balanceamento corrigido e histórico integrado. Versão MINC.
 - **v1.1 — 24/05/2026** — ciclo de playtest: bugs do Dia 3 (suborno sem recarga), Dia 4 (narração com placeholder), Dia 7 (auto-save ausente) e normalização de sprites pós-regeneração. Trilha sonora (5 faixas geradas via Suno) integrada com sistema de aleatorização persistente.
 - **v1.1.1 — 30/05/2026** — segunda passada de validações: sprite do `synth_army` virou exército de fundo (escala 2.2 + atrás dos demais), `protester` re-centralizado, placeholder do Dia 3 ramificado, HUD atualizada em 54 escolhas que tinham esquecido o `atualizar_status`, 10 efeitos sonoros gerados localmente em Python e equalizados no mesmo volume.
+- **v1.2.0 — 30/05/2026** — build final. Fix do `patrol_drone` no Dia 1 (crop pixel-absoluto obsoleto tornava o drone invisivel apos regeneracao do PNG; transform reescrito sem crop). Roteiro completo (1581 linhas, 7 dias) consolidado em docx unico para entrega academica.
 
 ### Equipe de Desenvolvimento
 - **Desenvolvedor Principal:** **Vitor Jordão** (solo, autor e proprietário do projeto)
