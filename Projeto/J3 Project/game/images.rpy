@@ -23,10 +23,8 @@ init python:
         "synth_army":    2.2,   # exercito ao fundo da cena (usar com zorder baixo)
     }
     # _sprite_no_norm: sprites que NAO devem ser normalizados (tem
-    # transforms especiais que usam coordenadas-pixel do canvas original).
-    _sprite_no_norm = {
-        "patrol_drone",  # drone_hover_loop usa crop (0,0,800,540) absoluto
-    }
+    # transforms especiais que dependem do canvas original).
+    _sprite_no_norm = set()
     def sprite_norm(path, tag=None):
         if tag in _sprite_no_norm:
             return path

@@ -220,12 +220,14 @@ transform drone_hover:
     xalign 0.5 yalign 0.22
 
 transform drone_hover_loop:
-    # patrol_drone.png tem dois drones desenhados no canvas (topo grande + base pequeno).
-    # Sem o crop, o drone de baixo aparece exatamente atrás da caixa de diálogo.
-    crop (0, 0, 800, 540)
-    xalign 0.5 yalign 0.22
-    linear 1.0 yalign 0.19
-    linear 1.0 yalign 0.22
+    # patrol_drone.png e' um drone unico com corpo na metade inferior do canvas 800x1080.
+    # yanchor 1.0 + ypos 0.5 ancora a base da imagem no meio vertical da tela,
+    # deixando o drone visivel acima do textbox sem precisar de crop pixel-absoluto.
+    xcenter 0.5
+    yanchor 1.0
+    ypos 0.5
+    linear 1.0 ypos 0.47
+    linear 1.0 ypos 0.5
     repeat
 
 screen debug_key_handler:
