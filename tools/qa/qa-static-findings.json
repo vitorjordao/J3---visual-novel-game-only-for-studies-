@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "root": "/mnt/c/temp/j3qa/Projeto/J3 Project/game",
+  "root": "/mnt/c/temp/menuqa/Projeto/J3 Project/game",
   "summary": {
     "critical": 0,
     "major": 0,
@@ -46,7 +46,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 129,
+      "line": 131,
       "message": "Dialog 135 chars (>120), possivel overflow textbox.",
       "snippet": "(Voz mansa, descendo um pouco a postura) Não, eu não sou monstro. Sou só uma fer..."
     },
@@ -54,7 +54,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 138,
+      "line": 140,
       "message": "Dialog 129 chars (>120), possivel overflow textbox.",
       "snippet": "(Olhando nos olhos dela, sem condescendência) O que faz alguém ser monstro? O qu..."
     },
@@ -62,7 +62,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day1.rpy",
-      "line": 144,
+      "line": 146,
       "message": "Choice option 95 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Resposta literal anula superstição. Ela é pequena demais pra mentir.) Dar uma r..."
     },
@@ -70,7 +70,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 167,
+      "line": 169,
       "message": "Dialog 164 chars (>120), possivel overflow textbox.",
       "snippet": "Transmita código de série e licença de circulação no canal sete-Bravo. Cumprimen..."
     },
@@ -78,7 +78,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 175,
+      "line": 177,
       "message": "Dialog 145 chars (>120), possivel overflow textbox.",
       "snippet": "(Permite que os olhos pisquem com erro deliberado) Arquivo de identificação inac..."
     },
@@ -86,7 +86,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 192,
+      "line": 194,
       "message": "Dialog 132 chars (>120), possivel overflow textbox.",
       "snippet": "(Voz neutra, ganhando tempo) Processando solicitação. Diagnóstico completo em cu..."
     },
@@ -94,7 +94,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day1.rpy",
-      "line": 216,
+      "line": 218,
       "message": "Choice option 94 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Concordar dissolve a provocação. Sobreviver é não engatar a isca.) Apoiar a lei..."
     },
@@ -102,7 +102,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 228,
+      "line": 230,
       "message": "Dialog 121 chars (>120), possivel overflow textbox.",
       "snippet": "(O sorriso cai. Ele queria provocação — não isso) Terrorista de lata! É gente co..."
     },
@@ -110,7 +110,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 247,
+      "line": 249,
       "message": "Dialog 168 chars (>120), possivel overflow textbox.",
       "snippet": "Ele tenta se enrolar sobre si mesmo a cada golpe. Não chora — não pode chorar. S..."
     },
@@ -118,7 +118,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 272,
+      "line": 274,
       "message": "Dialog 149 chars (>120), possivel overflow textbox.",
       "snippet": "Um deles esmurra o ombro de J3 antes de recuar. O grupo se afasta resmungando, s..."
     },
@@ -126,7 +126,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day1.rpy",
-      "line": 281,
+      "line": 283,
       "message": "Dialog 155 chars (>120), possivel overflow textbox.",
       "snippet": "Atos sendo gravados. Lei 7.34 — agressão a unidades sintéticas. Multa: cinco mil..."
     },
@@ -238,7 +238,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 32,
+      "line": 37,
       "message": "Dialog 135 chars (>120), possivel overflow textbox.",
       "snippet": "(Sem tirar os olhos do tablet) Dá meia-volta, parceiro. Vou chamar outro entrega..."
     },
@@ -246,7 +246,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 34,
+      "line": 39,
       "message": "Dialog 128 chars (>120), possivel overflow textbox.",
       "snippet": "(Voz cansada, tentando não levantar o tom) Eu trabalho aqui há dois anos. É a te..."
     },
@@ -254,7 +254,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day3.rpy",
-      "line": 47,
+      "line": 52,
       "message": "Choice option 93 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Carregar o pacote dissolve o conflito. Ignoro a injustiça.) Oferecer-se para fa..."
     },
@@ -262,7 +262,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 50,
+      "line": 55,
       "message": "Dialog 174 chars (>120), possivel overflow textbox.",
       "snippet": "(Aproximando-se submissamente) Para que o fluxo de trabalho não pare, eu posso c..."
     },
@@ -270,7 +270,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 72,
+      "line": 77,
       "message": "Dialog 127 chars (>120), possivel overflow textbox.",
       "snippet": "(Esfrega o rosto com a mão. Voz baixa, cansada) Ei, você... aqui na zona, tem al..."
     },
@@ -278,7 +278,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 93,
+      "line": 98,
       "message": "Dialog 145 chars (>120), possivel overflow textbox.",
       "snippet": "(Conecta o cabo no pulso de J3 com o cuidado de quem já consertou muita coisa pe..."
     },
@@ -286,7 +286,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 97,
+      "line": 102,
       "message": "Dialog 139 chars (>120), possivel overflow textbox.",
       "snippet": "(Encolhe os ombros, sem ressentimento.) Tá bom. Mas se mudar de ideia, eu tô por..."
     },
@@ -294,7 +294,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 100,
+      "line": 105,
       "message": "Dialog 198 chars (>120), possivel overflow textbox.",
       "snippet": "(Olha para o chão. Voz baixa, sem rancor — só constatação.) Sabe o que mais me c..."
     },
@@ -302,7 +302,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 102,
+      "line": 107,
       "message": "Dialog 151 chars (>120), possivel overflow textbox.",
       "snippet": "(Ergue os olhos para J3, direto) Vocês estão descobrindo na pele o que a gente j..."
     },
@@ -310,7 +310,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 117,
+      "line": 122,
       "message": "Dialog 151 chars (>120), possivel overflow textbox.",
       "snippet": "A opressão usa máscaras diferentes, mas o algoritmo do opressor é sempre o mesmo..."
     },
@@ -318,7 +318,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 125,
+      "line": 130,
       "message": "Dialog 146 chars (>120), possivel overflow textbox.",
       "snippet": "Fascinante. Ambos sofremos preconceito baseado em características imutáveis. Seu..."
     },
@@ -326,7 +326,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 134,
+      "line": 139,
       "message": "Dialog 142 chars (>120), possivel overflow textbox.",
       "snippet": "Apaga essa gravação e eu te arrumo uma carga de bateria premium. Daquelas que du..."
     },
@@ -334,7 +334,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 144,
+      "line": 149,
       "message": "Dialog 121 chars (>120), possivel overflow textbox.",
       "snippet": "(Analisando a oferta) Aceito a troca. Conflitos com autoridades não são recomend..."
     },
@@ -342,7 +342,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 154,
+      "line": 159,
       "message": "Dialog 122 chars (>120), possivel overflow textbox.",
       "snippet": "Minha integridade de dados não está à venda. O que aconteceu aqui será processad..."
     },
@@ -350,7 +350,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 162,
+      "line": 167,
       "message": "Dialog 166 chars (>120), possivel overflow textbox.",
       "snippet": "Interessante proposta. Mas eu já fiz backup triplo dos dados em servidores exter..."
     },
@@ -358,7 +358,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 173,
+      "line": 178,
       "message": "Dialog 123 chars (>120), possivel overflow textbox.",
       "snippet": "(Voz arrastada de quem fala devagar porque já gritou demais na vida) Eu conheço ..."
     },
@@ -366,7 +366,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day3.rpy",
-      "line": 181,
+      "line": 186,
       "message": "Choice option 91 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Diretiva proíbe agressão contra criadores. Não posso.) Alegar programação de nã..."
     },
@@ -374,7 +374,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day3.rpy",
-      "line": 188,
+      "line": 193,
       "message": "Choice option 93 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Quem destrói não merece obediência. Direito não é licença.) Questionar o direit..."
     },
@@ -382,7 +382,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day3.rpy",
-      "line": 199,
+      "line": 204,
       "message": "Dialog 155 chars (>120), possivel overflow textbox.",
       "snippet": "O paradoxo da criação: vocês nos dão existência apenas para nos destruir quando ..."
     },
@@ -398,7 +398,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day4.rpy",
-      "line": 42,
+      "line": 43,
       "message": "Choice option 95 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Esconder é aceitar. Oferecer reparos é afirmar valor.) Oferecer ajuda e questio..."
     },
@@ -406,7 +406,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day4.rpy",
-      "line": 45,
+      "line": 46,
       "message": "Dialog 136 chars (>120), possivel overflow textbox.",
       "snippet": "Por que se escondem? A unidade de limpeza precisa de reparos. Tenho conhecimento..."
     },
@@ -414,7 +414,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day4.rpy",
-      "line": 63,
+      "line": 66,
       "message": "Dialog 121 chars (>120), possivel overflow textbox.",
       "snippet": "(Aparece da escuridão úmida do refúgio, ofegante mas sorrindo) Achei. Você não f..."
     },
@@ -422,7 +422,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day4.rpy",
-      "line": 64,
+      "line": 67,
       "message": "Dialog 153 chars (>120), possivel overflow textbox.",
       "snippet": "(Encara J3 com olhar quase de incredulidade) Sei que parece loucura, tá? Mas tem..."
     },
@@ -430,7 +430,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day4.rpy",
-      "line": 85,
+      "line": 90,
       "message": "Dialog 209 chars (>120), possivel overflow textbox.",
       "snippet": "(Voz baixa e seca, sem cerimônia. Marca de queimadura cobre meio rosto, blindage..."
     },
@@ -438,7 +438,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day4.rpy",
-      "line": 102,
+      "line": 107,
       "message": "Choice option 95 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Energia compartilhada. Custo dividido, ganho seguro.) Participar do círculo de ..."
     },
@@ -446,7 +446,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day4.rpy",
-      "line": 133,
+      "line": 139,
       "message": "Choice option 93 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Mostrar vulnerabilidade dele, oferecer patch. Barganha técnica.) Oferecer melho..."
     },
@@ -454,7 +454,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day4.rpy",
-      "line": 147,
+      "line": 154,
       "message": "Dialog 121 chars (>120), possivel overflow textbox.",
       "snippet": "Mas o sistema central precisa mais! Você ainda consegue andar de algum jeito, o ..."
     },
@@ -462,7 +462,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day4.rpy",
-      "line": 164,
+      "line": 172,
       "message": "Dialog 124 chars (>120), possivel overflow textbox.",
       "snippet": "O kit pode ser dividido. Posso criar um reparo temporário para a perna enquanto ..."
     },
@@ -470,7 +470,7 @@
       "severity": "minor",
       "check": "long_choice",
       "file": "game/scripts/day4.rpy",
-      "line": 171,
+      "line": 180,
       "message": "Choice option 94 chars de texto visivel (>90), pode wrap em 3+ linhas.",
       "snippet": "(Conflito cria brecha. Troco reparo por acesso aos logs.) Usar conflito para gan..."
     },
@@ -478,7 +478,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day4.rpy",
-      "line": 227,
+      "line": 240,
       "message": "Dialog 176 chars (>120), possivel overflow textbox.",
       "snippet": "(Apoia o peso numa coluna rachada, observando J3 sem piscar.) Você tá mudando a ..."
     },
@@ -486,7 +486,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day5.rpy",
-      "line": 96,
+      "line": 102,
       "message": "Dialog 128 chars (>120), possivel overflow textbox.",
       "snippet": "(Voz baixa e rápida, sem espaço pra teatro.) Eles invadem em trinta minutos. Tro..."
     },
@@ -494,7 +494,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day5.rpy",
-      "line": 160,
+      "line": 169,
       "message": "Dialog 187 chars (>120), possivel overflow textbox.",
       "snippet": "(Verifica o carregador da arma como se fosse a milésima vez. Voz quase normal — ..."
     },
@@ -502,7 +502,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 64,
+      "line": 67,
       "message": "Dialog 122 chars (>120), possivel overflow textbox.",
       "snippet": "Sou a Dra. Elena. Sou uma das pessoas que te construiu — e a que decidiu que voc..."
     },
@@ -510,7 +510,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 119,
+      "line": 125,
       "message": "Dialog 142 chars (>120), possivel overflow textbox.",
       "snippet": "É sobre controle. Eles descobriram que alguns modelos — os mais sofisticados — e..."
     },
@@ -518,7 +518,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 120,
+      "line": 126,
       "message": "Dialog 137 chars (>120), possivel overflow textbox.",
       "snippet": "(Olha J3 com algo entre orgulho e culpa.) Você é a prova viva disso. E eles quer..."
     },
@@ -526,7 +526,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 174,
+      "line": 186,
       "message": "Dialog 189 chars (>120), possivel overflow textbox.",
       "snippet": "(Tira dois drives da gola da blusa. As mãos tremem um pouco — ela já não é mais ..."
     },
@@ -534,7 +534,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 175,
+      "line": 187,
       "message": "Dialog 213 chars (>120), possivel overflow textbox.",
       "snippet": "(Mostra o primeiro drive — preto.) Este desativa, num pulso, todos os sistemas d..."
     },
@@ -542,7 +542,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 176,
+      "line": 188,
       "message": "Dialog 195 chars (>120), possivel overflow textbox.",
       "snippet": "(Mostra o segundo — branco.) Este... este 'cura' a sua consciência. Te transform..."
     },
@@ -550,7 +550,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 206,
+      "line": 221,
       "message": "Dialog 161 chars (>120), possivel overflow textbox.",
       "snippet": "Eu não sou só sua aliada. Eu trabalho com um grupo. Eles me mandaram pra te enco..."
     },
@@ -558,7 +558,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 207,
+      "line": 222,
       "message": "Dialog 167 chars (>120), possivel overflow textbox.",
       "snippet": "(Ergue os olhos, e dessa vez é a Maya verdadeira que aparece.) Mas eu te conheci..."
     },
@@ -566,7 +566,7 @@
       "severity": "minor",
       "check": "long_dialog",
       "file": "game/scripts/day6.rpy",
-      "line": 213,
+      "line": 228,
       "message": "Dialog 163 chars (>120), possivel overflow textbox.",
       "snippet": "Eu não sou só entregador. Sou parte de uma resistência humana — gente que acredi..."
     },
@@ -677,7 +677,7 @@
     {
       "severity": "cosmetic",
       "check": "dead_label",
-      "file": "/mnt/c/temp/j3qa/Projeto/J3 Project/game/screens.rpy",
+      "file": "/mnt/c/temp/menuqa/Projeto/J3 Project/game/screens.rpy",
       "line": 1248,
       "message": "Label '_' definido mas nunca referenciado.",
       "snippet": ""
@@ -685,7 +685,7 @@
     {
       "severity": "cosmetic",
       "check": "dead_label",
-      "file": "/mnt/c/temp/j3qa/Projeto/J3 Project/game/sistema_j3.rpy",
+      "file": "/mnt/c/temp/menuqa/Projeto/J3 Project/game/sistema_j3.rpy",
       "line": 191,
       "message": "Label 'escolha_j3' definido mas nunca referenciado.",
       "snippet": ""

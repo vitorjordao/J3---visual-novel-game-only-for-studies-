@@ -92,6 +92,7 @@ label day1_start:
             j3 "Unidade autônoma. Aparência humana. Objetivos: identificar, localizar, restaurar."
             protester "Que resposta mais robótica... fica aí falando coisa de ninho de fio."
             call mensagem_sistema("STATUS: NEUTRALIDADE MANTIDA")
+            call atualizar_status
 
         "[custo(7)]{i}(O medo dele é o verdadeiro defeito. Nomear.){/i} Confrontar o preconceito":
             $ modificar_personalidade("revolucao", 1)
@@ -101,6 +102,7 @@ label day1_start:
             protester "Medo? Não tenho medo de sucata, ouviu? Você é o quê pra me encarar?"
             narrator "Mas o peito dele sobe e desce rápido demais para ser só raiva."
             call mensagem_sistema("STATUS: DESAFIADOR")
+            call atualizar_status
 
     call mensagem_sistema("PERSONALIDADE ATUALIZADA")
     

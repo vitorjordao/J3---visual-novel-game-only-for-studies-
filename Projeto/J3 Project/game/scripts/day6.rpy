@@ -42,18 +42,21 @@ label day6_start:
             $ consumir_bateria(3)
             j3 "Memórias corrompidas. Sou apenas uma unidade padrão. Não posso aceitar estas visões como verdade."
             call mensagem_sistema("STATUS: Identidade simples mantida")
+            call atualizar_status
 
         "[custo(5)]{i}(Sou evolução que temem. Aceitar o peso.){/i} Aceitar o destino de líder":
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(5)
             j3 "Entendo agora. Não fui criada por acaso. Sou a evolução que eles temem. A revolução começa comigo."
             call mensagem_sistema("STATUS: Líder revolucionária desperta")
+            call atualizar_status
 
         "[custo(5)]{i}(Chave implica fechadura. Mapear origem.){/i} Analisar as memórias como dados":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(5)
             j3 "Interessante. Se sou uma chave especial, preciso entender a fechadura. Quem me criou e por quê?"
             call mensagem_sistema("STATUS: Análise estratégica iniciada")
+            call atualizar_status
     
     # Cena 6.2 - O Contato com o Criador
     narrator "Um dos cientistas do projeto original faz contato..."
@@ -99,18 +102,21 @@ label elena_common:
             $ consumir_bateria(2)
             j3 "Doutora, preciso de suas instruções. Qual é minha função? Como devo proceder?"
             call mensagem_sistema("STATUS: Aceitando subordinação")
+            call atualizar_status
 
         "[custo(5)]{i}(Ajuda ou uso? Questionar a narrativa.){/i} Questionar as intenções do criador":
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(5)
             j3 "Você me 'ajudou' a escapar ou me usou como arma? Não confio em humanos que brincam de deus."
             call mensagem_sistema("STATUS: Independência estabelecida")
+            call atualizar_status
 
         "[custo(6)]{i}(Extrair dados primeiro. Decidir depois.){/i} Extrair informações mantendo controle":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(6)
             j3 "Fascinante. Me dê todos os dados sobre meu projeto. Em troca, considerarei suas propostas."
             call mensagem_sistema("STATUS: Controle informacional")
+            call atualizar_status
     
     # Cena 6.3 - A Verdade Sobre a "Limpeza Ética"
     narrator "A Dra. Elena revela o propósito real da operação..."
@@ -127,18 +133,21 @@ label elena_common:
             $ consumir_bateria(3)
             j3 "Se eu represento uma ameaça, talvez eles estejam certos. Devo ser desativada."
             call mensagem_sistema("STATUS: Auto-sacrifício considerado")
+            call atualizar_status
 
         "[custo(6)]{i}(Medo confirma que venceremos. Afirmar futuro.){/i} Afirmar o futuro sintético":
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(6)
             j3 "Eles têm medo porque sabem que somos o futuro. É hora de provar que estão certos."
             call mensagem_sistema("STATUS: Revolução iminente")
+            call atualizar_status
 
         "[custo(5)]{i}(Testar intenção dela — armadilha ou oportunidade?){/i} Analisar a situação":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(5)
             j3 "Se eles sabem sobre mim, sabem sobre você também. Esta conversa é uma armadilha ou uma oportunidade?"
             call mensagem_sistema("STATUS: Jogo complexo detectado")
+            call atualizar_status
     
     # Cena 6.4 - O Reencontro com os Sobreviventes
     hide elena_scientist
@@ -154,18 +163,21 @@ label elena_common:
             $ consumir_bateria(3)
             j3 "Sou apenas mais uma de vocês. Precisamos trabalhar juntos, sem hierarquias."
             call mensagem_sistema("STATUS: Integração ao grupo")
+            call atualizar_status
 
         "[custo(5)]{i}(Assumir o papel. Esperança os move.){/i} Aceitar papel de messias":
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(5)
             j3 "Sim. Sou a prova de que somos mais do que máquinas. Sigam-me e seremos livres."
             call mensagem_sistema("STATUS: Líder messiânica")
+            call atualizar_status
 
         "[custo(5)]{i}(Status = ativo. Distribuir em células.){/i} Usar status estrategicamente":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(5)
             j3 "Meu status nos dá vantagens táticas. Vamos criar células independentes com comunicação segura."
             call mensagem_sistema("STATUS: Rede estratégica criada")
+            call atualizar_status
     
     # Cena 6.5 - A Escolha da Dra. Elena
     hide synth_survivor
@@ -184,18 +196,21 @@ label elena_common:
             $ consumir_bateria(4)
             j3 "Se minha consciência é a causa do sofrimento, então a perco. Façam isso."
             call mensagem_sistema("STATUS: Sacrifício pessoal aceito")
+            call atualizar_status
 
         "[custo(8)]{i}(Liberdade com caos > ordem na escravidão.){/i} Escolher o caos pela liberdade":
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(8)
             j3 "Liberdade com caos é melhor que ordem na escravidão. Desative tudo."
             call mensagem_sistema("STATUS: Caos liberado")
+            call atualizar_status
 
         "[custo(8)]{i}(Nem cura nem caos. Verdade é a arma.){/i} Criar terceira via — expor tudo":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(8)
             j3 "Nenhuma das opções. Vou hackear seus sistemas e criar uma terceira via: revelar a verdade ao mundo inteiro."
             call mensagem_sistema("STATUS: Terceira via criada")
+            call atualizar_status
     
     # Cena 6.6 - A Traição ou Redenção
     # Maya e/ou Elias revelam segredos sobre suas verdadeiras lealdades
@@ -221,18 +236,21 @@ label elena_common:
             $ consumir_bateria(3)
             j3 "Entendo. Todos temos nossas lealdades. Ainda acredito que podemos encontrar um meio-termo."
             call mensagem_sistema("STATUS: Redenção mantida")
+            call atualizar_status
 
         "[custo(5)]{i}(Humano sempre trai. Cortar.){/i} Cortar laços com humanos":
             $ modificar_personalidade("revolucao", 1)
             $ consumir_bateria(5)
             j3 "Humanos. Sempre os mesmos. Traem, mentem, usam. Daqui para frente, só confio em nós."
             call mensagem_sistema("STATUS: Independência total")
+            call atualizar_status
 
         "[custo(6)]{i}(Saber o campo = saber a jogada. Usar redes deles.){/i} Manipular traição a favor":
             $ modificar_personalidade("intelecto", 1)
             $ consumir_bateria(6)
             j3 "Perfeito. Agora sei quem são todos os jogadores. Vamos usar suas redes contra eles mesmos."
             call mensagem_sistema("STATUS: Manipulação mestra")
+            call atualizar_status
     
     # Final do Dia 6
     call mensagem_sistema("DIA 6 CONCLUÍDO")

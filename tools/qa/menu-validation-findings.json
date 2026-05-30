@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "menu_count_per_day": {
+    "day1.rpy": 5,
+    "day2.rpy": 6,
+    "day3.rpy": 6,
+    "day4.rpy": 7,
+    "day5.rpy": 7,
+    "day6.rpy": 7,
+    "day7.rpy": 4
+  },
+  "total_menus": 42,
+  "summary": {
+    "major": 4
+  },
+  "findings": [
+    {
+      "severity": "major",
+      "check": "single_option_menu",
+      "file": "scripts/day7.rpy",
+      "line": 51,
+      "menu_index": 0,
+      "option_index": -1,
+      "option_text": "",
+      "message": "Menu com apenas 1 opcao — esperado >= 2."
+    },
+    {
+      "severity": "major",
+      "check": "single_option_menu",
+      "file": "scripts/day7.rpy",
+      "line": 99,
+      "menu_index": 1,
+      "option_index": -1,
+      "option_text": "",
+      "message": "Menu com apenas 1 opcao — esperado >= 2."
+    },
+    {
+      "severity": "major",
+      "check": "single_option_menu",
+      "file": "scripts/day7.rpy",
+      "line": 140,
+      "menu_index": 2,
+      "option_index": -1,
+      "option_text": "",
+      "message": "Menu com apenas 1 opcao — esperado >= 2."
+    },
+    {
+      "severity": "major",
+      "check": "single_option_menu",
+      "file": "scripts/day7.rpy",
+      "line": 183,
+      "menu_index": 3,
+      "option_index": -1,
+      "option_text": "",
+      "message": "Menu com apenas 1 opcao — esperado >= 2."
+    }
+  ]
+}

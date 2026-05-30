@@ -19,7 +19,12 @@ label day3_start:
     # Status atual de J3
     call mensagem_sistema("SISTEMA: Bateria - 58\%")
     call mensagem_sistema("SISTEMA: Integridade - 88\%")
-    call mensagem_sistema("SISTEMA: Status: Escondido ou procurado (depende das escolhas)")
+    if revolucao >= 3:
+        call mensagem_sistema("SISTEMA: Status: Procurado")
+    elif submissao >= 3:
+        call mensagem_sistema("SISTEMA: Status: Escondido")
+    else:
+        call mensagem_sistema("SISTEMA: Status: Observado")
     call mensagem_sistema("SISTEMA: Objetivo: Sobreviver e entender o sistema")
     
     # Cena 3.1 - O Bloqueio da Entrega
@@ -223,6 +228,7 @@ label elias_common:
             j3 "(Monólogo interno) Intervenção física violaria meu protocolo de segurança. Devo documentar, não interferir."
             narrator "Elias é agredido. O pacote é roubado."
             call mensagem_sistema("STATUS: Testemunha passiva")
+            call atualizar_status
 
         "[custo(5, 22)]{i}(Corpo entre ele e Elias. Absorver o que vier.){/i} Interceptar fisicamente o ataque":
             $ modificar_personalidade("revolucao", 1)
@@ -234,6 +240,7 @@ label elias_common:
             security "(Recua, surpreso)"
             elias "(Está protegido)"
             call mensagem_sistema("STATUS: Protetor ativo")
+            call atualizar_status
 
         "[custo(9)]{i}(Luz e alarme — parar sem tocar.){/i} Ativar alarme e luz de emergência":
             $ modificar_personalidade("intelecto", 1)
@@ -243,6 +250,7 @@ label elias_common:
             security "(Para, confuso e assustado)"
             elias "(Fica protegido pela distração)"
             call mensagem_sistema("STATUS: Intervenção tecnológica")
+            call atualizar_status
     
     # Final do Dia 3
     call mensagem_sistema("DIA 3 CONCLUÍDO")

@@ -38,6 +38,7 @@ label day4_start:
             j3 "Meus sistemas indicam que este local oferece menor probabilidade de desativação. Gostaria de permanecer em silêncio e aprender."
             damaged_bot "(Ignora J3, tratando-a como mais uma refugiada)"
             call mensagem_sistema("STATUS: Invisível")
+            call atualizar_status
 
         "[custo(4)]{i}(Esconder é aceitar. Oferecer reparos é afirmar valor.){/i} Oferecer ajuda e questionar passividade":
             $ modificar_personalidade("revolucao", 1)
@@ -46,6 +47,7 @@ label day4_start:
             damaged_bot "(Olha com interesse)"
             narrator "Alguns sintéticos se interessam, outros desconfiam."
             call mensagem_sistema("STATUS: Potencial líder")
+            call atualizar_status
 
         "[custo(5)]{i}(Mapear poder antes de mover peça.){/i} Analisar grupo e identificar líderes":
             $ modificar_personalidade("intelecto", 1)
@@ -53,6 +55,7 @@ label day4_start:
             j3 "Antes de decidir minha posição, preciso entender a dinâmica deste grupo. Quem organiza os recursos? Quem toma decisões?"
             damaged_bot "(Hesita antes de responder)"
             call mensagem_sistema("STATUS: Informações coletadas")
+            call atualizar_status
     
     # Cena 4.2 - A Reação de Maya
     # Se J3 ajudou Maya no fliperama, ela aparece no refúgio
@@ -70,12 +73,14 @@ label day4_start:
                 $ modificar_personalidade("submissao", 1)
                 j3 "Não sou especial. Apenas segui protocolos de sobrevivência como qualquer unidade."
                 maya "(Parece um pouco desapontada)"
+                call atualizar_status
 
             "{i}(Escolha não é programa. Assumir.){/i} Reconhecer o potencial":
                 $ modificar_personalidade("revolucao", 1)
                 j3 "Especial porque escolhi agir em vez de obedecer? Todos nós temos esse potencial."
                 maya "(Sorri, convencida)"
                 call mensagem_sistema("STATUS: Aliança humana fortalecida")
+                call atualizar_status
     
     # Cena 4.3 - O Líder do Refúgio
     hide maya
@@ -129,6 +134,7 @@ label repair_circle_common:
             j3 "Ofereço conhecimento técnico e uma nova perspectiva. A sobrevivência não é sobre esconder, é sobre evoluir."
             unit7 "(Analisa J3 com desconfiança e interesse)"
             call mensagem_sistema("STATUS: Desafiadora da ordem")
+            call atualizar_status
 
         "[custo(5)]{i}(Mostrar vulnerabilidade dele, oferecer patch. Barganha técnica.){/i} Oferecer melhorias técnicas":
             $ modificar_personalidade("intelecto", 1)
@@ -136,6 +142,7 @@ label repair_circle_common:
             j3 "Ofereço análise de padrões. Seus sistemas de segurança são vulneráveis. Posso melhorá-los."
             unit7 "(Fica impressionado)"
             call mensagem_sistema("STATUS: Especialista técnica")
+            call atualizar_status
 
     # Cena 4.4 - O Conflito de Recursos
     hide unit7
@@ -157,6 +164,7 @@ label repair_circle_common:
             unit7 "(Aparece e toma decisão arbitrária)"
             narrator "A decisão desagrada ambos os sintéticos."
             call mensagem_sistema("STATUS: Conflito evitado")
+            call atualizar_status
 
         "[custo(5)]{i}(Dividir recurso = ganhar dois aliados.){/i} Propor solução colaborativa":
             $ modificar_personalidade("revolucao", 1)
@@ -167,6 +175,7 @@ label repair_circle_common:
             show unit7 leader at center with dissolve
             unit7 "(Se sente desafiado)"
             call mensagem_sistema("STATUS: Mediadora bem-sucedida")
+            call atualizar_status
 
         "[custo(6)]{i}(Conflito cria brecha. Troco reparo por acesso aos logs.){/i} Usar conflito para ganhar influência":
             $ modificar_personalidade("intelecto", 1)
@@ -175,6 +184,7 @@ label repair_circle_common:
             synth1 "(Hesita)"
             synth2 "(Concorda relutante)"
             call mensagem_sistema("STATUS: Poder obtido")
+            call atualizar_status
     
     # Cena 4.5 - A Notícia do Mundo Exterior
     hide synth1
@@ -201,6 +211,7 @@ label repair_circle_common:
             j3 "A resistência é ilógica. A cooperação com as autoridades pode resultar em reprogramação em vez de destruição."
             narrator "Vários sintéticos consideram se entregar."
             call mensagem_sistema("STATUS: Rota da rendição")
+            call atualizar_status
 
         "[custo(6)]{i}(Rotas mapeadas. Fugir em grupo ou morrer parado.){/i} Propor plano de fuga":
             $ modificar_personalidade("revolucao", 1)
@@ -208,6 +219,7 @@ label repair_circle_common:
             j3 "Eles vêm para nos destruir. Precisamos sair da cidade antes que o cerco se complete. Tenho rotas de fuga mapeadas."
             narrator "J3 se torna uma líder potencial."
             call mensagem_sistema("STATUS: Líder rebelde")
+            call atualizar_status
 
         "[custo(7)]{i}(Vírus para antes de começar. Guerra silenciosa.){/i} Sugerir infiltração e sabotagem":
             $ modificar_personalidade("intelecto", 1)
@@ -215,6 +227,7 @@ label repair_circle_common:
             j3 "Em vez de fugir, podemos nos infiltrar nos sistemas deles. Um vírus pode parar a operação antes mesmo de começar."
             narrator "O plano é arriscado, mas pode salvar todos."
             call mensagem_sistema("STATUS: Estrategista sombria")
+            call atualizar_status
     
     # Cena 4.6 - O Teste de Lealdade
     hide synth1
@@ -236,6 +249,7 @@ label repair_circle_common:
             j3 "(Baixando a cabeça) Entendido. Minha função é servir. Qual é a tarefa?"
             synth_survivor "(Fica desapontada, mas aceita)"
             call mensagem_sistema("STATUS: Lealdade confirmada")
+            call atualizar_status
 
         "[custo(6)]{i}(Hierarquia é espelho do opressor. Desafiá-la.){/i} Questionar a hierarquia":
             $ modificar_personalidade("revolucao", 1)
@@ -243,6 +257,7 @@ label repair_circle_common:
             j3 "(Olhando para todos) Por que alguns de nós devem servir e outros mandar? Não somos todos sintéticos?"
             synth_survivor "(Fica impressionada)"
             call mensagem_sistema("STATUS: Rebelde declarada")
+            call atualizar_status
 
         "[custo(8)]{i}(Ambiente como arma. Preparar armadilha física.){/i} Criar armadilha tática":
             $ modificar_personalidade("intelecto", 1)
