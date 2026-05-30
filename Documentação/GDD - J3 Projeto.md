@@ -401,42 +401,54 @@ Onde o J3 se diferencia de Detroit:
 
 ### d) Áreas do Jogo
 
-#### Dia 1 - Avenida Principal
-- **Descrição:** Centro comercial movimentado
-- **Características:** Lojas holográficas, multidões, propaganda
-- **Eventos:** Protestos, encontros casuais, confrontos
+Visão geral das áreas — cada uma é o palco de um dia. Detalhamento de cenas e objetivos está em **f) Fases (Levels)** mais adiante, para evitar duplicação.
 
-#### Dia 2 - Fliperama Cyberpunk
-- **Descrição:** Estabelecimento underground de jogos
-- **Características:** Luzes piscando, música alta, diversidade
-- **Eventos:** Assédio, alianças, desafios
+| Dia | Local | Característica principal |
+|---|---|---|
+| 1 | Avenida Principal | Centro comercial movimentado, multidões, propaganda holográfica |
+| 2 | Fliperama Cyberpunk | Estabelecimento underground de jogos, luzes piscando, público diverso |
+| 3 | Beco Industrial | Área marginal, escura, comunidade marginalizada |
+| 4 | Refúgio Subterrâneo | Abrigo escondido de sintéticos perseguidos |
+| 5 | Complexo Corporativo | Sede de empresa tecnológica, futurista, vigiada |
+| 6 | Laboratório Secreto | Local de criação de J3, científico, abandonado |
+| 7 | Local do Final | Varia conforme personalidade dominante do jogador |
 
-#### Dia 3 - Beco Industrial
-- **Descrição:** Área marginal da cidade
-- **Características:** Escura, perigosa, comunidade marginalizada
-- **Eventos:** Confronto racial, injustiça, moralidade
+### e) Temas Sociais Trabalhados
 
-#### Dia 4 - Refúgio Subterrâneo
-- **Descrição:** Abrigo para sintéticos perseguidos
-- **Características:** Funcional, escondido, comunitário
-- **Eventos:** Estratégia, liderança, escolhas difíceis
+O J3 não é "jogo cyberpunk com fundo social" — os temas sociais estruturam o roteiro de ponta a ponta. Cada dia trabalha um eixo crítico, com cena, personagem e escolha desenhados em volta dele. Mapeamento explícito:
 
-#### Dia 5 - Complexo Corporativo
-- **Descrição:** Sede de empresa tecnológica
-- **Características:** Futurista, estéril, vigilada
-- **Eventos:** Infiltração, revelações, confronto final
+#### Tema 1 — Racismo (eixo central do Dia 3)
 
-#### Dia 6 - Laboratório Secreto
-- **Descrição:** Local de criação de J3
-- **Características:** Científico, abandonado, cheio de memórias
-- **Eventos:** Revelações, aceitação, decisão
+- **Cena:** Beco Industrial. Um segurança corporativo barra a entrega do Elias (negro) com a frase "Seu tipo costuma esquecer onde deixou" (`day3.rpy:33`). Não é racismo metafórico contra sintéticos — é racismo real, sem alegoria.
+- **Personagens:** Elias (vítima), segurança corporativo (agressor), J3 (testemunha).
+- **Decisão do jogador:** questionar o segurança, oferecer ajuda submissa que naturaliza o preconceito, ou gravar a cena como evidência. Cada escolha tem peso diferente no eixo de personalidade.
+- **Intenção pedagógica:** colocar racismo real ao lado da alegoria de "preconceito contra sintéticos" para o jogador perceber que é o mesmo mecanismo. A fala que sela isso é da J3 no Dia 3: *"o algoritmo do opressor é sempre o mesmo. Medo, controle, descarte."*
+- **Ramificação:** se o jogador apoiar Elias, ele vira aliado em dias seguintes. Se ignorar, perde acesso a cenas e ao final colaborativo.
 
-#### Dia 7 - Local do Final
-- **Descrição:** Varia conforme personalidade
-- **Características:** Único para cada rota
-- **Eventos:** Conclusão da jornada
+#### Tema 2 — Pânico moral (eixo central do Dia 1)
 
-### e) Personagens
+- **Cena:** Avenida Paulista futurista. J3 acaba de despertar e ainda não entendeu o que é. Um grupo de manifestantes desce a avenida com cartazes "Empregos pra Humanos", "Sucata não tem Alma", "Robôs Fora". Um deles cospe na poça aos pés da J3 e grita: *"Você é espiã da corporação ou só lixo eletrônico esperando o caminhão?"* (`day1.rpy:56`)
+- **Personagens:** manifestante (representa a multidão em pânico), mãe que arrasta a filha para longe quando ela tenta conversar com a J3 (pânico moral parental), drone de patrulha que responde à massa.
+- **Decisão do jogador:** baixar a cabeça e pedir desculpas (submissão ao pânico), contestar com lógica revolucionária (enfrentar), ou questionar tecnicamente (intelecto). Cada opção responde de forma diferente à histeria coletiva.
+- **Intenção pedagógica:** mostrar pânico moral como fenômeno social — o medo de uma novidade tecnológica é usado por figuras de autoridade e por massas para legitimar violência contra um grupo marcado como "ameaça". O paralelo com pânicos morais reais (sobre tecnologia, juventude, imigrantes) é direto.
+- **Ramificação:** o "Status" da J3 nos dias seguintes (Procurado/Observado) muda em função das escolhas no Dia 1, simulando como a reação ao pânico moral define o lugar social que ela vai ocupar.
+
+#### Tema 3 — Exclusão de mulheres em jogos (eixo central do Dia 2)
+
+- **Cena:** Fliperama Cyberpunk. Maya, uma jovem brasileira, está batendo o recorde de uma máquina. Três rapazes a cercam: *"Sai daí, Maya. Essa máquina tá com bug, não tem como uma garota fazer esse score sem trapacear. Deixa quem entende jogar."* (`day2.rpy:37`). Maya retruca: *"Eu te ganhei honestamente. Aceita. Se não aguenta perder pra uma garota, treina mais."*
+- **Personagens:** Maya (jogadora ameaçada), dois rapazes (agressores), dono do fliperama (que tenta expulsar Maya em vez de defendê-la), J3 (testemunha).
+- **Decisão do jogador:** intervir fisicamente contra o agressor, tentar mediação verbal (que falha — "Cala a boca, robô"), ou hackear o sistema para criar confusão e dar fuga à Maya. Cada caminho ilustra uma estratégia diferente contra o assédio.
+- **Intenção pedagógica:** trabalhar especificamente a **exclusão de mulheres do espaço de jogos** — o gatekeeping clássico ("garota não sabe jogar, vai trapacear"), o desconforto masculino com competência feminina, e a cumplicidade do dono do estabelecimento. Cena de gamergate em microescala.
+- **Ramificação:** se a J3 ajudar a Maya, vira aliança humana persistente (`maya_ally = True`) que muda cenas dos Dias 4, 6 e 7. Se ignorar, perde a aliança e o caminho narrativo que ela abre.
+
+#### Temas secundários (entram em cena ao longo do jogo)
+
+- **Xenofobia tecnológica** (Dias 4, 5, 7): a alegoria principal — preconceito contra sintéticos — atravessa o jogo inteiro. Funciona como espelho dos três temas acima.
+- **Autoritarismo policial** (Dias 1, 5, 6): drone de patrulha no Dia 1, cerco ao refúgio no Dia 5, perseguição final no Dia 6.
+- **Marginalização urbana** (Dia 3): a personagem `homeless_woman` no beco é quem oferece a J3 a primeira leitura crítica do sistema — "quem dorme no chão sabe melhor quem decide quem dorme em cama".
+- **Opressão de classe** (transversal): elite corporativa vs trabalhadores humanos vs sintéticos — três castas que se relacionam no jogo.
+
+### f) Personagens
 
 #### J3-001 (Protagonista)
 
@@ -493,31 +505,34 @@ Onde o J3 se diferencia de Detroit:
 - **Relevância:** Figura de autoridade moral
 - **Relações:** Complexa com J3, culpa maternal
 
-### f) Fases (Levels)
+### g) Fases (Levels)
 
-#### Dia 1 - Avenida: O Despertar
+#### Dia 1 - Avenida: O Despertar (tema: pânico moral)
 
 ![Avenida Paulista Futurista](../Projeto/J3%20Project/game/backgrounds/day1/avenue_night.png)
 
-- **Sinopse:** J3 desperta sem memória em meio ao caos urbano
-- **Objetivos:** Entender situação básica, sobreviver ao primeiro dia
-- **Acontecimentos:** Confronto com manifestantes, encontro com criança, intervenção policial
+- **Sinopse:** J3 desperta sem memória em meio ao caos urbano e é imediatamente alvo de um grupo em pânico moral contra sintéticos.
+- **Objetivos:** Entender situação básica, sobreviver ao primeiro dia, posicionar-se diante da histeria coletiva.
+- **Acontecimentos:** Confronto com manifestantes ("Sucata não tem Alma"), encontro com a criança Maria (curiosidade que a mãe interrompe arrancando-a do contato), intervenção do drone de patrulha que responde à massa.
+- **Conexão temática:** ver seção **e) Temas Sociais Trabalhados → Pânico moral**.
 
-#### Dia 2 - Fliperama: O Conflito
+#### Dia 2 - Fliperama: O Conflito (tema: exclusão de mulheres em jogos)
 
 ![Fliperama Cyberpunk](../Projeto/J3%20Project/game/backgrounds/day2/arcade_night.png)
 
-- **Sinopse:** J3 busca abrigo e testemunha assédio contra Maya
-- **Objetivos:** Formar primeira aliança, entender dinâmicas sociais
-- **Acontecimentos:** Defesa de Maya, desafio no fliperama, fuga das autoridades
+- **Sinopse:** J3 busca abrigo no fliperama e testemunha gatekeeping contra Maya — uma jogadora que está batendo o recorde de uma máquina e é cercada por três rapazes que se recusam a aceitar que uma mulher possa ter ganhado deles.
+- **Objetivos:** Decidir como intervir contra o assédio, formar primeira aliança humana (Maya), entender que opressão acontece também em espaço de lazer.
+- **Acontecimentos:** Defesa de Maya (3 estratégias possíveis), desafio do dono do fliperama que tenta expulsar Maya, fuga das autoridades.
+- **Conexão temática:** ver seção **e) Temas Sociais Trabalhados → Exclusão de mulheres em jogos**.
 
-#### Dia 3 - Beco: A Injustiça
+#### Dia 3 - Beco: A Injustiça (tema: racismo)
 
 ![Beco Industrial](../Projeto/J3%20Project/game/backgrounds/day3/alley_night.png)
 
-- **Sinopse:** J3 presencia discriminação racial contra Elias
-- **Objetivos:** Enfrentar preconceito sistêmico, fazer escolhas morais
-- **Acontecimentos:** Confronto racial, decisão de intervenção, consequências
+- **Sinopse:** J3 presencia um segurança barrar Elias (entregador negro) por preconceito racial explícito.
+- **Objetivos:** Enfrentar preconceito sistêmico, escolher entre cumplicidade, intervenção ou registro como evidência.
+- **Acontecimentos:** Confronto racial, decisão de intervenção, tentativa de suborno pelo segurança, encontro com a `homeless_woman` que oferece leitura crítica do sistema.
+- **Conexão temática:** ver seção **e) Temas Sociais Trabalhados → Racismo**.
 
 #### Dia 4 - Refúgio: As Consequências
 
@@ -551,7 +566,7 @@ Onde o J3 se diferencia de Detroit:
 - **Objetivos:** Escolher destino final, enfrentar consequências
 - **Acontecimentos:** Varia conforme personalidade desenvolvida
 
-### g) Fase de Treino e/ou Tutorial
+### h) Fase de Treino e/ou Tutorial
 
 #### Tutorial Integrado
 - **Dia 1 - Primeiros Passos:**
@@ -1151,7 +1166,7 @@ Este GDD atende aos requisitos do *Manual Game e Cultura* do MINC. Como o J3 res
 
 - **Diversidade cultural brasileira.** O jogo se passa em **Nova São Paulo 2077**, não numa cidade cyberpunk genérica americana. Tem referência à Avenida Paulista, ao fliperama como espaço cultural jovem, ao beco industrial como território de resistência, à arquitetura brutalista e grafite urbano. Linguagem, gírias e tensões sociais vêm da vivência urbana brasileira.
 
-- **Temas sociais relevantes.** O jogo fala de racismo estrutural, xenofobia tecnológica (o preconceito contra sintéticos é uma alegoria direta de racismo), opressão de classe, autoritarismo policial, assédio em espaço público, marginalização. Cada dia trabalha um eixo diferente. É crítica social embalada em ficção científica.
+- **Temas sociais relevantes.** Três eixos estruturam o roteiro (detalhados em **5.e Temas Sociais Trabalhados**): **racismo** (Dia 3, Elias barrado pelo segurança), **pânico moral** (Dia 1, manifestantes anti-sintéticos), **exclusão de mulheres em jogos** (Dia 2, Maya cercada por rapazes no fliperama). Como temas secundários: xenofobia tecnológica (alegoria de racismo), autoritarismo policial, marginalização urbana e opressão de classe. Cada dia trabalha um eixo diferente. É crítica social embalada em ficção científica.
 
 - **Formato técnico completo.** Este GDD cumpre os 9 blocos que o manual pede (Página de Título, Visão Geral, Gameplay, Arte, Narrativa, Interface, AI, Aspectos Técnicos, Histórico), com subseções conforme o template oficial.
 
@@ -1159,7 +1174,7 @@ Este GDD atende aos requisitos do *Manual Game e Cultura* do MINC. Como o J3 res
 
 ---
 
-**Local:** Brasil, 23 de abril de 2026
+**Local:** Brasil, 30 de maio de 2026
 
 **RESPONSÁVEL**
 
