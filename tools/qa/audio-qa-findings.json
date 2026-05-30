@@ -1,0 +1,166 @@
+{
+  "target_rms_db": -18.0,
+  "stats": [
+    {
+      "path": "/mnt/c/temp/audio_qa_test/music/After_the_Rainfall.mp3",
+      "duration_s": 102.348,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -999,
+      "peak_db": -999,
+      "clipping_pct": -1,
+      "findings": [
+        "MP3_METADATA_ONLY: sem ffmpeg, sem analise de amplitude"
+      ]
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/music/Asphalt_Downpour.mp3",
+      "duration_s": 100.676,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -999,
+      "peak_db": -999,
+      "clipping_pct": -1,
+      "findings": [
+        "MP3_METADATA_ONLY: sem ffmpeg, sem analise de amplitude"
+      ]
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/music/Late_Shift_at_Terminal_.mp3",
+      "duration_s": 30.772,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -999,
+      "peak_db": -999,
+      "clipping_pct": -1,
+      "findings": [
+        "MP3_METADATA_ONLY: sem ffmpeg, sem analise de amplitude"
+      ]
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/music/Piston_Alignment.mp3",
+      "duration_s": 116.428,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -999,
+      "peak_db": -999,
+      "clipping_pct": -1,
+      "findings": [
+        "MP3_METADATA_ONLY: sem ffmpeg, sem analise de amplitude"
+      ]
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/music/Sub_Level_View.mp3",
+      "duration_s": 30.772,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -999,
+      "peak_db": -999,
+      "clipping_pct": -1,
+      "findings": [
+        "MP3_METADATA_ONLY: sem ffmpeg, sem analise de amplitude"
+      ]
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/alarm.wav",
+      "duration_s": 2.5,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -14.4399995803833,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/alert.wav",
+      "duration_s": 0.6,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -12.350000381469727,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/battle.wav",
+      "duration_s": 6.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -3.299999952316284,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/crowd_noise.wav",
+      "duration_s": 8.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -3.2100000381469727,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/emp_blasts.wav",
+      "duration_s": 1.5,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -5.619999885559082,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/explosions.wav",
+      "duration_s": 1.8,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -3.700000047683716,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/memory_glitch.wav",
+      "duration_s": 1.2,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -4.460000038146973,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/news_broadcast.wav",
+      "duration_s": 4.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -4.46999979019165,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/sirens.wav",
+      "duration_s": 3.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -12.1899995803833,
+      "clipping_pct": 0.0,
+      "findings": []
+    },
+    {
+      "path": "/mnt/c/temp/audio_qa_test/sfx/sirens_close.wav",
+      "duration_s": 3.5,
+      "sample_rate": 44100,
+      "channels": 1,
+      "rms_db": -18.0,
+      "peak_db": -12.680000305175781,
+      "clipping_pct": 0.0,
+      "findings": []
+    }
+  ],
+  "normalized": []
+}

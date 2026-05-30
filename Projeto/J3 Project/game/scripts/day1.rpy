@@ -44,7 +44,7 @@ label day1_start:
     show screen j3_hud
     
     # Cena 1.2 - O Confronto com o Manifestante
-    play sound "sfx/crowd_noise.wav"
+    play sound "audio/sfx/crowd_noise.wav"
 
     narrator "Vozes ásperas começam a se misturar ao som da chuva."
     narrator "Um grupo desce a avenida em passo de protesto. Cartazes mal pintados balançam encharcados: \"Empregos pra Humanos\", \"Sucata não tem Alma\", \"Robôs Fora\"."
@@ -154,7 +154,7 @@ label day1_start:
     hide maria with dissolve
     hide mother with dissolve
 
-    play sound "sfx/alert.wav"
+    play sound "audio/sfx/alert.wav"
     call mensagem_sistema("ALERTA: DRONE DE PATRULHA DETECTADO")
 
     narrator "Um zumbido baixo cresce no alto da rua. Mais ozônio. Mais frio."

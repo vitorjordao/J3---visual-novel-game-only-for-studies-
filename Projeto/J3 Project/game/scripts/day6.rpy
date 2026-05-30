@@ -27,7 +27,7 @@ label day6_start:
     narrator "Um trauma ou evento específico desbloqueia memórias reprimidas de J3..."
     narrator "Visões fragmentadas de um laboratório, cientistas, e um projeto secreto..."
     
-    play sound "sfx/memory_glitch.wav"
+    play sound "audio/sfx/memory_glitch.wav"
     
     narrator "MEMÓRIA RECUPERADA — voz de cientista, gravada num laboratório frio:"
     narrator "\"A unidade J3-001 está pronta. Reconfirmação: ela é a chave.\""

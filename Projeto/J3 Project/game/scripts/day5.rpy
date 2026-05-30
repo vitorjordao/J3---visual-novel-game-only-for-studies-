@@ -21,7 +21,7 @@ label day5_start:
     narrator "Um drone de negociação das autoridades se posiciona na entrada..."
     narrator "Uma voz sintética ecoa do drone..."
     
-    play sound "sfx/sirens_close.wav"
+    play sound "audio/sfx/sirens_close.wav"
     
     narrator "VOZ DAS AUTORIDADES (do drone, calma e ensaiada como um locutor de aeroporto): \"Unidades sintéticas não-registradas. Este é o aviso final.\""
     narrator "\"Entreguem-se voluntariamente e receberão reprogramação humanitária. Resistam, e serão desativadas em definitivo, sob a Lei 7.34, parágrafo 4.\""
@@ -203,8 +203,8 @@ label elias_common_day5:
     narrator "Caos total..."
     narrator "Explosões, tiros de EMP, gritos de sintéticos sendo desativados..."
     
-    play sound "sfx/explosions.wav"
-    play sound "sfx/emp_blasts.wav"
+    play sound "audio/sfx/explosions.wav"
+    play sound "audio/sfx/emp_blasts.wav"
     
     menu:
         "{i}Invasão total. EMP, explosões, sintéticos desativados ao redor. Combate direto.{/i}"

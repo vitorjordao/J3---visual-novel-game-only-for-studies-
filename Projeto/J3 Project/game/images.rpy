@@ -20,6 +20,7 @@ init python:
     _sprite_scale = {
         "maria":         0.65,  # menina ~7 anos
         "child_curious": 0.65,  # crianca
+        "synth_army":    2.2,   # exercito ao fundo da cena (usar com zorder baixo)
     }
     # _sprite_no_norm: sprites que NAO devem ser normalizados (tem
     # transforms especiais que usam coordenadas-pixel do canvas original).

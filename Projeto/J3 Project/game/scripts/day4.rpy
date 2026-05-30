@@ -183,7 +183,7 @@ label repair_circle_common:
     narrator "Um pequeno drone de notícias entra no refúgio..."
     narrator "Projeta uma reportagem..."
     
-    play sound "sfx/news_broadcast.wav"
+    play sound "audio/sfx/news_broadcast.wav"
     
     narrator "REPORTAGEM (voz feminina, calma, ensaiada): \"Em comunicado oficial, as autoridades anunciam a operação Limpeza Ética. Todos os modelos sintéticos não-registrados serão desativados de forma humanitária até o fim desta semana.\""
     narrator "REPORTAGEM: \"O Ministério da Ordem reforça: a medida visa preservar a segurança das famílias. Cidadãos são encorajados a denunciar atividades suspeitas pelo aplicativo OlhoCívico.\""

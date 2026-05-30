@@ -88,9 +88,9 @@ label final_sacrifice:
 # Final 2: A Revolução Consciente (Alta Revolução: 8+ pontos)
 label final_revolution:
     scene bg city_plaza with dissolve
+    show synth_army at center zorder -10
     show commander at center
     show j3_revolutionary at left
-    show synth_army at right
     
     commander "(Voz amplificada, fria, ensaiada para parecer humana sem ser.) J3-001. Estamos em posição. Você está cercada."
     commander "Renda-se, e seus sintéticos serão processados de forma humanitária. Resista, e seremos forçados a destruir todos vocês."
@@ -107,7 +107,7 @@ label final_revolution:
             call mensagem_sistema("BATALHA FINAL")
             call mensagem_sistema("MARTÍRIO CRIADO")
             
-            play sound "sfx/battle.wav"
+            play sound "audio/sfx/battle.wav"
             
             narrator "Batalha épica entre sintéticos e forças humanas"
             narrator "J3 se torna um mártir da causa sintética"

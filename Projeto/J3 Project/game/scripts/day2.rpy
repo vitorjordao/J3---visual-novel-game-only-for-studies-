@@ -19,7 +19,10 @@ label day2_start:
     # Status atual de J3
     call mensagem_sistema("SISTEMA: Bateria - 72\%")
     call mensagem_sistema("SISTEMA: Integridade - 95\%")
-    call mensagem_sistema("SISTEMA: Status: Procurado (se escolhas revolucionárias no Dia 1)")
+    if revolucao >= 2:
+        call mensagem_sistema("SISTEMA: Status: Procurado")
+    else:
+        call mensagem_sistema("SISTEMA: Status: Observado")
     call mensagem_sistema("SISTEMA: Objetivo: Encontrar abrigo temporário")
     
     # Cena 2.1 - A Intimidação na Máquina
@@ -68,7 +71,7 @@ label day2_start:
             call mensagem_sistema("HACK: Sistema do fliperama comprometido")
             call mensagem_sistema("CONTROLE: Luzes e alarmes obtidos")
             j3 "(Ativa todas as luzes do fliperama que piscam violentamente)"
-            play sound "sfx/alarm.wav"
+            play sound "audio/sfx/alarm.wav"
             narrator "Na confusão, Maya consegue sair. Ela olha para J3 e acena com gratidão antes de fugir."
             call mensagem_sistema("STATUS: Manipulador")
             call atualizar_status
@@ -213,7 +216,7 @@ label maya_common_reaction:
     # Cena 2.5 - A Fuga do Local
     hide thug1
     
-    play sound "sfx/sirens.wav"
+    play sound "audio/sfx/sirens.wav"
     call mensagem_sistema("ALERTA: Autoridades se aproximando")
     call mensagem_sistema("TEMPO ESTIMADO: 2 minutos até chegada")
     call mensagem_sistema("OPÇÕES: Rendição ou Evasão")

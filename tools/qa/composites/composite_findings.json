@@ -1,0 +1,419 @@
+{
+  "version": "1.0",
+  "grid": {
+    "path": "/mnt/c/temp/j3qa/tools/qa/composites/sprite_grid.png",
+    "sprites": [
+      {
+        "tag": "child_curious",
+        "body_w": 345,
+        "body_h": 613,
+        "norm_w": 1300,
+        "norm_h": 702,
+        "body_x_center_offset": -1,
+        "path": "characters/child_curious/child_curious.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "commander",
+        "body_w": 390,
+        "body_h": 946,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/commander/commander.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "damaged_bot",
+        "body_w": 217,
+        "body_h": 380,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/damaged_bot/damaged_bot.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "drone_captor",
+        "body_w": 534,
+        "body_h": 380,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/drone_captor/drone_captor.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "elena",
+        "body_w": 415,
+        "body_h": 948,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/elena/elena.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "elena_scientist",
+        "body_w": 415,
+        "body_h": 948,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/elena/elena.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "elias",
+        "body_w": 343,
+        "body_h": 948,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/elias/Elias.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "homeless_woman",
+        "body_w": 800,
+        "body_h": 915,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/homeless_woman/homeless_woman.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "j3",
+        "body_w": 340,
+        "body_h": 950,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 4,
+        "path": "characters/j3/J3.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "j3_empty",
+        "body_w": 340,
+        "body_h": 950,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 4,
+        "path": "characters/j3/J3.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "j3_hacker",
+        "body_w": 340,
+        "body_h": 950,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 4,
+        "path": "characters/j3/J3.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "j3_revolutionary",
+        "body_w": 340,
+        "body_h": 950,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 4,
+        "path": "characters/j3/J3.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "j3_serving",
+        "body_w": 340,
+        "body_h": 950,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 4,
+        "path": "characters/j3/J3.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "maria",
+        "body_w": 281,
+        "body_h": 623,
+        "norm_w": 1300,
+        "norm_h": 702,
+        "body_x_center_offset": 31,
+        "path": "characters/maria/maria.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "maya",
+        "body_w": 378,
+        "body_h": 946,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/maya/maya.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "mother",
+        "body_w": 513,
+        "body_h": 1032,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/mother/mother.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "news_vendor",
+        "body_w": 421,
+        "body_h": 950,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/news_vendor/news_vendor.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "owner",
+        "body_w": 691,
+        "body_h": 950,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/owner/owner.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "patrol_drone",
+        "body_w": 629,
+        "body_h": 379,
+        "norm_w": 800,
+        "norm_h": 1080,
+        "body_x_center_offset": -1,
+        "path": "characters/patrol_drone/patrol_drone.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "protester",
+        "body_w": 636,
+        "body_h": 957,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/protester/protester.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "security",
+        "body_w": 496,
+        "body_h": 1016,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/security/security.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "synth1",
+        "body_w": 430,
+        "body_h": 1016,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/synth1/synth1.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "synth2",
+        "body_w": 374,
+        "body_h": 947,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 1,
+        "path": "characters/synth2/synth2.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "synth_angry",
+        "body_w": 430,
+        "body_h": 1016,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/synth_angry/synth_angry.png",
+        "src_w": 1408,
+        "src_h": 768
+      },
+      {
+        "tag": "synth_army",
+        "body_w": 1760,
+        "body_h": 960,
+        "norm_w": 4400,
+        "norm_h": 2376,
+        "body_x_center_offset": 0,
+        "path": "characters/synth_army/synth_army.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "synth_fearful",
+        "body_w": 399,
+        "body_h": 958,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": -9,
+        "path": "characters/synth_fearful/synth_fearful.png",
+        "src_w": 2400,
+        "src_h": 1309
+      },
+      {
+        "tag": "synth_survivor",
+        "body_w": 394,
+        "body_h": 948,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/synth_survivor/synth_survivor.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "thug1",
+        "body_w": 361,
+        "body_h": 946,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/thug1/thug1.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "thug2",
+        "body_w": 386,
+        "body_h": 944,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 1,
+        "path": "characters/thug2/thug2.png",
+        "src_w": 800,
+        "src_h": 1080
+      },
+      {
+        "tag": "unit7",
+        "body_w": 586,
+        "body_h": 949,
+        "norm_w": 2000,
+        "norm_h": 1080,
+        "body_x_center_offset": 0,
+        "path": "characters/unit7/unity 7.png",
+        "src_w": 800,
+        "src_h": 1080
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "slug": "day1_protester",
+      "title": "Dia 1 cena 1.2 — protester at left, j3 at center",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day1_protester.png",
+      "missing": []
+    },
+    {
+      "slug": "day1_maria_scene",
+      "title": "Dia 1 cena 1.3 — j3 at left, mother at right, maria at center",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day1_maria_scene.png",
+      "missing": []
+    },
+    {
+      "slug": "day2_thug_owner",
+      "title": "Dia 2 cena 2.5 — owner at left, thug1 at right",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day2_thug_owner.png",
+      "missing": []
+    },
+    {
+      "slug": "day3_security",
+      "title": "Dia 3 cena 3.4 — elias at center, security at left",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day3_security.png",
+      "missing": []
+    },
+    {
+      "slug": "day4_damaged_bot",
+      "title": "Dia 4 cena 4.1 — damaged_bot at small_bot_center",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day4_damaged_bot.png",
+      "missing": []
+    },
+    {
+      "slug": "day4_unit7_synth",
+      "title": "Dia 4 cena 4.2 — unit7 at center, synth_survivor at right",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day4_unit7_synth.png",
+      "missing": []
+    },
+    {
+      "slug": "day4_synths",
+      "title": "Dia 4 cena 4.4 — synth1 at left, synth2 at right",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day4_synths.png",
+      "missing": []
+    },
+    {
+      "slug": "day5_synth_battle",
+      "title": "Dia 5 cena 5.1 — synth_fearful at left, unit7 at center, synth_angry at right",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day5_synth_battle.png",
+      "missing": []
+    },
+    {
+      "slug": "day5_commander",
+      "title": "Dia 5 cena 5.6 — unit7 at center, commander at right",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day5_commander.png",
+      "missing": []
+    },
+    {
+      "slug": "day6_elena",
+      "title": "Dia 6 cena 6.1 — elena_scientist at center, synth_survivor at center",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day6_elena.png",
+      "missing": []
+    },
+    {
+      "slug": "day7_revolution",
+      "title": "Dia 7 final revolucao — synth_army at center BEHIND, commander at center, j3 at left",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day7_revolution.png",
+      "missing": []
+    },
+    {
+      "slug": "day7_balanced",
+      "title": "Dia 7 final balanceado — maya at left, elias at right, elena_scientist at center",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day7_balanced.png",
+      "missing": []
+    },
+    {
+      "slug": "day7_serving_child",
+      "title": "Dia 7 final sacrificio — j3_serving (= J3 sprite) at far_right, child_curious at far_left, mother at center",
+      "path": "/mnt/c/temp/j3qa/tools/qa/composites/scenes/day7_serving_child.png",
+      "missing": []
+    }
+  ],
+  "findings": []
+}
