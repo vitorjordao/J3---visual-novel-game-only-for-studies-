@@ -265,64 +265,27 @@ A ideia é juntar duas coisas: o peso do cyberpunk (cidade escura, neon, opress�
 - **Games:** Deus Ex, System Shock, Observer
 - **Cultura:** Música eletrônica brasileira contemporânea
 
-#### Notas sobre a Produção do Áudio (v1.1.0)
+#### Notas sobre a Produção do Áudio
 
-A trilha sonora seguiu o mesmo dilema da arte: produzir 7 faixas distintas (uma por dia) à mão dentro do prazo de desenvolvedor solo não cabia. A música é parte central da atmosfera cyberpunk do J3 — silêncio não era opção. A solução foi gerar a trilha com IA musical (Suno) usando prompts dirigidos por dia (atmosfera, BPM, instrumentação, tensão narrativa pretendida) e fazer curadoria/edição manual antes de entrar no jogo.
+Mesma lógica da arte: produzir 7 faixas e 10 efeitos sonoros à mão dentro do prazo solo não cabia. Solução em duas frentes:
 
-Posição que assumi (mesma do uso de IA na arte):
-- transparência total no GDD;
-- prompts detalhados funcionando como briefing para um compositor terceirizado;
-- direção artística (escolha de atmosfera por dia, momento de corte, decisão de silenciar nos finais críticos) continua sendo minha;
-- zero uso comercial — o projeto é não-comercial, com intuito de aprendizagem.
+- **Música (5 faixas):** geradas via Suno com prompts dirigidos por dia (atmosfera, BPM, instrumentação) e pós-processadas no Audacity (corte, normalização, fade). Ficam em `audio/music/`. Sistema de aleatorização em `musica.rpy` toca uma faixa, e quando termina enfileira outra sem repetir — persiste através de saves. Nos finais críticos a aleatorização é desligada para garantir silêncio.
+- **Efeitos sonoros (10 wavs):** gerados localmente em Python (numpy + scipy) combinando ondas senoidais, ruído filtrado e envelopes de volume. Royalty-free por construção — matemática local não tem dono. Encaixa no clima cyberpunk: alarmes, sirenes e EMP já soam naturalmente eletrônicos.
 
-**Faixas no build atual (5):**
-- `After_the_Rainfall.mp3` — pós-conflito, melancolia urbana (Dia 1, Dia 4)
-- `Asphalt_Downpour.mp3` — chuva neon, abertura cyberpunk (Dia 1)
-- `Late_Shift_at_Terminal_.mp3` — tensão noturna, espaço público (Dia 2, Dia 3)
-- `Piston_Alignment.mp3` — industrial mecânico (Dia 3, Dia 5)
-- `Sub_Level_View.mp3` — ambient subterrâneo (Dia 4, Dia 6)
-
-**Sistema de aleatorização (`musica.rpy`):** o canal `music` toca uma faixa aleatória, e quando ela termina o callback `_music_queue_next` enfileira outra sem repetir a anterior. Persiste através de saves (Ren'Py salva o estado do canal). Nos finais críticos (0A desligamento, 0B colapso, 0C captura) a flag `_music_random_enabled` é setada como `False` antes do `stop music` para impedir que o callback re-enfileire — silêncio absoluto é parte da carga emocional desses finais.
-
-**Pós-processamento manual:** cada faixa gerada pela Suno passou por edição no Audacity — corte de seções fracas, normalização de loudness para evitar variação brusca entre faixas, fade-in/fade-out para encaixar no callback de fila. A IA gera a base; a finalização garante que duas faixas seguidas não soem como playlist aleatória, mas como continuidade de trilha.
-
-**Efeitos sonoros (sfx) — gerados localmente em Python:**
-
-A primeira versão do jogo tinha vários momentos com som no roteiro (gritos de multidão, alarme, sirene, explosão, etc.) que ficavam mudos porque os arquivos `.wav` não existiam. Os 10 sons necessários eram: `crowd_noise`, `alert`, `alarm`, `sirens`, `sirens_close`, `news_broadcast`, `explosions`, `emp_blasts`, `memory_glitch` e `battle`.
-
-Para resolver isso, escrevi um pequeno script em Python (numpy + scipy) que **gera os sons matematicamente** — combinando ondas senoidais, ruído filtrado e envelopes de volume. Pensei em três caminhos antes: baixar de banco gratuito online, usar IA de áudio, ou gerar localmente. Escolhi gerar localmente porque é o caminho mais seguro do ponto de vista de licença: como é matemática pura feita no meu computador, não tem dono nem precisa de atribuição. Também encaixa no clima cyberpunk do jogo — alarmes e sirenes já soam naturalmente eletrônicos.
-
-**Os 10 sons gerados:**
-
-| Arquivo | Duração | O que é |
+| Arquivo | Duração | Descrição |
 |---|---|---|
-| `crowd_noise.wav` | 8.0s | barulho de multidão urbana com gritos esparsos |
-| `alert.wav` | 0.6s | dois bipes curtos sci-fi |
+| `crowd_noise.wav` | 8.0s | multidão urbana com gritos esparsos |
+| `alert.wav` | 0.6s | dois bipes sci-fi |
 | `alarm.wav` | 2.5s | alarme industrial pulsando |
 | `sirens.wav` | 3.0s | sirene de polícia clássica |
-| `sirens_close.wav` | 3.5s | sirene mais aguda e próxima |
-| `news_broadcast.wav` | 4.0s | rádio velho com estática e bipes |
+| `sirens_close.wav` | 3.5s | sirene aguda e próxima |
+| `news_broadcast.wav` | 4.0s | rádio velho com estática |
 | `explosions.wav` | 1.8s | explosão grave com decaimento |
 | `emp_blasts.wav` | 1.5s | pulso eletromagnético descendente |
-| `memory_glitch.wav` | 1.2s | glitch digital tipo bit-crush |
-| `battle.wav` | 6.0s | batalha com rumble grave e impactos |
+| `memory_glitch.wav` | 1.2s | glitch digital bit-crush |
+| `battle.wav` | 6.0s | rumble grave + impactos |
 
-**Equalização e normalização:**
-
-Depois de gerar, passei todos os 10 sons por um ajuste de volume para deixar todos no mesmo nível (RMS -18 dBFS, que é o padrão para áudio de jogo). Isso evita que o jogador escute alguns sons muito altos e outros muito baixos. Também coloquei um limitador para não estourar (clipping zero em todos os 10).
-
-**Sobre licença:**
-
-- Os sons são resultado direto de algoritmos públicos (filtros, ondas senoidais, ruído). Não tem detentor de copyright.
-- O script que gera está versionado no repositório, então qualquer pessoa pode reproduzir os mesmos arquivos rodando ele.
-- Sem uso comercial, como o resto do projeto.
-
-**Limitação assumida:** o resultado é "som sintético", não foley real. Multidão humana e voz no rádio ficam mais artificiais — mas funcionam dentro da estética cyberpunk. Se em versões futuras eu quiser substituir esses dois específicos por gravações reais com licença CC0, mantenho o resto.
-
-**Validação do áudio completo:**
-
-- Os 10 sfx passaram na verificação automática (volume equalizado, sem clipping).
-- Das 5 faixas de música (mp3 gerados pela Suno), duas estão com 30 segundos enquanto as outras passam de 100s — possivelmente foram cortadas na exportação. Vale revisar e regerar essas duas em versão futura.
+Todos normalizados para -18 dBFS RMS (padrão de áudio de jogo) e com limitador de pico — sem clipping. Limitação assumida: som sintético, não foley real.
 
 ---
 
@@ -415,38 +378,19 @@ Visão geral das áreas — cada uma é o palco de um dia. Detalhamento de cenas
 
 ### e) Temas Sociais Trabalhados
 
-O J3 não é "jogo cyberpunk com fundo social" — os temas sociais estruturam o roteiro de ponta a ponta. Cada dia trabalha um eixo crítico, com cena, personagem e escolha desenhados em volta dele. Mapeamento explícito:
+Cada dia inicial trabalha um eixo crítico explícito, com cena, personagem e escolha desenhados em volta dele. Mapeamento:
 
-#### Tema 1 — Racismo (eixo central do Dia 3)
+| Tema | Dia | Cena-chave | Personagens centrais | Decisão do jogador |
+|---|---|---|---|---|
+| **Racismo** | 3 | Segurança barra Elias (negro): *"Seu tipo costuma esquecer onde deixou"* (`day3.rpy:33`) | Elias, segurança, J3 | Questionar, ser cúmplice, ou gravar evidência |
+| **Pânico moral** | 1 | Multidão com cartazes "Sucata não tem Alma" cerca a J3 recém-desperta (`day1.rpy:56`) | Manifestante, mãe que afasta a filha, drone de patrulha | Submissão, enfrentamento, ou análise técnica |
+| **Exclusão de mulheres em jogos** | 2 | Três rapazes cercam Maya batendo recorde no fliperama: *"garota não sabe jogar"* (`day2.rpy:37`) | Maya, dois agressores, dono cúmplice | Intervenção física, mediação verbal (que falha), ou hackear o sistema |
 
-- **Cena:** Beco Industrial. Um segurança corporativo barra a entrega do Elias (negro) com a frase "Seu tipo costuma esquecer onde deixou" (`day3.rpy:33`). Não é racismo metafórico contra sintéticos — é racismo real, sem alegoria.
-- **Personagens:** Elias (vítima), segurança corporativo (agressor), J3 (testemunha).
-- **Decisão do jogador:** questionar o segurança, oferecer ajuda submissa que naturaliza o preconceito, ou gravar a cena como evidência. Cada escolha tem peso diferente no eixo de personalidade.
-- **Intenção pedagógica:** colocar racismo real ao lado da alegoria de "preconceito contra sintéticos" para o jogador perceber que é o mesmo mecanismo. A fala que sela isso é da J3 no Dia 3: *"o algoritmo do opressor é sempre o mesmo. Medo, controle, descarte."*
-- **Ramificação:** se o jogador apoiar Elias, ele vira aliado em dias seguintes. Se ignorar, perde acesso a cenas e ao final colaborativo.
+Cada eixo tem **consequência mecânica**: apoiar Elias ou Maya cria aliança persistente (`elias_ally`, `maya_ally`) que muda cenas dos Dias 4–7; reações ao pânico moral redefinem o "Status" da J3 (Procurado/Observado). A escolha que o jogador faz frente a cada tema pesa no eixo de personalidade e no acesso aos finais.
 
-#### Tema 2 — Pânico moral (eixo central do Dia 1)
+A fala que sela a leitura crítica é da própria J3 no Dia 3: *"o algoritmo do opressor é sempre o mesmo. Medo, controle, descarte."*
 
-- **Cena:** Avenida Paulista futurista. J3 acaba de despertar e ainda não entendeu o que é. Um grupo de manifestantes desce a avenida com cartazes "Empregos pra Humanos", "Sucata não tem Alma", "Robôs Fora". Um deles cospe na poça aos pés da J3 e grita: *"Você é espiã da corporação ou só lixo eletrônico esperando o caminhão?"* (`day1.rpy:56`)
-- **Personagens:** manifestante (representa a multidão em pânico), mãe que arrasta a filha para longe quando ela tenta conversar com a J3 (pânico moral parental), drone de patrulha que responde à massa.
-- **Decisão do jogador:** baixar a cabeça e pedir desculpas (submissão ao pânico), contestar com lógica revolucionária (enfrentar), ou questionar tecnicamente (intelecto). Cada opção responde de forma diferente à histeria coletiva.
-- **Intenção pedagógica:** mostrar pânico moral como fenômeno social — o medo de uma novidade tecnológica é usado por figuras de autoridade e por massas para legitimar violência contra um grupo marcado como "ameaça". O paralelo com pânicos morais reais (sobre tecnologia, juventude, imigrantes) é direto.
-- **Ramificação:** o "Status" da J3 nos dias seguintes (Procurado/Observado) muda em função das escolhas no Dia 1, simulando como a reação ao pânico moral define o lugar social que ela vai ocupar.
-
-#### Tema 3 — Exclusão de mulheres em jogos (eixo central do Dia 2)
-
-- **Cena:** Fliperama Cyberpunk. Maya, uma jovem brasileira, está batendo o recorde de uma máquina. Três rapazes a cercam: *"Sai daí, Maya. Essa máquina tá com bug, não tem como uma garota fazer esse score sem trapacear. Deixa quem entende jogar."* (`day2.rpy:37`). Maya retruca: *"Eu te ganhei honestamente. Aceita. Se não aguenta perder pra uma garota, treina mais."*
-- **Personagens:** Maya (jogadora ameaçada), dois rapazes (agressores), dono do fliperama (que tenta expulsar Maya em vez de defendê-la), J3 (testemunha).
-- **Decisão do jogador:** intervir fisicamente contra o agressor, tentar mediação verbal (que falha — "Cala a boca, robô"), ou hackear o sistema para criar confusão e dar fuga à Maya. Cada caminho ilustra uma estratégia diferente contra o assédio.
-- **Intenção pedagógica:** trabalhar especificamente a **exclusão de mulheres do espaço de jogos** — o gatekeeping clássico ("garota não sabe jogar, vai trapacear"), o desconforto masculino com competência feminina, e a cumplicidade do dono do estabelecimento. Cena de gamergate em microescala.
-- **Ramificação:** se a J3 ajudar a Maya, vira aliança humana persistente (`maya_ally = True`) que muda cenas dos Dias 4, 6 e 7. Se ignorar, perde a aliança e o caminho narrativo que ela abre.
-
-#### Temas secundários (entram em cena ao longo do jogo)
-
-- **Xenofobia tecnológica** (Dias 4, 5, 7): a alegoria principal — preconceito contra sintéticos — atravessa o jogo inteiro. Funciona como espelho dos três temas acima.
-- **Autoritarismo policial** (Dias 1, 5, 6): drone de patrulha no Dia 1, cerco ao refúgio no Dia 5, perseguição final no Dia 6.
-- **Marginalização urbana** (Dia 3): a personagem `homeless_woman` no beco é quem oferece a J3 a primeira leitura crítica do sistema — "quem dorme no chão sabe melhor quem decide quem dorme em cama".
-- **Opressão de classe** (transversal): elite corporativa vs trabalhadores humanos vs sintéticos — três castas que se relacionam no jogo.
+**Temas secundários (transversais):** xenofobia tecnológica (alegoria de racismo, atravessa o jogo), autoritarismo policial (Dias 1, 5, 6), marginalização urbana (`homeless_woman` no Dia 3) e opressão de classe (elite × trabalhadores × sintéticos).
 
 ### f) Personagens
 
@@ -995,48 +939,28 @@ Correções aplicadas após auditoria completa do código Ren'Py:
 - **Label `end_game`** faltante foi criado em `finais_alternativos.rpy`, corrigindo `LabelNotFound` quando bateria/integridade chegavam a zero.
 - **Sobreposição de sprites**: 6 cenas com personagens sobrepondo-se (Dias 1, 3, 4, 5 e 6) corrigidas com `hide` explícito ou reposicionamento. Transforms customizados (`left`/`center`/`right` com zoom 0.85 e xcenter 0.15/0.5/0.85) garantem zero sobreposição entre canvases.
 
-### Ciclo de Playtest e Correções Pós-Lançamento (v1.1.0)
+### Correções Pós-Playtest (v1.1)
 
-Depois de fechar a v1.0 a versão foi distribuída para um grupo restrito de playtesters. O retorno trouxe quatro categorias de problema, todas corrigidas na v1.1.0. Documento aqui no mesmo espírito do resto do GDD: o que quebrou, por que quebrou, como foi resolvido.
+Versão distribuída ao grupo de playtest gerou quatro bugs corrigidos na v1.1.0:
 
-**Bug Dia 3 — suborno do segurança sem entrega do prêmio.** Na cena 3.4 o segurança oferece "carga de bateria premium" em troca de apagar a gravação. O jogador que aceitava o suborno consumia 2 pontos de bateria (o custo da escolha) mas nunca recebia a recarga prometida. O código pulava o `recarregar_bateria()` correspondente. Net: o jogador era roubado duas vezes — pelo segurança no fluxo narrativo, pelo bug no fluxo mecânico. Corrigido em `day3.rpy:140–149` adicionando `$ recarregar_bateria(15)` e a mensagem de sistema "BATERIA RECARREGADA: +15%" depois do consumo. Net agora: +13 bateria, consistente com o framing "premium" (maior que os 10 do Elias normal). A informação foi adicionada também à tabela de **Fontes de Recuperação** do balanceamento.
+- **Dia 3 — suborno sem entrega.** Aceitar carga premium do segurança consumia bateria mas nunca recarregava. Corrigido em `day3.rpy:140–149` com `recarregar_bateria(15)` (net +13). Adicionado à tabela de Fontes de Recuperação.
+- **Dia 4 — placeholder na narração.** Texto `"(se a ajudou no Dia 2)"` era anotação de design vazada para o build. Substituído por bloco `if maya_ally / else`.
+- **Dia 7 — sem auto-save.** Refazer 6 dias inteiros para testar finais era inviável. Adicionado `renpy.save("auto_save_day7", ...)` antes do dispatcher de finais; estado completo é persistido.
+- **Normalização de sprites.** A regeneração com IA produziu sprites em paisagem `2400x1309` (e `synth_angry` em `1408x768`) misturados aos antigos `800x1080` retrato — personagens novos apareciam gigantes, e uma tentativa de fix com `ysize=1080` esticou o `synth_angry`. Solução final em `images.rpy`: `Transform(xysize=(2000, 1080), fit="contain")` preserva aspecto e centraliza, mais override `_sprite_scale = {"maria": 0.65, "child_curious": 0.65}` para crianças e bypass para `patrol_drone` (que usa crop pixel-absoluto). Auditoria de PNGs confirmou todos como 8-bit RGBA.
 
-**Bug Dia 4 — narração com placeholder literal.** Linha 22 do `day4.rpy` continha texto cru: `"J3 é guiada por Maya (se a ajudou no Dia 2) ou encontra o local por conta própria..."`. O parêntese era anotação de design que escapou para o build final. Quebrava imersão e mostrava ao jogador uma ramificação narrativa que o engine deveria resolver internamente. Corrigido com bloco `if maya_ally`/`else` que escolhe a frase apropriada — Maya guia explicitamente se aliada, ou J3 chega sozinha caso contrário. Mesmo padrão usado em outras checagens condicionais do roteiro.
-
-**Bug Dia 7 — auto-save ausente impedia replay de finais.** Dias 1–6 chamam `renpy.save("auto_save_dayX", "Fim do Dia X")` no fim, criando entrada na página "Automatic saves" do menu Load. Dia 7 não tinha esse save. Playtesters relataram que, para experimentar finais diferentes, precisavam refazer os 6 dias inteiros — o que ninguém faz. Adicionei `$ renpy.save("auto_save_day7", "Fim do Dia 7 - Escolha Final")` em `day7.rpy:25`, antes do dispatcher de finais. Save persiste o estado completo (bateria, integridade, eixos de personalidade, flags de aliança, posição narrativa). Recarregar permite repetir a escolha final com todos os atributos acumulados — o jogo encoraja explorar os 4 finais sem grind.
-
-**Bug normalização de sprites — regeneração quebrou layout.** Na segunda passada da arte (v1.0 → v1.0.x), 8 personagens foram regenerados em canvas paisagem `2400x1309` (Gemini Nano Banana 2 mudou de aspect ratio entre sessões); o `synth_angry` saiu em `1408x768`. Os sprites antigos eram `800x1080` retrato. Os transforms `left/center/right` em `images.rpy` assumiam canvas retrato com `zoom 0.85`. Resultado: J3 e demais personagens regenerados apareciam gigantes na tela, cobrindo o textbox; o `synth_angry` aparecia esticado verticalmente (efeito "espremido dos lados") porque uma primeira tentativa de correção usando `ysize=1080` sozinho não preservou aspecto.
-
-A correção final está em `images.rpy:6–31`. Adicionei `sprite_norm(path, tag)`, que envolve toda sprite num `Transform(path, xysize=(2000, 1080), fit="contain")`. Bbox 2000×1080 com `fit=contain` preserva aspecto e centraliza a imagem — funciona uniformemente para retrato `800x1080` (encaixa height-bound, fica 800×1080 dentro do bbox) e paisagem `2400x1309` ou `1408x768` (encaixa height-bound, fica `~1980x1080` dentro do bbox). Como o corpo do personagem está sempre no centro horizontal do canvas, o `xcenter` dos transforms continua alinhando o corpo (não a borda da imagem) — margens transparentes ficam invisíveis e não colidem visualmente.
-
-Dois ajustes complementares na mesma correção:
-- **Escala por tag:** `_sprite_scale = {"maria": 0.65, "child_curious": 0.65}` reduz o bbox para crianças (~70% da altura de adulto). Sem isso a Maria do Dia 1 aparecia com a mesma altura da mãe e da J3 — quebra de proporção que um playtester pegou na cena da pergunta "você tem coração de verdade ou é de pilha?".
-- **Bypass de normalização:** `_sprite_no_norm = {"patrol_drone"}` porque o `drone_hover_loop` em `sistema_j3.rpy:225` usa `crop (0, 0, 800, 540)` com coordenadas pixel-absolutas do canvas original. Aplicar bbox 2000×1080 antes do crop teria devolvido região vazia. Bypass mantém o crop intacto.
-
-Auditoria de PNGs (script `tools/audit_png_depth.ps1`) confirmou que todos os 113 PNGs do build são 8-bit RGBA — não havia mistura de bit-depth como inicialmente suspeito. Script `tools/audit_png_size.ps1` lista dimensões via IHDR e foi o que identificou o conjunto de sprites paisagem.
-
-**Validação:** suite de testes (`pytest tests/` com 77 casos cobrindo finais, recursos, personalidade e música; `test_externo.py` com 10 casos de mecânica básica) passa verde após todas as correções. `renpy lint` reporta apenas avisos não-bloqueantes (sfx ausentes, screens sem param list cosmético). Build distribuído em 5 variantes (`win`, `mac`, `linux`, `pc`, `market`).
+Testes pós-correção: 77/77 pytest + 10/10 test_externo passam. Build refeito em 5 variantes (win/mac/linux/pc/market).
 
 ### Segunda passada de validações (v1.1.1)
 
-Depois da v1.1.0, voltei pra revisar o jogo inteiro com calma — sprite por sprite, menu por menu, som por som. Encontrei alguns problemas que tinham passado despercebidos no playtest. Como sou o único desenvolvedor, escrevi pequenos scripts em Python pra me ajudar a varrer tudo de uma vez sem ter que conferir manualmente cada arquivo. Resultado:
+Revisão final, sprite por sprite e menu por menu, com scripts auxiliares em Python:
 
-**Sprite do `synth_army` aparecia encolhido.** O sprite mostra um soldado sintético, mas no PNG o corpo ocupa só a metade de baixo do canvas (o resto é espaço vazio). Na cena de final revolucionário ele aparecia bem menor que o Comandante e a J3. Solução: aumentei a escala do sprite (`_sprite_scale = 2.2` em `images.rpy`) pra ele virar um "exército de fundo" e coloquei ele atrás dos personagens principais com `zorder -10`. Agora dá pra ver várias cópias dele formando a tropa atrás da J3 — efeito narrativo melhor que o original.
+- **`synth_army` encolhido.** Corpo ocupava só a metade inferior do canvas. Escala 2.2 + `zorder -10` no `day7` transformou o sprite em exército de fundo atrás dos personagens principais.
+- **`protester` deslocado.** Corpo desviado 143px à direita do canvas. Script re-centralizou a imagem (-174px). Backup do original em `_backups/`.
+- **Placeholder no Dia 3.** Texto `"(depende das escolhas)"` substituído por `if revolucao >= 3 / elif submissao >= 3 / else`. Mesmo padrão do fix do Dia 4.
+- **HUD desatualizada em 54 escolhas.** Opções gastavam recursos mas não chamavam `atualizar_status`. Script automatizado inseriu a chamada faltante em todas, distribuído pelos Dias 1, 3, 4, 5 e 6.
+- **Sons ausentes.** 10 efeitos referenciados no roteiro mas inexistentes. Gerados localmente em Python (ver seção 4.b), com paths corrigidos de `sfx/X.wav` para `audio/sfx/X.wav`.
 
-**Sprite do `protester` estava torto.** O personagem do manifestante no Dia 1 tinha o corpo desviado pra direita do canvas. Quando aparecia em `at left`, ele ficava em ~22% da tela em vez de 15%. Script de re-centralização (`recenter_sprite.py`) detectou o desvio (+143px) e moveu a imagem 174 pixels pra esquerda. Backup do original guardado em `_backups/`.
-
-**Texto "(depende das escolhas)" no Dia 3.** Mesmo padrão do bug do Dia 4 corrigido na v1.1.0: o texto `"SISTEMA: Status: Escondido ou procurado (depende das escolhas)"` era anotação de design que escapou pro build. Substituí por um `if revolucao >= 3: ... elif submissao >= 3: ... else: ...` que mostra o status real baseado nas escolhas.
-
-**HUD desatualizado em 54 escolhas.** Conferindo as 42 menus do jogo, percebi que 54 opções gastavam bateria/integridade/personalidade mas não chamavam `call atualizar_status` no final. Isso significa que o jogador via os números antigos na HUD até o próximo evento atualizar a tela. Script `fix_menu_atualizar.py` adicionou a chamada que faltava em todas as 54 (distribuído pelos Dias 1, 3, 4, 5 e 6).
-
-**Sons que faltavam.** O jogo referenciava 10 efeitos sonoros (alarme, sirene, multidão, explosão, EMP, etc.) que não existiam — momentos importantes rodavam em silêncio. Resolvido na seção de Elementos Sonoros: gerei os 10 sons localmente em Python, normalizei tudo no mesmo volume, e atualizei os caminhos no roteiro de `sfx/X.wav` pra `audio/sfx/X.wav` (era também por isso que o Ren'Py não achava — pasta errada).
-
-**Validação final:**
-- 77 de 77 testes do `pytest tests/` passam.
-- 10 de 10 testes do `test_externo.py` passam.
-- Verificação dos `.rpy`: 0 problemas críticos, 0 importantes (eram 12 na v1.1.0).
-- Verificação visual dos sprites em escala efetiva: 0 desvios fora do esperado.
-- Build refeito nas 5 variantes (`win`, `mac`, `linux`, `pc`, `market`).
+Testes pós-correção: 77/77 pytest + 10/10 test_externo. Verificação dos `.rpy`: zero problemas críticos ou importantes (eram 12 na v1.1.0). Build refeito nas 5 variantes.
 
 ### Balanceamento de Rotas e Pontuação
 
