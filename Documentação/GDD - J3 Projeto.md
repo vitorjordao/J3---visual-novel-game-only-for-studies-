@@ -811,7 +811,10 @@ Agradecimentos aos colegas de sala pelas críticas honestos (que me fizeram enxe
 | **v0.3 - Narrativa completa** | Mar/2026 | Roteiros dos 7 dias em markdown. Scripts `.rpy` gerados a partir dos roteiros. Finais 1–4 por personalidade dominante. |
 | **v0.4 - Debug e validações** | Abr/2026 | Menu de debug (tecla P), testes de mecânicas e fluxos completos. Correção de bugs de HideScreen, config.keymap, labels duplicados. |
 | **v0.5 - Arte inicial** | Abr/2026 | Primeiros 5 sprites de personagens principais (J3, Maya, Elias, Unit-7, Elena) e 1 background (avenue_night), gerados via Nano Banana no AI Studio. |
-| **v1.0 - Arte completa + balanceamento** | Abr/2026 | 22 backgrounds (Dias 1–7 + finais) via Nano Banana 2 API. 21 sprites adicionais de personagens secundários. Flood-fill de remoção de fundo. Normalização de escalas (adultos 950px, crianças 700px, drones 380px). Canvas padrão 800×1080 ancorado no bottom. Correções críticas de balanceamento: finais por dominância + threshold, alianças persistentes setadas, bug de dupla atribuição removido. Transforms customizados resolvendo sobreposição de sprites. |
+| **v1.0 - Arte completa + balanceamento** | 03/04/2026 | 22 backgrounds (Dias 1–7 + finais) via Nano Banana 2 API. 21 sprites adicionais de personagens secundários. Flood-fill de remoção de fundo. Normalização de escalas. Canvas padrão 800×1080 ancorado no bottom. Correções críticas de balanceamento. Primeira release MINC. |
+| **v1.1 - Pós-playtest** | 24/05/2026 | 4 bugs corrigidos (suborno Dia 3, placeholder Dia 4, auto-save Dia 7, normalização sprites paisagem). Trilha sonora (5 faixas via Suno) com aleatorização persistente em `musica.rpy`. |
+| **v1.1.1 - Segunda passada de validações** | 30/05/2026 | `synth_army` upscale 2.2 + zorder behind, `protester` recentralizado, placeholder Dia 3 ramificado, 54x `atualizar_status` adicionados, 10 sfx sintetizados em Python (numpy/scipy) normalizados em -18 dBFS RMS. |
+| **v1.2.0 - Build final** | 30/05/2026 | Fix do `patrol_drone` Dia 1 (crop pixel-absoluto obsoleto cortava o drone real após PNG regenerado). Roteiro completo consolidado em docx único para entrega. Build distribuído em 5 variantes (win/mac/linux/pc/market). |
 
 ### Galeria de Evolução dos Personagens Principais
 
