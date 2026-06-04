@@ -1,0 +1,67 @@
+{
+  "comparison_rows": [
+    {
+      "title": "Citizen Sleeper",
+      "year": "2022",
+      "dev_country": "Jump Over the Age · Reino Unido (solo)",
+      "platforms_price": "PC/Switch/Xbox/PS — US$19,99",
+      "reception": "Metacritic 82 · GDCA Social Impact",
+      "overlap_with_j3": "Consciência sintética em corpo artificial; sobrevivência e controle corporativo; finais ramificados; escala solo",
+      "j3_edge": "VN pura em PT-BR no Brasil; opressão real + 3 eixos de personalidade"
+    },
+    {
+      "title": "1000xRESIST",
+      "year": "2024",
+      "dev_country": "sunset visitor · Canadá (4 pessoas)",
+      "platforms_price": "PC/Switch/PS5/Xbox — US$24,99",
+      "reception": "Metacritic 86 · Peabody 2024 · Best Narrative",
+      "overlap_with_j3": "Consciência de IA/clone, identidade e opressão; narrativa ramificada premiada de micro-equipe",
+      "j3_edge": "Cyberpunk-noir brasileiro; bateria+integridade no enredo; 4 finais por personalidade"
+    },
+    {
+      "title": "Eliza",
+      "year": "2019",
+      "dev_country": "Zachtronics · EUA",
+      "platforms_price": "PC/Switch — US$14,99",
+      "reception": "Metacritic 84 · indicada IGF (Narrativa)",
+      "overlap_with_j3": "VN de escolhas sobre IA e o limite entre empatia humana e sintética; múltiplos finais; mesmo formato",
+      "j3_edge": "Protagonista é a própria sintética despertando; cenário BR e temas sociais explícitos"
+    },
+    {
+      "title": "VA-11 HALL-A",
+      "year": "2016",
+      "dev_country": "Sukeban Games · Venezuela (~3)",
+      "platforms_price": "PC/PS4/Vita/Switch — US$14,99",
+      "reception": "Metacritic 83 · Steam 96% (Overwhelmingly Positive)",
+      "overlap_with_j3": "VN cyberpunk-referência; distopia corporativa, androides sencientes e identidade; tom próximo",
+      "j3_edge": "Escolha-consequência com 4 finais; ambientação brasileira e opressão real"
+    },
+    {
+      "title": "Unsighted",
+      "year": "2021",
+      "dev_country": "Studio Pixel Punk · Brasil (2)",
+      "platforms_price": "PC/Switch/PS4/Xbox — US$19,99",
+      "reception": "Metacritic 84 · melhor Metroidvania de 2021 (Kotaku)",
+      "overlap_with_j3": "Indie BR sobre androides perdendo consciência conforme a energia acaba — paralelo direto",
+      "j3_edge": "J3 é VN narrativa (não ação); ramificação, PT-BR e temas sociais como núcleo"
+    },
+    {
+      "title": "Detroit: Become Human (benchmark AAA)",
+      "year": "2018",
+      "dev_country": "Quantic Dream · França (AAA, ~180)",
+      "platforms_price": "PS4/PC — US$59,99",
+      "reception": "Metacritic 78–80 · ~15 mi de unidades",
+      "overlap_with_j3": "Inspiração declarada: sintéticos despertando consciência; alegoria de direitos civis; escolha-consequência",
+      "j3_edge": "Mesma premissa em escala indie/solo, Ren'Py, opressão brasileira — não é par de mercado"
+    }
+  ],
+  "bullet_differentiators": [
+    "Espaço em branco real: nenhuma VN cyberpunk narrativa brasileira de destaque foi identificada — J3 ocupa a interseção brasileiro + cyberpunk + Ren'Py + PT-BR + consciência de IA, sem concorrente direto.",
+    "Opressão real e alegórica do Brasil como núcleo, não cenário: racismo (Elias), gatekeeping de gênero (Maya) e pânico moral.",
+    "Sobrevivência fundida à narrativa: bateria e integridade são pressões dramáticas que moldam as escolhas, não HUD decorativo.",
+    "3 eixos de personalidade → 4 finais principais + 3 game-overs críticos: alta rejogabilidade.",
+    "Ambição AAA em escala solo: a premissa de Detroit entregue por um dev único em Ren'Py, ao lado de comps premiados de micro-equipe.",
+    "Enquadramento cultural-audiovisual: elegível, em princípio, ao Marco Legal dos Games e aos caminhos do MinC/SAv."
+  ],
+  "notes_speaker": "Posicionamento: o J3 senta numa interseção quase vazia — única VN cyberpunk-noir brasileira em PT-BR/Ren'Py sobre consciência sintética. Conversa de igual com comps indie de micro-equipe premiados: Citizen Sleeper e 1000xRESIST (consciência de IA/clone, opressão), Eliza e 2064: Read Only Memories (VN de escolhas sobre IA), VA-11 HALL-A e The Red Strings Club (referência cyberpunk). Unsighted prova o talento BR no tema (androides perdendo consciência com a energia). Detroit é a inspiração-mãe e benchmark AAA, não concorrente de escala. Mercado: ~1.042 estúdios BR (2023, +177% desde 2018), consumo ~US$3,8-4bi; mas nenhuma VN cyberpunk BR de destaque = white space. Momento institucional favorável: Marco Legal dos Games (Lei 14.852/2024) + manual MinC 'Game é Cultura, Game é Audiovisual'."
+}

@@ -27,3 +27,17 @@ Thumbs.db
 .claude/*
 Projeto/J3ConscienciaArtificial*
 Projeto/J3ConscienciaArtificial*/*
+
+# Video / trailer (binarios grandes)
+Trailer/
+.video_analysis_frames/
+*.mp4
+
+# Apresentacao / build do deck (binarios + deps)
+*.pptx
+tools/ppt_build/node_modules/
+tools/ppt_build/assets/
+tools/ppt_build/preview/
+
+# Backup antigo do GDD (binario grande)
+Documentação/GDD - J3 Projeto old.docx

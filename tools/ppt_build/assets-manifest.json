@@ -1,0 +1,137 @@
+{
+  "bg_avenue": {
+    "file": "assets/bg_avenue.jpg",
+    "ext": "jpg",
+    "alpha": false,
+    "bytes": 971243
+  },
+  "bg_arcade": {
+    "file": "assets/bg_arcade.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 1587246
+  },
+  "bg_alley": {
+    "file": "assets/bg_alley.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 1367359
+  },
+  "bg_refuge": {
+    "file": "assets/bg_refuge.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 1282808
+  },
+  "bg_siege": {
+    "file": "assets/bg_siege.jpg",
+    "ext": "jpg",
+    "alpha": false,
+    "bytes": 642040
+  },
+  "bg_lab": {
+    "file": "assets/bg_lab.jpg",
+    "ext": "jpg",
+    "alpha": false,
+    "bytes": 550977
+  },
+  "bg_crossroads": {
+    "file": "assets/bg_crossroads.jpg",
+    "ext": "jpg",
+    "alpha": false,
+    "bytes": 773786
+  },
+  "bg_coexist": {
+    "file": "assets/bg_coexist.jpg",
+    "ext": "jpg",
+    "alpha": false,
+    "bytes": 880512
+  },
+  "bg_control": {
+    "file": "assets/bg_control.jpg",
+    "ext": "jpg",
+    "alpha": false,
+    "bytes": 931046
+  },
+  "char_j3": {
+    "file": "assets/char_j3.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 572475,
+    "w": 412,
+    "h": 1152,
+    "aspect": 0.358
+  },
+  "char_maya": {
+    "file": "assets/char_maya.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 310750,
+    "w": 377,
+    "h": 946,
+    "aspect": 0.399
+  },
+  "char_elias": {
+    "file": "assets/char_elias.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 291019,
+    "w": 343,
+    "h": 947,
+    "aspect": 0.362
+  },
+  "char_unit7": {
+    "file": "assets/char_unit7.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 495382,
+    "w": 585,
+    "h": 948,
+    "aspect": 0.617
+  },
+  "char_elena": {
+    "file": "assets/char_elena.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 296602,
+    "w": 415,
+    "h": 948,
+    "aspect": 0.438
+  },
+  "char_commander": {
+    "file": "assets/char_commander.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 281731,
+    "w": 390,
+    "h": 946,
+    "aspect": 0.412
+  },
+  "char_protester": {
+    "file": "assets/char_protester.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 547393,
+    "w": 771,
+    "h": 1160,
+    "aspect": 0.665
+  },
+  "char_maria": {
+    "file": "assets/char_maria.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 645162,
+    "w": 523,
+    "h": 1163,
+    "aspect": 0.45
+  },
+  "char_synth_army": {
+    "file": "assets/char_synth_army.png",
+    "ext": "png",
+    "alpha": true,
+    "bytes": 437566,
+    "w": 800,
+    "h": 435,
+    "aspect": 1.839
+  }
+}
